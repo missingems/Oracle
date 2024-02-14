@@ -16,6 +16,7 @@
 		BFFFBF7A2B7C6A290004156B /* OracleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF792B7C6A290004156B /* OracleUITests.swift */; };
 		BFFFBF7C2B7C6A290004156B /* OracleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */; };
 		BFFFBF892B7C6CAB0004156B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF882B7C6CAB0004156B /* RootViewController.swift */; };
+		BFFFBF8C2B7C86BA0004156B /* ScryfallKit in Frameworks */ = {isa = PBXBuildFile; productRef = BFFFBF8B2B7C86BA0004156B /* ScryfallKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFFFBF8C2B7C86BA0004156B /* ScryfallKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +147,9 @@
 			dependencies = (
 			);
 			name = Oracle;
+			packageProductDependencies = (
+				BFFFBF8B2B7C86BA0004156B /* ScryfallKit */,
+			);
 			productName = Oracle;
 			productReference = BFFFBF512B7C6A280004156B /* Oracle.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +222,9 @@
 				Base,
 			);
 			mainGroup = BFFFBF482B7C6A280004156B;
+			packageReferences = (
+				BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */,
+			);
 			productRefGroup = BFFFBF522B7C6A280004156B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -613,6 +621,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JacobHearst/ScryfallKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BFFFBF8B2B7C86BA0004156B /* ScryfallKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */;
+			productName = ScryfallKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */ = {

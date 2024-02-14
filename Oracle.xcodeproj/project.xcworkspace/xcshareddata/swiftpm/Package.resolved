@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "scryfallkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JacobHearst/ScryfallKit",
+      "state" : {
+        "revision" : "c7f2731d56c4ffe637cd70174e672208a0e584ba",
+        "version" : "5.7.0"
+      }
+    }
+  ],
+  "version" : 2
+}
