@@ -1,0 +1,633 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF542B7C6A280004156B /* AppDelegate.swift */; };
+		BFFFBF572B7C6A280004156B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF562B7C6A280004156B /* SceneDelegate.swift */; };
+		BFFFBF592B7C6A280004156B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF582B7C6A280004156B /* ViewController.swift */; };
+		BFFFBF5C2B7C6A280004156B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF5A2B7C6A280004156B /* Main.storyboard */; };
+		BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */; };
+		BFFFBF612B7C6A290004156B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF602B7C6A290004156B /* Assets.xcassets */; };
+		BFFFBF642B7C6A290004156B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */; };
+		BFFFBF702B7C6A290004156B /* OracleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF6F2B7C6A290004156B /* OracleTests.swift */; };
+		BFFFBF7A2B7C6A290004156B /* OracleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF792B7C6A290004156B /* OracleUITests.swift */; };
+		BFFFBF7C2B7C6A290004156B /* OracleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BFFFBF6C2B7C6A290004156B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFFFBF492B7C6A280004156B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFFFBF502B7C6A280004156B;
+			remoteInfo = Oracle;
+		};
+		BFFFBF762B7C6A290004156B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFFFBF492B7C6A280004156B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFFFBF502B7C6A280004156B;
+			remoteInfo = Oracle;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BFFFBF512B7C6A280004156B /* Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oracle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFFFBF542B7C6A280004156B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BFFFBF562B7C6A280004156B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BFFFBF582B7C6A280004156B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BFFFBF5B2B7C6A280004156B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BFFFBF5E2B7C6A280004156B /* Oracle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Oracle.xcdatamodel; sourceTree = "<group>"; };
+		BFFFBF602B7C6A290004156B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BFFFBF632B7C6A290004156B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BFFFBF652B7C6A290004156B /* Oracle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Oracle.entitlements; sourceTree = "<group>"; };
+		BFFFBF662B7C6A290004156B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFFFBF6B2B7C6A290004156B /* OracleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OracleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFFFBF6F2B7C6A290004156B /* OracleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleTests.swift; sourceTree = "<group>"; };
+		BFFFBF752B7C6A290004156B /* OracleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OracleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFFFBF792B7C6A290004156B /* OracleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleUITests.swift; sourceTree = "<group>"; };
+		BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BFFFBF4E2B7C6A280004156B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFFFBF682B7C6A290004156B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFFFBF722B7C6A290004156B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BFFFBF482B7C6A280004156B = {
+			isa = PBXGroup;
+			children = (
+				BFFFBF532B7C6A280004156B /* Oracle */,
+				BFFFBF6E2B7C6A290004156B /* OracleTests */,
+				BFFFBF782B7C6A290004156B /* OracleUITests */,
+				BFFFBF522B7C6A280004156B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BFFFBF522B7C6A280004156B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BFFFBF512B7C6A280004156B /* Oracle.app */,
+				BFFFBF6B2B7C6A290004156B /* OracleTests.xctest */,
+				BFFFBF752B7C6A290004156B /* OracleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BFFFBF532B7C6A280004156B /* Oracle */ = {
+			isa = PBXGroup;
+			children = (
+				BFFFBF542B7C6A280004156B /* AppDelegate.swift */,
+				BFFFBF562B7C6A280004156B /* SceneDelegate.swift */,
+				BFFFBF582B7C6A280004156B /* ViewController.swift */,
+				BFFFBF5A2B7C6A280004156B /* Main.storyboard */,
+				BFFFBF602B7C6A290004156B /* Assets.xcassets */,
+				BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */,
+				BFFFBF652B7C6A290004156B /* Oracle.entitlements */,
+				BFFFBF662B7C6A290004156B /* Info.plist */,
+				BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */,
+			);
+			path = Oracle;
+			sourceTree = "<group>";
+		};
+		BFFFBF6E2B7C6A290004156B /* OracleTests */ = {
+			isa = PBXGroup;
+			children = (
+				BFFFBF6F2B7C6A290004156B /* OracleTests.swift */,
+			);
+			path = OracleTests;
+			sourceTree = "<group>";
+		};
+		BFFFBF782B7C6A290004156B /* OracleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BFFFBF792B7C6A290004156B /* OracleUITests.swift */,
+				BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */,
+			);
+			path = OracleUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BFFFBF502B7C6A280004156B /* Oracle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFFFBF7F2B7C6A290004156B /* Build configuration list for PBXNativeTarget "Oracle" */;
+			buildPhases = (
+				BFFFBF4D2B7C6A280004156B /* Sources */,
+				BFFFBF4E2B7C6A280004156B /* Frameworks */,
+				BFFFBF4F2B7C6A280004156B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Oracle;
+			productName = Oracle;
+			productReference = BFFFBF512B7C6A280004156B /* Oracle.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BFFFBF6A2B7C6A290004156B /* OracleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFFFBF822B7C6A290004156B /* Build configuration list for PBXNativeTarget "OracleTests" */;
+			buildPhases = (
+				BFFFBF672B7C6A290004156B /* Sources */,
+				BFFFBF682B7C6A290004156B /* Frameworks */,
+				BFFFBF692B7C6A290004156B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFFFBF6D2B7C6A290004156B /* PBXTargetDependency */,
+			);
+			name = OracleTests;
+			productName = OracleTests;
+			productReference = BFFFBF6B2B7C6A290004156B /* OracleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BFFFBF742B7C6A290004156B /* OracleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFFFBF852B7C6A290004156B /* Build configuration list for PBXNativeTarget "OracleUITests" */;
+			buildPhases = (
+				BFFFBF712B7C6A290004156B /* Sources */,
+				BFFFBF722B7C6A290004156B /* Frameworks */,
+				BFFFBF732B7C6A290004156B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFFFBF772B7C6A290004156B /* PBXTargetDependency */,
+			);
+			name = OracleUITests;
+			productName = OracleUITests;
+			productReference = BFFFBF752B7C6A290004156B /* OracleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFFFBF492B7C6A280004156B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					BFFFBF502B7C6A280004156B = {
+						CreatedOnToolsVersion = 15.1;
+					};
+					BFFFBF6A2B7C6A290004156B = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = BFFFBF502B7C6A280004156B;
+					};
+					BFFFBF742B7C6A290004156B = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = BFFFBF502B7C6A280004156B;
+					};
+				};
+			};
+			buildConfigurationList = BFFFBF4C2B7C6A280004156B /* Build configuration list for PBXProject "Oracle" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BFFFBF482B7C6A280004156B;
+			productRefGroup = BFFFBF522B7C6A280004156B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BFFFBF502B7C6A280004156B /* Oracle */,
+				BFFFBF6A2B7C6A290004156B /* OracleTests */,
+				BFFFBF742B7C6A290004156B /* OracleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BFFFBF4F2B7C6A280004156B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFFFBF642B7C6A290004156B /* LaunchScreen.storyboard in Resources */,
+				BFFFBF612B7C6A290004156B /* Assets.xcassets in Resources */,
+				BFFFBF5C2B7C6A280004156B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFFFBF692B7C6A290004156B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFFFBF732B7C6A290004156B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BFFFBF4D2B7C6A280004156B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFFFBF592B7C6A280004156B /* ViewController.swift in Sources */,
+				BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */,
+				BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */,
+				BFFFBF572B7C6A280004156B /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFFFBF672B7C6A290004156B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFFFBF702B7C6A290004156B /* OracleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFFFBF712B7C6A290004156B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFFFBF7C2B7C6A290004156B /* OracleUITestsLaunchTests.swift in Sources */,
+				BFFFBF7A2B7C6A290004156B /* OracleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BFFFBF6D2B7C6A290004156B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFFFBF502B7C6A280004156B /* Oracle */;
+			targetProxy = BFFFBF6C2B7C6A290004156B /* PBXContainerItemProxy */;
+		};
+		BFFFBF772B7C6A290004156B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFFFBF502B7C6A280004156B /* Oracle */;
+			targetProxy = BFFFBF762B7C6A290004156B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BFFFBF5A2B7C6A280004156B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFFFBF5B2B7C6A280004156B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFFFBF632B7C6A290004156B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BFFFBF7D2B7C6A290004156B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BFFFBF7E2B7C6A290004156B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BFFFBF802B7C6A290004156B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Oracle/Oracle.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25WL36ABTN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Oracle/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.Oracle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BFFFBF812B7C6A290004156B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Oracle/Oracle.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25WL36ABTN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Oracle/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.Oracle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BFFFBF832B7C6A290004156B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25WL36ABTN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.OracleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oracle.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Oracle";
+			};
+			name = Debug;
+		};
+		BFFFBF842B7C6A290004156B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25WL36ABTN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.OracleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oracle.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Oracle";
+			};
+			name = Release;
+		};
+		BFFFBF862B7C6A290004156B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25WL36ABTN;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.OracleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Oracle;
+			};
+			name = Debug;
+		};
+		BFFFBF872B7C6A290004156B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25WL36ABTN;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.OracleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Oracle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BFFFBF4C2B7C6A280004156B /* Build configuration list for PBXProject "Oracle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFFFBF7D2B7C6A290004156B /* Debug */,
+				BFFFBF7E2B7C6A290004156B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFFFBF7F2B7C6A290004156B /* Build configuration list for PBXNativeTarget "Oracle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFFFBF802B7C6A290004156B /* Debug */,
+				BFFFBF812B7C6A290004156B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFFFBF822B7C6A290004156B /* Build configuration list for PBXNativeTarget "OracleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFFFBF832B7C6A290004156B /* Debug */,
+				BFFFBF842B7C6A290004156B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFFFBF852B7C6A290004156B /* Build configuration list for PBXNativeTarget "OracleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFFFBF862B7C6A290004156B /* Debug */,
+				BFFFBF872B7C6A290004156B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BFFFBF5E2B7C6A280004156B /* Oracle.xcdatamodel */,
+			);
+			currentVersion = BFFFBF5E2B7C6A280004156B /* Oracle.xcdatamodel */;
+			path = Oracle.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BFFFBF492B7C6A280004156B /* Project object */;
+}
