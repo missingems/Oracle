@@ -9,14 +9,13 @@
 /* Begin PBXBuildFile section */
 		BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF542B7C6A280004156B /* AppDelegate.swift */; };
 		BFFFBF572B7C6A280004156B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF562B7C6A280004156B /* SceneDelegate.swift */; };
-		BFFFBF592B7C6A280004156B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF582B7C6A280004156B /* ViewController.swift */; };
-		BFFFBF5C2B7C6A280004156B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF5A2B7C6A280004156B /* Main.storyboard */; };
 		BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */; };
 		BFFFBF612B7C6A290004156B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF602B7C6A290004156B /* Assets.xcassets */; };
 		BFFFBF642B7C6A290004156B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */; };
 		BFFFBF702B7C6A290004156B /* OracleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF6F2B7C6A290004156B /* OracleTests.swift */; };
 		BFFFBF7A2B7C6A290004156B /* OracleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF792B7C6A290004156B /* OracleUITests.swift */; };
 		BFFFBF7C2B7C6A290004156B /* OracleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */; };
+		BFFFBF892B7C6CAB0004156B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF882B7C6CAB0004156B /* RootViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +39,6 @@
 		BFFFBF512B7C6A280004156B /* Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oracle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFFBF542B7C6A280004156B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFFFBF562B7C6A280004156B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BFFFBF582B7C6A280004156B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BFFFBF5B2B7C6A280004156B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFFFBF5E2B7C6A280004156B /* Oracle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Oracle.xcdatamodel; sourceTree = "<group>"; };
 		BFFFBF602B7C6A290004156B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFFFBF632B7C6A290004156B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,6 +49,7 @@
 		BFFFBF752B7C6A290004156B /* OracleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OracleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFFBF792B7C6A290004156B /* OracleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleUITests.swift; sourceTree = "<group>"; };
 		BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BFFFBF882B7C6CAB0004156B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +102,7 @@
 			children = (
 				BFFFBF542B7C6A280004156B /* AppDelegate.swift */,
 				BFFFBF562B7C6A280004156B /* SceneDelegate.swift */,
-				BFFFBF582B7C6A280004156B /* ViewController.swift */,
-				BFFFBF5A2B7C6A280004156B /* Main.storyboard */,
+				BFFFBF882B7C6CAB0004156B /* RootViewController.swift */,
 				BFFFBF602B7C6A290004156B /* Assets.xcassets */,
 				BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */,
 				BFFFBF652B7C6A290004156B /* Oracle.entitlements */,
@@ -238,7 +235,6 @@
 			files = (
 				BFFFBF642B7C6A290004156B /* LaunchScreen.storyboard in Resources */,
 				BFFFBF612B7C6A290004156B /* Assets.xcassets in Resources */,
-				BFFFBF5C2B7C6A280004156B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,9 +259,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFFFBF592B7C6A280004156B /* ViewController.swift in Sources */,
 				BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */,
 				BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */,
+				BFFFBF892B7C6CAB0004156B /* RootViewController.swift in Sources */,
 				BFFFBF572B7C6A280004156B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,14 +299,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BFFFBF5A2B7C6A280004156B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BFFFBF5B2B7C6A280004156B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -374,6 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -431,6 +420,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -452,11 +442,12 @@
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Oracle/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -464,6 +455,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.Oracle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -481,11 +475,12 @@
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Oracle/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -493,6 +488,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.Oracle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
