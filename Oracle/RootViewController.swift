@@ -7,6 +7,4 @@
 
 import UIKit
 
-final class RootViewController: UIViewController {
-  
-}
+final class RootViewController: UIViewController {}
