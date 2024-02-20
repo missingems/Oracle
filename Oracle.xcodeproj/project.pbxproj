@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF56E66F2B846E450018B620 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BF56E66E2B846E450018B620 /* Localizable.xcstrings */; };
+		BF56E6722B847BA10018B620 /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF56E6712B847BA10018B620 /* Anchorage */; };
+		BF56E6752B847C200018B620 /* SDWebImageSVGNativeCoder in Frameworks */ = {isa = PBXBuildFile; productRef = BF56E6742B847C200018B620 /* SDWebImageSVGNativeCoder */; };
+		BF56E6772B847C730018B620 /* SetsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E6762B847C730018B620 /* SetsTableViewCell.swift */; };
+		BFB366242B7C9767004814FB /* SetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB366232B7C9767004814FB /* SetsTableViewController.swift */; };
+		BFB366262B7CA663004814FB /* SetsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB366252B7CA663004814FB /* SetsTableViewModel.swift */; };
 		BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF542B7C6A280004156B /* AppDelegate.swift */; };
 		BFFFBF572B7C6A280004156B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF562B7C6A280004156B /* SceneDelegate.swift */; };
 		BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */; };
@@ -15,7 +21,6 @@
 		BFFFBF702B7C6A290004156B /* OracleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF6F2B7C6A290004156B /* OracleTests.swift */; };
 		BFFFBF7A2B7C6A290004156B /* OracleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF792B7C6A290004156B /* OracleUITests.swift */; };
 		BFFFBF7C2B7C6A290004156B /* OracleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */; };
-		BFFFBF892B7C6CAB0004156B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF882B7C6CAB0004156B /* RootViewController.swift */; };
 		BFFFBF8C2B7C86BA0004156B /* ScryfallKit in Frameworks */ = {isa = PBXBuildFile; productRef = BFFFBF8B2B7C86BA0004156B /* ScryfallKit */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF56E66E2B846E450018B620 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		BF56E6762B847C730018B620 /* SetsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsTableViewCell.swift; sourceTree = "<group>"; };
+		BFB366232B7C9767004814FB /* SetsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsTableViewController.swift; sourceTree = "<group>"; };
+		BFB366252B7CA663004814FB /* SetsTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsTableViewModel.swift; sourceTree = "<group>"; };
 		BFFFBF512B7C6A280004156B /* Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oracle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFFBF542B7C6A280004156B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFFFBF562B7C6A280004156B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +59,6 @@
 		BFFFBF752B7C6A290004156B /* OracleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OracleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFFBF792B7C6A290004156B /* OracleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleUITests.swift; sourceTree = "<group>"; };
 		BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		BFFFBF882B7C6CAB0004156B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +67,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFFFBF8C2B7C86BA0004156B /* ScryfallKit in Frameworks */,
+				BF56E6722B847BA10018B620 /* Anchorage in Frameworks */,
+				BF56E6752B847C200018B620 /* SDWebImageSVGNativeCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +89,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BFB366272B7CA669004814FB /* Sets */ = {
+			isa = PBXGroup;
+			children = (
+				BFB366292B7CA686004814FB /* Models */,
+				BFB366282B7CA675004814FB /* Views */,
+			);
+			path = Sets;
+			sourceTree = "<group>";
+		};
+		BFB366282B7CA675004814FB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BFB366232B7C9767004814FB /* SetsTableViewController.swift */,
+				BF56E6762B847C730018B620 /* SetsTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BFB366292B7CA686004814FB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BFB366252B7CA663004814FB /* SetsTableViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		BFFFBF482B7C6A280004156B = {
 			isa = PBXGroup;
 			children = (
@@ -102,13 +138,14 @@
 		BFFFBF532B7C6A280004156B /* Oracle */ = {
 			isa = PBXGroup;
 			children = (
+				BFB366272B7CA669004814FB /* Sets */,
 				BFFFBF542B7C6A280004156B /* AppDelegate.swift */,
 				BFFFBF562B7C6A280004156B /* SceneDelegate.swift */,
-				BFFFBF882B7C6CAB0004156B /* RootViewController.swift */,
 				BFFFBF602B7C6A290004156B /* Assets.xcassets */,
 				BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */,
 				BFFFBF652B7C6A290004156B /* Oracle.entitlements */,
 				BFFFBF662B7C6A290004156B /* Info.plist */,
+				BF56E66E2B846E450018B620 /* Localizable.xcstrings */,
 				BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */,
 			);
 			path = Oracle;
@@ -149,6 +186,8 @@
 			name = Oracle;
 			packageProductDependencies = (
 				BFFFBF8B2B7C86BA0004156B /* ScryfallKit */,
+				BF56E6712B847BA10018B620 /* Anchorage */,
+				BF56E6742B847C200018B620 /* SDWebImageSVGNativeCoder */,
 			);
 			productName = Oracle;
 			productReference = BFFFBF512B7C6A280004156B /* Oracle.app */;
@@ -220,10 +259,13 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = BFFFBF482B7C6A280004156B;
 			packageReferences = (
 				BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */,
+				BF56E6702B847BA10018B620 /* XCRemoteSwiftPackageReference "Anchorage" */,
+				BF56E6732B847C200018B620 /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */,
 			);
 			productRefGroup = BFFFBF522B7C6A280004156B /* Products */;
 			projectDirPath = "";
@@ -243,6 +285,7 @@
 			files = (
 				BFFFBF642B7C6A290004156B /* LaunchScreen.storyboard in Resources */,
 				BFFFBF612B7C6A290004156B /* Assets.xcassets in Resources */,
+				BF56E66F2B846E450018B620 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,10 +310,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF56E6772B847C730018B620 /* SetsTableViewCell.swift in Sources */,
 				BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */,
 				BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */,
-				BFFFBF892B7C6CAB0004156B /* RootViewController.swift in Sources */,
 				BFFFBF572B7C6A280004156B /* SceneDelegate.swift in Sources */,
+				BFB366242B7C9767004814FB /* SetsTableViewController.swift in Sources */,
+				BFB366262B7CA663004814FB /* SetsTableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +368,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -371,7 +417,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -387,6 +433,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -429,7 +476,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -623,6 +670,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BF56E6702B847BA10018B620 /* XCRemoteSwiftPackageReference "Anchorage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Rightpoint/Anchorage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+		BF56E6732B847C200018B620 /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSVGNativeCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
 		BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JacobHearst/ScryfallKit";
@@ -634,6 +697,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BF56E6712B847BA10018B620 /* Anchorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF56E6702B847BA10018B620 /* XCRemoteSwiftPackageReference "Anchorage" */;
+			productName = Anchorage;
+		};
+		BF56E6742B847C200018B620 /* SDWebImageSVGNativeCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF56E6732B847C200018B620 /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */;
+			productName = SDWebImageSVGNativeCoder;
+		};
 		BFFFBF8B2B7C86BA0004156B /* ScryfallKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */;
