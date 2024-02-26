@@ -25,7 +25,7 @@ final class SetsTableViewModel {
       
       for (index, section) in sections.enumerated() {
         sections[index] = section + data.filter {
-          $0.parentSetCode == section.first?.setID
+          $0.parentSetCode == section.first?.setID && $0.cardCount != 0
         }.map(State.Preview.Set.init)
       }
       
