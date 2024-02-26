@@ -15,7 +15,7 @@ final class SetsTableViewController: UITableViewController {
   }
   
   init() {
-    super.init(style: .insetGrouped)
+    super.init(style: .plain)
     setupViews()
   }
   
@@ -39,7 +39,13 @@ final class SetsTableViewController: UITableViewController {
   
   private func setupViews() {
     tableView.register(SetsTableViewCell.self, forCellReuseIdentifier: "SetsTableViewCell")
+    tableView.separatorStyle = .none
     navigationItem.title = viewModel.state.title
+    tabBarItem = UITabBarItem(
+      title: "Sets",
+      image: UIImage(systemName: "book.pages"),
+      selectedImage: UIImage(systemName: "book.pages.fill")
+    )
   }
   
   override func tableView(
@@ -58,7 +64,14 @@ final class SetsTableViewController: UITableViewController {
     }
     
     let preview = viewModel.state.sets[indexPath.row]
-    cell.configure(setID: preview.setID, title: preview.title, iconURI: preview.iconURI, numberOfCards: preview.numberOfItems)
+    cell.configure(
+      setID: preview.setID,
+      title: preview.title,
+      iconURI: preview.iconURI,
+      numberOfCards: preview.numberOfItems,
+      index: indexPath.row,
+      isParentSet: preview.isParentSet
+    )
     
     return cell
   }

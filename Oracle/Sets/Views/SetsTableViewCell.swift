@@ -23,6 +23,13 @@ final class InsetLabel: UILabel {
 }
 
 final class SetsTableViewCell: UITableViewCell {
+  private lazy var subContentView: UIView = {
+    let view = UIView()
+    view.layer.cornerRadius = 8.0
+    view.layer.cornerCurve = .continuous
+    return view
+  }()
+  
   private lazy var setIdLabel = {
     let label = InsetLabel()
     let caption = UIFont.preferredFont(forTextStyle: .caption1)
@@ -41,7 +48,6 @@ final class SetsTableViewCell: UITableViewCell {
   
   private lazy var titleLabel = {
     let label = UILabel()
-    label.font = .preferredFont(forTextStyle: .body)
     label.numberOfLines = 0
     label.textColor = .label
     label.setContentHuggingPriority(.required, for: .vertical)
@@ -57,6 +63,17 @@ final class SetsTableViewCell: UITableViewCell {
     label.setContentHuggingPriority(.required, for: .vertical)
     label.setContentCompressionResistancePriority(.required, for: .vertical)
     return label
+  }()
+  
+  private lazy var childIndicatorView = {
+    let containerView = UIView()
+    let iconImageView = UIImageView(image: UIImage(systemName: "arrow.turn.down.right"))
+    containerView.addSubview(iconImageView)
+    iconImageView.sizeAnchors == CGSize(width: 20, height: 20)
+    iconImageView.centerAnchors == containerView.centerAnchors
+    iconImageView.tintColor = .tertiaryLabel
+    containerView.widthAnchor == 30
+    return containerView
   }()
   
   private lazy var iconImageView = UIImageView()
@@ -92,20 +109,42 @@ final class SetsTableViewCell: UITableViewCell {
     verticalStackView.spacing = 5
     verticalStackView.axis = .vertical
     
+    let chevronImageView =  UIImageView(image: UIImage(systemName: "chevron.right"))
+    let chevronContainerView = UIView()
+    chevronContainerView.addSubview(chevronImageView)
+    chevronImageView.sizeAnchors == CGSize(width: 20, height: 20)
+    chevronImageView.contentMode = .scaleAspectFit
+    chevronImageView.tintColor = .tertiaryLabel
+    chevronImageView.horizontalAnchors == chevronContainerView.horizontalAnchors
+    chevronImageView.centerYAnchor == chevronContainerView.centerYAnchor
+    
     let stackView = UIStackView(arrangedSubviews: [
+      childIndicatorView,
       containerView,
-      verticalStackView
+      verticalStackView,
+      UIView(),
+      chevronContainerView,
     ])
     
     stackView.spacing = 13
     stackView.axis = .horizontal
-    contentView.addSubview(stackView)
     
-    stackView.horizontalAnchors == contentView.layoutMarginsGuide.horizontalAnchors
-    stackView.verticalAnchors == contentView.verticalAnchors + 13
+    subContentView.addSubview(stackView)
+    stackView.edgeAnchors == subContentView.edgeAnchors + UIEdgeInsets(top: 13, left: 13, bottom: 15, right: 13)
+    
+    contentView.addSubview(subContentView)
+    subContentView.horizontalAnchors == contentView.layoutMarginsGuide.horizontalAnchors - 8
+    subContentView.verticalAnchors == contentView.verticalAnchors
   }
   
-  func configure(setID: String, title: String, iconURI: String, numberOfCards: Int) {
+  func configure(
+    setID: String,
+    title: String,
+    iconURI: String,
+    numberOfCards: Int,
+    index: Int,
+    isParentSet: Bool
+  ) {
     titleLabel.text = title
     setIdLabel.text = setID.uppercased()
     subtitleLabel.text = String(localized: "\(numberOfCards) cards")
@@ -123,5 +162,13 @@ final class SetsTableViewCell: UITableViewCell {
         self?.iconImageView.image = image?.withRenderingMode(.alwaysTemplate)
       }
     )
+    
+    if index % 2 == 0 {
+      subContentView.backgroundColor = .quaternarySystemFill
+    } else {
+      subContentView.backgroundColor = .clear
+    }
+    
+    childIndicatorView.isHidden = !isParentSet
   }
 }

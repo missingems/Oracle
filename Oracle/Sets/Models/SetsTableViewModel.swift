@@ -20,16 +20,16 @@ final class SetsTableViewModel {
   
   func fetchSets() async -> State {
     do {
-      state = .data(
-        try await client.getSets().data.map { set in
-          State.Preview.Set(
-            title: set.name,
-            numberOfItems: set.cardCount,
-            setID: set.code,
-            iconURI: set.iconSvgUri
-          )
-        }
-      )
+      let data = try await client.getSets().data
+      var sections: [[State.Preview.Set]] = data.filter { $0.parentSetCode == nil }.map { [State.Preview.Set($0) ]}
+      
+      for (index, section) in sections.enumerated() {
+        sections[index] = section + data.filter {
+          $0.parentSetCode == section.first?.setID
+        }.map(State.Preview.Set.init)
+      }
+      
+      state = .data(sections.flatMap { $0 })
     } catch {
       state =  .loading
     }
@@ -64,6 +64,15 @@ extension SetsTableViewModel.State {
       let numberOfItems: Int
       let setID: String
       let iconURI: String
+      let isParentSet: Bool
+      
+      init(_ set: MTGSet) {
+        title = set.name
+        numberOfItems = set.cardCount
+        setID = set.code
+        iconURI = set.iconSvgUri
+        isParentSet = set.parentSetCode != nil
+      }
     }
   }
 }
