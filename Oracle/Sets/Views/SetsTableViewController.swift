@@ -64,6 +64,8 @@ final class SetsTableViewController: UITableViewController {
     }
     
     let preview = viewModel.state.sets[indexPath.row]
+    cell.selectionStyle = .none
+    
     cell.configure(
       setID: preview.setID,
       title: preview.title,

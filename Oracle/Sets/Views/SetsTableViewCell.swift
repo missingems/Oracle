@@ -171,4 +171,16 @@ final class SetsTableViewCell: UITableViewCell {
     
     childIndicatorView.isHidden = !isParentSet
   }
+  
+  override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+    super.setHighlighted(highlighted, animated: animated)
+    
+    UIView.animate(springDuration: 0.314, bounce: 0, initialSpringVelocity: 1.0, delay: highlighted ? 0 : 0.1, options: .curveEaseInOut) {
+      if highlighted {
+        contentView.alpha = 0.382
+      } else {
+        contentView.alpha = 1
+      }
+    }
+  }
 }
