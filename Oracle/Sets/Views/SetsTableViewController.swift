@@ -27,7 +27,7 @@ final class SetsTableViewController: UITableViewController {
         return
       }
       
-      switch await viewModel.fetchSets() {
+      switch await self.viewModel.fetchSets() {
       case .loading:
         break
         
@@ -42,7 +42,7 @@ final class SetsTableViewController: UITableViewController {
     tableView.separatorStyle = .none
     navigationItem.title = viewModel.state.title
     tabBarItem = UITabBarItem(
-      title: "Sets",
+      title: viewModel.state.title,
       image: UIImage(systemName: "book.pages"),
       selectedImage: UIImage(systemName: "book.pages.fill")
     )
@@ -67,14 +67,21 @@ final class SetsTableViewController: UITableViewController {
     cell.selectionStyle = .none
     
     cell.configure(
-      setID: preview.setID,
-      title: preview.title,
-      iconURI: preview.iconURI,
-      numberOfCards: preview.numberOfItems,
+      setID: preview.code,
+      title: preview.name,
+      iconURI: preview.iconSvgUri,
+      numberOfCards: preview.cardCount,
       index: indexPath.row,
-      isParentSet: preview.isParentSet
+      isParentSet: preview.parentSetCode != nil
     )
     
     return cell
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let set = viewModel.state.sets[indexPath.row]
+    let detail = SetDetailCollectionViewController(SetDetailCollectionViewModel(set: set))
+    let cell = tableView.cellForRow(at: indexPath)
+    show(detail, sender: cell)
   }
 }

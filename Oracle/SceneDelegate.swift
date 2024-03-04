@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       SearchViewController(),
       MyCollectionTableViewController(),
     ], animated: false)
+    window?.tintColor = .accent
     window?.rootViewController = tabBarController
     window?.makeKeyAndVisible()
   }

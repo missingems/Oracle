@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JacobHearst/ScryfallKit",
       "state" : {
-        "revision" : "c7f2731d56c4ffe637cd70174e672208a0e584ba",
-        "version" : "5.7.0"
+        "revision" : "938a9e35a2c100fdf05792db359a48c59d0b3e92",
+        "version" : "5.8.0"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/SDWebImage.git",
       "state" : {
-        "revision" : "b11493f76481dff17ac8f45274a6b698ba0d3af5",
-        "version" : "5.18.11"
+        "revision" : "73b9397cfbd902f606572964055464903b1d84c6",
+        "version" : "5.19.0"
       }
     },
     {

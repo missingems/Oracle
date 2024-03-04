@@ -1,18 +1,93 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%lld cards" : {
+    "%lld Cards" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%i Cards"
+            "value" : "%lld Cards"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "カード%i枚"
+          }
+        }
+      }
+    },
+    "Banned" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁止"
+          }
+        }
+      }
+    },
+    "Illustrated by" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "作画"
+          }
+        }
+      }
+    },
+    "Legal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "合法"
+          }
+        }
+      }
+    },
+    "Legality" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "合法性"
+          }
+        }
+      }
+    },
+    "Loyalty: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忠誠: %@"
+          }
+        }
+      }
+    },
+    "Not Legal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "違法"
+          }
+        }
+      }
+    },
+    "Restricted" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "制限"
           }
         }
       }
@@ -33,6 +108,9 @@
           }
         }
       }
+    },
+    "Transform" : {
+
     }
   },
   "version" : "1.0"

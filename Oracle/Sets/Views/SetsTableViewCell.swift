@@ -22,8 +22,8 @@ final class InsetLabel: UILabel {
   }
 }
 
-final class SetsTableViewCell: UITableViewCell {
-  private lazy var subContentView: UIView = {
+final class SetsTableViewCell: SinkableTableViewCell {
+  private(set) lazy var subContentView: UIView = {
     let view = UIView()
     view.layer.cornerRadius = 8.0
     view.layer.cornerCurve = .continuous
@@ -91,7 +91,7 @@ final class SetsTableViewCell: UITableViewCell {
     iconImageView.sizeAnchors == CGSize(width: 30, height: 30)
     iconImageView.horizontalAnchors == containerView.horizontalAnchors
     iconImageView.centerYAnchor == containerView.centerYAnchor
-    iconImageView.tintColor = .label
+    iconImageView.tintColor = .accent
     
     contentView.addSubview(titleLabel)
     
@@ -147,12 +147,12 @@ final class SetsTableViewCell: UITableViewCell {
   ) {
     titleLabel.text = title
     setIdLabel.text = setID.uppercased()
-    subtitleLabel.text = String(localized: "\(numberOfCards) cards")
+    subtitleLabel.text = String(localized: "\(numberOfCards) Cards")
     
     iconImageView.sd_setImage(
       with: URL(string: iconURI), 
       placeholderImage: nil,
-      options: [],
+      options: [.refreshCached],
       context: [
         .imageThumbnailPixelSize : CGSize(width: 30 * UIScreen.main.nativeScale, height: 30 * UIScreen.main.nativeScale),
         .imagePreserveAspectRatio : true
@@ -170,17 +170,5 @@ final class SetsTableViewCell: UITableViewCell {
     }
     
     childIndicatorView.isHidden = !isParentSet
-  }
-  
-  override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-    super.setHighlighted(highlighted, animated: animated)
-    
-    UIView.animate(springDuration: 0.314, bounce: 0, initialSpringVelocity: 1.0, delay: highlighted ? 0 : 0.1, options: .curveEaseInOut) {
-      if highlighted {
-        contentView.alpha = 0.382
-      } else {
-        contentView.alpha = 1
-      }
-    }
   }
 }
