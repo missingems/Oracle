@@ -63,7 +63,16 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
       fatalError()
     }
     
-    cell.configure(viewModel.state.cards[indexPath.row])
+    switch viewModel.state {
+    case let .data(cards):
+      cell.configure(cards[indexPath.row])
+      
+    case let .placeholder(placeholders):
+      cell.setPlaceholder()
+  
+    default:
+      break
+    }
     
     if collectionView === ambient.collectionView {
       cell.onHighlighted = { [weak self] isHighlighted in
@@ -74,11 +83,11 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return viewModel.state.cards.count
+    viewModel.state.numberOfItems
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 11
+    return 13
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -87,11 +96,15 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let width = (collectionView.frame.size.width - 24) / 2
-    return CGSize(width: width, height: width * (936 / 672))
+    return CGSize(width: width, height: width * 1.3928 + 26)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    UIEdgeInsets(top: 5, left: 8, bottom: 20, right: 8)
+    if collectionView === ambient.collectionView {
+      return UIEdgeInsets(top: 13, left: 8, bottom: 20, right: 8)
+    } else {
+      return UIEdgeInsets(top: 21, left: 8, bottom: 20, right: 8)
+    }
   }
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {

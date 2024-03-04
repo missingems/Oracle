@@ -41,7 +41,13 @@ final class Ambient {
     configuration: Configuration
   ) {
     collectionView = UICollectionView(frame: .zero, collectionViewLayout: configuration.flowLayout)
-    backgroundCollectionView = UICollectionView(frame: .zero, collectionViewLayout: configuration.flowLayout)
+    
+    let flowLayout = UICollectionViewFlowLayout()
+    flowLayout.itemSize = configuration.flowLayout.itemSize
+    flowLayout.minimumInteritemSpacing = configuration.flowLayout.minimumLineSpacing
+    flowLayout.minimumLineSpacing = configuration.flowLayout.minimumLineSpacing
+    
+    backgroundCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
     collectionView.delegate = host
     backgroundCollectionView.delegate = host
     collectionView.dataSource = host

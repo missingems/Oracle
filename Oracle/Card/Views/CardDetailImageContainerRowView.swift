@@ -9,7 +9,7 @@ final class CardDetailImageContainerRowView: UIView {
     case transformTapped
   }
   
-  private lazy var cardImageView = CardView()
+  private lazy var cardImageView = CardView(type: .large)
   private lazy var cardBackdropImageView = UIImageView()
   private let card: Card
   
@@ -43,7 +43,7 @@ final class CardDetailImageContainerRowView: UIView {
     cardImageView.clipsToBounds = true
     
     let ratio: CGFloat = 936/672
-    cardImageView.heightAnchor == cardImageView.widthAnchor * ratio
+    cardImageView.heightAnchor == cardImageView.widthAnchor * ratio + 31
     
     preservesSuperviewLayoutMargins = true
     

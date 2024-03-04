@@ -35,12 +35,13 @@
 		BFD077C62B946F4E009C6B4C /* SinkableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C52B946F4E009C6B4C /* SinkableCell.swift */; };
 		BFD077C82B94B0EB009C6B4C /* FoilEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */; };
 		BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C92B94C2DE009C6B4C /* CardView.swift */; };
+		BFFCAD5F2B962AA100986C34 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */; };
+		BFFCAD602B962C4800986C34 /* OracleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF6F2B7C6A290004156B /* OracleTests.swift */; };
 		BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF542B7C6A280004156B /* AppDelegate.swift */; };
 		BFFFBF572B7C6A280004156B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF562B7C6A280004156B /* SceneDelegate.swift */; };
 		BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */; };
 		BFFFBF612B7C6A290004156B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF602B7C6A290004156B /* Assets.xcassets */; };
 		BFFFBF642B7C6A290004156B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */; };
-		BFFFBF702B7C6A290004156B /* OracleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF6F2B7C6A290004156B /* OracleTests.swift */; };
 		BFFFBF7A2B7C6A290004156B /* OracleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF792B7C6A290004156B /* OracleUITests.swift */; };
 		BFFFBF7C2B7C6A290004156B /* OracleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */; };
 		BFFFBF8C2B7C86BA0004156B /* ScryfallKit in Frameworks */ = {isa = PBXBuildFile; productRef = BFFFBF8B2B7C86BA0004156B /* ScryfallKit */; };
@@ -90,6 +91,7 @@
 		BFD077C52B946F4E009C6B4C /* SinkableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinkableCell.swift; sourceTree = "<group>"; };
 		BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoilEffectView.swift; sourceTree = "<group>"; };
 		BFD077C92B94C2DE009C6B4C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		BFFFBF512B7C6A280004156B /* Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oracle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFFBF542B7C6A280004156B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFFFBF562B7C6A280004156B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				BFD077C32B9444F8009C6B4C /* Ambient.swift */,
 				BFD077C52B946F4E009C6B4C /* SinkableCell.swift */,
 				BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */,
+				BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */,
 			);
 			path = Oracle;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				BF1D42622B8B9A08007E73B4 /* GameViewController.swift in Sources */,
 				BF5478B32B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift in Sources */,
 				BF5478D42B90367A004D2CC8 /* CardDetailTypelineRowView.swift in Sources */,
+				BFFCAD5F2B962AA100986C34 /* InsetLabel.swift in Sources */,
 				BF5478E42B90779B004D2CC8 /* CardIllustratorRowView.swift in Sources */,
 				BF56E6772B847C730018B620 /* SetsTableViewCell.swift in Sources */,
 				BFD077C82B94B0EB009C6B4C /* FoilEffectView.swift in Sources */,
@@ -451,7 +455,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFFFBF702B7C6A290004156B /* OracleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFFCAD602B962C4800986C34 /* OracleTests.swift in Sources */,
 				BFFFBF7C2B7C6A290004156B /* OracleUITestsLaunchTests.swift in Sources */,
 				BFFFBF7A2B7C6A290004156B /* OracleUITests.swift in Sources */,
 			);

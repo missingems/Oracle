@@ -3,17 +3,13 @@ import UIKit
 import ScryfallKit
 
 final class SetDetailCollectionViewCell: SinkableCollectionViewCell {
-  private(set) lazy var imageView = CardView()
+  let imageView = CardView(type: .regular)
   
   override init(frame: CGRect) {
     super.init(frame: .zero)
     
     contentView.addSubview(imageView)
     imageView.edgeAnchors == contentView.edgeAnchors
-    
-    imageView.horizontalAnchors == contentView.horizontalAnchors
-    imageView.heightAnchor == contentView.widthAnchor * 936 / 672 ~ .required
-    imageView.verticalAnchors == contentView.verticalAnchors ~ .high
   }
   
   required init?(coder: NSCoder) {
@@ -22,5 +18,9 @@ final class SetDetailCollectionViewCell: SinkableCollectionViewCell {
   
   func configure(_ card: Card) {
     imageView.configure(card, imageType: .normal)
+  }
+  
+  func setPlaceholder() {
+    imageView.setPlaceholder()
   }
 }

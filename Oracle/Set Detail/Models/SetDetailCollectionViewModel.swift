@@ -10,7 +10,7 @@ struct SetDetailCollectionViewModel {
   
   init(set: MTGSet) {
     client = ScryfallClient(networkLogLevel: .minimal)
-    state = .loading
+    state = .placeholder([Preview](repeating: .placeholder, count: set.cardCount))
     self.set = set
     title = set.name
     subtitle = String(localized: "\(set.cardCount) Cards")
@@ -29,7 +29,7 @@ struct SetDetailCollectionViewModel {
         page: nil
       )
       
-      state = .data(cards: result.data)
+      state = .data(result.data)
     } catch {
       state = .error
     }
@@ -39,15 +39,41 @@ struct SetDetailCollectionViewModel {
 extension SetDetailCollectionViewModel {
   enum State {
     case loading
-    case data(cards: [Card])
+    case placeholder([Preview])
+    case data([Card])
     case error
     
     var cards: [Card] {
       if case let .data(value) = self {
         return value
-      } else {
-        return []
+      }
+      
+      return []
+    }
+    
+    var placeholders: [Preview] {
+      if case let .placeholder(array) = self {
+        return array
+      }
+      
+      return []
+    }
+    
+    var numberOfItems: Int {
+      switch self {
+      case let .data(cards):
+        return cards.count
+        
+      case let .placeholder(value):
+        return value.count
+        
+      default:
+        return 0
       }
     }
+  }
+  
+  enum Preview {
+    case placeholder
   }
 }
