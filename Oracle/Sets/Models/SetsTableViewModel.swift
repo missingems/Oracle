@@ -20,16 +20,16 @@ final class SetsTableViewModel {
   
   func fetchSets() async -> State {
     do {
-      state = .data(
-        try await client.getSets().data.map { set in
-          State.Preview.Set(
-            title: set.name,
-            numberOfItems: set.cardCount,
-            setID: set.code,
-            iconURI: set.iconSvgUri
-          )
+      let data = try await client.getSets().data
+      var sections: [[MTGSet]] = data.filter { $0.parentSetCode == nil }.map { [$0]}
+      
+      for (index, section) in sections.enumerated() {
+        sections[index] = section + data.filter {
+          $0.parentSetCode == section.first?.code && $0.cardCount != 0
         }
-      )
+      }
+      
+      state = .data(sections.flatMap { $0 })
     } catch {
       state =  .loading
     }
@@ -41,9 +41,9 @@ final class SetsTableViewModel {
 extension SetsTableViewModel {
   enum State: Equatable {
     case loading
-    case data([Preview.Set])
+    case data([MTGSet])
     
-    var sets: [Preview.Set] {
+    var sets: [MTGSet] {
       if case let .data(value) = self {
         return value
       } else {
@@ -53,17 +53,6 @@ extension SetsTableViewModel {
     
     var title: String {
       return String(localized: "SetsTableViewControllerTitle")
-    }
-  }
-}
-
-extension SetsTableViewModel.State {
-  struct Preview: Equatable {
-    struct Set: Equatable {
-      let title: String
-      let numberOfItems: Int
-      let setID: String
-      let iconURI: String
     }
   }
 }

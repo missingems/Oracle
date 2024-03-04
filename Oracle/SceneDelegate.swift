@@ -17,9 +17,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     guard let windowScene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: windowScene)
+    let tabBarController = UITabBarController()
     let viewController = UINavigationController(rootViewController: SetsTableViewController())
     viewController.navigationBar.prefersLargeTitles = true
-    window?.rootViewController = viewController
+    tabBarController.setViewControllers([
+      viewController,
+      GameViewController(),
+      SearchViewController(),
+      MyCollectionTableViewController(),
+    ], animated: false)
+    window?.tintColor = .accent
+    window?.rootViewController = tabBarController
     window?.makeKeyAndVisible()
   }
   

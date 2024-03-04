@@ -7,12 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF1D42622B8B9A08007E73B4 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D42612B8B9A08007E73B4 /* GameViewController.swift */; };
+		BF1D42642B8B9CA3007E73B4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D42632B8B9CA3007E73B4 /* SearchViewController.swift */; };
+		BF1D42662B8B9D07007E73B4 /* MyCollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D42652B8B9D07007E73B4 /* MyCollectionTableViewController.swift */; };
+		BF5478B32B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B22B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift */; };
+		BF5478B72B8DD680004D2CC8 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */; };
+		BF5478B92B8EBFFB004D2CC8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */; };
+		BF5478BB2B8ECB28004D2CC8 /* Card+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478BA2B8ECB28004D2CC8 /* Card+Extensions.swift */; };
+		BF5478BD2B8ECB3A004D2CC8 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478BC2B8ECB3A004D2CC8 /* CardDetailViewModel.swift */; };
+		BF5478CE2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478CD2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift */; };
+		BF5478D02B9033B1004D2CC8 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478CF2B9033B1004D2CC8 /* View+Extensions.swift */; };
+		BF5478D22B9034A8004D2CC8 /* CardDetailRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478D12B9034A8004D2CC8 /* CardDetailRowView.swift */; };
+		BF5478D42B90367A004D2CC8 /* CardDetailTypelineRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478D32B90367A004D2CC8 /* CardDetailTypelineRowView.swift */; };
+		BF5478D62B903FA2004D2CC8 /* CardDetailImageContainerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478D52B903FA2004D2CC8 /* CardDetailImageContainerRowView.swift */; };
+		BF5478E22B905A78004D2CC8 /* CardDetailLegalityRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478E12B905A78004D2CC8 /* CardDetailLegalityRowView.swift */; };
+		BF5478E42B90779B004D2CC8 /* CardIllustratorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478E32B90779B004D2CC8 /* CardIllustratorRowView.swift */; };
 		BF56E66F2B846E450018B620 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BF56E66E2B846E450018B620 /* Localizable.xcstrings */; };
-		BF56E6722B847BA10018B620 /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF56E6712B847BA10018B620 /* Anchorage */; };
 		BF56E6752B847C200018B620 /* SDWebImageSVGNativeCoder in Frameworks */ = {isa = PBXBuildFile; productRef = BF56E6742B847C200018B620 /* SDWebImageSVGNativeCoder */; };
 		BF56E6772B847C730018B620 /* SetsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E6762B847C730018B620 /* SetsTableViewCell.swift */; };
+		BF883A032B91C8BC00E5B417 /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF883A022B91C8BC00E5B417 /* Anchorage */; };
+		BF9862592B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9862582B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift */; };
+		BF98625B2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98625A2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift */; };
 		BFB366242B7C9767004814FB /* SetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB366232B7C9767004814FB /* SetsTableViewController.swift */; };
 		BFB366262B7CA663004814FB /* SetsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB366252B7CA663004814FB /* SetsTableViewModel.swift */; };
+		BFD077C22B941B82009C6B4C /* CardVersionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C12B941B82009C6B4C /* CardVersionRowView.swift */; };
+		BFD077C42B9444F8009C6B4C /* Ambient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C32B9444F8009C6B4C /* Ambient.swift */; };
+		BFD077C62B946F4E009C6B4C /* SinkableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C52B946F4E009C6B4C /* SinkableCell.swift */; };
+		BFD077C82B94B0EB009C6B4C /* FoilEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */; };
+		BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C92B94C2DE009C6B4C /* CardView.swift */; };
 		BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF542B7C6A280004156B /* AppDelegate.swift */; };
 		BFFFBF572B7C6A280004156B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF562B7C6A280004156B /* SceneDelegate.swift */; };
 		BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */; };
@@ -42,10 +64,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF1D42612B8B9A08007E73B4 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		BF1D42632B8B9CA3007E73B4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		BF1D42652B8B9D07007E73B4 /* MyCollectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionTableViewController.swift; sourceTree = "<group>"; };
+		BF5478B22B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
+		BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		BF5478BA2B8ECB28004D2CC8 /* Card+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Extensions.swift"; sourceTree = "<group>"; };
+		BF5478BC2B8ECB3A004D2CC8 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
+		BF5478CD2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTitleDetailRowView.swift; sourceTree = "<group>"; };
+		BF5478CF2B9033B1004D2CC8 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		BF5478D12B9034A8004D2CC8 /* CardDetailRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailRowView.swift; sourceTree = "<group>"; };
+		BF5478D32B90367A004D2CC8 /* CardDetailTypelineRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailTypelineRowView.swift; sourceTree = "<group>"; };
+		BF5478D52B903FA2004D2CC8 /* CardDetailImageContainerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailImageContainerRowView.swift; sourceTree = "<group>"; };
+		BF5478E12B905A78004D2CC8 /* CardDetailLegalityRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailLegalityRowView.swift; sourceTree = "<group>"; };
+		BF5478E32B90779B004D2CC8 /* CardIllustratorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardIllustratorRowView.swift; sourceTree = "<group>"; };
 		BF56E66E2B846E450018B620 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		BF56E6762B847C730018B620 /* SetsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsTableViewCell.swift; sourceTree = "<group>"; };
+		BF9862582B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewModel.swift; sourceTree = "<group>"; };
+		BF98625A2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		BFB366232B7C9767004814FB /* SetsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsTableViewController.swift; sourceTree = "<group>"; };
 		BFB366252B7CA663004814FB /* SetsTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsTableViewModel.swift; sourceTree = "<group>"; };
+		BFD077C12B941B82009C6B4C /* CardVersionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVersionRowView.swift; sourceTree = "<group>"; };
+		BFD077C32B9444F8009C6B4C /* Ambient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ambient.swift; sourceTree = "<group>"; };
+		BFD077C52B946F4E009C6B4C /* SinkableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinkableCell.swift; sourceTree = "<group>"; };
+		BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoilEffectView.swift; sourceTree = "<group>"; };
+		BFD077C92B94C2DE009C6B4C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		BFFFBF512B7C6A280004156B /* Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oracle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFFBF542B7C6A280004156B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFFFBF562B7C6A280004156B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,8 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF883A032B91C8BC00E5B417 /* Anchorage in Frameworks */,
 				BFFFBF8C2B7C86BA0004156B /* ScryfallKit in Frameworks */,
-				BF56E6722B847BA10018B620 /* Anchorage in Frameworks */,
 				BF56E6752B847C200018B620 /* SDWebImageSVGNativeCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,6 +133,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF5478B42B8DD671004D2CC8 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				BF5478B52B8DD675004D2CC8 /* Views */,
+				BF5478BC2B8ECB3A004D2CC8 /* CardDetailViewModel.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		BF5478B52B8DD675004D2CC8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */,
+				BF5478CD2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift */,
+				BF5478D12B9034A8004D2CC8 /* CardDetailRowView.swift */,
+				BF5478D32B90367A004D2CC8 /* CardDetailTypelineRowView.swift */,
+				BF5478D52B903FA2004D2CC8 /* CardDetailImageContainerRowView.swift */,
+				BF5478E12B905A78004D2CC8 /* CardDetailLegalityRowView.swift */,
+				BF5478E32B90779B004D2CC8 /* CardIllustratorRowView.swift */,
+				BFD077C12B941B82009C6B4C /* CardVersionRowView.swift */,
+				BFD077C92B94C2DE009C6B4C /* CardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BF9862552B8CB62D00F5CB13 /* Set Detail */ = {
+			isa = PBXGroup;
+			children = (
+				BF9862562B8CB63800F5CB13 /* Models */,
+				BF9862572B8CB63C00F5CB13 /* Views */,
+			);
+			path = "Set Detail";
+			sourceTree = "<group>";
+		};
+		BF9862562B8CB63800F5CB13 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BF9862582B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BF9862572B8CB63C00F5CB13 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF98625A2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift */,
+				BF5478B22B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		BFB366272B7CA669004814FB /* Sets */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +233,8 @@
 		BFFFBF532B7C6A280004156B /* Oracle */ = {
 			isa = PBXGroup;
 			children = (
+				BF5478B42B8DD671004D2CC8 /* Card */,
+				BF9862552B8CB62D00F5CB13 /* Set Detail */,
 				BFB366272B7CA669004814FB /* Sets */,
 				BFFFBF542B7C6A280004156B /* AppDelegate.swift */,
 				BFFFBF562B7C6A280004156B /* SceneDelegate.swift */,
@@ -147,6 +244,15 @@
 				BFFFBF662B7C6A290004156B /* Info.plist */,
 				BF56E66E2B846E450018B620 /* Localizable.xcstrings */,
 				BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */,
+				BF1D42612B8B9A08007E73B4 /* GameViewController.swift */,
+				BF1D42632B8B9CA3007E73B4 /* SearchViewController.swift */,
+				BF1D42652B8B9D07007E73B4 /* MyCollectionTableViewController.swift */,
+				BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */,
+				BF5478BA2B8ECB28004D2CC8 /* Card+Extensions.swift */,
+				BF5478CF2B9033B1004D2CC8 /* View+Extensions.swift */,
+				BFD077C32B9444F8009C6B4C /* Ambient.swift */,
+				BFD077C52B946F4E009C6B4C /* SinkableCell.swift */,
+				BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */,
 			);
 			path = Oracle;
 			sourceTree = "<group>";
@@ -186,8 +292,8 @@
 			name = Oracle;
 			packageProductDependencies = (
 				BFFFBF8B2B7C86BA0004156B /* ScryfallKit */,
-				BF56E6712B847BA10018B620 /* Anchorage */,
 				BF56E6742B847C200018B620 /* SDWebImageSVGNativeCoder */,
+				BF883A022B91C8BC00E5B417 /* Anchorage */,
 			);
 			productName = Oracle;
 			productReference = BFFFBF512B7C6A280004156B /* Oracle.app */;
@@ -264,8 +370,8 @@
 			mainGroup = BFFFBF482B7C6A280004156B;
 			packageReferences = (
 				BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */,
-				BF56E6702B847BA10018B620 /* XCRemoteSwiftPackageReference "Anchorage" */,
 				BF56E6732B847C200018B620 /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */,
+				BF883A012B91C8BC00E5B417 /* XCRemoteSwiftPackageReference "Anchorage" */,
 			);
 			productRefGroup = BFFFBF522B7C6A280004156B /* Products */;
 			projectDirPath = "";
@@ -310,11 +416,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF5478BB2B8ECB28004D2CC8 /* Card+Extensions.swift in Sources */,
+				BF5478B72B8DD680004D2CC8 /* CardDetailViewController.swift in Sources */,
+				BFD077C62B946F4E009C6B4C /* SinkableCell.swift in Sources */,
+				BF98625B2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift in Sources */,
+				BF1D42622B8B9A08007E73B4 /* GameViewController.swift in Sources */,
+				BF5478B32B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift in Sources */,
+				BF5478D42B90367A004D2CC8 /* CardDetailTypelineRowView.swift in Sources */,
+				BF5478E42B90779B004D2CC8 /* CardIllustratorRowView.swift in Sources */,
 				BF56E6772B847C730018B620 /* SetsTableViewCell.swift in Sources */,
+				BFD077C82B94B0EB009C6B4C /* FoilEffectView.swift in Sources */,
+				BF5478E22B905A78004D2CC8 /* CardDetailLegalityRowView.swift in Sources */,
+				BF5478D62B903FA2004D2CC8 /* CardDetailImageContainerRowView.swift in Sources */,
+				BF5478D22B9034A8004D2CC8 /* CardDetailRowView.swift in Sources */,
+				BF1D42642B8B9CA3007E73B4 /* SearchViewController.swift in Sources */,
+				BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */,
 				BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */,
+				BF5478CE2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift in Sources */,
+				BFD077C22B941B82009C6B4C /* CardVersionRowView.swift in Sources */,
 				BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */,
+				BFD077C42B9444F8009C6B4C /* Ambient.swift in Sources */,
+				BF5478B92B8EBFFB004D2CC8 /* String+Extensions.swift in Sources */,
+				BF5478D02B9033B1004D2CC8 /* View+Extensions.swift in Sources */,
 				BFFFBF572B7C6A280004156B /* SceneDelegate.swift in Sources */,
 				BFB366242B7C9767004814FB /* SetsTableViewController.swift in Sources */,
+				BF9862592B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift in Sources */,
+				BF5478BD2B8ECB3A004D2CC8 /* CardDetailViewModel.swift in Sources */,
+				BF1D42662B8B9D07007E73B4 /* MyCollectionTableViewController.swift in Sources */,
 				BFB366262B7CA663004814FB /* SetsTableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,6 +625,7 @@
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Oracle/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Topdecker;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -510,12 +639,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.Oracle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 			};
 			name = Debug;
 		};
@@ -530,6 +660,7 @@
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Oracle/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Topdecker;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -543,12 +674,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.Oracle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 			};
 			name = Release;
 		};
@@ -670,20 +802,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BF56E6702B847BA10018B620 /* XCRemoteSwiftPackageReference "Anchorage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Rightpoint/Anchorage";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.5.0;
-			};
-		};
 		BF56E6732B847C200018B620 /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSVGNativeCoder.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.2.0;
+			};
+		};
+		BF883A012B91C8BC00E5B417 /* XCRemoteSwiftPackageReference "Anchorage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Rightpoint/Anchorage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
 			};
 		};
 		BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */ = {
@@ -697,15 +829,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BF56E6712B847BA10018B620 /* Anchorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF56E6702B847BA10018B620 /* XCRemoteSwiftPackageReference "Anchorage" */;
-			productName = Anchorage;
-		};
 		BF56E6742B847C200018B620 /* SDWebImageSVGNativeCoder */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BF56E6732B847C200018B620 /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */;
 			productName = SDWebImageSVGNativeCoder;
+		};
+		BF883A022B91C8BC00E5B417 /* Anchorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF883A012B91C8BC00E5B417 /* XCRemoteSwiftPackageReference "Anchorage" */;
+			productName = Anchorage;
 		};
 		BFFFBF8B2B7C86BA0004156B /* ScryfallKit */ = {
 			isa = XCSwiftPackageProductDependency;
