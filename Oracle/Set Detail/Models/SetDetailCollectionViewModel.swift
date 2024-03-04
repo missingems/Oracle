@@ -1,6 +1,6 @@
 import ScryfallKit
 
-final class SetDetailCollectionViewModel {
+struct SetDetailCollectionViewModel {
   private let client: ScryfallClient
   private(set) var state: State
   
@@ -16,7 +16,7 @@ final class SetDetailCollectionViewModel {
     subtitle = String(localized: "\(set.cardCount) Cards")
   }
   
-  func fetchCards() async -> State {
+  mutating func fetchCards() async {
     do {
       let result = try await client.searchCards(
         filters: [.set(set.code)],
@@ -30,9 +30,8 @@ final class SetDetailCollectionViewModel {
       )
       
       state = .data(cards: result.data)
-      return state
     } catch {
-      return .error
+      state = .error
     }
   }
 }

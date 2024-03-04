@@ -8,7 +8,7 @@
 import Foundation
 import ScryfallKit
 
-final class SetsTableViewModel {
+struct SetsTableViewModel {
   private(set) var state: State
   
   private let client: ScryfallClient
@@ -18,7 +18,7 @@ final class SetsTableViewModel {
     client = ScryfallClient()
   }
   
-  func fetchSets() async -> State {
+  mutating func fetchSets() async {
     do {
       let data = try await client.getSets().data
       var sections: [[MTGSet]] = data.filter { $0.parentSetCode == nil }.map { [$0]}
@@ -31,10 +31,7 @@ final class SetsTableViewModel {
       
       state = .data(sections.flatMap { $0 })
     } catch {
-      state =  .loading
     }
-    
-    return state
   }
 }
 

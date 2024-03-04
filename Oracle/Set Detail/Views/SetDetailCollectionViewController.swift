@@ -19,7 +19,12 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
   }()
   
   private lazy var ambient = Ambient(host: self, configuration: Ambient.Configuration())
-  private let viewModel: SetDetailCollectionViewModel
+  
+  private var viewModel: SetDetailCollectionViewModel {
+    didSet {
+      ambient.reloadData()
+    }
+  }
   
   init(_ viewModel: SetDetailCollectionViewModel) {
     self.viewModel = viewModel
@@ -46,24 +51,10 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
       subtitleLabel
     ])
     stackView.axis = .vertical
-    
     navigationItem.titleView = stackView
     
     Task { [weak self] in
-      guard let self else {
-        return
-      }
-      
-      switch await self.viewModel.fetchCards() {
-      case .loading:
-        break
-        
-      case .data:
-        ambient.reloadData()
-        
-      case .error:
-        break
-      }
+      await self?.viewModel.fetchCards()
     }
   }
   

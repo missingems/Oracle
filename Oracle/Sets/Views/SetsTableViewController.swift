@@ -8,13 +8,24 @@
 import UIKit
 
 final class SetsTableViewController: UITableViewController {
-  private var viewModel = SetsTableViewModel(state: .loading)
+  var viewModel: SetsTableViewModel {
+    didSet {
+      switch viewModel.state {
+      case .data:
+        self.tableView.reloadData()
+        
+      default:
+        break
+      }
+    }
+  }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
   init() {
+    self.viewModel = SetsTableViewModel(state: .loading)
     super.init(style: .plain)
     setupViews()
   }
@@ -23,17 +34,7 @@ final class SetsTableViewController: UITableViewController {
     super.viewDidLoad()
     
     Task { [weak self] in
-      guard let self else {
-        return
-      }
-      
-      switch await self.viewModel.fetchSets() {
-      case .loading:
-        break
-        
-      case .data:
-        tableView.reloadData()
-      }
+      await self?.viewModel.fetchSets()
     }
   }
   
