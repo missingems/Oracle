@@ -19,7 +19,12 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
   }()
   
   private lazy var ambient = Ambient(host: self, configuration: Ambient.Configuration())
-  private let viewModel: SetDetailCollectionViewModel
+  
+  private var viewModel: SetDetailCollectionViewModel {
+    didSet {
+      ambient.reloadData()
+    }
+  }
   
   init(_ viewModel: SetDetailCollectionViewModel) {
     self.viewModel = viewModel
@@ -46,24 +51,10 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
       subtitleLabel
     ])
     stackView.axis = .vertical
-    
     navigationItem.titleView = stackView
     
     Task { [weak self] in
-      guard let self else {
-        return
-      }
-      
-      switch await self.viewModel.fetchCards() {
-      case .loading:
-        break
-        
-      case .data:
-        ambient.reloadData()
-        
-      case .error:
-        break
-      }
+      await self?.viewModel.fetchCards()
     }
   }
   
@@ -72,7 +63,16 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
       fatalError()
     }
     
-    cell.configure(viewModel.state.cards[indexPath.row])
+    switch viewModel.state {
+    case let .data(cards):
+      cell.configure(cards[indexPath.row])
+      
+    case .placeholder:
+      cell.setPlaceholder()
+  
+    default:
+      break
+    }
     
     if collectionView === ambient.collectionView {
       cell.onHighlighted = { [weak self] isHighlighted in
@@ -83,11 +83,11 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return viewModel.state.cards.count
+    viewModel.state.numberOfItems
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 11
+    return 13
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -96,11 +96,15 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let width = (collectionView.frame.size.width - 24) / 2
-    return CGSize(width: width, height: width * (936 / 672))
+    return CGSize(width: width, height: width * 1.3928 + 26)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    UIEdgeInsets(top: 5, left: 8, bottom: 20, right: 8)
+    if collectionView === ambient.collectionView {
+      return UIEdgeInsets(top: 13, left: 8, bottom: 20, right: 8)
+    } else {
+      return UIEdgeInsets(top: 34, left: 8, bottom: 20, right: 8)
+    }
   }
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {

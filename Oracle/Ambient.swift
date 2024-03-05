@@ -13,21 +13,15 @@ final class Ambient {
     let titleFont: UIFont?
     let title: String?
     let flowLayout: UICollectionViewFlowLayout
-    let height: CGFloat?
-    let width: CGFloat?
     
     init(
       titleFont: UIFont? = nil,
       title: String? = nil,
-      flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout(),
-      height: CGFloat? = nil,
-      width: CGFloat? = nil
+      flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     ) {
       self.titleFont = titleFont
       self.title = title
       self.flowLayout = flowLayout
-      self.height = height
-      self.width = width
     }
   }
   
@@ -41,7 +35,14 @@ final class Ambient {
     configuration: Configuration
   ) {
     collectionView = UICollectionView(frame: .zero, collectionViewLayout: configuration.flowLayout)
-    backgroundCollectionView = UICollectionView(frame: .zero, collectionViewLayout: configuration.flowLayout)
+    
+    let flowLayout = UICollectionViewFlowLayout()
+    flowLayout.scrollDirection = configuration.flowLayout.scrollDirection
+    flowLayout.itemSize = configuration.flowLayout.itemSize
+    flowLayout.minimumInteritemSpacing = configuration.flowLayout.minimumLineSpacing
+    flowLayout.minimumLineSpacing = configuration.flowLayout.minimumLineSpacing
+    
+    backgroundCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
     collectionView.delegate = host
     backgroundCollectionView.delegate = host
     collectionView.dataSource = host
@@ -57,8 +58,6 @@ final class Ambient {
     }
     
     self.configuration = configuration
-    collectionView.clipsToBounds = false
-    backgroundCollectionView.clipsToBounds = false
     collectionView.showsHorizontalScrollIndicator = false
   }
   
@@ -68,7 +67,6 @@ final class Ambient {
     let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial))
     view.addSubview(visualEffectView)
     visualEffectView.edgeAnchors == view.edgeAnchors
-    
     visualEffectView.contentView.addSubview(collectionView)
     
     if let titleLabel {
@@ -82,10 +80,7 @@ final class Ambient {
       collectionView.edgeAnchors == visualEffectView.contentView.edgeAnchors
     }
     
-    if let height = configuration.height {
-      collectionView.heightAnchor == height
-    }
-    
+    collectionView.heightAnchor >= configuration.flowLayout.itemSize.height
     collectionView.backgroundColor = .clear
     
     backgroundCollectionView.edgeAnchors == collectionView.edgeAnchors

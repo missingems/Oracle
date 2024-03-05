@@ -28,8 +28,8 @@ final class CardDetailLegalityRowView: UIView {
       label.font = .systemFont(ofSize: 12, weight: .regular)
       label.text = left?.0
       label.textAlignment = .center
-      let description = InsetLabel(UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))
-      description.layer.cornerRadius = 5
+      let description = InsetLabel(UIEdgeInsets(top: 5, left: 3, bottom: 5, right: 3))
+      description.layer.cornerRadius = 3
       description.layer.cornerCurve = .continuous
       description.font = .monospacedSystemFont(ofSize: 12, weight: .medium)
       description.text = left?.1?.localisedDescription
@@ -48,8 +48,8 @@ final class CardDetailLegalityRowView: UIView {
       label2.font = .systemFont(ofSize: 12, weight: .regular)
       label2.text = right?.0
       label2.textAlignment = .center
-      let description2 = InsetLabel(UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))
-      description2.layer.cornerRadius = 5
+      let description2 = InsetLabel(UIEdgeInsets(top: 5, left: 3, bottom: 5, right: 3))
+      description2.layer.cornerRadius = 3
       description2.layer.cornerCurve = .continuous
       description2.clipsToBounds = true
       description2.font = .monospacedSystemFont(ofSize: 12, weight: .medium)
@@ -77,7 +77,7 @@ final class CardDetailLegalityRowView: UIView {
       
       if shouldRenderBackground {
         view.backgroundColor = .quaternarySystemFill
-        view.layer.cornerRadius = 5
+        view.layer.cornerRadius = 3
         view.layer.cornerCurve = .continuous
       }
       return view
