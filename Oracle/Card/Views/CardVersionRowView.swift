@@ -6,8 +6,9 @@ final class CardVersionRowView: UIView, UICollectionViewDataSource, UICollection
   private lazy var ambient: Ambient = {
     let flowLayout = UICollectionViewFlowLayout()
     flowLayout.scrollDirection = .horizontal
-    flowLayout.itemSize = CGSize(width: 130.0, height: 130.0 * (936.0 / 672.0))
+    flowLayout.itemSize = CGSize(width: 130.0, height: 130.0 * 1.3928)
     flowLayout.minimumInteritemSpacing = 8.0
+    flowLayout.minimumLineSpacing = 8.0
     
     return Ambient(
       host: self,
@@ -19,7 +20,7 @@ final class CardVersionRowView: UIView, UICollectionViewDataSource, UICollection
     )
   }()
   
-  var cards: [Card]
+  private var cards: [Card]
   
   init(cards: [Card]) {
     self.cards = cards
@@ -37,7 +38,7 @@ final class CardVersionRowView: UIView, UICollectionViewDataSource, UICollection
       fatalError()
     }
     
-    cell.configure(cards[indexPath.item])
+    cell.configure(cards[indexPath.item], size: .small)
     return cell
   }
   

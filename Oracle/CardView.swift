@@ -10,7 +10,7 @@ import UIKit
 import ScryfallKit
 
 final class CardView: UIView {
-  enum ImageType {
+  enum Size {
     case small
     case regular
     case large
@@ -20,9 +20,9 @@ final class CardView: UIView {
   private let foilView = FoilEffectView(frame: .zero)
   private let priceCapsuleLabel = InsetLabel(UIEdgeInsets(top: 3, left: 6, bottom: 3, right: 6))
   private let priceContainerView = UIView()
-  private let type: ImageType
+  private let type: Size
   
-  init(type: ImageType) {
+  init(type: Size) {
     self.type = type
     super.init(frame: .zero)
     
@@ -83,7 +83,12 @@ final class CardView: UIView {
     imageView.layer.borderColor = UIColor.separator.cgColor
   }
   
-  func configure(_ card: Card, imageType: Card.ImageType, completion: ((UIImage?) -> ())? = nil) {
+  func configure(
+    _ card: Card,
+    imageType: Card.ImageType,
+    size: CardView.Size,
+    completion: ((UIImage?) -> ())? = nil
+  ) {
     imageView.sd_imageTransition = .fade(duration: 0.15)
     imageView.sd_setImage(
       with: card.getImageURL(type: imageType),
@@ -94,15 +99,11 @@ final class CardView: UIView {
     
     let price = card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00"
     priceCapsuleLabel.text = "$\(price)"
-    
-    if type == .regular {
-      priceContainerView.alpha = 1
-    }
+    priceContainerView.isHidden = size != .regular
   }
   
   func setPlaceholder() {
     imageView.image = .mtgBack
-    priceContainerView.alpha = 0
   }
   
   required init?(coder: NSCoder) {

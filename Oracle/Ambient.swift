@@ -37,6 +37,7 @@ final class Ambient {
     collectionView = UICollectionView(frame: .zero, collectionViewLayout: configuration.flowLayout)
     
     let flowLayout = UICollectionViewFlowLayout()
+    flowLayout.scrollDirection = configuration.flowLayout.scrollDirection
     flowLayout.itemSize = configuration.flowLayout.itemSize
     flowLayout.minimumInteritemSpacing = configuration.flowLayout.minimumLineSpacing
     flowLayout.minimumLineSpacing = configuration.flowLayout.minimumLineSpacing
@@ -66,7 +67,6 @@ final class Ambient {
     let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial))
     view.addSubview(visualEffectView)
     visualEffectView.edgeAnchors == view.edgeAnchors
-    
     visualEffectView.contentView.addSubview(collectionView)
     
     if let titleLabel {
@@ -80,6 +80,7 @@ final class Ambient {
       collectionView.edgeAnchors == visualEffectView.contentView.edgeAnchors
     }
     
+    collectionView.heightAnchor >= configuration.flowLayout.itemSize.height
     collectionView.backgroundColor = .clear
     
     backgroundCollectionView.edgeAnchors == collectionView.edgeAnchors

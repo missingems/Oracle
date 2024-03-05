@@ -48,7 +48,7 @@ final class CardDetailImageContainerRowView: UIView {
   }
   
   func configure(with imageURL: URL?) {
-    cardImageView.configure(card, imageType: .normal) { [weak self] image in
+    cardImageView.configure(card, imageType: .normal, size: .large) { [weak self] image in
       self?.cardBackdropImageView.image = image
     }
   }
