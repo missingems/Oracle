@@ -67,7 +67,7 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
     case let .data(cards):
       cell.configure(cards[indexPath.row])
       
-    case let .placeholder(placeholders):
+    case .placeholder:
       cell.setPlaceholder()
   
     default:
@@ -103,7 +103,7 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
     if collectionView === ambient.collectionView {
       return UIEdgeInsets(top: 13, left: 8, bottom: 20, right: 8)
     } else {
-      return UIEdgeInsets(top: 21, left: 8, bottom: 20, right: 8)
+      return UIEdgeInsets(top: 34, left: 8, bottom: 20, right: 8)
     }
   }
   

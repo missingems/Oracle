@@ -13,21 +13,15 @@ final class Ambient {
     let titleFont: UIFont?
     let title: String?
     let flowLayout: UICollectionViewFlowLayout
-    let height: CGFloat?
-    let width: CGFloat?
     
     init(
       titleFont: UIFont? = nil,
       title: String? = nil,
-      flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout(),
-      height: CGFloat? = nil,
-      width: CGFloat? = nil
+      flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     ) {
       self.titleFont = titleFont
       self.title = title
       self.flowLayout = flowLayout
-      self.height = height
-      self.width = width
     }
   }
   
@@ -63,8 +57,6 @@ final class Ambient {
     }
     
     self.configuration = configuration
-    collectionView.clipsToBounds = false
-    backgroundCollectionView.clipsToBounds = false
     collectionView.showsHorizontalScrollIndicator = false
   }
   
@@ -86,10 +78,6 @@ final class Ambient {
       collectionView.bottomAnchor == visualEffectView.contentView.bottomAnchor - 13.0
     } else {
       collectionView.edgeAnchors == visualEffectView.contentView.edgeAnchors
-    }
-    
-    if let height = configuration.height {
-      collectionView.heightAnchor == height
     }
     
     collectionView.backgroundColor = .clear

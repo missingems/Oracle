@@ -5,7 +5,7 @@ import SDWebImage
 final class SetsTableViewCell: SinkableTableViewCell {
   private(set) lazy var subContentView: UIView = {
     let view = UIView()
-    view.layer.cornerRadius = 8.0
+    view.layer.cornerRadius = 9
     view.layer.cornerCurve = .continuous
     return view
   }()

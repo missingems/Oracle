@@ -155,7 +155,6 @@
 				BF5478E12B905A78004D2CC8 /* CardDetailLegalityRowView.swift */,
 				BF5478E32B90779B004D2CC8 /* CardIllustratorRowView.swift */,
 				BFD077C12B941B82009C6B4C /* CardVersionRowView.swift */,
-				BFD077C92B94C2DE009C6B4C /* CardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,6 +254,7 @@
 				BFD077C32B9444F8009C6B4C /* Ambient.swift */,
 				BFD077C52B946F4E009C6B4C /* SinkableCell.swift */,
 				BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */,
+				BFD077C92B94C2DE009C6B4C /* CardView.swift */,
 				BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */,
 			);
 			path = Oracle;

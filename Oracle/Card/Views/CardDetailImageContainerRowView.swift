@@ -25,7 +25,7 @@ final class CardDetailImageContainerRowView: UIView {
     let cardContainerView = UIView()
     cardContainerView.addSubview(cardImageView)
     cardImageView.verticalAnchors == cardContainerView.verticalAnchors
-    cardImageView.horizontalAnchors == cardContainerView.horizontalAnchors + 56
+    cardImageView.horizontalAnchors == cardContainerView.horizontalAnchors + 64
     
     let stackView = UIStackView(arrangedSubviews: [.separator(fullWidth: true), cardContainerView])
     stackView.spacing = 21
@@ -37,29 +37,8 @@ final class CardDetailImageContainerRowView: UIView {
     cardBackdropImageView.heightAnchor == cardImageView.heightAnchor
     cardBackdropImageView.topAnchor == topAnchor + 34
     cardBackdropImageView.horizontalAnchors == cardImageView.horizontalAnchors
-    
-    cardImageView.layer.cornerRadius = 15
-    cardImageView.layer.cornerCurve = .continuous
-    cardImageView.clipsToBounds = true
-    
-    let ratio: CGFloat = 936/672
-    cardImageView.heightAnchor == cardImageView.widthAnchor * ratio + 31
-    
+        
     preservesSuperviewLayoutMargins = true
-    
-    if card.cardFaces?.isEmpty == false {
-      let button = UIButton(type: .system,
-        primaryAction: UIAction(
-          title: String(localized: "Transform"),
-          image: UIImage(systemName: "rectangle.portrait.rotate")
-        ) { _ in
-          action(.transformTapped)
-        }
-      )
-      button.titleLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
-      stackView.addArrangedSubview(button)
-    }
-    
     stackView.addArrangedSubview(.separator(fullWidth: true))
     clipsToBounds = true
   }

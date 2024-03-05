@@ -37,7 +37,6 @@ final class CardView: UIView {
     
     imageView.heightAnchor == imageView.widthAnchor * 1.3928
     imageView.horizontalAnchors == stackView.horizontalAnchors
-    imageView.layer.cornerRadius = 9.0
     imageView.layer.cornerCurve = .continuous
     imageView.clipsToBounds = true
     
@@ -53,9 +52,9 @@ final class CardView: UIView {
     priceCapsuleLabel.edgeAnchors == priceView.edgeAnchors
     priceCapsuleLabel.textAlignment = .center
     priceCapsuleLabel.layer.cornerCurve = .continuous
-    priceCapsuleLabel.layer.cornerRadius = 8
+    priceCapsuleLabel.layer.cornerRadius = 9
     priceCapsuleLabel.clipsToBounds = true
-    priceCapsuleLabel.font = .monospacedDigitSystemFont(ofSize: 13.0, weight: .semibold)
+    priceCapsuleLabel.font = .monospacedDigitSystemFont(ofSize: 13.0, weight: .medium)
     priceCapsuleLabel.backgroundColor = .capsule
     priceCapsuleLabel.textColor = .label
     
@@ -68,11 +67,24 @@ final class CardView: UIView {
     } else {
       priceContainerView.isHidden = false
     }
+    
+    switch type {
+    case .large:
+      imageView.layer.cornerRadius = 14
+      
+    case .regular:
+      imageView.layer.cornerRadius = 9
+      
+    case .small:
+      imageView.layer.cornerRadius = 5
+    }
+    
+    imageView.layer.borderWidth = 1 / UIScreen.main.nativeScale
+    imageView.layer.borderColor = UIColor.separator.cgColor
   }
   
   func configure(_ card: Card, imageType: Card.ImageType, completion: ((UIImage?) -> ())? = nil) {
     imageView.sd_imageTransition = .fade(duration: 0.15)
-    imageView.contentMode = .scaleAspectFit
     imageView.sd_setImage(
       with: card.getImageURL(type: imageType),
       placeholderImage: .mtgBack

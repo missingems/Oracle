@@ -74,7 +74,7 @@ final class CardDetailViewController: UIViewController {
       powerToughnessRow,
       illustratorRow,
       CardDetailLegalityRowView(legalities: viewModel.card.legalities),
-      versionRow
+//      versionRow
     ]
     
     let stackView = UIStackView(arrangedSubviews: arrangedViews)

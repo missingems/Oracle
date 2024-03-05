@@ -14,8 +14,7 @@ final class CardVersionRowView: UIView, UICollectionViewDataSource, UICollection
       configuration: Ambient.Configuration(
         titleFont: .preferredFont(forTextStyle: .headline),
         title: "Versions",
-        flowLayout: flowLayout,
-        height: 130.0 * (936.0 / 672.0)
+        flowLayout: flowLayout
       )
     )
   }()
