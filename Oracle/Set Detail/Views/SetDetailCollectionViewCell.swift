@@ -3,7 +3,7 @@ import UIKit
 import ScryfallKit
 
 final class SetDetailCollectionViewCell: SinkableCollectionViewCell {
-  let imageView = CardView(type: .regular)
+  private let imageView = CardView()
   
   override init(frame: CGRect) {
     super.init(frame: .zero)
@@ -25,6 +25,6 @@ final class SetDetailCollectionViewCell: SinkableCollectionViewCell {
   }
   
   func setPlaceholder() {
-    imageView.setPlaceholder()
+    imageView.setPlaceholder(size: .regular)
   }
 }
