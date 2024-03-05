@@ -59,6 +59,7 @@ final class Ambient {
     
     self.configuration = configuration
     collectionView.showsHorizontalScrollIndicator = false
+    collectionView.clipsToBounds = false
   }
   
   func embed(in view: UIView, cells: AnyClass...) {

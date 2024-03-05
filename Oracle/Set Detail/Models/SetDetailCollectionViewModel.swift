@@ -19,7 +19,7 @@ struct SetDetailCollectionViewModel {
   mutating func fetchCards() async {
     do {
       let result = try await client.searchCards(
-        filters: [.set(set.code)],
+        filters: [.set(set.code), .game(.paper)],
         unique: .prints,
         order: nil,
         sortDirection: .auto,
