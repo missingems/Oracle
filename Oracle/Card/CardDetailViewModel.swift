@@ -36,13 +36,17 @@ struct CardDetailViewModel {
   }
   
   var text: NSAttributedString? {
+    let attributedText: NSAttributedString?
+    
     if isPhyrexian {
       let text = selectedFace?.oracleText ?? card.oracleText
-      return text?.attributedText(for: .magicTheGathering, font: .preferredFont(forTextStyle: .body))
+      attributedText = text?.attributedText(for: .magicTheGathering, font: .preferredFont(forTextStyle: .body))
     } else {
       let text = selectedFace?.printedText ?? selectedFace?.oracleText ?? card.printedText ?? card.oracleText
-      return text?.attributedText(for: .magicTheGathering, font: .preferredFont(forTextStyle: .body))
+      attributedText = text?.attributedText(for: .magicTheGathering, font: .preferredFont(forTextStyle: .body))
     }
+    
+    return (attributedText?.string.isEmpty == true) ? nil : attributedText
   }
   
   var typeLine: String? {

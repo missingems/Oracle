@@ -21,6 +21,7 @@ final class CardView: UIView {
   private let priceCapsuleLabel = InsetLabel(UIEdgeInsets(top: 3, left: 6, bottom: 3, right: 6))
   private let priceContainerView = UIView()
   private let type: Size
+  private lazy var loadingIndicator = UIActivityIndicatorView(style: .medium)
   
   init(type: Size) {
     self.type = type
@@ -41,13 +42,13 @@ final class CardView: UIView {
     imageView.clipsToBounds = true
     
     let priceView = UIView()
-    priceView.addSubview(priceCapsuleLabel)
     priceView.layer.shadowColor = UIColor.black.cgColor
     priceView.layer.shadowRadius = 5
     priceView.layer.shadowOffset = CGSize(width: 0, height: 5)
     priceView.layer.shadowOpacity = 0.1
     priceView.clipsToBounds = false
     
+    priceView.addSubview(priceCapsuleLabel)
     priceCapsuleLabel.heightAnchor == 21
     priceCapsuleLabel.edgeAnchors == priceView.edgeAnchors
     priceCapsuleLabel.textAlignment = .center
@@ -58,15 +59,14 @@ final class CardView: UIView {
     priceCapsuleLabel.backgroundColor = .capsule
     priceCapsuleLabel.textColor = .label
     
+    priceContainerView.addSubview(loadingIndicator)
+    loadingIndicator.centerAnchors == priceContainerView.centerAnchors
+    loadingIndicator.startAnimating()
+    
     priceContainerView.addSubview(priceView)
     priceView.centerXAnchor == priceContainerView.centerXAnchor
     priceView.verticalAnchors == priceContainerView.verticalAnchors
-    
-    if type != .regular {
-      priceContainerView.isHidden = true
-    } else {
-      priceContainerView.isHidden = false
-    }
+    priceCapsuleLabel.alpha = 0
     
     switch type {
     case .large:
@@ -89,6 +89,7 @@ final class CardView: UIView {
     size: CardView.Size,
     completion: ((UIImage?) -> ())? = nil
   ) {
+    loadingIndicator.startAnimating()
     imageView.sd_imageTransition = .fade(duration: 0.15)
     imageView.sd_setImage(
       with: card.getImageURL(type: imageType),
@@ -100,6 +101,7 @@ final class CardView: UIView {
     let price = card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00"
     priceCapsuleLabel.text = "$\(price)"
     priceContainerView.isHidden = size != .regular
+    priceCapsuleLabel.alpha = 1
   }
   
   func setPlaceholder() {
