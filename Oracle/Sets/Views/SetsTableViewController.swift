@@ -8,81 +8,80 @@
 import UIKit
 
 final class SetsTableViewController: UITableViewController {
-  var viewModel: SetsTableViewModel {
-    didSet {
-      switch viewModel.state {
-      case .data:
-        self.tableView.reloadData()
-        
-      default:
-        break
-      }
-    }
-  }
+  private let viewModel: SetsTableViewModel
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
-  init() {
-    self.viewModel = SetsTableViewModel(state: .loading)
+  init(client: any SetsTableViewNetworkService) {
+    self.viewModel = SetsTableViewModel(client: client)
     super.init(style: .plain)
-    setupViews()
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
     
-    Task { [weak self] in
-      await self?.viewModel.fetchSets()
-    }
-  }
-  
-  private func setupViews() {
     tableView.register(SetsTableViewCell.self, forCellReuseIdentifier: "SetsTableViewCell")
     tableView.separatorStyle = .none
-    navigationItem.title = viewModel.state.title
+    
+    navigationItem.title = viewModel.staticConfiguration.title
+    
     tabBarItem = UITabBarItem(
-      title: viewModel.state.title,
-      image: UIImage(systemName: "book.pages"),
-      selectedImage: UIImage(systemName: "book.pages.fill")
+      title: viewModel.staticConfiguration.title,
+      image: UIImage(systemName: viewModel.staticConfiguration.tabBarDeselectedSystemImageName),
+      selectedImage: UIImage(systemName: viewModel.staticConfiguration.tabBarSelectedSystemImageName)
     )
+    
+    viewModel.didUpdate = { [weak self] state in
+      DispatchQueue.main.async {
+        switch state {
+        case .isLoading:
+          break
+          
+        case .shouldReloadData:
+          self?.tableView.reloadData()
+        }
+      }
+    }
+  }
+}
+
+// MARK: - View Events
+
+extension SetsTableViewController {
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    viewModel.fetchSets()
+  }
+}
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
+
+extension SetsTableViewController {
+  override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+    viewModel.dataSource.count
   }
   
-  override func tableView(
-    _ tableView: UITableView,
-    numberOfRowsInSection section: Int
-  ) -> Int {
-    viewModel.state.sets.count
-  }
-  
-  override func tableView(
-    _ tableView: UITableView,
-    cellForRowAt indexPath: IndexPath
-  ) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "SetsTableViewCell", for: indexPath) as? SetsTableViewCell else {
       fatalError("\(SetsTableViewCell.self) can't be found")
     }
     
-    let preview = viewModel.state.sets[indexPath.row]
+    let preview = viewModel.dataSource[indexPath.row]
     cell.selectionStyle = .none
     
     cell.configure(
       setID: preview.code,
       title: preview.name,
-      iconURI: preview.iconSvgUri,
-      numberOfCards: preview.cardCount,
+      iconURI: preview.iconURI,
+      numberOfCards: preview.numberOfCards,
       index: indexPath.row,
-      isParentSet: preview.parentSetCode != nil
+      isParentSet: preview.parentCode != nil
     )
     
     return cell
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let set = viewModel.state.sets[indexPath.row]
-    let detail = SetDetailCollectionViewController(SetDetailCollectionViewModel(set: set))
-    let cell = tableView.cellForRow(at: indexPath)
-    show(detail, sender: cell)
+//    let set = viewModel.dataSource[indexPath.row]
+//    let detail = SetDetailCollectionViewController(SetDetailCollectionViewModel(set: set))
+//    show(detail, sender: cell)
   }
 }

@@ -9,7 +9,7 @@ final class CardDetailImageContainerRowView: UIView {
     case transformTapped
   }
   
-  private lazy var cardImageView = CardView(type: .large)
+  private lazy var cardImageView = CardView()
   private lazy var cardBackdropImageView = UIImageView()
   private let card: Card
   

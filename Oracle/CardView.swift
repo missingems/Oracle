@@ -20,11 +20,9 @@ final class CardView: UIView {
   private let foilView = FoilEffectView(frame: .zero)
   private let priceCapsuleLabel = InsetLabel(UIEdgeInsets(top: 3, left: 6, bottom: 3, right: 6))
   private let priceContainerView = UIView()
-  private let type: Size
   private lazy var loadingIndicator = UIActivityIndicatorView(style: .medium)
   
-  init(type: Size) {
-    self.type = type
+  init() {
     super.init(frame: .zero)
     
     let stackView = UIStackView(arrangedSubviews: [
@@ -68,17 +66,6 @@ final class CardView: UIView {
     priceView.verticalAnchors == priceContainerView.verticalAnchors
     priceCapsuleLabel.alpha = 0
     
-    switch type {
-    case .large:
-      imageView.layer.cornerRadius = 14
-      
-    case .regular:
-      imageView.layer.cornerRadius = 9
-      
-    case .small:
-      imageView.layer.cornerRadius = 5
-    }
-    
     imageView.layer.borderWidth = 1 / UIScreen.main.nativeScale
     imageView.layer.borderColor = UIColor.separator.cgColor
   }
@@ -102,10 +89,25 @@ final class CardView: UIView {
     priceCapsuleLabel.text = "$\(price)"
     priceContainerView.isHidden = size != .regular
     priceCapsuleLabel.alpha = 1
+    drawCornerRadius(size: size)
   }
   
-  func setPlaceholder() {
+  func setPlaceholder(size: CardView.Size) {
     imageView.image = .mtgBack
+    drawCornerRadius(size: size)
+  }
+  
+  private func drawCornerRadius(size: Size) {
+    switch size {
+    case .large:
+      imageView.layer.cornerRadius = 14
+      
+    case .regular:
+      imageView.layer.cornerRadius = 9
+      
+    case .small:
+      imageView.layer.cornerRadius = 5
+    }
   }
   
   required init?(coder: NSCoder) {

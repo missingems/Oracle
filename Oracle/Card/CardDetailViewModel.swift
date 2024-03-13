@@ -116,9 +116,9 @@ struct CardDetailViewModel {
     
     do {
       let result = try await client.searchCards(
-        filters: [.oracleId(oracleId)],
+        filters: [.oracleId(oracleId), .game(.paper)],
         unique: .prints,
-        order: nil,
+        order: .released,
         sortDirection: .auto,
         includeExtras: true,
         includeMultilingual: false,

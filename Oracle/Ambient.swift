@@ -62,7 +62,10 @@ final class Ambient {
     collectionView.clipsToBounds = false
   }
   
-  func embed(in view: UIView, cells: AnyClass...) {
+  func embed(
+    in view: UIView,
+    cells: AnyClass...
+  ) {
     view.addSubview(backgroundCollectionView)
     
     let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial))

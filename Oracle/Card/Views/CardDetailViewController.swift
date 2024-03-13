@@ -38,6 +38,7 @@ final class CardDetailViewController: UIViewController {
     print("tapped")
   }
   
+  private lazy var informationRow = CardSetInformationRowView(viewModel.card)
   private lazy var versionRow = CardVersionRowView(cards: viewModel.versions)
   
   private lazy var flavorRow: CardDetailRowView = {
@@ -73,6 +74,7 @@ final class CardDetailViewController: UIViewController {
       loyaltyRow,
       powerToughnessRow,
       illustratorRow,
+      informationRow,
       CardDetailLegalityRowView(legalities: viewModel.card.legalities),
       versionRow
     ]

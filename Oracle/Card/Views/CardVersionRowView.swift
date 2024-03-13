@@ -6,7 +6,7 @@ final class CardVersionRowView: UIView, UICollectionViewDataSource, UICollection
   private lazy var ambient: Ambient = {
     let flowLayout = UICollectionViewFlowLayout()
     flowLayout.scrollDirection = .horizontal
-    flowLayout.itemSize = CGSize(width: 130.0, height: 130.0 * 1.3928)
+    flowLayout.itemSize = CGSize(width: 120, height: 120 * 1.3928)
     flowLayout.minimumInteritemSpacing = 8.0
     flowLayout.minimumLineSpacing = 8.0
     
@@ -27,6 +27,11 @@ final class CardVersionRowView: UIView, UICollectionViewDataSource, UICollection
     super.init(frame: .zero)
     ambient.embed(in: self, cells: SetDetailCollectionViewCell.self)
     preservesSuperviewLayoutMargins = true
+    
+    let separatorView = UIView.separator(fullWidth: true)
+    addSubview(separatorView)
+    separatorView.bottomAnchor == bottomAnchor
+    separatorView.horizontalAnchors == horizontalAnchors
   }
   
   required init?(coder: NSCoder) {
@@ -43,7 +48,11 @@ final class CardVersionRowView: UIView, UICollectionViewDataSource, UICollection
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    UIEdgeInsets(top: 0, left: layoutMargins.left, bottom: 0, right: layoutMargins.right)
+    if collectionView === ambient.collectionView {
+      return UIEdgeInsets(top: 0, left: layoutMargins.left, bottom: 0, right: layoutMargins.right)
+    } else {
+      return UIEdgeInsets(top: 13, left: layoutMargins.left, bottom: 0, right: layoutMargins.right)
+    }
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
