@@ -67,7 +67,7 @@ final class SetTableViewModelTests: XCTestCase {
   }
 }
 
-private struct TestCardSet: CardSet {
+private struct TestCardSet: GameSet {
   var name: String { "Test" }
   var code: String { "1234" }
   var iconURI: String { "https://icon.svg" }
@@ -86,7 +86,7 @@ private struct TestSetNetworkService: SetNetworkService {
     self.isSuccess = isSuccess
   }
   
-  func fetchSets(_ completion: @escaping (Result<[any Oracle.CardSet], any Error>) -> ()) {
+  func fetchSets(_ completion: @escaping (Result<[any Oracle.GameSet], any Error>) -> ()) {
     if isSuccess {
       completion(.success([TestCardSet()]))
     } else {

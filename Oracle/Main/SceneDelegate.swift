@@ -23,9 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     viewController.navigationBar.prefersLargeTitles = true
     tabBarController.setViewControllers([
       viewController,
-      GameViewController(),
-      SearchViewController(),
-      MyCollectionTableViewController(),
     ], animated: false)
     window?.tintColor = .accent
     window?.rootViewController = tabBarController

@@ -8,7 +8,7 @@
 import Foundation
 import ScryfallKit
 
-protocol CardSet: Equatable {
+protocol GameSet: Equatable {
   var name: String { get }
   var code: String { get }
   var iconURI: String { get }
@@ -16,7 +16,7 @@ protocol CardSet: Equatable {
   var parentCode: String? { get }
 }
 
-extension MTGSet: CardSet {
+extension MTGSet: GameSet {
   var iconURI: String {
     iconSvgUri
   }

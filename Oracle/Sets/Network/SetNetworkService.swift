@@ -9,11 +9,11 @@ import Foundation
 import ScryfallKit
 
 protocol SetNetworkService {
-  func fetchSets(_ completion: @escaping (Result<[any CardSet], Error>) -> ())
+  func fetchSets(_ completion: @escaping (Result<[any GameSet], Error>) -> ())
 }
 
 extension ScryfallClient: SetNetworkService {
-  func fetchSets(_ completion: @escaping (Result<[any CardSet], any Error>) -> ()) {
+  func fetchSets(_ completion: @escaping (Result<[any GameSet], any Error>) -> ()) {
     getSets { result in
       switch result {
       case let .success(value):

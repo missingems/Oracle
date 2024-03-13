@@ -12,7 +12,7 @@ final class SetTableViewModel {
   
   private let client: any SetNetworkService
   let configuration: Configuration = Configuration()
-  private(set) var dataSource: [any CardSet] = []
+  private(set) var dataSource: [any GameSet] = []
   
   var didUpdate: StateHandler?
   
