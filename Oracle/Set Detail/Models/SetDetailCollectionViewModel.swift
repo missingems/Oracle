@@ -16,6 +16,7 @@ struct SetDetailCollectionViewModel {
     subtitle = String(localized: "\(set.cardCount) Cards")
   }
   
+  @MainActor
   mutating func fetchCards() async {
     do {
       let result = try await client.searchCards(

@@ -29,9 +29,9 @@ final class CardDetailLegalityRowView: UIView {
       label.text = left?.0
       label.textAlignment = .center
       let description = InsetLabel(UIEdgeInsets(top: 5, left: 3, bottom: 5, right: 3))
-      description.layer.cornerRadius = 3
+      description.layer.cornerRadius = 9
       description.layer.cornerCurve = .continuous
-      description.font = .monospacedSystemFont(ofSize: 12, weight: .medium)
+      description.font = .systemFont(ofSize: 12.0, weight: .medium)
       description.text = left?.1?.localisedDescription
       description.textColor = UIColor(white: 1, alpha: 1)
       description.textAlignment = .center
@@ -49,7 +49,7 @@ final class CardDetailLegalityRowView: UIView {
       label2.text = right?.0
       label2.textAlignment = .center
       let description2 = InsetLabel(UIEdgeInsets(top: 5, left: 3, bottom: 5, right: 3))
-      description2.layer.cornerRadius = 3
+      description2.layer.cornerRadius = 9
       description2.layer.cornerCurve = .continuous
       description2.clipsToBounds = true
       description2.font = .monospacedSystemFont(ofSize: 12, weight: .medium)
@@ -77,7 +77,7 @@ final class CardDetailLegalityRowView: UIView {
       
       if shouldRenderBackground {
         view.backgroundColor = .quaternarySystemFill
-        view.layer.cornerRadius = 3
+        view.layer.cornerRadius = 9
         view.layer.cornerCurve = .continuous
       }
       return view

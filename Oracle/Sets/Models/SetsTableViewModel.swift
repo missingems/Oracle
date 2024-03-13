@@ -6,50 +6,54 @@
 //
 
 import Foundation
-import ScryfallKit
 
-struct SetsTableViewModel {
-  private(set) var state: State
+final class SetsTableViewModel {
+  typealias StateHandler = ((Message) -> ())
   
-  private let client: ScryfallClient
-  
-  init(state: State) {
-    self.state = state
-    client = ScryfallClient()
+  private let client: any SetsTableViewNetworkService
+  private(set) var dataSource: [any CardSet] {
+    didSet {
+      didUpdate?(.shouldReloadData)
+    }
   }
   
-  mutating func fetchSets() async {
-    do {
-      let data = try await client.getSets().data
-      var sections: [[MTGSet]] = data.filter { $0.parentSetCode == nil }.map { [$0]}
-      
-      for (index, section) in sections.enumerated() {
-        sections[index] = section + data.filter {
-          $0.parentSetCode == section.first?.code && $0.cardCount != 0
-        }
+  var didUpdate: StateHandler?
+  let staticConfiguration: StaticConfiguration
+  
+  init(client: any SetsTableViewNetworkService) {
+    self.client = client
+    staticConfiguration = StaticConfiguration()
+    dataSource = []
+  }
+  
+  func fetchSets() {
+    client.fetchSets { [weak self] result in
+      guard let self else {
+        return
       }
       
-      state = .data(sections.flatMap { $0 })
-    } catch {
+      switch result {
+      case let .success(value):
+        self.dataSource = value
+        
+      case .failure:
+        self.didUpdate?(.isLoading)
+      }
     }
   }
 }
 
 extension SetsTableViewModel {
-  enum State: Equatable {
-    case loading
-    case data([MTGSet])
-    
-    var sets: [MTGSet] {
-      if case let .data(value) = self {
-        return value
-      } else {
-        return []
-      }
-    }
-    
-    var title: String {
-      return String(localized: "SetsTableViewControllerTitle")
-    }
+  enum Message: Equatable {
+    case shouldReloadData
+    case isLoading
+  }
+}
+
+extension SetsTableViewModel {
+  struct StaticConfiguration: Equatable {
+    let title = String(localized: "SetsTableViewControllerTitle")
+    let tabBarSelectedSystemImageName = "book.pages.fill"
+    let tabBarDeselectedSystemImageName = "book.pages"
   }
 }
