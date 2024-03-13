@@ -7,10 +7,10 @@
 
 import Foundation
 
-final class SetsTableViewModel {
+final class SetTableViewModel {
   typealias StateHandler = ((Message) -> ())
   
-  private let client: any SetsTableViewNetworkService
+  private let client: any SetTableViewNetworkService
   private(set) var dataSource: [any CardSet] {
     didSet {
       didUpdate?(.shouldReloadData)
@@ -20,7 +20,7 @@ final class SetsTableViewModel {
   var didUpdate: StateHandler?
   let staticConfiguration: StaticConfiguration
   
-  init(client: any SetsTableViewNetworkService) {
+  init(client: any SetTableViewNetworkService) {
     self.client = client
     staticConfiguration = StaticConfiguration()
     dataSource = []
@@ -43,14 +43,14 @@ final class SetsTableViewModel {
   }
 }
 
-extension SetsTableViewModel {
+extension SetTableViewModel {
   enum Message: Equatable {
     case shouldReloadData
     case isLoading
   }
 }
 
-extension SetsTableViewModel {
+extension SetTableViewModel {
   struct StaticConfiguration: Equatable {
     let title = String(localized: "SetsTableViewControllerTitle")
     let tabBarSelectedSystemImageName = "book.pages.fill"

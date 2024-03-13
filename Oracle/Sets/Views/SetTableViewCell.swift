@@ -2,7 +2,7 @@ import Anchorage
 import UIKit
 import SDWebImage
 
-final class SetsTableViewCell: SinkableTableViewCell {
+final class SetTableViewCell: SinkableTableViewCell {
   private(set) lazy var subContentView: UIView = {
     let view = UIView()
     view.layer.cornerRadius = 9

@@ -7,18 +7,18 @@
 
 import UIKit
 
-final class SetsTableViewController: UITableViewController {
-  private let viewModel: SetsTableViewModel
+final class SetTableViewController: UITableViewController {
+  private let viewModel: SetTableViewModel
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
-  init(client: any SetsTableViewNetworkService) {
-    self.viewModel = SetsTableViewModel(client: client)
+  init(client: any SetTableViewNetworkService) {
+    self.viewModel = SetTableViewModel(client: client)
     super.init(style: .plain)
     
-    tableView.register(SetsTableViewCell.self, forCellReuseIdentifier: "SetsTableViewCell")
+    tableView.register(SetTableViewCell.self, forCellReuseIdentifier: "SetsTableViewCell")
     tableView.separatorStyle = .none
     
     navigationItem.title = viewModel.staticConfiguration.title
@@ -45,7 +45,7 @@ final class SetsTableViewController: UITableViewController {
 
 // MARK: - View Events
 
-extension SetsTableViewController {
+extension SetTableViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     viewModel.fetchSets()
@@ -54,14 +54,14 @@ extension SetsTableViewController {
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
-extension SetsTableViewController {
+extension SetTableViewController {
   override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
     viewModel.dataSource.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SetsTableViewCell", for: indexPath) as? SetsTableViewCell else {
-      fatalError("\(SetsTableViewCell.self) can't be found")
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SetsTableViewCell", for: indexPath) as? SetTableViewCell else {
+      fatalError("\(SetTableViewCell.self) can't be found")
     }
     
     let preview = viewModel.dataSource[indexPath.row]

@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: windowScene)
     let tabBarController = UITabBarController()
-    let viewController = UINavigationController(rootViewController: SetsTableViewController(client: ScryfallClient()))
+    let viewController = UINavigationController(rootViewController: SetTableViewController(client: ScryfallClient()))
     viewController.navigationBar.prefersLargeTitles = true
     tabBarController.setViewControllers([
       viewController,
