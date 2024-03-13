@@ -12,7 +12,8 @@ final class SetTableViewModel {
   
   private let client: any SetNetworkService
   let configuration: Configuration = Configuration()
-  private(set) var dataSource: [any GameSet] = []
+  private var dataSource: [any GameSet] = []
+  private(set) var displayingDataSource: [any GameSet] = []
   
   var didUpdate: StateHandler?
   
@@ -27,6 +28,16 @@ final class SetTableViewModel {
         self?.didUpdate?(.shouldReloadData)
         self?.didUpdate?(.shouldEndRefreshing)
       }
+      
+    case .searchBarResigned:
+      resetDisplayingDatasource()
+      didUpdate?(.shouldReloadData)
+      
+    case let .searchBarTextChanged(query):
+      querySets(query: query) { [weak self] in
+        self?.didUpdate?(.shouldReloadData)
+      }
+      
 
     case .viewDidLoad:
       didUpdate?(.isLoading)
@@ -39,22 +50,44 @@ final class SetTableViewModel {
   }
   
   private func fetchSets(onComplete: (() -> Void)? = nil) {
-    client.fetchSets(filterType: .all) { [weak self] result in
+    client.fetchSets { [weak self] result in
       switch result {
       case let .success(value):
         self?.dataSource = value
+        self?.displayingDataSource = value
         onComplete?()
         
       case let .failure(value):
         self?.didUpdate?(.shouldDisplayError(value))
+        onComplete?()
       }
     }
+  }
+  
+  private func querySets(query: String, onComplete: (() -> Void)? = nil) {
+    client.querySets(query: query, in: dataSource) { [weak self] result in
+      switch result {
+      case let .success(value):
+        self?.displayingDataSource = value
+        onComplete?()
+        
+      case let .failure(value):
+        self?.displayingDataSource = []
+        onComplete?()
+      }
+    }
+  }
+  
+  private func resetDisplayingDatasource() {
+    displayingDataSource = dataSource
   }
 }
 
 extension SetTableViewModel {
   enum Event: Equatable {
     case pullToRefreshInvoked
+    case searchBarResigned
+    case searchBarTextChanged(String)
     case viewDidLoad
     case viewWillAppear
   }
@@ -88,6 +121,7 @@ extension SetTableViewModel {
 
 extension SetTableViewModel {
   struct Configuration: Equatable {
+    let searchBarPlaceholder = String(localized: "SetsTableViewControllerSearchBarPlaceholder")
     let title = String(localized: "SetsTableViewControllerTitle")
     let tabBarSelectedSystemImageName = "book.pages.fill"
     let tabBarDeselectedSystemImageName = "book.pages"

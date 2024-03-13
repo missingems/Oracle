@@ -8,7 +8,8 @@ protocol SetTableViewCell {
     title: String,
     iconURI: String,
     numberOfCards: Int,
-    index: Int
+    index: Int,
+    query: String?
   )
 }
 
@@ -34,14 +35,16 @@ final class SetTableViewParentCell: SinkableTableViewCell, SetTableViewCell {
     title: String,
     iconURI: String,
     numberOfCards: Int,
-    index: Int
+    index: Int,
+    query: String?
   ) {
     subContentView.configure(
       setID: setID,
       title: title,
       iconURI: iconURI,
       numberOfCards: numberOfCards,
-      index: index
+      index: index,
+      query: query
     )
   }
 }
@@ -68,14 +71,16 @@ final class SetTableViewChildCell: SinkableTableViewCell, SetTableViewCell {
     title: String,
     iconURI: String,
     numberOfCards: Int,
-    index: Int
+    index: Int,
+    query: String?
   ) {
     subContentView.configure(
       setID: setID,
       title: title,
       iconURI: iconURI,
       numberOfCards: numberOfCards,
-      index: index
+      index: index,
+      query: query
     )
   }
 }
@@ -203,9 +208,24 @@ private final class ContentView: UIView {
     title: String,
     iconURI: String,
     numberOfCards: Int,
-    index: Int
+    index: Int,
+    query: String?
   ) {
-    titleLabel.text = title
+    if let query, !query.isEmpty {
+      let attributedString = NSMutableAttributedString(string: title)
+      
+      if let range = title.lowercased().range(of: query.lowercased()) {
+        let nsRange = NSRange(range, in: title)
+        attributedString.addAttribute(.foregroundColor, value: UIColor.label, range: nsRange)
+      }
+      
+      titleLabel.textColor = .tertiaryLabel
+      titleLabel.attributedText = attributedString
+    } else {
+      titleLabel.textColor = .label
+      titleLabel.text = title
+    }
+    
     setIdLabel.text = setID.uppercased()
     subtitleLabel.text = String(localized: "\(numberOfCards) Cards")
     

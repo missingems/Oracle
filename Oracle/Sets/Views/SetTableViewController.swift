@@ -54,8 +54,10 @@ final class SetTableViewController: UITableViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
     searchController.obscuresBackgroundDuringPresentation = false
-    searchController.searchBar.placeholder = "Search items"
+    searchController.searchBar.placeholder = viewModel.configuration.searchBarPlaceholder
+    searchController.searchResultsUpdater = self
     navigationItem.searchController = searchController
+    navigationItem.hidesSearchBarWhenScrolling = false
     definesPresentationContext = true
   }
 }
@@ -78,18 +80,35 @@ extension SetTableViewController {
   }
 }
 
+// MARK: - UISearchResultsUpdating
+
+extension SetTableViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    guard 
+      searchController.isActive,
+      let text = searchController.searchBar.text,
+      !text.isEmpty 
+    else {
+      viewModel.update(.searchBarResigned)
+      return
+    }
+    
+    viewModel.update(.searchBarTextChanged(text))
+  }
+}
+
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension SetTableViewController {
   override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-    viewModel.dataSource.count
+    viewModel.displayingDataSource.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let preview = viewModel.dataSource[indexPath.row]
+    let preview = viewModel.displayingDataSource[indexPath.row]
     let cell: SetTableViewCell?
     
-    if preview.parentCode == nil {
+    if preview.parentCode == nil || navigationItem.searchController?.isActive == true {
       cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewParentCell.self)", for: indexPath) as? SetTableViewParentCell
     } else {
       cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewChildCell.self)", for: indexPath) as? SetTableViewChildCell
@@ -100,7 +119,8 @@ extension SetTableViewController {
       title: preview.name,
       iconURI: preview.iconURI,
       numberOfCards: preview.numberOfCards,
-      index: indexPath.row
+      index: indexPath.row,
+      query: navigationItem.searchController?.searchBar.text
     )
     
     guard let cell = cell as? UITableViewCell else {
@@ -108,7 +128,6 @@ extension SetTableViewController {
     }
     
     cell.selectionStyle = .none
-    
     return cell
   }
   
