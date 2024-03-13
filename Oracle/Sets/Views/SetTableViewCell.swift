@@ -28,6 +28,7 @@ final class SetTableViewCell: SinkableTableViewCell {
   
   private lazy var titleLabel = {
     let label = UILabel()
+    label.font = .preferredFont(forTextStyle: .body)
     label.numberOfLines = 0
     label.textColor = .label
     label.setContentHuggingPriority(.required, for: .vertical)
