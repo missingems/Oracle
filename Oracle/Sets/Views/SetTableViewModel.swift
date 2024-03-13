@@ -24,8 +24,8 @@ final class SetTableViewModel {
     switch event {
     case .pullToRefreshInvoked:
       fetchSets { [weak self] in
-        self?.didUpdate?(.shouldEndRefreshing)
         self?.didUpdate?(.shouldReloadData)
+        self?.didUpdate?(.shouldEndRefreshing)
       }
 
     case .viewDidLoad:
