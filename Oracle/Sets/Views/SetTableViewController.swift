@@ -51,6 +51,12 @@ final class SetTableViewController: UITableViewController {
         }
       }
     }
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    searchController.obscuresBackgroundDuringPresentation = false
+    searchController.searchBar.placeholder = "Search items"
+    navigationItem.searchController = searchController
+    definesPresentationContext = true
   }
 }
 

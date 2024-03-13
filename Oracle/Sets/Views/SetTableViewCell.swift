@@ -23,7 +23,7 @@ final class SetTableViewParentCell: SinkableTableViewCell, SetTableViewCell {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
     contentView.addSubview(subContentView)
-    subContentView.horizontalAnchors == contentView.layoutMarginsGuide.horizontalAnchors - 8
+    subContentView.horizontalAnchors == contentView.layoutMarginsGuide.horizontalAnchors
     subContentView.verticalAnchors == contentView.verticalAnchors
     preservesSuperviewLayoutMargins = true
     contentView.preservesSuperviewLayoutMargins = true
@@ -57,7 +57,7 @@ final class SetTableViewChildCell: SinkableTableViewCell, SetTableViewCell {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
     contentView.addSubview(subContentView)
-    subContentView.horizontalAnchors == contentView.layoutMarginsGuide.horizontalAnchors - 8
+    subContentView.horizontalAnchors == contentView.layoutMarginsGuide.horizontalAnchors
     subContentView.verticalAnchors == contentView.verticalAnchors
     preservesSuperviewLayoutMargins = true
     contentView.preservesSuperviewLayoutMargins = true
@@ -187,7 +187,7 @@ private final class ContentView: UIView {
     stackView.spacing = 13
     stackView.axis = .horizontal
     
-    layer.cornerRadius = 9
+    layer.cornerRadius = 10
     layer.cornerCurve = .continuous
     
     addSubview(stackView)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF241C012BA1C7D7001687CA /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF241C002BA1C7D7001687CA /* Anchorage */; };
 		BF5478B32B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B22B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift */; };
 		BF5478B72B8DD680004D2CC8 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */; };
 		BF5478B92B8EBFFB004D2CC8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */; };
@@ -25,7 +26,6 @@
 		BF67DBCE2BA16BCC002317A7 /* SetNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBCD2BA16BCC002317A7 /* SetNetworkService.swift */; };
 		BF67DBD32BA16D5B002317A7 /* GameSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBD22BA16D5B002317A7 /* GameSet.swift */; };
 		BF67DBD52BA17C90002317A7 /* SetTableViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBD42BA17C90002317A7 /* SetTableViewModelTests.swift */; };
-		BF883A032B91C8BC00E5B417 /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF883A022B91C8BC00E5B417 /* Anchorage */; };
 		BF9862592B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9862582B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift */; };
 		BF98625B2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98625A2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift */; };
 		BFB366242B7C9767004814FB /* SetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB366232B7C9767004814FB /* SetTableViewController.swift */; };
@@ -112,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF883A032B91C8BC00E5B417 /* Anchorage in Frameworks */,
+				BF241C012BA1C7D7001687CA /* Anchorage in Frameworks */,
 				BFFFBF8C2B7C86BA0004156B /* ScryfallKit in Frameworks */,
 				BF56E6752B847C200018B620 /* SDWebImageSVGNativeCoder in Frameworks */,
 			);
@@ -336,7 +336,7 @@
 			packageProductDependencies = (
 				BFFFBF8B2B7C86BA0004156B /* ScryfallKit */,
 				BF56E6742B847C200018B620 /* SDWebImageSVGNativeCoder */,
-				BF883A022B91C8BC00E5B417 /* Anchorage */,
+				BF241C002BA1C7D7001687CA /* Anchorage */,
 			);
 			productName = Oracle;
 			productReference = BFFFBF512B7C6A280004156B /* Oracle.app */;
@@ -415,7 +415,7 @@
 			packageReferences = (
 				BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */,
 				BF56E6732B847C200018B620 /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */,
-				BF883A012B91C8BC00E5B417 /* XCRemoteSwiftPackageReference "Anchorage" */,
+				BF241BFF2BA1C7D7001687CA /* XCRemoteSwiftPackageReference "Anchorage" */,
 			);
 			productRefGroup = BFFFBF522B7C6A280004156B /* Products */;
 			projectDirPath = "";
@@ -850,20 +850,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BF241BFF2BA1C7D7001687CA /* XCRemoteSwiftPackageReference "Anchorage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Rightpoint/Anchorage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
 		BF56E6732B847C200018B620 /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSVGNativeCoder.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.2.0;
-			};
-		};
-		BF883A012B91C8BC00E5B417 /* XCRemoteSwiftPackageReference "Anchorage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Rightpoint/Anchorage";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.5.0;
 			};
 		};
 		BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */ = {
@@ -877,15 +877,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BF241C002BA1C7D7001687CA /* Anchorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF241BFF2BA1C7D7001687CA /* XCRemoteSwiftPackageReference "Anchorage" */;
+			productName = Anchorage;
+		};
 		BF56E6742B847C200018B620 /* SDWebImageSVGNativeCoder */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BF56E6732B847C200018B620 /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */;
 			productName = SDWebImageSVGNativeCoder;
-		};
-		BF883A022B91C8BC00E5B417 /* Anchorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF883A012B91C8BC00E5B417 /* XCRemoteSwiftPackageReference "Anchorage" */;
-			productName = Anchorage;
 		};
 		BFFFBF8B2B7C86BA0004156B /* ScryfallKit */ = {
 			isa = XCSwiftPackageProductDependency;

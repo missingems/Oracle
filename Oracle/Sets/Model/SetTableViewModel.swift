@@ -39,7 +39,7 @@ final class SetTableViewModel {
   }
   
   private func fetchSets(onComplete: (() -> Void)? = nil) {
-    client.fetchSets { [weak self] result in
+    client.fetchSets(filterType: .all) { [weak self] result in
       switch result {
       case let .success(value):
         self?.dataSource = value
