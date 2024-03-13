@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF1D42622B8B9A08007E73B4 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D42612B8B9A08007E73B4 /* GameViewController.swift */; };
-		BF1D42642B8B9CA3007E73B4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D42632B8B9CA3007E73B4 /* SearchViewController.swift */; };
-		BF1D42662B8B9D07007E73B4 /* MyCollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D42652B8B9D07007E73B4 /* MyCollectionTableViewController.swift */; };
 		BF5478B32B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B22B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift */; };
 		BF5478B72B8DD680004D2CC8 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */; };
 		BF5478B92B8EBFFB004D2CC8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */; };
@@ -26,7 +23,7 @@
 		BF56E6752B847C200018B620 /* SDWebImageSVGNativeCoder in Frameworks */ = {isa = PBXBuildFile; productRef = BF56E6742B847C200018B620 /* SDWebImageSVGNativeCoder */; };
 		BF56E6772B847C730018B620 /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E6762B847C730018B620 /* SetTableViewCell.swift */; };
 		BF67DBCE2BA16BCC002317A7 /* SetNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBCD2BA16BCC002317A7 /* SetNetworkService.swift */; };
-		BF67DBD32BA16D5B002317A7 /* CardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBD22BA16D5B002317A7 /* CardSet.swift */; };
+		BF67DBD32BA16D5B002317A7 /* GameSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBD22BA16D5B002317A7 /* GameSet.swift */; };
 		BF67DBD52BA17C90002317A7 /* SetTableViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBD42BA17C90002317A7 /* SetTableViewModelTests.swift */; };
 		BF883A032B91C8BC00E5B417 /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF883A022B91C8BC00E5B417 /* Anchorage */; };
 		BF9862592B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9862582B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift */; };
@@ -68,9 +65,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BF1D42612B8B9A08007E73B4 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		BF1D42632B8B9CA3007E73B4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		BF1D42652B8B9D07007E73B4 /* MyCollectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionTableViewController.swift; sourceTree = "<group>"; };
 		BF5478B22B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -86,7 +80,7 @@
 		BF56E66E2B846E450018B620 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		BF56E6762B847C730018B620 /* SetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
 		BF67DBCD2BA16BCC002317A7 /* SetNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNetworkService.swift; sourceTree = "<group>"; };
-		BF67DBD22BA16D5B002317A7 /* CardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSet.swift; sourceTree = "<group>"; };
+		BF67DBD22BA16D5B002317A7 /* GameSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSet.swift; sourceTree = "<group>"; };
 		BF67DBD42BA17C90002317A7 /* SetTableViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewModelTests.swift; sourceTree = "<group>"; };
 		BF9862582B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewModel.swift; sourceTree = "<group>"; };
 		BF98625A2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +169,53 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		BF67DBD82BA1B489002317A7 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BF67DBDA2BA1B49E002317A7 /* Extensions */,
+				BF67DBD92BA1B494002317A7 /* Views */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		BF67DBD92BA1B494002317A7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */,
+				BFD077C32B9444F8009C6B4C /* Ambient.swift */,
+				BFD077C52B946F4E009C6B4C /* SinkableCell.swift */,
+				BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BF67DBDA2BA1B49E002317A7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */,
+				BF5478BA2B8ECB28004D2CC8 /* Card+Extensions.swift */,
+				BF5478CF2B9033B1004D2CC8 /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BF67DBDB2BA1B4D6002317A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF67DBD22BA16D5B002317A7 /* GameSet.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF67DBDC2BA1B4EA002317A7 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				BFFFBF542B7C6A280004156B /* AppDelegate.swift */,
+				BFFFBF562B7C6A280004156B /* SceneDelegate.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		BF9862552B8CB62D00F5CB13 /* Set Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +245,7 @@
 		BFB366272B7CA669004814FB /* Sets */ = {
 			isa = PBXGroup;
 			children = (
+				BF67DBDB2BA1B4D6002317A7 /* Model */,
 				BF67DBCC2BA16BBE002317A7 /* Network */,
 				BFB366282B7CA675004814FB /* Views */,
 			);
@@ -218,14 +260,6 @@
 				BFB366252B7CA663004814FB /* SetTableViewModel.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		BFB366292B7CA686004814FB /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				BF67DBD22BA16D5B002317A7 /* CardSet.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		BFFFBF482B7C6A280004156B = {
@@ -251,28 +285,17 @@
 		BFFFBF532B7C6A280004156B /* Oracle */ = {
 			isa = PBXGroup;
 			children = (
-				BFB366292B7CA686004814FB /* Models */,
 				BF5478B42B8DD671004D2CC8 /* Card */,
+				BF67DBDC2BA1B4EA002317A7 /* Main */,
 				BF9862552B8CB62D00F5CB13 /* Set Detail */,
 				BFB366272B7CA669004814FB /* Sets */,
-				BFFFBF542B7C6A280004156B /* AppDelegate.swift */,
-				BFFFBF562B7C6A280004156B /* SceneDelegate.swift */,
+				BF67DBD82BA1B489002317A7 /* Shared */,
 				BFFFBF602B7C6A290004156B /* Assets.xcassets */,
 				BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */,
 				BFFFBF652B7C6A290004156B /* Oracle.entitlements */,
 				BFFFBF662B7C6A290004156B /* Info.plist */,
 				BF56E66E2B846E450018B620 /* Localizable.xcstrings */,
 				BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */,
-				BF1D42612B8B9A08007E73B4 /* GameViewController.swift */,
-				BF1D42632B8B9CA3007E73B4 /* SearchViewController.swift */,
-				BF1D42652B8B9D07007E73B4 /* MyCollectionTableViewController.swift */,
-				BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */,
-				BF5478BA2B8ECB28004D2CC8 /* Card+Extensions.swift */,
-				BF5478CF2B9033B1004D2CC8 /* View+Extensions.swift */,
-				BFD077C32B9444F8009C6B4C /* Ambient.swift */,
-				BFD077C52B946F4E009C6B4C /* SinkableCell.swift */,
-				BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */,
-				BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */,
 			);
 			path = Oracle;
 			sourceTree = "<group>";
@@ -441,7 +464,6 @@
 				BF5478B72B8DD680004D2CC8 /* CardDetailViewController.swift in Sources */,
 				BFD077C62B946F4E009C6B4C /* SinkableCell.swift in Sources */,
 				BF98625B2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift in Sources */,
-				BF1D42622B8B9A08007E73B4 /* GameViewController.swift in Sources */,
 				BF5478B32B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift in Sources */,
 				BF5478D42B90367A004D2CC8 /* CardDetailTypelineRowView.swift in Sources */,
 				BFFCAD5F2B962AA100986C34 /* InsetLabel.swift in Sources */,
@@ -451,8 +473,7 @@
 				BF5478E22B905A78004D2CC8 /* CardDetailLegalityRowView.swift in Sources */,
 				BF5478D62B903FA2004D2CC8 /* CardDetailImageContainerRowView.swift in Sources */,
 				BF5478D22B9034A8004D2CC8 /* CardDetailRowView.swift in Sources */,
-				BF67DBD32BA16D5B002317A7 /* CardSet.swift in Sources */,
-				BF1D42642B8B9CA3007E73B4 /* SearchViewController.swift in Sources */,
+				BF67DBD32BA16D5B002317A7 /* GameSet.swift in Sources */,
 				BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */,
 				BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */,
 				BF5478CE2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift in Sources */,
@@ -467,7 +488,6 @@
 				BFB366242B7C9767004814FB /* SetTableViewController.swift in Sources */,
 				BF9862592B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift in Sources */,
 				BF5478BD2B8ECB3A004D2CC8 /* CardDetailViewModel.swift in Sources */,
-				BF1D42662B8B9D07007E73B4 /* MyCollectionTableViewController.swift in Sources */,
 				BFB366262B7CA663004814FB /* SetTableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
