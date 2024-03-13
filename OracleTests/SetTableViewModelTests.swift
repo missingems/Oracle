@@ -13,17 +13,27 @@ final class SetTableViewModelTests: XCTestCase {
     XCTAssertTrue(viewModel().dataSource.isEmpty)
   }
   
+  func test_updateViewDidLoad_shouldShowIsLoading() {
+    let viewModel = viewModel(isSuccess: true)
+    
+    viewModel.didUpdate = {
+      XCTAssertEqual($0, .isLoading)
+    }
+    
+    viewModel.update(.viewDidLoad)
+  }
+  
   func test_when_dataSourceChanged_calls_didUpdateShouldReloadData() {
     let viewModel = viewModel(isSuccess: true)
     var capturedMessages: [SetTableViewModel.Message] = []
     viewModel.didUpdate = { capturedMessages.append($0) }
-    viewModel.fetchSets()
+    viewModel.update(.viewWillAppear)
     XCTAssertEqual(capturedMessages, [.shouldReloadData])
   }
   
   func test_when_dataSourceChanged_compareReceivedDataSource() throws {
     let viewModel = viewModel(isSuccess: true)
-    viewModel.fetchSets()
+    viewModel.update(.viewWillAppear)
     let cardSet = try XCTUnwrap(viewModel.dataSource.first as? TestCardSet, "ViewModel should have 1 card set after fetching sets")
     // Make sure CardSet is not mutated
     XCTAssertEqual(cardSet, TestCardSet())
@@ -33,8 +43,15 @@ final class SetTableViewModelTests: XCTestCase {
     let viewModel = viewModel(isSuccess: false)
     var capturedMessages: [SetTableViewModel.Message] = []
     viewModel.didUpdate = { capturedMessages.append($0) }
-    viewModel.fetchSets()
+    viewModel.update(.viewWillAppear)
     XCTAssertEqual(capturedMessages, [.shouldDisplayError(TestError.testError)])
+  }
+  
+  func test_configuration() {
+    let viewModel = viewModel()
+    XCTAssertEqual(viewModel.configuration.title, "Sets")
+    XCTAssertEqual(viewModel.configuration.tabBarSelectedSystemImageName, "book.pages.fill")
+    XCTAssertEqual(viewModel.configuration.tabBarDeselectedSystemImageName, "book.pages")
   }
   
   private func viewModel(isSuccess: Bool = false) -> SetTableViewModel {

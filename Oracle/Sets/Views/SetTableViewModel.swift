@@ -11,6 +11,8 @@ final class SetTableViewModel {
   typealias StateHandler = ((Message) -> ())
   
   private let client: any SetNetworkService
+  let configuration: Configuration = Configuration()
+  
   private(set) var dataSource: [any CardSet] = [] {
     didSet {
       didUpdate?(.shouldReloadData)
@@ -18,13 +20,22 @@ final class SetTableViewModel {
   }
   
   var didUpdate: StateHandler?
-  let staticConfiguration: StaticConfiguration = StaticConfiguration()
   
   init(client: any SetNetworkService) {
     self.client = client
   }
   
-  func fetchSets() {
+  func update(_ event: Event) {
+    switch event {
+    case .viewDidLoad:
+      didUpdate?(.isLoading)
+      
+    case .viewWillAppear:
+      fetchSets()
+    }
+  }
+  
+  private func fetchSets() {
     client.fetchSets { [weak self] result in
       switch result {
       case let .success(value):
@@ -38,6 +49,11 @@ final class SetTableViewModel {
 }
 
 extension SetTableViewModel {
+  enum Event: Equatable {
+    case viewDidLoad
+    case viewWillAppear
+  }
+  
   enum Message: Equatable {
     case shouldReloadData
     case isLoading
@@ -62,7 +78,7 @@ extension SetTableViewModel {
 }
 
 extension SetTableViewModel {
-  struct StaticConfiguration: Equatable {
+  struct Configuration: Equatable {
     let title = String(localized: "SetsTableViewControllerTitle")
     let tabBarSelectedSystemImageName = "book.pages.fill"
     let tabBarDeselectedSystemImageName = "book.pages"

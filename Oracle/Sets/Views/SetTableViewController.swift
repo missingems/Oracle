@@ -14,19 +14,19 @@ final class SetTableViewController: UITableViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
-  init(client: any SetNetworkService) {
-    self.viewModel = SetTableViewModel(client: client)
+  init(viewModel: SetTableViewModel) {
+    self.viewModel = viewModel
     super.init(style: .plain)
     
     tableView.register(SetTableViewCell.self, forCellReuseIdentifier: "SetsTableViewCell")
     tableView.separatorStyle = .none
     
-    navigationItem.title = viewModel.staticConfiguration.title
+    navigationItem.title = viewModel.configuration.title
     
     tabBarItem = UITabBarItem(
-      title: viewModel.staticConfiguration.title,
-      image: UIImage(systemName: viewModel.staticConfiguration.tabBarDeselectedSystemImageName),
-      selectedImage: UIImage(systemName: viewModel.staticConfiguration.tabBarSelectedSystemImageName)
+      title: viewModel.configuration.title,
+      image: UIImage(systemName: viewModel.configuration.tabBarDeselectedSystemImageName),
+      selectedImage: UIImage(systemName: viewModel.configuration.tabBarSelectedSystemImageName)
     )
     
     viewModel.didUpdate = { [weak self] state in
@@ -49,9 +49,14 @@ final class SetTableViewController: UITableViewController {
 // MARK: - View Events
 
 extension SetTableViewController {
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    viewModel.update(.viewDidLoad)
+  }
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    viewModel.fetchSets()
+    viewModel.update(.viewWillAppear)
   }
 }
 
