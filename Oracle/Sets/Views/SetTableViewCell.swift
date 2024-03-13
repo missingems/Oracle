@@ -2,13 +2,86 @@ import Anchorage
 import UIKit
 import SDWebImage
 
-final class SetsTableViewCell: SinkableTableViewCell {
-  private(set) lazy var subContentView: UIView = {
-    let view = UIView()
-    view.layer.cornerRadius = 9
-    view.layer.cornerCurve = .continuous
-    return view
-  }()
+protocol SetTableViewCell {
+  func configure(
+    setID: String,
+    title: String,
+    iconURI: String,
+    numberOfCards: Int,
+    index: Int
+  )
+}
+
+final class SetTableViewParentCell: SinkableTableViewCell, SetTableViewCell {
+  private lazy var subContentView = ContentView(isParent: true)
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
+    
+    contentView.addSubview(subContentView)
+    subContentView.horizontalAnchors == contentView.layoutMarginsGuide.horizontalAnchors - 8
+    subContentView.verticalAnchors == contentView.verticalAnchors
+    preservesSuperviewLayoutMargins = true
+    contentView.preservesSuperviewLayoutMargins = true
+  }
+  
+  func configure(
+    setID: String,
+    title: String,
+    iconURI: String,
+    numberOfCards: Int,
+    index: Int
+  ) {
+    subContentView.configure(
+      setID: setID,
+      title: title,
+      iconURI: iconURI,
+      numberOfCards: numberOfCards,
+      index: index
+    )
+  }
+}
+
+final class SetTableViewChildCell: SinkableTableViewCell, SetTableViewCell {
+  private lazy var subContentView = ContentView(isParent: false)
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
+    
+    contentView.addSubview(subContentView)
+    subContentView.horizontalAnchors == contentView.layoutMarginsGuide.horizontalAnchors - 8
+    subContentView.verticalAnchors == contentView.verticalAnchors
+    preservesSuperviewLayoutMargins = true
+    contentView.preservesSuperviewLayoutMargins = true
+  }
+  
+  func configure(
+    setID: String,
+    title: String,
+    iconURI: String,
+    numberOfCards: Int,
+    index: Int
+  ) {
+    subContentView.configure(
+      setID: setID,
+      title: title,
+      iconURI: iconURI,
+      numberOfCards: numberOfCards,
+      index: index
+    )
+  }
+}
+
+private final class ContentView: UIView {
+  private lazy var iconImageView = UIImageView()
   
   private lazy var setIdLabel = {
     let label = InsetLabel()
@@ -28,6 +101,7 @@ final class SetsTableViewCell: SinkableTableViewCell {
   
   private lazy var titleLabel = {
     let label = UILabel()
+    label.font = .preferredFont(forTextStyle: .body)
     label.numberOfLines = 0
     label.textColor = .label
     label.setContentHuggingPriority(.required, for: .vertical)
@@ -56,15 +130,8 @@ final class SetsTableViewCell: SinkableTableViewCell {
     return containerView
   }()
   
-  private lazy var iconImageView = UIImageView()
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
-    
+  init(isParent: Bool) {
+    super.init(frame: .zero)
     let containerView = UIView()
     containerView.addSubview(iconImageView)
     iconImageView.contentMode = .scaleAspectFit
@@ -73,7 +140,7 @@ final class SetsTableViewCell: SinkableTableViewCell {
     iconImageView.centerYAnchor == containerView.centerYAnchor
     iconImageView.tintColor = .accent
     
-    contentView.addSubview(titleLabel)
+    addSubview(titleLabel)
     
     let captionView = UIStackView(arrangedSubviews: [
       setIdLabel,
@@ -98,23 +165,37 @@ final class SetsTableViewCell: SinkableTableViewCell {
     chevronImageView.horizontalAnchors == chevronContainerView.horizontalAnchors
     chevronImageView.centerYAnchor == chevronContainerView.centerYAnchor
     
-    let stackView = UIStackView(arrangedSubviews: [
-      childIndicatorView,
-      containerView,
-      verticalStackView,
-      UIView(),
-      chevronContainerView,
-    ])
+    let stackView: UIStackView
+    
+    if isParent {
+      stackView = UIStackView(arrangedSubviews: [
+        containerView,
+        verticalStackView,
+        UIView(),
+        chevronContainerView,
+      ])
+    } else {
+      stackView = UIStackView(arrangedSubviews: [
+        childIndicatorView,
+        containerView,
+        verticalStackView,
+        UIView(),
+        chevronContainerView,
+      ])
+    }
     
     stackView.spacing = 13
     stackView.axis = .horizontal
     
-    subContentView.addSubview(stackView)
-    stackView.edgeAnchors == subContentView.edgeAnchors + UIEdgeInsets(top: 13, left: 13, bottom: 15, right: 13)
+    layer.cornerRadius = 9
+    layer.cornerCurve = .continuous
     
-    contentView.addSubview(subContentView)
-    subContentView.horizontalAnchors == contentView.layoutMarginsGuide.horizontalAnchors - 8
-    subContentView.verticalAnchors == contentView.verticalAnchors
+    addSubview(stackView)
+    stackView.edgeAnchors == edgeAnchors + UIEdgeInsets(top: 13, left: 13, bottom: 15, right: 13)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
   
   func configure(
@@ -122,33 +203,30 @@ final class SetsTableViewCell: SinkableTableViewCell {
     title: String,
     iconURI: String,
     numberOfCards: Int,
-    index: Int,
-    isParentSet: Bool
+    index: Int
   ) {
     titleLabel.text = title
     setIdLabel.text = setID.uppercased()
     subtitleLabel.text = String(localized: "\(numberOfCards) Cards")
     
     iconImageView.sd_setImage(
-      with: URL(string: iconURI), 
+      with: URL(string: iconURI),
       placeholderImage: nil,
       options: [.refreshCached],
       context: [
         .imageThumbnailPixelSize : CGSize(width: 30 * UIScreen.main.nativeScale, height: 30 * UIScreen.main.nativeScale),
         .imagePreserveAspectRatio : true
-      ], 
+      ],
       progress: nil,
       completed: { [weak self] image, error, cache, url in
         self?.iconImageView.image = image?.withRenderingMode(.alwaysTemplate)
       }
     )
     
-    if index % 2 == 0 {
-      subContentView.backgroundColor = .quaternarySystemFill
+    if index.isMultiple(of: 2) {
+      backgroundColor = .quaternarySystemFill
     } else {
-      subContentView.backgroundColor = .clear
+      backgroundColor = .clear
     }
-    
-    childIndicatorView.isHidden = !isParentSet
   }
 }
