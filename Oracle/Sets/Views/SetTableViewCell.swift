@@ -23,7 +23,7 @@ final class SetTableViewParentCell: SinkableTableViewCell, SetTableViewCell {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
     contentView.addSubview(subContentView)
-    subContentView.horizontalAnchors == contentView.layoutMarginsGuide.horizontalAnchors
+    subContentView.horizontalAnchors == contentView.layoutMarginsGuide.horizontalAnchors - 8
     subContentView.verticalAnchors == contentView.verticalAnchors
     preservesSuperviewLayoutMargins = true
     contentView.preservesSuperviewLayoutMargins = true
@@ -57,7 +57,7 @@ final class SetTableViewChildCell: SinkableTableViewCell, SetTableViewCell {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
     contentView.addSubview(subContentView)
-    subContentView.horizontalAnchors == contentView.layoutMarginsGuide.horizontalAnchors
+    subContentView.horizontalAnchors == contentView.layoutMarginsGuide.horizontalAnchors - 8
     subContentView.verticalAnchors == contentView.verticalAnchors
     preservesSuperviewLayoutMargins = true
     contentView.preservesSuperviewLayoutMargins = true

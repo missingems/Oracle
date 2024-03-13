@@ -83,7 +83,7 @@ extension SetTableViewController {
     let preview = viewModel.dataSource[indexPath.row]
     let cell: SetTableViewCell?
     
-    if preview.parentCode != nil {
+    if preview.parentCode == nil {
       cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewParentCell.self)", for: indexPath) as? SetTableViewParentCell
     } else {
       cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewChildCell.self)", for: indexPath) as? SetTableViewChildCell
@@ -100,6 +100,8 @@ extension SetTableViewController {
     guard let cell = cell as? UITableViewCell else {
       fatalError()
     }
+    
+    cell.selectionStyle = .none
     
     return cell
   }
