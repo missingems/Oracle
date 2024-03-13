@@ -28,7 +28,7 @@ final class SetTableViewModelTests: XCTestCase {
     var capturedMessages: [SetTableViewModel.Message] = []
     viewModel.didUpdate = { capturedMessages.append($0) }
     viewModel.update(.pullToRefreshInvoked)
-    XCTAssertEqual(capturedMessages, [.shouldEndRefreshing, .shouldReloadData])
+    XCTAssertEqual(capturedMessages, [.shouldReloadData, .shouldEndRefreshing])
   }
   
   func test_when_dataSourceChanged_calls_didUpdateShouldReloadData() {
