@@ -18,7 +18,8 @@ final class SetTableViewController: UITableViewController {
     self.viewModel = viewModel
     super.init(style: .plain)
     
-    tableView.register(SetTableViewCell.self, forCellReuseIdentifier: "SetsTableViewCell")
+    tableView.register(SetTableViewParentCell.self, forCellReuseIdentifier: "\(SetTableViewParentCell.self)")
+    tableView.register(SetTableViewChildCell.self, forCellReuseIdentifier: "\(SetTableViewChildCell.self)")
     tableView.separatorStyle = .none
     
     navigationItem.title = viewModel.configuration.title
@@ -29,14 +30,9 @@ final class SetTableViewController: UITableViewController {
       selectedImage: UIImage(systemName: viewModel.configuration.tabBarSelectedSystemImageName)
     )
     
-    tableView.refreshControl = UIRefreshControl(
-      frame: .zero,
-      primaryAction: UIAction(
-        handler: { [weak self] _ in
-          self?.viewModel.update(.pullToRefreshInvoked)
-        }
-      )
-    )
+    let refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action: #selector(pullToRefreshValueChanged), for: .valueChanged)
+    tableView.refreshControl = refreshControl
     
     viewModel.didUpdate = { [weak self] state in
       DispatchQueue.main.async {
@@ -70,6 +66,10 @@ extension SetTableViewController {
     super.viewWillAppear(animated)
     viewModel.update(.viewWillAppear)
   }
+  
+  @objc private func pullToRefreshValueChanged() {
+    viewModel.update(.pullToRefreshInvoked)
+  }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -80,21 +80,26 @@ extension SetTableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SetsTableViewCell", for: indexPath) as? SetTableViewCell else {
-      fatalError("\(SetTableViewCell.self) can't be found")
+    let preview = viewModel.dataSource[indexPath.row]
+    let cell: SetTableViewCell?
+    
+    if preview.parentCode != nil {
+      cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewParentCell.self)", for: indexPath) as? SetTableViewParentCell
+    } else {
+      cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewChildCell.self)", for: indexPath) as? SetTableViewChildCell
     }
     
-    let preview = viewModel.dataSource[indexPath.row]
-    cell.selectionStyle = .none
-    
-    cell.configure(
+    cell?.configure(
       setID: preview.code,
       title: preview.name,
       iconURI: preview.iconURI,
       numberOfCards: preview.numberOfCards,
-      index: indexPath.row,
-      isParentSet: preview.parentCode != nil
+      index: indexPath.row
     )
+    
+    guard let cell = cell as? UITableViewCell else {
+      fatalError()
+    }
     
     return cell
   }
