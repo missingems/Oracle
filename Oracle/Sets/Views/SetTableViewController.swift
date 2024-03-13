@@ -14,7 +14,7 @@ final class SetTableViewController: UITableViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
-  init(client: any SetTableViewNetworkService) {
+  init(client: any SetNetworkService) {
     self.viewModel = SetTableViewModel(client: client)
     super.init(style: .plain)
     
@@ -37,6 +37,9 @@ final class SetTableViewController: UITableViewController {
           
         case .shouldReloadData:
           self?.tableView.reloadData()
+          
+        case let .shouldDisplayError(error):
+          break
         }
       }
     }

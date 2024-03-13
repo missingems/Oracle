@@ -10,34 +10,28 @@ import Foundation
 final class SetTableViewModel {
   typealias StateHandler = ((Message) -> ())
   
-  private let client: any SetTableViewNetworkService
-  private(set) var dataSource: [any CardSet] {
+  private let client: any SetNetworkService
+  private(set) var dataSource: [any CardSet] = [] {
     didSet {
       didUpdate?(.shouldReloadData)
     }
   }
   
   var didUpdate: StateHandler?
-  let staticConfiguration: StaticConfiguration
+  let staticConfiguration: StaticConfiguration = StaticConfiguration()
   
-  init(client: any SetTableViewNetworkService) {
+  init(client: any SetNetworkService) {
     self.client = client
-    staticConfiguration = StaticConfiguration()
-    dataSource = []
   }
   
   func fetchSets() {
     client.fetchSets { [weak self] result in
-      guard let self else {
-        return
-      }
-      
       switch result {
       case let .success(value):
-        self.dataSource = value
+        self?.dataSource = value
         
-      case .failure:
-        self.didUpdate?(.isLoading)
+      case let .failure(value):
+        self?.didUpdate?(.shouldDisplayError(value))
       }
     }
   }
@@ -47,6 +41,23 @@ extension SetTableViewModel {
   enum Message: Equatable {
     case shouldReloadData
     case isLoading
+    case shouldDisplayError(Error)
+    
+    static func == (lhs: SetTableViewModel.Message, rhs: SetTableViewModel.Message) -> Bool {
+      switch (lhs, rhs) {
+      case (.shouldReloadData, .shouldReloadData):
+        return true
+        
+      case (.isLoading, .isLoading):
+        return true
+        
+      case let (.shouldDisplayError(lhsValue), .shouldDisplayError(rhsValue)):
+        return lhsValue.localizedDescription == rhsValue.localizedDescription
+        
+      default:
+        return false
+      }
+    }
   }
 }
 

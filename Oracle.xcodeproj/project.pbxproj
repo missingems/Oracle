@@ -25,8 +25,9 @@
 		BF56E66F2B846E450018B620 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BF56E66E2B846E450018B620 /* Localizable.xcstrings */; };
 		BF56E6752B847C200018B620 /* SDWebImageSVGNativeCoder in Frameworks */ = {isa = PBXBuildFile; productRef = BF56E6742B847C200018B620 /* SDWebImageSVGNativeCoder */; };
 		BF56E6772B847C730018B620 /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E6762B847C730018B620 /* SetTableViewCell.swift */; };
-		BF67DBCE2BA16BCC002317A7 /* SetTableViewNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBCD2BA16BCC002317A7 /* SetTableViewNetworkService.swift */; };
+		BF67DBCE2BA16BCC002317A7 /* SetNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBCD2BA16BCC002317A7 /* SetNetworkService.swift */; };
 		BF67DBD32BA16D5B002317A7 /* CardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBD22BA16D5B002317A7 /* CardSet.swift */; };
+		BF67DBD52BA17C90002317A7 /* SetTableViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBD42BA17C90002317A7 /* SetTableViewModelTests.swift */; };
 		BF883A032B91C8BC00E5B417 /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF883A022B91C8BC00E5B417 /* Anchorage */; };
 		BF9862592B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9862582B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift */; };
 		BF98625B2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98625A2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift */; };
@@ -38,7 +39,6 @@
 		BFD077C82B94B0EB009C6B4C /* FoilEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */; };
 		BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C92B94C2DE009C6B4C /* CardView.swift */; };
 		BFFCAD5F2B962AA100986C34 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */; };
-		BFFCAD602B962C4800986C34 /* OracleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF6F2B7C6A290004156B /* OracleTests.swift */; };
 		BFFCAD622B96F6B800986C34 /* CardSetInformationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */; };
 		BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF542B7C6A280004156B /* AppDelegate.swift */; };
 		BFFFBF572B7C6A280004156B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF562B7C6A280004156B /* SceneDelegate.swift */; };
@@ -85,8 +85,9 @@
 		BF5478E32B90779B004D2CC8 /* CardIllustratorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardIllustratorRowView.swift; sourceTree = "<group>"; };
 		BF56E66E2B846E450018B620 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		BF56E6762B847C730018B620 /* SetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
-		BF67DBCD2BA16BCC002317A7 /* SetTableViewNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewNetworkService.swift; sourceTree = "<group>"; };
+		BF67DBCD2BA16BCC002317A7 /* SetNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNetworkService.swift; sourceTree = "<group>"; };
 		BF67DBD22BA16D5B002317A7 /* CardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSet.swift; sourceTree = "<group>"; };
+		BF67DBD42BA17C90002317A7 /* SetTableViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewModelTests.swift; sourceTree = "<group>"; };
 		BF9862582B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewModel.swift; sourceTree = "<group>"; };
 		BF98625A2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		BFB366232B7C9767004814FB /* SetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewController.swift; sourceTree = "<group>"; };
@@ -107,7 +108,6 @@
 		BFFFBF652B7C6A290004156B /* Oracle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Oracle.entitlements; sourceTree = "<group>"; };
 		BFFFBF662B7C6A290004156B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFFFBF6B2B7C6A290004156B /* OracleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OracleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFFFBF6F2B7C6A290004156B /* OracleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleTests.swift; sourceTree = "<group>"; };
 		BFFFBF752B7C6A290004156B /* OracleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OracleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFFBF792B7C6A290004156B /* OracleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleUITests.swift; sourceTree = "<group>"; };
 		BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 		BF67DBCC2BA16BBE002317A7 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				BF67DBCD2BA16BCC002317A7 /* SetTableViewNetworkService.swift */,
+				BF67DBCD2BA16BCC002317A7 /* SetNetworkService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -280,7 +280,7 @@
 		BFFFBF6E2B7C6A290004156B /* OracleTests */ = {
 			isa = PBXGroup;
 			children = (
-				BFFFBF6F2B7C6A290004156B /* OracleTests.swift */,
+				BF67DBD42BA17C90002317A7 /* SetTableViewModelTests.swift */,
 			);
 			path = OracleTests;
 			sourceTree = "<group>";
@@ -370,6 +370,7 @@
 					};
 					BFFFBF6A2B7C6A290004156B = {
 						CreatedOnToolsVersion = 15.1;
+						LastSwiftMigration = 1530;
 						TestTargetID = BFFFBF502B7C6A280004156B;
 					};
 					BFFFBF742B7C6A290004156B = {
@@ -456,7 +457,7 @@
 				BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */,
 				BF5478CE2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift in Sources */,
 				BFD077C22B941B82009C6B4C /* CardVersionRowView.swift in Sources */,
-				BF67DBCE2BA16BCC002317A7 /* SetTableViewNetworkService.swift in Sources */,
+				BF67DBCE2BA16BCC002317A7 /* SetNetworkService.swift in Sources */,
 				BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */,
 				BFD077C42B9444F8009C6B4C /* Ambient.swift in Sources */,
 				BFFCAD622B96F6B800986C34 /* CardSetInformationRowView.swift in Sources */,
@@ -475,6 +476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF67DBD52BA17C90002317A7 /* SetTableViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +484,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFFCAD602B962C4800986C34 /* OracleTests.swift in Sources */,
 				BFFFBF7C2B7C6A290004156B /* OracleUITestsLaunchTests.swift in Sources */,
 				BFFFBF7A2B7C6A290004156B /* OracleUITests.swift in Sources */,
 			);
@@ -713,6 +714,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 25WL36ABTN;
@@ -722,6 +724,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.OracleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oracle.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Oracle";
@@ -733,6 +736,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 25WL36ABTN;

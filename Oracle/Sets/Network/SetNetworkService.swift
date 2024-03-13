@@ -8,11 +8,11 @@
 import Foundation
 import ScryfallKit
 
-protocol SetTableViewNetworkService {
+protocol SetNetworkService {
   func fetchSets(_ completion: @escaping (Result<[any CardSet], Error>) -> ())
 }
 
-extension ScryfallClient: SetTableViewNetworkService {
+extension ScryfallClient: SetNetworkService {
   func fetchSets(_ completion: @escaping (Result<[any CardSet], any Error>) -> ()) {
     getSets { result in
       switch result {
