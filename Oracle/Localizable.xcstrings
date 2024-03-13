@@ -92,6 +92,22 @@
         }
       }
     },
+    "SetsTableViewControllerSearchBarPlaceholder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search for Magic cards..."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マジックカード検索"
+          }
+        }
+      }
+    },
     "SetsTableViewControllerTitle" : {
       "extractionState" : "manual",
       "localizations" : {

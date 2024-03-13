@@ -1,5 +1,4 @@
 {
-  "originHash" : "3352a3718b63971afa823de46aea86bf9e2355de98fc4e91084764546bbeddb2",
   "pins" : [
     {
       "identity" : "anchorage",
@@ -47,5 +46,5 @@
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }

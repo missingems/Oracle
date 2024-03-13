@@ -9,11 +9,12 @@ import Foundation
 import ScryfallKit
 
 protocol SetNetworkService {
-  func fetchSets(_ completion: @escaping (Result<[any GameSet], Error>) -> ())
+  func fetchSets(completion: @escaping (Result<[any GameSet], Error>) -> ())
+  func querySets(query: String, in sets: [any GameSet], completion: @escaping (Result<[any GameSet], Error>) -> ())
 }
 
 extension ScryfallClient: SetNetworkService {
-  func fetchSets(_ completion: @escaping (Result<[any GameSet], any Error>) -> ()) {
+  func fetchSets(completion: @escaping (Result<[any GameSet], any Error>) -> ()) {
     getSets { result in
       switch result {
       case let .success(value):
@@ -37,4 +38,44 @@ extension ScryfallClient: SetNetworkService {
       }
     }
   }
+  
+  func querySets(query: String, in sets: [any GameSet], completion: @escaping (Result<[any GameSet], Error>) -> ()) {
+    func distanceFromTarget(_ string: String, target: Character) -> Int {
+      guard let firstCharacter = string.uppercased().first else { return Int.max }
+      return abs(Int(firstCharacter.asciiValue ?? 0) - Int(target.asciiValue ?? 0))
+    }
+    
+    DispatchQueue.global().async {
+      guard query.isEmpty == false else {
+        completion(.failure(SetNetworkServiceError.noQuery))
+        return
+      }
+      
+      let lowercasedQuery = query.lowercased()
+      
+      let results = sets.filter {
+        $0.name.lowercased().contains(lowercasedQuery)
+      }.sorted {
+        ($0.name.lowercased().hasPrefix(lowercasedQuery) ? 1 : 0) > ($1.name.lowercased().hasPrefix(lowercasedQuery) ? 1 : 0)
+      }
+      
+      if !results.isEmpty {
+        completion(.success(results))
+      } else {
+        completion(.failure(SetNetworkServiceError.noResult))
+      }
+    }
+  }
 }
+
+enum SetNetworkServiceError: Error {
+  case noQuery
+  case noResult
+}
+
+
+
+// Sort the array based on closeness to the target character
+//let sortedStrings = strings.sorted {
+//  distanceFromTarget($0, target: Character(targetCharacter)) < distanceFromTarget($1, target: Character(targetCharacter))
+//}
