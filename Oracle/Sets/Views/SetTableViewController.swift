@@ -29,6 +29,15 @@ final class SetTableViewController: UITableViewController {
       selectedImage: UIImage(systemName: viewModel.configuration.tabBarSelectedSystemImageName)
     )
     
+    tableView.refreshControl = UIRefreshControl(
+      frame: .zero,
+      primaryAction: UIAction(
+        handler: { [weak self] _ in
+          self?.viewModel.update(.pullToRefreshInvoked)
+        }
+      )
+    )
+    
     viewModel.didUpdate = { [weak self] state in
       DispatchQueue.main.async {
         switch state {
@@ -37,6 +46,9 @@ final class SetTableViewController: UITableViewController {
           
         case .shouldReloadData:
           self?.tableView.reloadData()
+          
+        case .shouldEndRefreshing:
+          self?.tableView.refreshControl?.endRefreshing()
           
         case let .shouldDisplayError(error):
           break

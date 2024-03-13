@@ -23,6 +23,14 @@ final class SetTableViewModelTests: XCTestCase {
     viewModel.update(.viewDidLoad)
   }
   
+  func test_updatePullToRefreshInvoked_shouldFetchSets() {
+    let viewModel = viewModel(isSuccess: true)
+    var capturedMessages: [SetTableViewModel.Message] = []
+    viewModel.didUpdate = { capturedMessages.append($0) }
+    viewModel.update(.pullToRefreshInvoked)
+    XCTAssertEqual(capturedMessages, [.shouldEndRefreshing, .shouldReloadData])
+  }
+  
   func test_when_dataSourceChanged_calls_didUpdateShouldReloadData() {
     let viewModel = viewModel(isSuccess: true)
     var capturedMessages: [SetTableViewModel.Message] = []

@@ -153,6 +153,7 @@
 		BF5478B52B8DD675004D2CC8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BFD077C92B94C2DE009C6B4C /* CardView.swift */,
 				BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */,
 				BF5478CD2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift */,
 				BF5478D12B9034A8004D2CC8 /* CardDetailRowView.swift */,
@@ -271,7 +272,6 @@
 				BFD077C32B9444F8009C6B4C /* Ambient.swift */,
 				BFD077C52B946F4E009C6B4C /* SinkableCell.swift */,
 				BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */,
-				BFD077C92B94C2DE009C6B4C /* CardView.swift */,
 				BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */,
 			);
 			path = Oracle;

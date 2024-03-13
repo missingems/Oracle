@@ -12,12 +12,7 @@ final class SetTableViewModel {
   
   private let client: any SetNetworkService
   let configuration: Configuration = Configuration()
-  
-  private(set) var dataSource: [any CardSet] = [] {
-    didSet {
-      didUpdate?(.shouldReloadData)
-    }
-  }
+  private(set) var dataSource: [any CardSet] = []
   
   var didUpdate: StateHandler?
   
@@ -27,19 +22,28 @@ final class SetTableViewModel {
   
   func update(_ event: Event) {
     switch event {
+    case .pullToRefreshInvoked:
+      fetchSets { [weak self] in
+        self?.didUpdate?(.shouldEndRefreshing)
+        self?.didUpdate?(.shouldReloadData)
+      }
+
     case .viewDidLoad:
       didUpdate?(.isLoading)
       
     case .viewWillAppear:
-      fetchSets()
+      fetchSets { [weak self] in
+        self?.didUpdate?(.shouldReloadData)
+      }
     }
   }
   
-  private func fetchSets() {
+  private func fetchSets(onComplete: (() -> Void)? = nil) {
     client.fetchSets { [weak self] result in
       switch result {
       case let .success(value):
         self?.dataSource = value
+        onComplete?()
         
       case let .failure(value):
         self?.didUpdate?(.shouldDisplayError(value))
@@ -50,25 +54,30 @@ final class SetTableViewModel {
 
 extension SetTableViewModel {
   enum Event: Equatable {
+    case pullToRefreshInvoked
     case viewDidLoad
     case viewWillAppear
   }
   
   enum Message: Equatable {
+    case shouldDisplayError(Error)
+    case shouldEndRefreshing
     case shouldReloadData
     case isLoading
-    case shouldDisplayError(Error)
     
     static func == (lhs: SetTableViewModel.Message, rhs: SetTableViewModel.Message) -> Bool {
       switch (lhs, rhs) {
+      case let (.shouldDisplayError(lhsValue), .shouldDisplayError(rhsValue)):
+        return lhsValue.localizedDescription == rhsValue.localizedDescription
+        
+      case (.shouldEndRefreshing, .shouldEndRefreshing):
+        return true
+        
       case (.shouldReloadData, .shouldReloadData):
         return true
         
       case (.isLoading, .isLoading):
         return true
-        
-      case let (.shouldDisplayError(lhsValue), .shouldDisplayError(rhsValue)):
-        return lhsValue.localizedDescription == rhsValue.localizedDescription
         
       default:
         return false
