@@ -14,10 +14,10 @@ protocol SetsTableViewNetworkService {
 
 extension ScryfallClient: SetsTableViewNetworkService {
   func fetchSets(_ completion: @escaping (Result<[any CardSet], any Error>) -> ()) {
-    self.getSets { result in
+    getSets { result in
       switch result {
       case let .success(value):
-        completion(.success(value.data))
+        completion(.success(value.data.filter { !$0.digital && $0.numberOfCards != 0 }))
         
       case let .failure(error):
         completion(.failure(error))
