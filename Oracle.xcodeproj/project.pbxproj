@@ -35,6 +35,8 @@
 		BFD077C62B946F4E009C6B4C /* SinkableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C52B946F4E009C6B4C /* SinkableCell.swift */; };
 		BFD077C82B94B0EB009C6B4C /* FoilEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */; };
 		BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C92B94C2DE009C6B4C /* CardView.swift */; };
+		BFDC4AA82BA1B63C00A3ACC8 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDC4AA72BA1B63B00A3ACC8 /* SearchTableViewController.swift */; };
+		BFDC4AAB2BA1B6F400A3ACC8 /* SearchTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDC4AAA2BA1B6F400A3ACC8 /* SearchTableViewModel.swift */; };
 		BFFCAD5F2B962AA100986C34 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */; };
 		BFFCAD622B96F6B800986C34 /* CardSetInformationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */; };
 		BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF542B7C6A280004156B /* AppDelegate.swift */; };
@@ -91,6 +93,8 @@
 		BFD077C52B946F4E009C6B4C /* SinkableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinkableCell.swift; sourceTree = "<group>"; };
 		BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoilEffectView.swift; sourceTree = "<group>"; };
 		BFD077C92B94C2DE009C6B4C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		BFDC4AA72BA1B63B00A3ACC8 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		BFDC4AAA2BA1B6F400A3ACC8 /* SearchTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewModel.swift; sourceTree = "<group>"; };
 		BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetInformationRowView.swift; sourceTree = "<group>"; };
 		BFFFBF512B7C6A280004156B /* Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oracle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				BF67DBD22BA16D5B002317A7 /* GameSet.swift */,
+				BFB366252B7CA663004814FB /* SetTableViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -257,9 +262,33 @@
 			children = (
 				BF56E6762B847C730018B620 /* SetTableViewCell.swift */,
 				BFB366232B7C9767004814FB /* SetTableViewController.swift */,
-				BFB366252B7CA663004814FB /* SetTableViewModel.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BFDC4AA52BA1B62700A3ACC8 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				BFDC4AA92BA1B6E600A3ACC8 /* Model */,
+				BFDC4AA62BA1B63100A3ACC8 /* Views */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		BFDC4AA62BA1B63100A3ACC8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BFDC4AA72BA1B63B00A3ACC8 /* SearchTableViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BFDC4AA92BA1B6E600A3ACC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BFDC4AAA2BA1B6F400A3ACC8 /* SearchTableViewModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BFFFBF482B7C6A280004156B = {
@@ -287,6 +316,7 @@
 			children = (
 				BF5478B42B8DD671004D2CC8 /* Card */,
 				BF67DBDC2BA1B4EA002317A7 /* Main */,
+				BFDC4AA52BA1B62700A3ACC8 /* Search */,
 				BF9862552B8CB62D00F5CB13 /* Set Detail */,
 				BFB366272B7CA669004814FB /* Sets */,
 				BF67DBD82BA1B489002317A7 /* Shared */,
@@ -467,6 +497,7 @@
 				BF5478B32B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift in Sources */,
 				BF5478D42B90367A004D2CC8 /* CardDetailTypelineRowView.swift in Sources */,
 				BFFCAD5F2B962AA100986C34 /* InsetLabel.swift in Sources */,
+				BFDC4AA82BA1B63C00A3ACC8 /* SearchTableViewController.swift in Sources */,
 				BF5478E42B90779B004D2CC8 /* CardIllustratorRowView.swift in Sources */,
 				BF56E6772B847C730018B620 /* SetTableViewCell.swift in Sources */,
 				BFD077C82B94B0EB009C6B4C /* FoilEffectView.swift in Sources */,
@@ -485,6 +516,7 @@
 				BF5478B92B8EBFFB004D2CC8 /* String+Extensions.swift in Sources */,
 				BF5478D02B9033B1004D2CC8 /* View+Extensions.swift in Sources */,
 				BFFFBF572B7C6A280004156B /* SceneDelegate.swift in Sources */,
+				BFDC4AAB2BA1B6F400A3ACC8 /* SearchTableViewModel.swift in Sources */,
 				BFB366242B7C9767004814FB /* SetTableViewController.swift in Sources */,
 				BF9862592B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift in Sources */,
 				BF5478BD2B8ECB3A004D2CC8 /* CardDetailViewModel.swift in Sources */,
