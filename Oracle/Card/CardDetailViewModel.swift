@@ -4,7 +4,7 @@ import Foundation
 struct CardDetailViewModel {
   private let client: ScryfallClient
   let card: Card
-  let set: MTGSet
+  let set: any GameSet
   var selectedFace: Card.Face?
   private(set) var versions: [Card]
   
@@ -90,7 +90,7 @@ struct CardDetailViewModel {
     String(localized: "Illustrated by")
   }
   
-  init(card: Card, set: MTGSet) {
+  init(card: Card, set: any GameSet) {
     client = ScryfallClient(networkLogLevel: .minimal)
     self.card = card
     self.set = set

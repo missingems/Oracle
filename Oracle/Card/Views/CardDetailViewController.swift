@@ -27,7 +27,7 @@ final class CardDetailViewController: UIViewController {
   }
   
   private lazy var titleDetailRow = CardTitleDetailRowView()
-  private lazy var typelineRow = CardDetailTypelineRowView(title: viewModel.typeLine, iconURI: viewModel.set.iconSvgUri)
+  private lazy var typelineRow = CardDetailTypelineRowView(title: viewModel.typeLine, iconURI: viewModel.set.iconURI)
   private lazy var textRow = CardDetailRowView(viewModel.text)
   private lazy var powerToughnessRow = CardDetailRowView(viewModel.powerToughness)
   private lazy var loyaltyRow = CardDetailRowView(viewModel.loyalty)
@@ -111,7 +111,7 @@ final class CardDetailViewController: UIViewController {
   private func configure() {
     imageContainerRowView.configure(with: viewModel.cardImageURL)
     titleDetailRow.configure(viewModel.name, manaCost: viewModel.manaCost)
-    typelineRow.configure(title: viewModel.typeLine, iconURI: viewModel.set.iconSvgUri)
+    typelineRow.configure(title: viewModel.typeLine, iconURI: viewModel.set.iconURI)
     textRow.configure(with: viewModel.text)
     flavorRow.configure(with: viewModel.flavorText)
     loyaltyRow.configure(with: viewModel.loyalty)

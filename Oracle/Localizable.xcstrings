@@ -17,6 +17,9 @@
         }
       }
     },
+    "Artist" : {
+
+    },
     "Banned" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -28,6 +31,15 @@
         }
       }
     },
+    "Color" : {
+
+    },
+    "EDHREC" : {
+
+    },
+    "Eur" : {
+
+    },
     "Illustrated by" : {
       "localizations" : {
         "ja" : {
@@ -37,6 +49,9 @@
           }
         }
       }
+    },
+    "Latest" : {
+
     },
     "Legal" : {
       "extractionState" : "manual",
@@ -70,6 +85,12 @@
         }
       }
     },
+    "Mana Value" : {
+
+    },
+    "Name" : {
+
+    },
     "Not Legal" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -80,6 +101,18 @@
           }
         }
       }
+    },
+    "Number" : {
+
+    },
+    "Power" : {
+
+    },
+    "Price" : {
+
+    },
+    "Rarity" : {
+
     },
     "Restricted" : {
       "extractionState" : "manual",
@@ -124,6 +157,12 @@
           }
         }
       }
+    },
+    "Tix" : {
+
+    },
+    "Toughness" : {
+
     }
   },
   "version" : "1.0"
