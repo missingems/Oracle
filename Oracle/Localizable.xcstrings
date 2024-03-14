@@ -17,6 +17,12 @@
         }
       }
     },
+    "Ascending" : {
+
+    },
+    "Automatic" : {
+
+    },
     "Banned" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -29,6 +35,9 @@
       }
     },
     "Color" : {
+
+    },
+    "Descending" : {
 
     },
     "Illustrated by" : {
@@ -96,6 +105,9 @@
     "Number" : {
 
     },
+    "Order by %@" : {
+
+    },
     "Power" : {
 
     },
@@ -148,6 +160,9 @@
           }
         }
       }
+    },
+    "Sort by %@" : {
+
     },
     "Toughness" : {
 

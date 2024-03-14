@@ -38,6 +38,15 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
           self.ambient.reloadData()
           self.ambient.collectionView.refreshControl?.endRefreshing()
           
+          let orderMenuItems = self.viewModel.configuration.availableSortDirection.map { direction in
+            let action = UIAction(title: direction.description) { _ in
+              self.viewModel.update(.didSelectSortDirection(direction))
+            }
+            
+            action.state = direction == self.viewModel.sortDirection ? .on : .off
+            return action
+          }
+          
           let menuItems = self.viewModel.configuration.availableSort.map { sortMode in
             let action = UIAction(title: sortMode.description) { _ in
               self.viewModel.update(.didSelectSortMode(sortMode))
@@ -47,8 +56,9 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
             return action
           }
           
-          let menu = UIMenu(title: "Sort By", image: nil, identifier: nil, options: [.singleSelection], children: menuItems)
-          
+          let sortMenu = UIMenu(title: viewModel.selectedSortModeTitle, image: nil, identifier: nil, options: [.singleSelection], children: menuItems)
+          let directionMenu = UIMenu(title: viewModel.selectedSortDirectionTitle, image: nil, identifier: nil, options: [.singleSelection], children: orderMenuItems)
+          let menu = UIMenu(title: "", image: nil, identifier: nil, options: [.displayInline], children: [sortMenu, directionMenu])
           self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: self.viewModel.sortMode.description, image: nil, primaryAction: nil, menu: menu)
         }
       }
