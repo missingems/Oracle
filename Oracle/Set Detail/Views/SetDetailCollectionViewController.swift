@@ -32,6 +32,7 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
         switch message {
         case .shouldReloadData:
           self?.ambient.reloadData()
+          self?.ambient.collectionView.refreshControl?.endRefreshing()
         }
       }
     }
@@ -46,6 +47,10 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
     navigationItem.largeTitleDisplayMode = .never
     view.backgroundColor = .systemBackground
     title = viewModel.configuration.title
+    let refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+    ambient.collectionView.refreshControl = refreshControl
+    
     
     titleLabel.text = viewModel.configuration.title
     subtitleLabel.text = viewModel.configuration.subtitle
@@ -58,6 +63,11 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
     navigationItem.titleView = stackView
     
     viewModel.update(.viewDidLoad)
+  }
+  
+  @objc
+  private func pullToRefresh() {
+    viewModel.update(.pullToRefresh)
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

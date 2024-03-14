@@ -22,6 +22,10 @@ final class SetDetailCollectionViewModel {
   
   func update(_ event: Event) {
     switch event {
+    case .pullToRefresh:
+      reset()
+      fetchCards()
+      
     case .viewDidLoad:
       fetchCards()
       
@@ -44,7 +48,12 @@ final class SetDetailCollectionViewModel {
       
       switch result {
       case let .success(value):
-        self?.dataSource.append(contentsOf: value.cards)
+        if self?.currentPage == 1 {
+          self?.dataSource = value.cards
+        } else {
+          self?.dataSource.append(contentsOf: value.cards)
+        }
+        
         self?.hasNext = value.hasNext
         
         if value.hasNext {
@@ -67,10 +76,16 @@ final class SetDetailCollectionViewModel {
       return false
     }
   }
+  
+  private func reset() {
+    currentPage = 1
+    isLoading = false
+  }
 }
 
 extension SetDetailCollectionViewModel {
   enum Event {
+    case pullToRefresh
     case viewDidLoad
     case willDisplayItem(index: Int)
   }
