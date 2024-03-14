@@ -8,7 +8,8 @@ final class SetDetailCollectionViewModel {
   var didUpdate: ((Message) -> ())?
   private var hasNext: Bool = false
   private var isLoading: Bool = false
-  private let set: any GameSet
+  let set: any GameSet
+  private(set) var sortMode: SortMode = .released
   
   
   init(
@@ -22,6 +23,12 @@ final class SetDetailCollectionViewModel {
   
   func update(_ event: Event) {
     switch event {
+    case let .didSelectSortMode(value):
+      didUpdate?(.shouldShowIsLoading)
+      sortMode = value
+      reset()
+      fetchCards()
+      
     case .pullToRefresh:
       reset()
       fetchCards()
@@ -43,7 +50,7 @@ final class SetDetailCollectionViewModel {
     
     isLoading = true
     
-    client.fetchSetDetail(gameSet: set, page: currentPage, sort: .released) { [weak self] result in
+    client.fetchSetDetail(gameSet: set, page: currentPage, sort: sortMode) { [weak self] result in
       self?.isLoading = false
       
       switch result {
@@ -85,6 +92,7 @@ final class SetDetailCollectionViewModel {
 
 extension SetDetailCollectionViewModel {
   enum Event {
+    case didSelectSortMode(SortMode)
     case pullToRefresh
     case viewDidLoad
     case willDisplayItem(index: Int)
@@ -92,6 +100,7 @@ extension SetDetailCollectionViewModel {
   
   enum Message {
     case shouldReloadData
+    case shouldShowIsLoading
   }
 }
 
@@ -99,10 +108,49 @@ extension SetDetailCollectionViewModel {
   struct Configuration: Equatable {
     let subtitle: String
     let title: String
+    let availableSort: [SortMode]
     
     init(set: any GameSet) {
       title = set.name
       subtitle = String(localized: "\(set.numberOfCards) Cards")
+      
+      availableSort = [
+        .released,
+        .rarity,
+        .usd,
+        .set,
+        .color,
+        .cmc,
+        .power,
+        .toughness
+      ]
+    }
+  }
+}
+
+extension SortMode {
+  var description: String {
+    switch self {
+    case .usd:
+      return String(localized: "Price")
+    case .name:
+      return String(localized: "Name")
+    case .set:
+      return String(localized: "Number")
+    case .released:
+      return String(localized: "Latest")
+    case .rarity:
+      return String(localized: "Rarity")
+    case .color:
+      return String(localized: "Color")
+    case .cmc:
+      return String(localized: "Mana Value")
+    case .power:
+      return String(localized: "Power")
+    case .toughness:
+      return String(localized: "Toughness")
+    default:
+      return ""
     }
   }
 }

@@ -18,24 +18,44 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
     return label
   }()
   
+  private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
   private lazy var ambient = Ambient(host: self, configuration: Ambient.Configuration())
   private let viewModel: SetDetailCollectionViewModel
   
   init(_ viewModel: SetDetailCollectionViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
-    ambient.embed(in: view, cells: SetDetailCollectionViewCell.self)
-    setContentScrollView(ambient.collectionView)
     
     viewModel.didUpdate = { [weak self] message in
+      guard let self else { return }
+      
       DispatchQueue.main.async {
         switch message {
+        case .shouldShowIsLoading:
+          self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.activityIndicatorView)
+          
         case .shouldReloadData:
-          self?.ambient.reloadData()
-          self?.ambient.collectionView.refreshControl?.endRefreshing()
+          self.ambient.reloadData()
+          self.ambient.collectionView.refreshControl?.endRefreshing()
+          
+          let menuItems = self.viewModel.configuration.availableSort.map { sortMode in
+            let action = UIAction(title: sortMode.description) { _ in
+              self.viewModel.update(.didSelectSortMode(sortMode))
+            }
+            
+            action.state = sortMode == self.viewModel.sortMode ? .on : .off
+            return action
+          }
+          
+          let menu = UIMenu(title: "Sort By", image: nil, identifier: nil, options: [.singleSelection], children: menuItems)
+          
+          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: self.viewModel.sortMode.description, image: nil, primaryAction: nil, menu: menu)
         }
       }
     }
+    
+    ambient.embed(in: view, cells: SetDetailCollectionViewCell.self)
+    setContentScrollView(ambient.collectionView)
   }
   
   required init?(coder: NSCoder) {
@@ -45,12 +65,13 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationItem.largeTitleDisplayMode = .never
+    activityIndicatorView.startAnimating()
+    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicatorView)
     view.backgroundColor = .systemBackground
     title = viewModel.configuration.title
     let refreshControl = UIRefreshControl()
     refreshControl.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
     ambient.collectionView.refreshControl = refreshControl
-    
     
     titleLabel.text = viewModel.configuration.title
     subtitleLabel.text = viewModel.configuration.subtitle
@@ -108,9 +129,9 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    let card = viewModel.state.cards[indexPath.item]
-//    let cardViewController = CardDetailViewController(viewModel: CardDetailViewModel(card: card, set: viewModel.set))
-//    self.navigationController?.pushViewController(cardViewController, animated: true)
+    let card = viewModel.dataSource[indexPath.item]
+    let cardViewController = CardDetailViewController(viewModel: CardDetailViewModel(card: card, set: viewModel.set))
+    self.navigationController?.pushViewController(cardViewController, animated: true)
   }
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
