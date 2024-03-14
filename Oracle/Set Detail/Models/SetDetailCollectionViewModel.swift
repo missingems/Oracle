@@ -10,7 +10,7 @@ final class SetDetailCollectionViewModel {
   private var isLoading: Bool = false
   let set: any GameSet
   private(set) var sortMode: SortMode = .released
-  
+  private(set) var sortDirection: SortDirection = .auto
   
   init(
     set: any GameSet,
@@ -23,6 +23,12 @@ final class SetDetailCollectionViewModel {
   
   func update(_ event: Event) {
     switch event {
+    case let .didSelectSortDirection(value):
+      didUpdate?(.shouldShowIsLoading)
+      sortDirection = value
+      reset()
+      fetchCards()
+      
     case let .didSelectSortMode(value):
       didUpdate?(.shouldShowIsLoading)
       sortMode = value
@@ -50,7 +56,7 @@ final class SetDetailCollectionViewModel {
     
     isLoading = true
     
-    client.fetchSetDetail(gameSet: set, page: currentPage, sort: sortMode) { [weak self] result in
+    client.fetchSetDetail(gameSet: set, page: currentPage, sort: sortMode, direction: sortDirection) { [weak self] result in
       self?.isLoading = false
       
       switch result {
@@ -88,10 +94,19 @@ final class SetDetailCollectionViewModel {
     currentPage = 1
     isLoading = false
   }
+  
+  var selectedSortModeTitle: String {
+    String(localized: "Sort by \(sortMode.description)")
+  }
+  
+  var selectedSortDirectionTitle: String {
+    String(localized: "Order by \(sortDirection.description)")
+  }
 }
 
 extension SetDetailCollectionViewModel {
   enum Event {
+    case didSelectSortDirection(SortDirection)
     case didSelectSortMode(SortMode)
     case pullToRefresh
     case viewDidLoad
@@ -109,6 +124,7 @@ extension SetDetailCollectionViewModel {
     let subtitle: String
     let title: String
     let availableSort: [SortMode]
+    let availableSortDirection: [SortDirection]
     
     init(set: any GameSet) {
       title = set.name
@@ -124,6 +140,21 @@ extension SetDetailCollectionViewModel {
         .power,
         .toughness
       ]
+      
+      availableSortDirection = SortDirection.allCases
+    }
+  }
+}
+
+extension SortDirection {
+  var description: String {
+    switch self {
+    case .asc:
+      return String(localized: "Ascending")
+    case .desc:
+      return String(localized: "Descending")
+    case .auto:
+      return String(localized: "Automatic")
     }
   }
 }
