@@ -9,15 +9,15 @@ import Foundation
 import ScryfallKit
 
 protocol SetDetailNetworkService {
-  func fetchSetDetail(gameSet: any GameSet, page: Int, sort: SetDetailSortMode, completion: @escaping (Result<(cards: [Card], hasNext: Bool), Error>) -> ())
+  func fetchSetDetail(gameSet: any GameSet, page: Int, sort: SortMode, completion: @escaping (Result<(cards: [Card], hasNext: Bool), Error>) -> ())
 }
 
 extension ScryfallClient: SetDetailNetworkService {
-  func fetchSetDetail(gameSet: any GameSet, page: Int, sort: SetDetailSortMode, completion: @escaping (Result<(cards: [Card], hasNext: Bool), Error>) -> ()) {
+  func fetchSetDetail(gameSet: any GameSet, page: Int, sort: SortMode, completion: @escaping (Result<(cards: [Card], hasNext: Bool), Error>) -> ()) {
     searchCards(
       filters: [.set(gameSet.code), .game(.paper)],
       unique: .prints,
-      order: nil,
+      order: sort,
       sortDirection: .auto,
       includeExtras: true,
       includeMultilingual: false,
@@ -33,12 +33,4 @@ extension ScryfallClient: SetDetailNetworkService {
       }
     }
   }
-}
-
-enum SetDetailSortMode {
-  case name
-  case price
-  case color
-  case rarity
-  case released
 }
