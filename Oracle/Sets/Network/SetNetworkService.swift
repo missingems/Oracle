@@ -72,10 +72,3 @@ enum SetNetworkServiceError: Error {
   case noQuery
   case noResult
 }
-
-
-
-// Sort the array based on closeness to the target character
-//let sortedStrings = strings.sorted {
-//  distanceFromTarget($0, target: Character(targetCharacter)) < distanceFromTarget($1, target: Character(targetCharacter))
-//}
