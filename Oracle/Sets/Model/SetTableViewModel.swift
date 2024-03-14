@@ -46,8 +46,6 @@ final class SetTableViewModel {
 
     case .viewDidLoad:
       didUpdate?(.isLoading)
-      
-    case .viewWillAppear:
       fetchSets { [weak self] in
         self?.didUpdate?(.shouldReloadData)
       }
@@ -95,7 +93,6 @@ extension SetTableViewModel {
     case searchBarResigned
     case searchBarTextChanged(String)
     case viewDidLoad
-    case viewWillAppear
   }
   
   enum Message: Equatable {

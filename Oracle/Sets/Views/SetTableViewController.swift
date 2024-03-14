@@ -70,11 +70,6 @@ extension SetTableViewController {
     viewModel.update(.viewDidLoad)
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    viewModel.update(.viewWillAppear)
-  }
-  
   @objc private func pullToRefreshValueChanged() {
     viewModel.update(.pullToRefreshInvoked)
   }
