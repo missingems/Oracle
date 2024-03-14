@@ -11,6 +11,7 @@ import ScryfallKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
+  let setCoordinator = SetCoordinator(root: .showSets)
   
   func scene(_ scene: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
     let SVGCoder = SDImageSVGNativeCoder.shared
@@ -19,11 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: windowScene)
     let tabBarController = UITabBarController()
-    let viewController = UINavigationController(rootViewController: setTableViewController())
-    viewController.navigationBar.prefersLargeTitles = true
+    
     tabBarController.setViewControllers([
-      viewController,
+      setCoordinator.navigationController,
     ], animated: false)
+    
     window?.tintColor = .accent
     window?.rootViewController = tabBarController
     window?.makeKeyAndVisible()
@@ -58,11 +59,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     // Save changes in the application's managed object context when the application transitions to the background.
     (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
-  }
-}
-
-extension SceneDelegate {
-  func setTableViewController() -> SetTableViewController {
-    SetTableViewController(viewModel: SetTableViewModel(client: ScryfallClient()))
   }
 }

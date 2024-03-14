@@ -10,7 +10,7 @@ import XCTest
 
 final class SetTableViewModelTests: XCTestCase {
   func test_initialDataSource_isEmpty() {
-    XCTAssertTrue(viewModel().dataSource.isEmpty)
+    XCTAssertTrue(viewModel().displayingDataSource.isEmpty)
   }
   
   func test_updateViewDidLoad_shouldShowIsLoading() {
@@ -42,7 +42,7 @@ final class SetTableViewModelTests: XCTestCase {
   func test_when_dataSourceChanged_compareReceivedDataSource() throws {
     let viewModel = viewModel(isSuccess: true)
     viewModel.update(.viewWillAppear)
-    let cardSet = try XCTUnwrap(viewModel.dataSource.first as? TestCardSet, "ViewModel should have 1 card set after fetching sets")
+    let cardSet = try XCTUnwrap(viewModel.displayingDataSource.first as? TestCardSet, "ViewModel should have 1 card set after fetching sets")
     // Make sure CardSet is not mutated
     XCTAssertEqual(cardSet, TestCardSet())
   }
@@ -52,7 +52,7 @@ final class SetTableViewModelTests: XCTestCase {
     var capturedMessages: [SetTableViewModel.Message] = []
     viewModel.didUpdate = { capturedMessages.append($0) }
     viewModel.update(.viewWillAppear)
-    XCTAssertEqual(capturedMessages, [.shouldDisplayError(TestError.testError)])
+    XCTAssertEqual(capturedMessages, [.shouldDisplayError(TestError.testError), .shouldReloadData])
   }
   
   func test_configuration() {
@@ -63,7 +63,7 @@ final class SetTableViewModelTests: XCTestCase {
   }
   
   private func viewModel(isSuccess: Bool = false) -> SetTableViewModel {
-    SetTableViewModel(client: TestSetNetworkService(isSuccess: isSuccess))
+    SetTableViewModel(client: TestSetNetworkService(isSuccess: isSuccess), coordinator: SetCoordinator(root: .showSets))
   }
 }
 
@@ -86,11 +86,13 @@ private struct TestSetNetworkService: SetNetworkService {
     self.isSuccess = isSuccess
   }
   
-  func fetchSets(_ completion: @escaping (Result<[any Oracle.GameSet], any Error>) -> ()) {
+  func fetchSets(completion: @escaping (Result<[any Oracle.GameSet], any Error>) -> ()) {
     if isSuccess {
       completion(.success([TestCardSet()]))
     } else {
       completion(.failure(TestError.testError))
     }
   }
+  
+  func querySets(query: String, in sets: [any Oracle.GameSet], completion: @escaping (Result<[any Oracle.GameSet], Error>) -> ()) {}
 }

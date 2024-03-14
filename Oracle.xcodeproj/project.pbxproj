@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BF241C012BA1C7D7001687CA /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF241C002BA1C7D7001687CA /* Anchorage */; };
+		BF241C042BA28D62001687CA /* SetDetailNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */; };
+		BF241C082BA29151001687CA /* SetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C072BA29151001687CA /* SetCoordinator.swift */; };
 		BF5478B32B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B22B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift */; };
 		BF5478B72B8DD680004D2CC8 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */; };
 		BF5478B92B8EBFFB004D2CC8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */; };
@@ -65,6 +67,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailNetworkService.swift; sourceTree = "<group>"; };
+		BF241C072BA29151001687CA /* SetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCoordinator.swift; sourceTree = "<group>"; };
 		BF5478B22B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -135,6 +139,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF241C022BA28D4A001687CA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		BF5478B42B8DD671004D2CC8 /* Card */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				BF9862562B8CB63800F5CB13 /* Models */,
+				BF241C022BA28D4A001687CA /* Network */,
 				BF9862572B8CB63C00F5CB13 /* Views */,
 			);
 			path = "Set Detail";
@@ -249,6 +262,7 @@
 				BF67DBDB2BA1B4D6002317A7 /* Model */,
 				BF67DBCC2BA16BBE002317A7 /* Network */,
 				BFB366282B7CA675004814FB /* Views */,
+				BF241C072BA29151001687CA /* SetCoordinator.swift */,
 			);
 			path = Sets;
 			sourceTree = "<group>";
@@ -464,6 +478,7 @@
 				BF5478B72B8DD680004D2CC8 /* CardDetailViewController.swift in Sources */,
 				BFD077C62B946F4E009C6B4C /* SinkableCell.swift in Sources */,
 				BF98625B2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift in Sources */,
+				BF241C082BA29151001687CA /* SetCoordinator.swift in Sources */,
 				BF5478B32B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift in Sources */,
 				BF5478D42B90367A004D2CC8 /* CardDetailTypelineRowView.swift in Sources */,
 				BFFCAD5F2B962AA100986C34 /* InsetLabel.swift in Sources */,
@@ -478,6 +493,7 @@
 				BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */,
 				BF5478CE2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift in Sources */,
 				BFD077C22B941B82009C6B4C /* CardVersionRowView.swift in Sources */,
+				BF241C042BA28D62001687CA /* SetDetailNetworkService.swift in Sources */,
 				BF67DBCE2BA16BCC002317A7 /* SetNetworkService.swift in Sources */,
 				BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */,
 				BFD077C42B9444F8009C6B4C /* Ambient.swift in Sources */,
