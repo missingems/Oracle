@@ -2,10 +2,14 @@ import ScryfallKit
 
 final class SetDetailCollectionViewModel {
   private let client: any SetDetailNetworkService
-  private(set) var dataSource: [Card] = []
   let configuration: Configuration
-  private let set: any GameSet
+  private var currentPage: Int = 1
+  private(set) var dataSource: [Card] = []
   var didUpdate: ((Message) -> ())?
+  private var hasNext: Bool = false
+  private var isLoading: Bool = false
+  private let set: any GameSet
+  
   
   init(
     set: any GameSet,
@@ -20,14 +24,33 @@ final class SetDetailCollectionViewModel {
     switch event {
     case .viewDidLoad:
       fetchCards()
+      
+    case let .willDisplayItem(index):
+      if shouldLoadNextPage(at: index) {
+        fetchCards()
+      }
     }
   }
   
   private func fetchCards() {
-    client.fetchSetDetail(gameSet: set, page: 0, sort: .released) { [weak self] result in
+    guard isLoading == false else {
+      return
+    }
+    
+    isLoading = true
+    
+    client.fetchSetDetail(gameSet: set, page: currentPage, sort: .released) { [weak self] result in
+      self?.isLoading = false
+      
       switch result {
       case let .success(value):
-        self?.dataSource = value
+        self?.dataSource.append(contentsOf: value.cards)
+        self?.hasNext = value.hasNext
+        
+        if value.hasNext {
+          self?.currentPage += 1
+        }
+        
         self?.didUpdate?(.shouldReloadData)
         
       case let .failure(error):
@@ -36,11 +59,20 @@ final class SetDetailCollectionViewModel {
       }
     }
   }
+  
+  private func shouldLoadNextPage(at index: Int) -> Bool {
+    if index == dataSource.count - 4, hasNext {
+      return true
+    } else {
+      return false
+    }
+  }
 }
 
 extension SetDetailCollectionViewModel {
   enum Event {
     case viewDidLoad
+    case willDisplayItem(index: Int)
   }
   
   enum Message {

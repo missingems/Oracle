@@ -132,7 +132,10 @@ extension SetTableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let set = viewModel.displayingDataSource[indexPath.row]
-    viewModel.update(.didSelectSet(set))
+    viewModel.update(
+      .didSelectSet(
+        viewModel.displayingDataSource[indexPath.row]
+      )
+    )
   }
 }

@@ -102,4 +102,8 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
 //    let cardViewController = CardDetailViewController(viewModel: CardDetailViewModel(card: card, set: viewModel.set))
 //    self.navigationController?.pushViewController(cardViewController, animated: true)
   }
+  
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    viewModel.update(.willDisplayItem(index: indexPath.item))
+  }
 }
