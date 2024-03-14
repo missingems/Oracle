@@ -26,6 +26,15 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
     super.init(nibName: nil, bundle: nil)
     ambient.embed(in: view, cells: SetDetailCollectionViewCell.self)
     setContentScrollView(ambient.collectionView)
+    
+    viewModel.didUpdate = { [weak self] message in
+      DispatchQueue.main.async {
+        switch message {
+        case .shouldReloadData:
+          self?.ambient.reloadData()
+        }
+      }
+    }
   }
   
   required init?(coder: NSCoder) {
@@ -36,10 +45,10 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
     super.viewDidLoad()
     navigationItem.largeTitleDisplayMode = .never
     view.backgroundColor = .systemBackground
-    title = viewModel.title
+    title = viewModel.configuration.title
     
-    titleLabel.text = viewModel.title
-    subtitleLabel.text = viewModel.subtitle
+    titleLabel.text = viewModel.configuration.title
+    subtitleLabel.text = viewModel.configuration.subtitle
     
     let stackView = UIStackView(arrangedSubviews: [
       titleLabel,
@@ -47,26 +56,28 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
     ])
     stackView.axis = .vertical
     navigationItem.titleView = stackView
+    
+    viewModel.update(.viewDidLoad)
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SetDetailCollectionViewCell", for: indexPath) as? SetDetailCollectionViewCell else {
       fatalError()
     }
-    
+    cell.configure(viewModel.dataSource[indexPath.item])
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    0
+    viewModel.dataSource.count
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 13
+    13
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return 8
+    8
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -90,5 +101,9 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
 //    let card = viewModel.state.cards[indexPath.item]
 //    let cardViewController = CardDetailViewController(viewModel: CardDetailViewModel(card: card, set: viewModel.set))
 //    self.navigationController?.pushViewController(cardViewController, animated: true)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    viewModel.update(.willDisplayItem(index: indexPath.item))
   }
 }
