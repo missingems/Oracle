@@ -15,7 +15,7 @@ protocol SetDetailNetworkService {
 extension ScryfallClient: SetDetailNetworkService {
   func fetchSetDetail(gameSet: any GameSet, page: Int, sort: SetDetailSortMode, completion: @escaping (Result<[Card], Error>) -> ()) {
     searchCards(
-      filters: [.set(gameSet.code)],
+      filters: [.set(gameSet.code), .game(.paper)],
       unique: .prints,
       order: nil,
       sortDirection: .auto,
