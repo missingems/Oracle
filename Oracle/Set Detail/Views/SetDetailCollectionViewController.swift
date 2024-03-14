@@ -18,19 +18,22 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
     return label
   }()
   
+  private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
   private lazy var ambient = Ambient(host: self, configuration: Ambient.Configuration())
   private let viewModel: SetDetailCollectionViewModel
   
   init(_ viewModel: SetDetailCollectionViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
-    ambient.embed(in: view, cells: SetDetailCollectionViewCell.self)
-    setContentScrollView(ambient.collectionView)
     
     viewModel.didUpdate = { [weak self] message in
       guard let self else { return }
+      
       DispatchQueue.main.async {
         switch message {
+        case .shouldShowIsLoading:
+          self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.activityIndicatorView)
+          
         case .shouldReloadData:
           self.ambient.reloadData()
           self.ambient.collectionView.refreshControl?.endRefreshing()
@@ -50,6 +53,9 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
         }
       }
     }
+    
+    ambient.embed(in: view, cells: SetDetailCollectionViewCell.self)
+    setContentScrollView(ambient.collectionView)
   }
   
   required init?(coder: NSCoder) {
@@ -59,6 +65,8 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationItem.largeTitleDisplayMode = .never
+    activityIndicatorView.startAnimating()
+    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicatorView)
     view.backgroundColor = .systemBackground
     title = viewModel.configuration.title
     let refreshControl = UIRefreshControl()

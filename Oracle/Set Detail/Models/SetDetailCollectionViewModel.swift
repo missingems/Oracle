@@ -24,6 +24,7 @@ final class SetDetailCollectionViewModel {
   func update(_ event: Event) {
     switch event {
     case let .didSelectSortMode(value):
+      didUpdate?(.shouldShowIsLoading)
       sortMode = value
       reset()
       fetchCards()
@@ -99,6 +100,7 @@ extension SetDetailCollectionViewModel {
   
   enum Message {
     case shouldReloadData
+    case shouldShowIsLoading
   }
 }
 
@@ -116,6 +118,7 @@ extension SetDetailCollectionViewModel {
         .released,
         .rarity,
         .usd,
+        .set,
         .color,
         .cmc,
         .power,
@@ -140,20 +143,14 @@ extension SortMode {
       return String(localized: "Rarity")
     case .color:
       return String(localized: "Color")
-    case .tix:
-      return String(localized: "Tix")
-    case .eur:
-      return String(localized: "Eur")
     case .cmc:
       return String(localized: "Mana Value")
     case .power:
       return String(localized: "Power")
     case .toughness:
       return String(localized: "Toughness")
-    case .edhrec:
-      return String(localized: "EDHREC")
-    case .artist:
-      return String(localized: "Artist")
+    default:
+      return ""
     }
   }
 }

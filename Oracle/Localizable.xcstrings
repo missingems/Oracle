@@ -17,9 +17,6 @@
         }
       }
     },
-    "Artist" : {
-
-    },
     "Banned" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -32,12 +29,6 @@
       }
     },
     "Color" : {
-
-    },
-    "EDHREC" : {
-
-    },
-    "Eur" : {
 
     },
     "Illustrated by" : {
@@ -157,9 +148,6 @@
           }
         }
       }
-    },
-    "Tix" : {
-
     },
     "Toughness" : {
 
