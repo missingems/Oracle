@@ -12,17 +12,22 @@ final class SetTableViewModel {
   
   private let client: any SetNetworkService
   let configuration: Configuration = Configuration()
+  private weak var coordinator: SetCoordinator?
   private var dataSource: [any GameSet] = []
   private(set) var displayingDataSource: [any GameSet] = []
   
   var didUpdate: StateHandler?
   
-  init(client: any SetNetworkService) {
+  init(client: any SetNetworkService, coordinator: SetCoordinator) {
     self.client = client
+    self.coordinator = coordinator
   }
   
   func update(_ event: Event) {
     switch event {
+    case let .didSelectSet(set):
+      coordinator?.show(destination: .showSetDetail(set: set))
+      
     case .pullToRefreshInvoked:
       fetchSets { [weak self] in
         self?.didUpdate?(.shouldReloadData)
@@ -84,7 +89,8 @@ final class SetTableViewModel {
 }
 
 extension SetTableViewModel {
-  enum Event: Equatable {
+  enum Event {
+    case didSelectSet(any GameSet)
     case pullToRefreshInvoked
     case searchBarResigned
     case searchBarTextChanged(String)

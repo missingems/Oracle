@@ -132,8 +132,7 @@ extension SetTableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    let set = viewModel.dataSource[indexPath.row]
-//    let detail = SetDetailCollectionViewController(SetDetailCollectionViewModel(set: set))
-//    show(detail, sender: cell)
+    let set = viewModel.displayingDataSource[indexPath.row]
+    viewModel.update(.didSelectSet(set))
   }
 }

@@ -19,12 +19,7 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
   }()
   
   private lazy var ambient = Ambient(host: self, configuration: Ambient.Configuration())
-  
-  private var viewModel: SetDetailCollectionViewModel {
-    didSet {
-      ambient.reloadData()
-    }
-  }
+  private let viewModel: SetDetailCollectionViewModel
   
   init(_ viewModel: SetDetailCollectionViewModel) {
     self.viewModel = viewModel
@@ -52,10 +47,6 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
     ])
     stackView.axis = .vertical
     navigationItem.titleView = stackView
-    
-    Task { [weak self] in
-      await self?.viewModel.fetchCards()
-    }
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -63,27 +54,11 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
       fatalError()
     }
     
-    switch viewModel.state {
-    case let .data(cards):
-      cell.configure(cards[indexPath.row])
-      
-    case .placeholder:
-      cell.setPlaceholder()
-  
-    default:
-      break
-    }
-    
-    if collectionView === ambient.collectionView {
-      cell.onHighlighted = { [weak self] isHighlighted in
-        self?.ambient.syncHighlightedCell(at: indexPath, isHighlighted: isHighlighted)
-      }
-    }
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    viewModel.state.numberOfItems
+    0
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -112,8 +87,8 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let card = viewModel.state.cards[indexPath.item]
-    let cardViewController = CardDetailViewController(viewModel: CardDetailViewModel(card: card, set: viewModel.set))
-    self.navigationController?.pushViewController(cardViewController, animated: true)
+//    let card = viewModel.state.cards[indexPath.item]
+//    let cardViewController = CardDetailViewController(viewModel: CardDetailViewModel(card: card, set: viewModel.set))
+//    self.navigationController?.pushViewController(cardViewController, animated: true)
   }
 }
