@@ -14,12 +14,15 @@ final class SetCoordinator {
     case showSets
   }
   
-  private(set) lazy var navigationController = UINavigationController(rootViewController: viewController(for: root))
+  private(set) lazy var rootViewController = viewController(for: root)
+  private(set) lazy var navigationController = UINavigationController(rootViewController: rootViewController)
   private let networkServiceClient = ScryfallClient()
   private let root: Destination
   
   init(root: Destination) {
     self.root = root
+    navigationController.navigationItem.largeTitleDisplayMode = .always
+    rootViewController.navigationController?.navigationBar.prefersLargeTitles = true
   }
   
   func show(destination: Destination) {
