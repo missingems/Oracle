@@ -74,6 +74,7 @@ final class CardView: UIView {
     _ card: Card,
     imageType: Card.ImageType,
     size: CardView.Size,
+    showPrice: Bool,
     completion: ((UIImage?) -> ())? = nil
   ) {
     loadingIndicator.startAnimating()
@@ -87,7 +88,7 @@ final class CardView: UIView {
     
     let price = card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00"
     priceCapsuleLabel.text = "$\(price)"
-    priceContainerView.isHidden = size != .regular
+    priceContainerView.isHidden = !showPrice
     priceCapsuleLabel.alpha = 1
     drawCornerRadius(size: size)
   }
@@ -106,7 +107,7 @@ final class CardView: UIView {
       imageView.layer.cornerRadius = 9
       
     case .small:
-      imageView.layer.cornerRadius = 5
+      imageView.layer.cornerRadius = 9
     }
   }
   

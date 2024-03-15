@@ -105,7 +105,7 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SetDetailCollectionViewCell", for: indexPath) as? SetDetailCollectionViewCell else {
       fatalError()
     }
-    cell.configure(viewModel.dataSource[indexPath.item])
+    cell.configure(viewModel.dataSource[indexPath.item], showPrice: true)
     return cell
   }
   
