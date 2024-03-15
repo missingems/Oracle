@@ -2,6 +2,7 @@ import ScryfallKit
 
 final class SetDetailCollectionViewModel {
   private let client: any SetDetailNetworkService
+  private weak var coordinator: SetCoordinator?
   let configuration: Configuration
   private var currentPage: Int = 1
   private(set) var dataSource: [Card] = []
@@ -14,15 +15,20 @@ final class SetDetailCollectionViewModel {
   
   init(
     query: QueryType,
-    client: any SetDetailNetworkService
+    client: any SetDetailNetworkService,
+    coordinator: SetCoordinator
   ) {
     self.query = query
     self.client = client
     configuration = Configuration(query: query)
+    self.coordinator = coordinator
   }
   
   func update(_ event: Event) {
     switch event {
+    case let .didSelectCard(card):
+      coordinator?.show(destination: .showCard(card))
+      
     case let .didSelectSortDirection(value):
       didUpdate?(.shouldShowIsLoading)
       sortDirection = value
@@ -139,6 +145,7 @@ extension SetDetailCollectionViewModel {
   }
   
   enum Event {
+    case didSelectCard(Card)
     case didSelectSortDirection(SortDirection)
     case didSelectSortMode(SortMode)
     case pullToRefresh

@@ -30,7 +30,6 @@ final class SetTableViewController: UITableViewController {
           self.tableView.backgroundView = loadingIndicator
           
         case .shouldReloadData:
-          self.navigationItem.rightBarButtonItem = nil
           self.tableView.backgroundView = nil
           
           UIView.transition(with: self.tableView, duration: 0.1, options: .transitionCrossDissolve, animations: {
