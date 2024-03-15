@@ -10,9 +10,9 @@ import Anchorage
 import UIKit
 
 final class CardSetInformationRowView: UIView {
-  private let rarityLabel = CardSetInformationRowView.makeCaptionLabel()
-  private let cardNumberLabel = CardSetInformationRowView.makeCaptionLabel()
-  private let setNameLabel = CardSetInformationRowView.makeCaptionLabel(textColor: .secondaryLabel)
+  private let rarityLabel = CardSetInformationRowView.makeLabel(font: .preferredFont(forTextStyle: .footnote))
+  private let cardNumberLabel = CardSetInformationRowView.makeLabel(font: .preferredFont(forTextStyle: .footnote))
+  private let setNameLabel = CardSetInformationRowView.makeLabel(font: .preferredFont(forTextStyle: .footnote), textColor: .secondaryLabel)
   
   private lazy var setIdLabel = {
     let label = InsetLabel()
@@ -34,36 +34,37 @@ final class CardSetInformationRowView: UIView {
     super.init(frame: .zero)
     
     let rarityAndCardNumberStackView = UIStackView(arrangedSubviews: [
-      cardNumberLabel, rarityLabel
+      rarityLabel, cardNumberLabel, UIView()
     ])
     rarityAndCardNumberStackView.spacing = 5
     
     let setStackView = UIStackView(arrangedSubviews: [
-      setIdLabel, setNameLabel
+      setIdLabel, setNameLabel, UIView()
     ])
     setStackView.spacing = 5
     
     let contentStackView = UIStackView(arrangedSubviews: [
-      setStackView,
-      UIView(),
       rarityAndCardNumberStackView,
+      setStackView,
     ])
+    contentStackView.axis = .vertical
     contentStackView.spacing = 5.0
     
     let backgroundView = UIView()
-    backgroundView.backgroundColor = .quaternarySystemFill
     backgroundView.addSubview(contentStackView)
-    contentStackView.horizontalAnchors == backgroundView.horizontalAnchors + 8
+    contentStackView.horizontalAnchors == backgroundView.horizontalAnchors
     contentStackView.verticalAnchors == backgroundView.verticalAnchors + 13.0
-    backgroundView.layer.cornerCurve = .continuous
-    backgroundView.layer.cornerRadius = 9
-    backgroundView.clipsToBounds = true
     
     addSubview(backgroundView)
     backgroundView.horizontalAnchors == layoutMarginsGuide.horizontalAnchors
     backgroundView.verticalAnchors == verticalAnchors
     preservesSuperviewLayoutMargins = true
     configure(card)
+    
+    let separator = UIView.separator()
+    addSubview(separator)
+    separator.horizontalAnchors == horizontalAnchors
+    separator.bottomAnchor == bottomAnchor
   }
   
   required init?(coder: NSCoder) {
@@ -77,9 +78,9 @@ final class CardSetInformationRowView: UIView {
     setNameLabel.text = card.setName
   }
   
-  private static func makeCaptionLabel(textColor: UIColor = .label) -> UILabel {
+  private static func makeLabel(font: UIFont, textColor: UIColor = .label) -> UILabel {
     let label = UILabel()
-    label.font = UIFont.preferredFont(forTextStyle: .caption1)
+    label.font = font
     label.textColor = textColor
     return label
   }

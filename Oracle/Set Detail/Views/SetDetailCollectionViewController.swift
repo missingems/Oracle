@@ -139,9 +139,8 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    let card = viewModel.dataSource[indexPath.item]
-//    let cardViewController = CardDetailViewController(viewModel: CardDetailViewModel(card: card, set: viewModel.set))
-//    self.navigationController?.pushViewController(cardViewController, animated: true)
+    let card = viewModel.dataSource[indexPath.item]
+    viewModel.update(.didSelectCard(card))
   }
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

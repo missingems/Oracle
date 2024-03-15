@@ -4,7 +4,6 @@ import Foundation
 struct CardDetailViewModel {
   private let client: ScryfallClient
   let card: Card
-  let set: any GameSet
   var selectedFace: Card.Face?
   private(set) var versions: [Card]
   
@@ -90,10 +89,9 @@ struct CardDetailViewModel {
     String(localized: "Illustrated by")
   }
   
-  init(card: Card, set: any GameSet) {
+  init(card: Card) {
     client = ScryfallClient(networkLogLevel: .minimal)
     self.card = card
-    self.set = set
     self.selectedFace = card.cardFaces?.first
     versions = [card]
   }
