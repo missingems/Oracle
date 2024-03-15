@@ -10,6 +10,7 @@
 		BF241C012BA1C7D7001687CA /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF241C002BA1C7D7001687CA /* Anchorage */; };
 		BF241C042BA28D62001687CA /* SetDetailNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */; };
 		BF241C082BA29151001687CA /* SetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C072BA29151001687CA /* SetCoordinator.swift */; };
+		BF241C0D2BA3E1FC001687CA /* CardSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C0C2BA3E1FC001687CA /* CardSearchTableViewCell.swift */; };
 		BF5478B32B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B22B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift */; };
 		BF5478B72B8DD680004D2CC8 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */; };
 		BF5478B92B8EBFFB004D2CC8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */; };
@@ -69,6 +70,7 @@
 /* Begin PBXFileReference section */
 		BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailNetworkService.swift; sourceTree = "<group>"; };
 		BF241C072BA29151001687CA /* SetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCoordinator.swift; sourceTree = "<group>"; };
+		BF241C0C2BA3E1FC001687CA /* CardSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchTableViewCell.swift; sourceTree = "<group>"; };
 		BF5478B22B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 		BFB366282B7CA675004814FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BF241C0C2BA3E1FC001687CA /* CardSearchTableViewCell.swift */,
 				BF56E6762B847C730018B620 /* SetTableViewCell.swift */,
 				BFB366232B7C9767004814FB /* SetTableViewController.swift */,
 			);
@@ -485,6 +488,7 @@
 				BF5478E42B90779B004D2CC8 /* CardIllustratorRowView.swift in Sources */,
 				BF56E6772B847C730018B620 /* SetTableViewCell.swift in Sources */,
 				BFD077C82B94B0EB009C6B4C /* FoilEffectView.swift in Sources */,
+				BF241C0D2BA3E1FC001687CA /* CardSearchTableViewCell.swift in Sources */,
 				BF5478E22B905A78004D2CC8 /* CardDetailLegalityRowView.swift in Sources */,
 				BF5478D62B903FA2004D2CC8 /* CardDetailImageContainerRowView.swift in Sources */,
 				BF5478D22B9034A8004D2CC8 /* CardDetailRowView.swift in Sources */,
