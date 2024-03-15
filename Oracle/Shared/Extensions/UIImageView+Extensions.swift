@@ -15,7 +15,7 @@ extension UIImageView {
     sd_setImage(
       with: url,
       placeholderImage: placeholder,
-      options: [.refreshCached, .retryFailed, .avoidAutoSetImage],
+      options: [.refreshCached, .retryFailed, .avoidAutoSetImage, .avoidAutoCancelImage],
       context: context,
       progress: nil
     ) { [weak self] image, error, cache, url in
