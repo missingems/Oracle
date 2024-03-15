@@ -69,6 +69,8 @@ final class SetTableViewModel {
   }
   
   private func fetchSets(onComplete: (() -> Void)? = nil) {
+    didUpdate?(.isLoading)
+    
     client.fetchSets { [weak self] result in
       switch result {
       case let .success(value):
@@ -84,6 +86,8 @@ final class SetTableViewModel {
   }
   
   private func querySets(query: String, onComplete: (() -> Void)? = nil) {
+    didUpdate?(.isLoading)
+    
     client.querySets(query: query, in: dataSource) { [weak self] result in
       switch result {
       case let .success(value):
