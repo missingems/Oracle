@@ -109,7 +109,6 @@ final class CardDetailViewController: UIViewController {
   }
   
   private func configure() {
-    imageContainerRowView.configure(with: viewModel.cardImageURL)
     titleDetailRow.configure(viewModel.name, manaCost: viewModel.manaCost)
     typelineRow.configure(with: viewModel.typeLine)
     textRow.configure(with: viewModel.text)

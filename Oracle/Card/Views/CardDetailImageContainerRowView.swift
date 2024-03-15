@@ -45,6 +45,8 @@ final class CardDetailImageContainerRowView: UIView {
     cardImageView.didTappedTransform = {
       action(.transformTapped)
     }
+    
+    configure(with: card.getImageURL(type: .normal))
   }
   
   required init?(coder: NSCoder) {

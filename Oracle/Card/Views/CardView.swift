@@ -143,7 +143,7 @@ final class CardView: UIView {
       flipContainerView.isHidden = true
     }
     
-    imageView.setAsyncImage(card.getImageURL(type: imageType), placeholder: .mtgBack)
+    imageView.setAsyncImage(card.getImageURL(type: imageType), placeholder: .mtgBack, onComplete: completion)
   }
   
   func setPlaceholder(size: CardView.Size) {

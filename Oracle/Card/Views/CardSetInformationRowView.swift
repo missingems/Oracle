@@ -10,9 +10,9 @@ import Anchorage
 import UIKit
 
 final class CardSetInformationRowView: UIView {
-  private let rarityLabel = CardSetInformationRowView.makeLabel(font: .preferredFont(forTextStyle: .footnote))
-  private let cardNumberLabel = CardSetInformationRowView.makeLabel(font: .preferredFont(forTextStyle: .footnote))
-  private let setNameLabel = CardSetInformationRowView.makeLabel(font: .preferredFont(forTextStyle: .footnote), textColor: .secondaryLabel)
+  private let rarityLabel = CardSetInformationRowView.makeLabel(font: .preferredFont(forTextStyle: .caption1))
+  private let cardNumberLabel = CardSetInformationRowView.makeLabel(font: .preferredFont(forTextStyle: .caption1))
+  private let setNameLabel = CardSetInformationRowView.makeLabel(font: .preferredFont(forTextStyle: .caption1), textColor: .secondaryLabel)
   
   private lazy var setIdLabel = {
     let label = InsetLabel()
