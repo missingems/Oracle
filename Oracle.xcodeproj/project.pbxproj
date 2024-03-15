@@ -33,7 +33,7 @@
 		BF98625B2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98625A2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift */; };
 		BFB366242B7C9767004814FB /* SetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB366232B7C9767004814FB /* SetTableViewController.swift */; };
 		BFB366262B7CA663004814FB /* SetTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB366252B7CA663004814FB /* SetTableViewModel.swift */; };
-		BFD077C22B941B82009C6B4C /* CardVersionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C12B941B82009C6B4C /* CardVersionRowView.swift */; };
+		BFD077C22B941B82009C6B4C /* CardRelevanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C12B941B82009C6B4C /* CardRelevanceView.swift */; };
 		BFD077C42B9444F8009C6B4C /* Ambient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C32B9444F8009C6B4C /* Ambient.swift */; };
 		BFD077C62B946F4E009C6B4C /* SinkableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C52B946F4E009C6B4C /* SinkableCell.swift */; };
 		BFD077C82B94B0EB009C6B4C /* FoilEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */; };
@@ -92,7 +92,7 @@
 		BF98625A2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		BFB366232B7C9767004814FB /* SetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewController.swift; sourceTree = "<group>"; };
 		BFB366252B7CA663004814FB /* SetTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewModel.swift; sourceTree = "<group>"; };
-		BFD077C12B941B82009C6B4C /* CardVersionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVersionRowView.swift; sourceTree = "<group>"; };
+		BFD077C12B941B82009C6B4C /* CardRelevanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRelevanceView.swift; sourceTree = "<group>"; };
 		BFD077C32B9444F8009C6B4C /* Ambient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ambient.swift; sourceTree = "<group>"; };
 		BFD077C52B946F4E009C6B4C /* SinkableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinkableCell.swift; sourceTree = "<group>"; };
 		BFD077C72B94B0EB009C6B4C /* FoilEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoilEffectView.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 				BF5478D52B903FA2004D2CC8 /* CardDetailImageContainerRowView.swift */,
 				BF5478E12B905A78004D2CC8 /* CardDetailLegalityRowView.swift */,
 				BF5478E32B90779B004D2CC8 /* CardIllustratorRowView.swift */,
-				BFD077C12B941B82009C6B4C /* CardVersionRowView.swift */,
+				BFD077C12B941B82009C6B4C /* CardRelevanceView.swift */,
 				BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */,
 			);
 			path = Views;
@@ -496,7 +496,7 @@
 				BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */,
 				BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */,
 				BF5478CE2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift in Sources */,
-				BFD077C22B941B82009C6B4C /* CardVersionRowView.swift in Sources */,
+				BFD077C22B941B82009C6B4C /* CardRelevanceView.swift in Sources */,
 				BF241C042BA28D62001687CA /* SetDetailNetworkService.swift in Sources */,
 				BF67DBCE2BA16BCC002317A7 /* SetNetworkService.swift in Sources */,
 				BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */,

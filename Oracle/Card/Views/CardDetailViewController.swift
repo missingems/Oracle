@@ -39,7 +39,7 @@ final class CardDetailViewController: UIViewController {
   }
   
   private lazy var informationRow = CardSetInformationRowView(viewModel.card)
-  private lazy var versionRow = CardVersionRowView(cards: viewModel.versions)
+  private lazy var versionRow = CardRelevanceView(cards: viewModel.versions)
   
   private lazy var flavorRow: CardDetailRowView = {
     let fontDescriptor = UIFont

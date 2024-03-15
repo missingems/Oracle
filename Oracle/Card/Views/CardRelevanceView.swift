@@ -2,7 +2,7 @@ import Anchorage
 import UIKit
 import ScryfallKit
 
-final class CardVersionRowView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+final class CardRelevanceView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
   private lazy var ambient: Ambient = {
     let flowLayout = UICollectionViewFlowLayout()
     flowLayout.scrollDirection = .horizontal
