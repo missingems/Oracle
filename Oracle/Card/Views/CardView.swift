@@ -26,6 +26,7 @@ final class CardView: UIView {
   private let flipContainerView = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
   private var selectedFace: Card.Face?
   private var card: Card?
+  var didTappedTransform: (() -> ())?
   
   init() {
     super.init(frame: .zero)
@@ -94,6 +95,8 @@ final class CardView: UIView {
   
   @objc
   private func flipButtonTapped() {
+    didTappedTransform?()
+    
     var flipRight = true
     if selectedFace == card?.cardFaces?.first {
       selectedFace = card?.cardFaces?.last
@@ -109,7 +112,7 @@ final class CardView: UIView {
     UIView.transition(
       with: imageContainerView,
       duration: 0.315,
-      options: flipRight ? .transitionFlipFromLeft : .transitionFlipFromRight
+      options: flipRight ? .transitionFlipFromRight : .transitionFlipFromLeft
     ) {
       self.imageView.setAsyncImage(url, placeholder: .mtgBack)
     }
@@ -140,9 +143,7 @@ final class CardView: UIView {
       flipContainerView.isHidden = true
     }
     
-    imageView.setAsyncImage(card.getImageURL(type: imageType), placeholder: .mtgBack) { image in
-      completion?(image)
-    }
+    imageView.setAsyncImage(card.getImageURL(type: imageType), placeholder: .mtgBack)
   }
   
   func setPlaceholder(size: CardView.Size) {
