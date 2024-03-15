@@ -16,17 +16,22 @@ final class CardView: UIView {
     case large
   }
   
+  private let imageContainerView = UIView()
   private let imageView = UIImageView()
   private let foilView = FoilEffectView(frame: .zero)
   private let priceCapsuleLabel = InsetLabel(UIEdgeInsets(top: 3, left: 6, bottom: 3, right: 6))
   private let priceContainerView = UIView()
   private lazy var loadingIndicator = UIActivityIndicatorView(style: .medium)
+  private lazy var flipButton = UIButton(type: .system)
+  private let flipContainerView = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
+  private var selectedFace: Card.Face?
+  private var card: Card?
   
   init() {
     super.init(frame: .zero)
     
     let stackView = UIStackView(arrangedSubviews: [
-      imageView,
+      imageContainerView,
       priceContainerView,
     ])
     addSubview(stackView)
@@ -34,8 +39,10 @@ final class CardView: UIView {
     stackView.axis = .vertical
     stackView.edgeAnchors == edgeAnchors
     
-    imageView.heightAnchor == imageView.widthAnchor * 1.3928
-    imageView.horizontalAnchors == stackView.horizontalAnchors
+    imageContainerView.addSubview(imageView)
+    imageView.edgeAnchors == imageContainerView.edgeAnchors
+    imageContainerView.heightAnchor == imageContainerView.widthAnchor * 1.3928
+    imageContainerView.horizontalAnchors == stackView.horizontalAnchors
     imageView.layer.cornerCurve = .continuous
     imageView.clipsToBounds = true
     
@@ -68,6 +75,44 @@ final class CardView: UIView {
     
     imageView.layer.borderWidth = 1 / UIScreen.main.nativeScale
     imageView.layer.borderColor = UIColor.separator.cgColor
+    
+    flipContainerView.contentView.addSubview(flipButton)
+    flipButton.edgeAnchors == flipContainerView.contentView.edgeAnchors
+    flipButton.setImage(UIImage(systemName: "arrow.left.and.right.righttriangle.left.righttriangle.right.fill"), for: .normal)
+    addSubview(flipContainerView)
+    flipContainerView.sizeAnchors == CGSize(width: 44, height: 44)
+    flipContainerView.centerXAnchor == trailingAnchor - 25
+    flipContainerView.centerYAnchor == imageContainerView.centerYAnchor - 22
+    flipContainerView.layer.cornerRadius = 22
+    flipContainerView.clipsToBounds = true
+    flipContainerView.layer.cornerCurve = .circular
+    flipContainerView.layer.borderWidth = 1 / UIScreen.main.nativeScale
+    flipContainerView.layer.borderColor = UIColor.separator.cgColor
+    flipContainerView.isHidden = true
+    flipButton.addTarget(self, action: #selector(flipButtonTapped), for: .touchUpInside)
+  }
+  
+  @objc
+  private func flipButtonTapped() {
+    var flipRight = true
+    if selectedFace == card?.cardFaces?.first {
+      selectedFace = card?.cardFaces?.last
+    } else {
+      selectedFace = card?.cardFaces?.first
+      flipRight = false
+    }
+    
+    guard let uri = selectedFace?.imageUris?.normal, let url = URL(string: uri) else {
+      return
+    }
+    
+    UIView.transition(
+      with: imageContainerView,
+      duration: 0.315,
+      options: flipRight ? .transitionFlipFromLeft : .transitionFlipFromRight
+    ) {
+      self.imageView.setAsyncImage(url, placeholder: .mtgBack)
+    }
   }
   
   func configure(
@@ -77,20 +122,27 @@ final class CardView: UIView {
     showPrice: Bool,
     completion: ((UIImage?) -> ())? = nil
   ) {
+    self.card = card
+    self.selectedFace = card.cardFaces?.first
     loadingIndicator.startAnimating()
-    imageView.sd_imageTransition = .fade(duration: 0.15)
-    imageView.sd_setImage(
-      with: card.getImageURL(type: imageType),
-      placeholderImage: .mtgBack
-    ) { image, _, _, _ in
-      completion?(image)
-    }
     
     let price = card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00"
     priceCapsuleLabel.text = "$\(price)"
     priceContainerView.isHidden = !showPrice
     priceCapsuleLabel.alpha = 1
     drawCornerRadius(size: size)
+    
+    switch card.layout {
+    case .transform, .modalDfc, .reversibleCard:
+      flipContainerView.isHidden = false
+      
+    default:
+      flipContainerView.isHidden = true
+    }
+    
+    imageView.setAsyncImage(card.getImageURL(type: imageType), placeholder: .mtgBack) { image in
+      completion?(image)
+    }
   }
   
   func setPlaceholder(size: CardView.Size) {
