@@ -88,7 +88,7 @@ final class SetTableViewModel {
       switch result {
       case let .success(value):
         self?.displayingSets = value
-        onComplete?()
+        queryCards(query: query, onComplete: onComplete)
         
       case let .failure(value):
         self?.displayingSets = []
@@ -96,21 +96,24 @@ final class SetTableViewModel {
       }
     }
     
-    client.queryCards(query: query) { [weak self] result in
-      switch result {
-      case let .success(value):
-        self?.displayingCards = value
-        onComplete?()
-        
-      case let .failure(value):
-        self?.displayingCards = []
-        onComplete?()
+    func queryCards(query: String, onComplete: (() -> Void)?) {
+      client.queryCards(query: query) { [weak self] result in
+        switch result {
+        case let .success(value):
+          self?.displayingCards = value
+          onComplete?()
+          
+        case let .failure(value):
+          self?.displayingCards = []
+          onComplete?()
+        }
       }
     }
   }
   
   private func resetDisplayingDatasource() {
     displayingSets = dataSource
+    displayingCards = []
   }
 }
 
@@ -126,6 +129,16 @@ extension SetTableViewModel {
         
       case let .cards(items):
         return items.count
+      }
+    }
+    
+    var title: String {
+      switch self {
+      case .cards:
+        return String(localized: "Cards").uppercased()
+        
+      case .sets:
+        return String(localized: "Sets").uppercased()
       }
     }
   }

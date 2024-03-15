@@ -36,16 +36,20 @@ final class SetTableViewController: UITableViewController {
     tableView.refreshControl = refreshControl
     
     viewModel.didUpdate = { [weak self] state in
+      guard let self else { return }
+      
       DispatchQueue.main.async {
         switch state {
         case .isLoading:
           break
           
         case .shouldReloadData:
-          self?.tableView.reloadData()
+          UIView.transition(with: self.tableView, duration: 0.1, options: .transitionCrossDissolve, animations: {
+            self.tableView.reloadData()
+          }, completion: nil)
           
         case .shouldEndRefreshing:
-          self?.tableView.refreshControl?.endRefreshing()
+          self.tableView.refreshControl?.endRefreshing()
           
         case let .shouldDisplayError(error):
           break
@@ -157,5 +161,13 @@ extension SetTableViewController {
       let set = value[indexPath.row]
       viewModel.update(.didSelectSet(set))
     }
+  }
+  
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    guard navigationItem.searchController?.isActive == true else {
+      return nil
+    }
+    
+    return viewModel.displayingDataSource[section].title
   }
 }

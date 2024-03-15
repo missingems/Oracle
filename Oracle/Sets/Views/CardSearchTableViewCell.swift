@@ -13,9 +13,22 @@ final class CardSearchTableViewCell: UITableViewCell {
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
+    let image = UIImage(systemName: "magnifyingglass")
+    let imageView = UIImageView(image: image)
+    let imageContainerView = UIView()
+    imageContainerView.addSubview(imageView)
+    imageView.horizontalAnchors == imageContainerView.horizontalAnchors
+    imageView.centerAnchors == imageContainerView.centerAnchors
+    let stackView = UIStackView(arrangedSubviews: [
+      imageContainerView,
+      cardNameLabel,
+      UIView()
+    ])
+    stackView.spacing = 8
     cardNameLabel.font = .preferredFont(forTextStyle: .body)
-    contentView.addSubview(cardNameLabel)
-    cardNameLabel.edgeAnchors == contentView.layoutMarginsGuide.edgeAnchors + UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 0)
+    cardNameLabel.numberOfLines = 0
+    contentView.addSubview(stackView)
+    stackView.edgeAnchors == contentView.layoutMarginsGuide.edgeAnchors + UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 0)
     
     let separatorView = UIView.separator()
     contentView.addSubview(separatorView)

@@ -60,11 +60,7 @@ extension ScryfallClient: SetNetworkService {
         ($0.name.lowercased().hasPrefix(lowercasedQuery) ? 1 : 0) > ($1.name.lowercased().hasPrefix(lowercasedQuery) ? 1 : 0)
       }
       
-      if !results.isEmpty {
-        completion(.success(results))
-      } else {
-        completion(.failure(SetNetworkServiceError.noResult))
-      }
+      completion(.success(results))
     }
   }
   
