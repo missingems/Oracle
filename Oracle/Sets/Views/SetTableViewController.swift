@@ -5,6 +5,7 @@
 //  Created by Jun on 2/14/24.
 //
 
+import Anchorage
 import UIKit
 
 final class SetTableViewController: UITableViewController {
@@ -18,32 +19,20 @@ final class SetTableViewController: UITableViewController {
     self.viewModel = viewModel
     super.init(style: .plain)
     
-    tableView.register(SetTableViewParentCell.self, forCellReuseIdentifier: "\(SetTableViewParentCell.self)")
-    tableView.register(SetTableViewChildCell.self, forCellReuseIdentifier: "\(SetTableViewChildCell.self)")
-    tableView.register(CardSearchTableViewCell.self, forCellReuseIdentifier: "\(CardSearchTableViewCell.self)")
-    tableView.separatorStyle = .none
-    
-    navigationItem.title = viewModel.configuration.title
-    
-    tabBarItem = UITabBarItem(
-      title: viewModel.configuration.title,
-      image: UIImage(systemName: viewModel.configuration.tabBarDeselectedSystemImageName),
-      selectedImage: UIImage(systemName: viewModel.configuration.tabBarSelectedSystemImageName)
-    )
-    
-    let refreshControl = UIRefreshControl()
-    refreshControl.addTarget(self, action: #selector(pullToRefreshValueChanged), for: .valueChanged)
-    tableView.refreshControl = refreshControl
-    
     viewModel.didUpdate = { [weak self] state in
       guard let self else { return }
       
       DispatchQueue.main.async {
         switch state {
         case .isLoading:
-          break
+          let loadingIndicator = UIActivityIndicatorView(style: .large)
+          loadingIndicator.startAnimating()
+          self.tableView.backgroundView = loadingIndicator
           
         case .shouldReloadData:
+          self.navigationItem.rightBarButtonItem = nil
+          self.tableView.backgroundView = nil
+          
           UIView.transition(with: self.tableView, duration: 0.1, options: .transitionCrossDissolve, animations: {
             self.tableView.reloadData()
           }, completion: nil)
@@ -57,13 +46,32 @@ final class SetTableViewController: UITableViewController {
       }
     }
     
-    let searchController = UISearchController(searchResultsController: nil)
-    searchController.obscuresBackgroundDuringPresentation = false
-    searchController.searchBar.placeholder = viewModel.configuration.searchBarPlaceholder
-    searchController.searchResultsUpdater = self
-    navigationItem.searchController = searchController
-    navigationItem.hidesSearchBarWhenScrolling = false
-    definesPresentationContext = true
+    defer {
+      tableView.register(SetTableViewParentCell.self, forCellReuseIdentifier: "\(SetTableViewParentCell.self)")
+      tableView.register(SetTableViewChildCell.self, forCellReuseIdentifier: "\(SetTableViewChildCell.self)")
+      tableView.register(CardSearchTableViewCell.self, forCellReuseIdentifier: "\(CardSearchTableViewCell.self)")
+      tableView.separatorStyle = .none
+      
+      navigationItem.title = viewModel.configuration.title
+      
+      tabBarItem = UITabBarItem(
+        title: viewModel.configuration.title,
+        image: UIImage(systemName: viewModel.configuration.tabBarDeselectedSystemImageName),
+        selectedImage: UIImage(systemName: viewModel.configuration.tabBarSelectedSystemImageName)
+      )
+      
+      let refreshControl = UIRefreshControl()
+      refreshControl.addTarget(self, action: #selector(pullToRefreshValueChanged), for: .valueChanged)
+      tableView.refreshControl = refreshControl
+      
+      let searchController = UISearchController(searchResultsController: nil)
+      searchController.obscuresBackgroundDuringPresentation = false
+      searchController.searchBar.placeholder = viewModel.configuration.searchBarPlaceholder
+      searchController.searchResultsUpdater = self
+      navigationItem.searchController = searchController
+      navigationItem.hidesSearchBarWhenScrolling = false
+      definesPresentationContext = true
+    }
   }
 }
 
@@ -147,6 +155,7 @@ extension SetTableViewController {
       }
       
       cell.configure(name: card, query: navigationItem.searchController?.searchBar.text)
+      cell.selectionStyle = .none
       return cell
     }
   }

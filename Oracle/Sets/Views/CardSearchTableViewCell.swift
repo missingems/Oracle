@@ -8,7 +8,7 @@
 import Anchorage
 import UIKit
 
-final class CardSearchTableViewCell: UITableViewCell {
+final class CardSearchTableViewCell: SinkableTableViewCell {
   private let cardNameLabel = UILabel()
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
