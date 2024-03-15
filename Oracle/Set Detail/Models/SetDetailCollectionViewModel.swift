@@ -8,17 +8,17 @@ final class SetDetailCollectionViewModel {
   var didUpdate: ((Message) -> ())?
   private var hasNext: Bool = false
   private var isLoading: Bool = false
-  let set: any GameSet
+  let query: QueryType
   private(set) var sortMode: SortMode = .released
   private(set) var sortDirection: SortDirection = .auto
   
   init(
-    set: any GameSet,
+    query: QueryType,
     client: any SetDetailNetworkService
   ) {
-    self.set = set
+    self.query = query
     self.client = client
-    configuration = Configuration(set: set)
+    configuration = Configuration(query: query)
   }
   
   func update(_ event: Event) {
@@ -56,7 +56,7 @@ final class SetDetailCollectionViewModel {
     
     isLoading = true
     
-    client.fetchSetDetail(gameSet: set, page: currentPage, sort: sortMode, direction: sortDirection) { [weak self] result in
+    let completion: (Result<(cards: [Card], hasNext: Bool), Error>) -> () = { [weak self] result in
       self?.isLoading = false
       
       switch result {
@@ -79,6 +79,14 @@ final class SetDetailCollectionViewModel {
         print(error)
         break
       }
+    }
+    
+    switch query {
+    case let .set(value):
+      client.fetchSetDetail(gameSet: value, page: currentPage, sort: sortMode, direction: sortDirection, completion: completion)
+      
+    case let .card(value):
+      client.fetchCards(cardName: value, page: currentPage, sort: sortMode, direction: sortDirection, completion: completion)
     }
   }
   
@@ -105,6 +113,31 @@ final class SetDetailCollectionViewModel {
 }
 
 extension SetDetailCollectionViewModel {
+  enum QueryType {
+    case set(any GameSet)
+    case card(String)
+    
+    var title: String {
+      switch self {
+      case let .set(value):
+        return value.name
+        
+      case let .card(value):
+        return value
+      }
+    }
+    
+    var subtitle: String? {
+      switch self {
+      case let .set(value):
+        return String(localized: "\(value.numberOfCards) Cards")
+        
+      case .card:
+        return nil
+      }
+    }
+  }
+  
   enum Event {
     case didSelectSortDirection(SortDirection)
     case didSelectSortMode(SortMode)
@@ -121,14 +154,14 @@ extension SetDetailCollectionViewModel {
 
 extension SetDetailCollectionViewModel {
   struct Configuration: Equatable {
-    let subtitle: String
+    let subtitle: String?
     let title: String
     let availableSort: [SortMode]
     let availableSortDirection: [SortDirection]
     
-    init(set: any GameSet) {
-      title = set.name
-      subtitle = String(localized: "\(set.numberOfCards) Cards")
+    init(query: QueryType) {
+      title = query.title
+      subtitle = query.subtitle
       
       availableSort = [
         .released,

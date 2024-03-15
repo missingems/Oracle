@@ -142,7 +142,7 @@ extension SetTableViewController {
         fatalError()
       }
       
-      cell.configure(name: card, query: "")
+      cell.configure(name: card, query: navigationItem.searchController?.searchBar.text)
       return cell
     }
   }
@@ -151,10 +151,10 @@ extension SetTableViewController {
     switch viewModel.displayingDataSource[indexPath.section] {
     case let .cards(value):
       let card = value[indexPath.row]
+      viewModel.update(.didSelectCard(name: card))
       
     case let .sets(value):
       let set = value[indexPath.row]
-      
       viewModel.update(.didSelectSet(set))
     }
   }

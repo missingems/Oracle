@@ -38,6 +38,9 @@ final class SetTableViewModel {
   
   func update(_ event: Event) {
     switch event {
+    case let .didSelectCard(name):
+      coordinator?.show(destination: .showCardResult(cardName: name))
+      
     case let .didSelectSet(set):
       coordinator?.show(destination: .showSetDetail(set: set))
       
@@ -128,6 +131,7 @@ extension SetTableViewModel {
   }
   
   enum Event {
+    case didSelectCard(name: String)
     case didSelectSet(any GameSet)
     case pullToRefreshInvoked
     case searchBarResigned

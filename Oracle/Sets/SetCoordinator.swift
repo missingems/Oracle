@@ -10,6 +10,7 @@ import ScryfallKit
 
 final class SetCoordinator {
   enum Destination {
+    case showCardResult(cardName: String)
     case showSetDetail(set: any GameSet)
     case showSets
   }
@@ -31,8 +32,11 @@ final class SetCoordinator {
   
   private func viewController(for destination: Destination) -> UIViewController {
     switch destination {
+    case let .showCardResult(cardName):
+      return SetDetailCollectionViewController(SetDetailCollectionViewModel(query: .card(cardName), client: ScryfallClient()))
+      
     case let .showSetDetail(set):
-      return SetDetailCollectionViewController(SetDetailCollectionViewModel(set: set, client: ScryfallClient()))
+      return SetDetailCollectionViewController(SetDetailCollectionViewModel(query: .set(set), client: ScryfallClient()))
       
     case .showSets:
       return SetTableViewController(viewModel: SetTableViewModel(client: ScryfallClient(), coordinator: self))

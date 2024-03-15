@@ -219,7 +219,7 @@ private final class ContentView: UIView {
         attributedString.addAttribute(.foregroundColor, value: UIColor.label, range: nsRange)
       }
       
-      titleLabel.textColor = .tertiaryLabel
+      titleLabel.textColor = .secondaryLabel
       titleLabel.attributedText = attributedString
     } else {
       titleLabel.textColor = .label
