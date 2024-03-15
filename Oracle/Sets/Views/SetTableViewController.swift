@@ -20,6 +20,7 @@ final class SetTableViewController: UITableViewController {
     
     tableView.register(SetTableViewParentCell.self, forCellReuseIdentifier: "\(SetTableViewParentCell.self)")
     tableView.register(SetTableViewChildCell.self, forCellReuseIdentifier: "\(SetTableViewChildCell.self)")
+    tableView.register(CardSearchTableViewCell.self, forCellReuseIdentifier: "\(CardSearchTableViewCell.self)")
     tableView.separatorStyle = .none
     
     navigationItem.title = viewModel.configuration.title
@@ -35,16 +36,20 @@ final class SetTableViewController: UITableViewController {
     tableView.refreshControl = refreshControl
     
     viewModel.didUpdate = { [weak self] state in
+      guard let self else { return }
+      
       DispatchQueue.main.async {
         switch state {
         case .isLoading:
           break
           
         case .shouldReloadData:
-          self?.tableView.reloadData()
+          UIView.transition(with: self.tableView, duration: 0.1, options: .transitionCrossDissolve, animations: {
+            self.tableView.reloadData()
+          }, completion: nil)
           
         case .shouldEndRefreshing:
-          self?.tableView.refreshControl?.endRefreshing()
+          self.tableView.refreshControl?.endRefreshing()
           
         case let .shouldDisplayError(error):
           break
@@ -95,42 +100,74 @@ extension SetTableViewController: UISearchResultsUpdating {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension SetTableViewController {
-  override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     viewModel.displayingDataSource.count
   }
   
+  override func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
+    let numberOfRows = viewModel.displayingDataSource[section].numberOfRows
+    return numberOfRows
+  }
+  
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let preview = viewModel.displayingDataSource[indexPath.row]
-    let cell: SetTableViewCell?
+    let preview = viewModel.displayingDataSource[indexPath.section]
     
-    if preview.parentCode == nil || navigationItem.searchController?.isActive == true {
-      cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewParentCell.self)", for: indexPath) as? SetTableViewParentCell
-    } else {
-      cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewChildCell.self)", for: indexPath) as? SetTableViewChildCell
+    switch preview {
+    case let .sets(values):
+      let preview = values[indexPath.row]
+      let cell: SetTableViewCell?
+      
+      if preview.parentCode == nil || navigationItem.searchController?.isActive == true {
+        cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewParentCell.self)", for: indexPath) as? SetTableViewParentCell
+      } else {
+        cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewChildCell.self)", for: indexPath) as? SetTableViewChildCell
+      }
+      
+      cell?.configure(
+        setID: preview.code,
+        title: preview.name,
+        iconURI: preview.iconURI,
+        numberOfCards: preview.numberOfCards,
+        index: indexPath.row,
+        query: navigationItem.searchController?.searchBar.text
+      )
+      
+      guard let cell = cell as? UITableViewCell else {
+        fatalError()
+      }
+      
+      cell.selectionStyle = .none
+      
+      return cell
+      
+    case let .cards(cards):
+      let card = cards[indexPath.row]
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CardSearchTableViewCell.self)", for: indexPath) as? CardSearchTableViewCell else {
+        fatalError()
+      }
+      
+      cell.configure(name: card, query: navigationItem.searchController?.searchBar.text)
+      return cell
     }
-    
-    cell?.configure(
-      setID: preview.code,
-      title: preview.name,
-      iconURI: preview.iconURI,
-      numberOfCards: preview.numberOfCards,
-      index: indexPath.row,
-      query: navigationItem.searchController?.searchBar.text
-    )
-    
-    guard let cell = cell as? UITableViewCell else {
-      fatalError()
-    }
-    
-    cell.selectionStyle = .none
-    return cell
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    viewModel.update(
-      .didSelectSet(
-        viewModel.displayingDataSource[indexPath.row]
-      )
-    )
+    switch viewModel.displayingDataSource[indexPath.section] {
+    case let .cards(value):
+      let card = value[indexPath.row]
+      viewModel.update(.didSelectCard(name: card))
+      
+    case let .sets(value):
+      let set = value[indexPath.row]
+      viewModel.update(.didSelectSet(set))
+    }
+  }
+  
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    guard navigationItem.searchController?.isActive == true else {
+      return nil
+    }
+    
+    return viewModel.displayingDataSource[section].title
   }
 }

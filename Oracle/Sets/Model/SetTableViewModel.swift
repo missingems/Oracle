@@ -14,7 +14,20 @@ final class SetTableViewModel {
   let configuration: Configuration = Configuration()
   private weak var coordinator: SetCoordinator?
   private var dataSource: [any GameSet] = []
-  private(set) var displayingDataSource: [any GameSet] = []
+  
+  private var displayingSets: [any GameSet] = [] {
+    didSet {
+      displayingDataSource = [.sets(displayingSets), .cards(displayingCards)].filter { $0.numberOfRows != 0 }
+    }
+  }
+  
+  private var displayingCards: [String] = [] {
+    didSet {
+      displayingDataSource = [.sets(displayingSets), .cards(displayingCards)].filter { $0.numberOfRows != 0 }
+    }
+  }
+  
+  private(set) var displayingDataSource: [Section] = []
   
   var didUpdate: StateHandler?
   
@@ -25,6 +38,9 @@ final class SetTableViewModel {
   
   func update(_ event: Event) {
     switch event {
+    case let .didSelectCard(name):
+      coordinator?.show(destination: .showCardResult(cardName: name))
+      
     case let .didSelectSet(set):
       coordinator?.show(destination: .showSetDetail(set: set))
       
@@ -57,7 +73,7 @@ final class SetTableViewModel {
       switch result {
       case let .success(value):
         self?.dataSource = value
-        self?.displayingDataSource = value
+        self?.displayingSets = value
         onComplete?()
         
       case let .failure(value):
@@ -71,23 +87,64 @@ final class SetTableViewModel {
     client.querySets(query: query, in: dataSource) { [weak self] result in
       switch result {
       case let .success(value):
-        self?.displayingDataSource = value
-        onComplete?()
+        self?.displayingSets = value
+        queryCards(query: query, onComplete: onComplete)
         
       case let .failure(value):
-        self?.displayingDataSource = []
+        self?.displayingSets = []
         onComplete?()
+      }
+    }
+    
+    func queryCards(query: String, onComplete: (() -> Void)?) {
+      client.queryCards(query: query) { [weak self] result in
+        switch result {
+        case let .success(value):
+          self?.displayingCards = value
+          onComplete?()
+          
+        case let .failure(value):
+          self?.displayingCards = []
+          onComplete?()
+        }
       }
     }
   }
   
   private func resetDisplayingDatasource() {
-    displayingDataSource = dataSource
+    displayingSets = dataSource
+    displayingCards = []
   }
 }
 
 extension SetTableViewModel {
+  enum Section {
+    case sets([any GameSet])
+    case cards([String])
+    
+    var numberOfRows: Int {
+      switch self {
+      case let .sets(items):
+        return items.count
+        
+      case let .cards(items):
+        return items.count
+      }
+    }
+    
+    var title: String {
+      switch self {
+      case .cards:
+        return String(localized: "Cards").uppercased()
+        
+      case .sets:
+        return String(localized: "Sets").uppercased()
+      }
+    }
+  }
+  
   enum Event {
+    case didSelectCard(name: String)
     case didSelectSet(any GameSet)
     case pullToRefreshInvoked
     case searchBarResigned
