@@ -41,6 +41,10 @@ final class CardDetailImageContainerRowView: UIView {
     preservesSuperviewLayoutMargins = true
     stackView.addArrangedSubview(.separator(fullWidth: true))
     clipsToBounds = true
+    
+    cardImageView.didTappedTransform = {
+      action(.transformTapped)
+    }
   }
   
   required init?(coder: NSCoder) {
