@@ -11,6 +11,7 @@ import ScryfallKit
 protocol SetNetworkService {
   func fetchSets(completion: @escaping (Result<[any GameSet], Error>) -> ())
   func querySets(query: String, in sets: [any GameSet], completion: @escaping (Result<[any GameSet], Error>) -> ())
+  func queryCards(query: String, completion: @escaping (Result<[String], Error>) -> ())
 }
 
 extension ScryfallClient: SetNetworkService {
@@ -63,6 +64,18 @@ extension ScryfallClient: SetNetworkService {
         completion(.success(results))
       } else {
         completion(.failure(SetNetworkServiceError.noResult))
+      }
+    }
+  }
+  
+  func queryCards(query: String, completion: @escaping (Result<[String], Error>) -> ()) {
+    getCardNameAutocomplete(query: query) { result in
+      switch result {
+      case let .success(value):
+        completion(.success(value.data))
+        
+      case .failure:
+        break
       }
     }
   }
