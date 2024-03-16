@@ -14,19 +14,6 @@ final class SetTableViewModel {
   let configuration: Configuration = Configuration()
   private weak var coordinator: SetCoordinator?
   private var dataSource: [any GameSet] = []
-  
-  private var displayingSets: [any GameSet] = [] {
-    didSet {
-      displayingDataSource = [.sets(displayingSets), .cards(displayingCards)].filter { $0.numberOfRows != 0 }
-    }
-  }
-  
-  private var displayingCards: [String] = [] {
-    didSet {
-      displayingDataSource = [.sets(displayingSets), .cards(displayingCards)].filter { $0.numberOfRows != 0 }
-    }
-  }
-  
   private(set) var displayingDataSource: [Section] = []
   
   var didUpdate: StateHandler?
@@ -75,10 +62,11 @@ final class SetTableViewModel {
       switch result {
       case let .success(value):
         self?.dataSource = value
-        self?.displayingSets = value
+        self?.displayingDataSource = [.sets(value)]
         onComplete?()
         
       case let .failure(value):
+        self?.displayingDataSource = []
         self?.didUpdate?(.shouldDisplayError(value))
         onComplete?()
       }
@@ -90,34 +78,28 @@ final class SetTableViewModel {
     
     client.querySets(query: query, in: dataSource) { [weak self] result in
       switch result {
-      case let .success(value):
-        self?.displayingSets = value
-        queryCards(query: query, onComplete: onComplete)
+      case let .success(sets):
+        self?.client.queryCards(query: query) { [weak self] result in
+          switch result {
+          case let .success(cards):
+            self?.displayingDataSource = [.sets(sets), .cards(cards)].filter { $0.numberOfRows != 0 }
+            onComplete?()
+            
+          case let .failure(value):
+            self?.displayingDataSource = []
+            onComplete?()
+          }
+        }
         
       case let .failure(value):
-        self?.displayingSets = []
+        self?.displayingDataSource = []
         onComplete?()
-      }
-    }
-    
-    func queryCards(query: String, onComplete: (() -> Void)?) {
-      client.queryCards(query: query) { [weak self] result in
-        switch result {
-        case let .success(value):
-          self?.displayingCards = value
-          onComplete?()
-          
-        case let .failure(value):
-          self?.displayingCards = []
-          onComplete?()
-        }
       }
     }
   }
   
   private func resetDisplayingDatasource() {
-    displayingSets = dataSource
-    displayingCards = []
+    displayingDataSource = [.sets(dataSource)]
   }
 }
 

@@ -11,10 +11,8 @@ final class CardDetailImageContainerRowView: UIView {
   
   private lazy var cardImageView = CardView()
   private lazy var cardBackdropImageView = UIImageView()
-  private let card: Card
   
-  init(card: Card, action: @escaping (Action) -> ()) {
-    self.card = card
+  init(imageURL: URL?, layout: Card.Layout, action: @escaping (Action) -> ()) {
     super.init(frame: .zero)
     addSubview(cardBackdropImageView)
     
@@ -41,14 +39,26 @@ final class CardDetailImageContainerRowView: UIView {
     preservesSuperviewLayoutMargins = true
     stackView.addArrangedSubview(.separator(fullWidth: true))
     clipsToBounds = true
+    
+    cardImageView.didTappedTransform = { _ in
+      action(.transformTapped)
+    }
+    
+    configure(with: imageURL, layout: layout)
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func configure(with imageURL: URL?) {
-    cardImageView.configure(card, imageType: .normal, size: .large) { [weak self] image in
+  func configure(with imageURL: URL?, layout: Card.Layout) {
+    cardImageView.configure(
+      imageURL: imageURL,
+      imageType: .normal,
+      size: .large,
+      price: nil,
+      layout: layout
+    ) { [weak self] image in
       self?.cardBackdropImageView.image = image
     }
   }

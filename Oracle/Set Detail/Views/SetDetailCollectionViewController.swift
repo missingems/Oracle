@@ -105,7 +105,26 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SetDetailCollectionViewCell", for: indexPath) as? SetDetailCollectionViewCell else {
       fatalError()
     }
-    cell.configure(viewModel.dataSource[indexPath.item])
+    
+    let card = viewModel.dataSource[indexPath.item]
+    
+    cell.configure(
+      imageURL: card.getImageURL(type: .normal),
+      size: .regular,
+      price: card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00",
+      layout: card.layout
+    )
+    
+    cell.imageView.didTappedTransform = { shouldFlipFromRight in
+      let url = card.getImageURL(type: .normal, getSecondFace: shouldFlipFromRight)
+      
+      cell.configure(
+        imageURL: url,
+        size: .regular,
+        price: card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00",
+        layout: card.layout
+      )
+    }
     return cell
   }
   

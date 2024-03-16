@@ -31,10 +31,7 @@ final class SetTableViewController: UITableViewController {
           
         case .shouldReloadData:
           self.tableView.backgroundView = nil
-          
-          UIView.transition(with: self.tableView, duration: 0.1, options: .transitionCrossDissolve, animations: {
-            self.tableView.reloadData()
-          }, completion: nil)
+          self.tableView.reloadData()
           
         case .shouldEndRefreshing:
           self.tableView.refreshControl?.endRefreshing()

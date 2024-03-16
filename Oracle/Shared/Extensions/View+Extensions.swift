@@ -49,3 +49,13 @@ extension UIView {
     return containerView
   }
 }
+
+extension UIView {
+  func animateFlip(options: UIView.AnimationOptions) {
+    UIView.transition(
+      with: self,
+      duration: 0.315,
+      options: options
+    ) {}
+  }
+}
