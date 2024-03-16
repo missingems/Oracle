@@ -43,7 +43,26 @@ final class CardRelevanceView: UIView, UICollectionViewDataSource, UICollectionV
       fatalError()
     }
     
-    cell.configure(cards[indexPath.item], size: .small, showPrice: true)
+    let card = cards[indexPath.item]
+    
+    cell.configure(
+      imageURL: card.getImageURL(type: .normal),
+      size: .regular,
+      price: card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00",
+      layout: card.layout
+    )
+    
+    cell.imageView.didTappedTransform = { shouldFlipFromRight in
+      let url = card.getImageURL(type: .normal, getSecondFace: shouldFlipFromRight)
+      
+      cell.configure(
+        imageURL: url,
+        size: .regular,
+        price: card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00",
+        layout: card.layout
+      )
+    }
+    
     return cell
   }
   

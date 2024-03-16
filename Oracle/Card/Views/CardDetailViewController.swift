@@ -12,7 +12,10 @@ import UIKit
 import SwiftUI
 
 final class CardDetailViewController: UIViewController {
-  private lazy var imageContainerRowView = CardDetailImageContainerRowView(card: viewModel.card) { [weak self] action in
+  private lazy var imageContainerRowView = CardDetailImageContainerRowView(
+    imageURL: viewModel.cardImageURL,
+    layout: viewModel.card.layout
+  ) { [weak self] action in
     guard let self else {
       return
     }
@@ -109,6 +112,7 @@ final class CardDetailViewController: UIViewController {
   }
   
   private func configure() {
+    imageContainerRowView.configure(with: viewModel.cardImageURL, layout: viewModel.card.layout)
     titleDetailRow.configure(viewModel.name, manaCost: viewModel.manaCost)
     typelineRow.configure(with: viewModel.typeLine)
     textRow.configure(with: viewModel.text)

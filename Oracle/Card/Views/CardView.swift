@@ -21,12 +21,10 @@ final class CardView: UIView {
   private let foilView = FoilEffectView(frame: .zero)
   private let priceCapsuleLabel = InsetLabel(UIEdgeInsets(top: 3, left: 6, bottom: 3, right: 6))
   private let priceContainerView = UIView()
-  private lazy var loadingIndicator = UIActivityIndicatorView(style: .medium)
   private lazy var flipButton = UIButton(type: .system)
   private let flipContainerView = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
-  private var selectedFace: Card.Face?
-  private var card: Card?
-  var didTappedTransform: (() -> ())?
+  private var shouldFlipFromRight = false
+  var didTappedTransform: ((_ shouldFlipFromRight: Bool) -> ())?
   
   init() {
     super.init(frame: .zero)
@@ -65,10 +63,6 @@ final class CardView: UIView {
     priceCapsuleLabel.backgroundColor = .capsule
     priceCapsuleLabel.textColor = .label
     
-    priceContainerView.addSubview(loadingIndicator)
-    loadingIndicator.centerAnchors == priceContainerView.centerAnchors
-    loadingIndicator.startAnimating()
-    
     priceContainerView.addSubview(priceView)
     priceView.centerXAnchor == priceContainerView.centerXAnchor
     priceView.verticalAnchors == priceContainerView.verticalAnchors
@@ -95,47 +89,28 @@ final class CardView: UIView {
   
   @objc
   private func flipButtonTapped() {
-    didTappedTransform?()
-    
-    var flipRight = true
-    if selectedFace == card?.cardFaces?.first {
-      selectedFace = card?.cardFaces?.last
-    } else {
-      selectedFace = card?.cardFaces?.first
-      flipRight = false
-    }
-    
-    guard let uri = selectedFace?.imageUris?.normal, let url = URL(string: uri) else {
-      return
-    }
-    
-    UIView.transition(
-      with: imageContainerView,
-      duration: 0.315,
-      options: flipRight ? .transitionFlipFromRight : .transitionFlipFromLeft
-    ) {
-      self.imageView.setAsyncImage(url, placeholder: .mtgBack)
-    }
+    shouldFlipFromRight.toggle()
+    didTappedTransform?(shouldFlipFromRight)
+    imageContainerView.animateFlip(options: shouldFlipFromRight ? .transitionFlipFromRight : .transitionFlipFromLeft)
   }
   
   func configure(
-    _ card: Card,
+    imageURL: URL?,
     imageType: Card.ImageType,
     size: CardView.Size,
-    showPrice: Bool,
+    price: String?,
+    layout: Card.Layout,
     completion: ((UIImage?) -> ())? = nil
   ) {
-    self.card = card
-    self.selectedFace = card.cardFaces?.first
-    loadingIndicator.startAnimating()
+    if let price {
+      priceCapsuleLabel.text = "$\(price)"
+    }
     
-    let price = card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00"
-    priceCapsuleLabel.text = "$\(price)"
-    priceContainerView.isHidden = !showPrice
     priceCapsuleLabel.alpha = 1
+    priceContainerView.isHidden = price == nil
     drawCornerRadius(size: size)
     
-    switch card.layout {
+    switch layout {
     case .transform, .modalDfc, .reversibleCard:
       flipContainerView.isHidden = false
       
@@ -143,7 +118,7 @@ final class CardView: UIView {
       flipContainerView.isHidden = true
     }
     
-    imageView.setAsyncImage(card.getImageURL(type: imageType), placeholder: .mtgBack, onComplete: completion)
+    imageView.setAsyncImage(imageURL, placeholder: .mtgBack, onComplete: completion)
   }
   
   func setPlaceholder(size: CardView.Size) {
