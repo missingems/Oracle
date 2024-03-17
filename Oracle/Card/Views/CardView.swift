@@ -26,7 +26,7 @@ final class CardView: UIView {
   private var shouldFlipFromRight = false
   var didTappedTransform: ((_ shouldFlipFromRight: Bool) -> ())?
   
-  init() {
+  init(layout: Card.Layout? = nil) {
     super.init(frame: .zero)
     
     let stackView = UIStackView(arrangedSubviews: [
@@ -40,10 +40,18 @@ final class CardView: UIView {
     
     imageContainerView.addSubview(imageView)
     imageView.edgeAnchors == imageContainerView.edgeAnchors
-    imageContainerView.heightAnchor == imageContainerView.widthAnchor * 1.3928
+    
+    if layout == .split {
+      imageContainerView.heightAnchor == imageContainerView.widthAnchor / 1.3928
+    } else {
+      imageContainerView.heightAnchor == imageContainerView.widthAnchor * 1.3928
+    }
+    
     imageContainerView.horizontalAnchors == stackView.horizontalAnchors
+    
     imageView.layer.cornerCurve = .continuous
     imageView.clipsToBounds = true
+    imageView.contentMode = .scaleAspectFit
     
     let priceView = UIView()
     priceView.layer.shadowColor = UIColor.black.cgColor
@@ -118,7 +126,16 @@ final class CardView: UIView {
       flipContainerView.isHidden = true
     }
     
-    imageView.setAsyncImage(imageURL, placeholder: .mtgBack, onComplete: completion)
+    imageView.setAsyncImage(imageURL, placeholder: .mtgBack) { [weak self] image in
+      guard let image = image, let cgImage = image.cgImage, layout == .split, size == .large else {
+        completion?(image)
+        return
+      }
+      
+      let rotatedImage = UIImage(cgImage: cgImage, scale: image.scale, orientation: .right)
+      self?.imageView.image = rotatedImage
+      completion?(rotatedImage)
+    }
   }
   
   func setPlaceholder(size: CardView.Size) {

@@ -9,10 +9,12 @@ final class CardDetailImageContainerRowView: UIView {
     case transformTapped
   }
   
-  private lazy var cardImageView = CardView()
+  private lazy var cardImageView = CardView(layout: cardLayout)
+  private var cardLayout: Card.Layout
   private lazy var cardBackdropImageView = UIImageView()
   
   init(imageURL: URL?, layout: Card.Layout, action: @escaping (Action) -> ()) {
+    cardLayout = layout
     super.init(frame: .zero)
     addSubview(cardBackdropImageView)
     
@@ -21,9 +23,15 @@ final class CardDetailImageContainerRowView: UIView {
     visualEffectView.edgeAnchors == edgeAnchors
     
     let cardContainerView = UIView()
+    cardContainerView.preservesSuperviewLayoutMargins = true
     cardContainerView.addSubview(cardImageView)
     cardImageView.verticalAnchors == cardContainerView.verticalAnchors
-    cardImageView.horizontalAnchors == cardContainerView.horizontalAnchors + 64
+    
+    if layout == .split {
+      cardImageView.horizontalAnchors == cardContainerView.layoutMarginsGuide.horizontalAnchors
+    } else {
+      cardImageView.horizontalAnchors == cardContainerView.layoutMarginsGuide.horizontalAnchors + 34
+    }
     
     let stackView = UIStackView(arrangedSubviews: [.separator(fullWidth: true), cardContainerView])
     stackView.spacing = 21
@@ -37,6 +45,7 @@ final class CardDetailImageContainerRowView: UIView {
     cardBackdropImageView.horizontalAnchors == cardImageView.horizontalAnchors
         
     preservesSuperviewLayoutMargins = true
+    stackView.preservesSuperviewLayoutMargins = true
     stackView.addArrangedSubview(.separator(fullWidth: true))
     clipsToBounds = true
     
