@@ -23,8 +23,4 @@ final class SetDetailCollectionViewCell: SinkableCollectionViewCell {
   func configure(imageURL: URL?, size: CardView.Size = .regular, price: String?, layout: Card.Layout) {
     imageView.configure(imageURL: imageURL, imageType: .normal, size: size, price: price, layout: layout)
   }
-  
-  func setPlaceholder() {
-    imageView.setPlaceholder(size: .regular)
-  }
 }

@@ -7,26 +7,30 @@ final class CardDetailRowView: UIView {
   init(
     _ attributedString: NSAttributedString?,
     font: UIFont = .preferredFont(forTextStyle: .body),
-    color: UIColor = .label
+    color: UIColor = .label,
+    shouldShowSeparator: Bool = true,
+    shouldShowSeparatorFullWidth: Bool = false
   ) {
     super.init(frame: .zero)
     
     label.attributedText = attributedString
-    commonInit(with: font, color: color)
+    commonInit(with: font, color: color, shouldShowSeparator: shouldShowSeparator, shouldShowSeparatorFullWidth: shouldShowSeparatorFullWidth)
   }
   
   init(
     _ string: String?,
     font: UIFont = .preferredFont(forTextStyle: .body),
-    color: UIColor = .label
+    color: UIColor = .label,
+    shouldShowSeparator: Bool = true,
+    shouldShowSeparatorFullWidth: Bool = false
   ) {
     super.init(frame: .zero)
     
     label.text = string
-    commonInit(with: font, color: color)
+    commonInit(with: font, color: color, shouldShowSeparator: shouldShowSeparator, shouldShowSeparatorFullWidth: shouldShowSeparatorFullWidth)
   }
   
-  private func commonInit(with font: UIFont, color: UIColor) {
+  private func commonInit(with font: UIFont, color: UIColor, shouldShowSeparator: Bool, shouldShowSeparatorFullWidth: Bool) {
     label.font = font
     label.numberOfLines = 0
     label.textAlignment = .left
@@ -38,10 +42,19 @@ final class CardDetailRowView: UIView {
     label.horizontalAnchors == layoutMarginsGuide.horizontalAnchors
     label.verticalAnchors == verticalAnchors + 11
     
-    let seperator = UIView.separator()
-    addSubview(seperator)
-    seperator.bottomAnchor == bottomAnchor
-    seperator.horizontalAnchors == horizontalAnchors
+    if shouldShowSeparator {
+      let separator: UIView
+      
+      if shouldShowSeparatorFullWidth {
+        separator = UIView.separator(fullWidth: true)
+      } else {
+        separator = UIView.separator()
+      }
+      
+      addSubview(separator)
+      separator.bottomAnchor == bottomAnchor
+      separator.horizontalAnchors == horizontalAnchors
+    }
   }
   
   required init?(coder: NSCoder) {

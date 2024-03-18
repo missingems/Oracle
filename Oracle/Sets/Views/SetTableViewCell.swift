@@ -228,20 +228,7 @@ private final class ContentView: UIView {
     
     setIdLabel.text = setID.uppercased()
     subtitleLabel.text = String(localized: "\(numberOfCards) Cards")
-    
-    iconImageView.sd_setImage(
-      with: URL(string: iconURI),
-      placeholderImage: nil,
-      options: [.refreshCached],
-      context: [
-        .imageThumbnailPixelSize : CGSize(width: 30 * UIScreen.main.nativeScale, height: 30 * UIScreen.main.nativeScale),
-        .imagePreserveAspectRatio : true
-      ],
-      progress: nil,
-      completed: { [weak self] image, error, cache, url in
-        self?.iconImageView.image = image?.withRenderingMode(.alwaysTemplate)
-      }
-    )
+    iconImageView.setSVGImage(URL(string: iconURI))
     
     if index.isMultiple(of: 2) {
       backgroundColor = .quaternarySystemFill

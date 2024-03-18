@@ -8,7 +8,7 @@ struct CardDetailViewModel {
   private(set) var versions: [Card]
   
   var loyalty: String? {
-    guard let loyalty = selectedFace?.loyalty ?? card.loyalty else {
+    guard let loyalty = flippable ? selectedFace?.loyalty : card.loyalty else {
       return nil
     }
     
@@ -17,8 +17,8 @@ struct CardDetailViewModel {
   
   var powerToughness: String? {
     guard 
-      let power = selectedFace?.power ?? card.power,
-      let toughness = selectedFace?.toughness ?? card.toughness
+      let power = flippable ? selectedFace?.power : card.power,
+      let toughness = flippable ? selectedFace?.toughness : card.toughness
     else {
       return nil
     }
@@ -28,9 +28,9 @@ struct CardDetailViewModel {
   
   var name: String? {
     if isPhyrexian {
-      return selectedFace?.name ?? card.name
+      return flippable ? selectedFace?.name : card.name
     } else {
-      return selectedFace?.printedName ?? selectedFace?.name ?? card.printedName ?? card.name
+      return flippable ? selectedFace?.printedName ?? selectedFace?.name : card.printedName ?? card.name
     }
   }
   
@@ -38,10 +38,10 @@ struct CardDetailViewModel {
     let attributedText: NSAttributedString?
     
     if isPhyrexian {
-      let text = selectedFace?.oracleText ?? card.oracleText
+      let text = flippable ? selectedFace?.oracleText : card.oracleText
       attributedText = text?.attributedText(for: .magicTheGathering, font: .preferredFont(forTextStyle: .body))
     } else {
-      let text = selectedFace?.printedText ?? selectedFace?.oracleText ?? card.printedText ?? card.oracleText
+      let text = flippable ? selectedFace?.printedText ?? selectedFace?.oracleText : card.printedText ?? card.oracleText
       attributedText = text?.attributedText(for: .magicTheGathering, font: .preferredFont(forTextStyle: .body))
     }
     
@@ -50,9 +50,9 @@ struct CardDetailViewModel {
   
   var typeLine: String? {
     if isPhyrexian {
-      return selectedFace?.typeLine ?? card.typeLine
+      return flippable ? selectedFace?.typeLine : card.typeLine
     } else {
-      return selectedFace?.printedTypeLine ?? selectedFace?.typeLine ?? card.printedTypeLine ?? card.typeLine
+      return flippable ? selectedFace?.printedTypeLine ?? selectedFace?.typeLine : card.printedTypeLine ?? card.typeLine
     }
   }
   
@@ -62,7 +62,7 @@ struct CardDetailViewModel {
   }
   
   var flavorText: String? {
-    selectedFace?.flavorText ?? card.flavorText
+    flippable ? selectedFace?.flavorText : card.flavorText
   }
   
   var cardImageURL: URL? {
@@ -87,6 +87,12 @@ struct CardDetailViewModel {
   
   var illstrautedLabel: String {
     String(localized: "Illustrated by")
+  }
+  
+  var flippable: Bool {
+    card.layout == .transform ||
+    card.layout == .modalDfc ||
+    card.layout == .reversibleCard
   }
   
   init(card: Card) {
