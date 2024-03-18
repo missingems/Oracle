@@ -107,7 +107,7 @@ final class SetDetailCollectionViewController: UIViewController, UICollectionVie
     }
     
     let card = viewModel.dataSource[indexPath.item]
-    print(card.name, " - ", card.getImageURL(type: .normal))
+    
     cell.configure(
       imageURL: card.getImageURL(type: .normal),
       size: .regular,
