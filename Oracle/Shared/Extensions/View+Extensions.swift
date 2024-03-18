@@ -48,6 +48,18 @@ extension UIView {
     
     return containerView
   }
+  
+  static func divider() -> UIView {
+    let view = UIView()
+    view.backgroundColor = .separator
+    let containerView = UIView()
+    containerView.addSubview(view)
+    
+    view.widthAnchor == 1 / UIScreen.main.nativeScale
+    view.verticalAnchors == containerView.verticalAnchors
+    
+    return containerView
+  }
 }
 
 extension UIView {
