@@ -30,7 +30,7 @@ final class CardDetailImageContainerRowView: UIView {
     if layout == .split {
       cardImageView.horizontalAnchors == cardContainerView.layoutMarginsGuide.horizontalAnchors
     } else {
-      cardImageView.horizontalAnchors == cardContainerView.layoutMarginsGuide.horizontalAnchors + 34
+      cardImageView.horizontalAnchors == cardContainerView.layoutMarginsGuide.horizontalAnchors + 44
     }
     
     let stackView = UIStackView(arrangedSubviews: [.separator(fullWidth: true), cardContainerView])
