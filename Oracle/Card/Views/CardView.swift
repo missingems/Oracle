@@ -138,11 +138,6 @@ final class CardView: UIView {
     }
   }
   
-  func setPlaceholder(size: CardView.Size) {
-    imageView.image = .mtgBack
-    drawCornerRadius(size: size)
-  }
-  
   private func drawCornerRadius(size: Size) {
     switch size {
     case .large:

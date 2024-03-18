@@ -232,7 +232,7 @@ private final class ContentView: UIView {
     iconImageView.sd_setImage(
       with: URL(string: iconURI),
       placeholderImage: nil,
-      options: [.refreshCached],
+      options: [.refreshCached, .avoidAutoSetImage],
       context: [
         .imageThumbnailPixelSize : CGSize(width: 30 * UIScreen.main.nativeScale, height: 30 * UIScreen.main.nativeScale),
         .imagePreserveAspectRatio : true
