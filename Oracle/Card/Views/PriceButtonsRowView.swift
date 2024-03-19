@@ -19,7 +19,7 @@ final class PriceButtonsRowView: UIView {
     
     let usdButton = UIButton(configuration: .tinted())
     let usdFoilButton = UIButton(configuration: .tinted())
-    let eurButton = UIButton(configuration: .tinted())
+    let tixButton = UIButton(configuration: .tinted())
     
     usdButton.configuration?.attributedTitle = AttributedString(
       "$\(card.getPrice(for: .usd) ?? "0.00")",
@@ -43,21 +43,21 @@ final class PriceButtonsRowView: UIView {
     usdFoilButton.configuration?.titleAlignment = .center
     usdFoilButton.configuration?.cornerStyle = .large
     
-    eurButton.configuration?.attributedTitle = AttributedString(
-      "€\(card.getPrice(for: .eur) ?? "0.00")",
+    tixButton.configuration?.attributedTitle = AttributedString(
+      "\(card.getPrice(for: .tix) ?? "0.00")",
       attributes: AttributeContainer([NSAttributedString.Key.font : UIFont.monospacedDigitSystemFont(ofSize: 17, weight: .regular)])
     )
-    eurButton.configuration?.attributedSubtitle = AttributedString(
-      "EUR",
+    tixButton.configuration?.attributedSubtitle = AttributedString(
+      "TIX",
       attributes: AttributeContainer([NSAttributedString.Key.font : UIFont.preferredFont(forTextStyle: .caption2)])
     )
-    eurButton.configuration?.titleAlignment = .center
-    eurButton.configuration?.cornerStyle = .large
+    tixButton.configuration?.titleAlignment = .center
+    tixButton.configuration?.cornerStyle = .large
     
     let stackView = UIStackView(arrangedSubviews: [
       usdButton,
       usdFoilButton,
-      eurButton,
+      tixButton,
     ])
     
     let titleLabel = UILabel()
