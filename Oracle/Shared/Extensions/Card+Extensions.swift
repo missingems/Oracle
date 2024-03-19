@@ -42,19 +42,18 @@ extension Card.Legalities {
 }
 
 extension Card {
-  var flippable: Bool {
+  var isFlippable: Bool {
     layout == .transform ||
     layout == .modalDfc ||
     layout == .reversibleCard ||
     layout == .flip ||
     layout == .doubleSided ||
-    layout == .doubleFacedToken
+    layout == .doubleFacedToken ||
+    layout == .battle
   }
   
   var isLandscape: Bool {
-    layout == .split ||
-    layout == .planar ||
-    layout == .battle
+    layout == .split
   }
 }
 
