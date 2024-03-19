@@ -51,6 +51,13 @@ final class CardDetailViewController: UIViewController {
     print("tapped")
   }
   
+  private lazy var priceButtonsRowView = PriceButtonsRowView(card: viewModel.card) { [weak self] action in
+    switch action {
+    case let .didSelectURL(url):
+      self?.viewModel.update(.didSelectURL(url))
+    }
+  }
+  
   private lazy var viewRulingsButtonRow = ButtonRow(title: viewModel.viewRulingsLabel) { [weak self] in
     self?.viewModel.update(.didSelectRulings)
   }
@@ -152,7 +159,7 @@ final class CardDetailViewController: UIViewController {
         illustratorRow,
         informationRow,
         CardDetailLegalityRowView(legalities: viewModel.card.legalities),
-        PriceButtonsRowView(card: viewModel.card),
+        priceButtonsRowView,
         viewRulingsButtonRow,
         versionRow
       ]
@@ -168,7 +175,7 @@ final class CardDetailViewController: UIViewController {
         illustratorRow,
         informationRow,
         CardDetailLegalityRowView(legalities: viewModel.card.legalities),
-        PriceButtonsRowView(card: viewModel.card),
+        priceButtonsRowView,
         viewRulingsButtonRow,
         versionRow
       ]

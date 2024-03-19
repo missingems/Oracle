@@ -49,7 +49,7 @@ final class CardRelevanceView: UIView, UICollectionViewDataSource, UICollectionV
     cell.configure(
       imageURL: card.getImageURL(type: .normal),
       size: .regular,
-      price: card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00",
+      price: card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil),
       card: card
     )
     
@@ -59,7 +59,7 @@ final class CardRelevanceView: UIView, UICollectionViewDataSource, UICollectionV
       cell.configure(
         imageURL: url,
         size: .regular,
-        price: card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00",
+        price: card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil),
         card: card
       )
     }

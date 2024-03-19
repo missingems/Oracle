@@ -112,7 +112,10 @@ final class CardDetailViewModel {
   func update(_ event: Event) {
     switch event {
     case .didSelectRulings:
-      coordinator?.present(destination: .showRulings(card: card))
+      coordinator?.present(destination: .showRulings(card: card), shouldEmbedInNavigationController: true)
+      
+    case let .didSelectURL(url):
+      coordinator?.present(destination: .showURL(url: url), shouldEmbedInNavigationController: false)
       
     case let .didSelectCard(card):
       if card.id != self.card.id {
@@ -189,6 +192,7 @@ extension CardDetailViewModel {
     case viewDidLoad
     case didSelectRulings
     case didSelectCard(Card)
+    case didSelectURL(URL?)
     case transformTapped
   }
   

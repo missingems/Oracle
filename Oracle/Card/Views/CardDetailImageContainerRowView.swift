@@ -41,7 +41,7 @@ final class CardDetailImageContainerRowView: UIView {
     
     cardBackdropImageView.widthAnchor == cardImageView.widthAnchor
     cardBackdropImageView.heightAnchor == cardImageView.heightAnchor
-    cardBackdropImageView.topAnchor == topAnchor + 34
+    cardBackdropImageView.topAnchor == topAnchor + 24
     cardBackdropImageView.horizontalAnchors == cardImageView.horizontalAnchors
         
     preservesSuperviewLayoutMargins = true

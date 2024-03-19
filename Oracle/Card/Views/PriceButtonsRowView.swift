@@ -10,16 +10,26 @@ import ScryfallKit
 import UIKit
 
 final class PriceButtonsRowView: UIView {
+  enum Action {
+    case didSelectURL(URL?)
+  }
+  
   required init?(coder: NSCoder) {
     fatalError()
   }
   
-  init(card: Card) {
+  init(card: Card, action: @escaping (Action) -> ()) {
     super.init(frame: .zero)
     
-    let usdButton = UIButton(configuration: .tinted())
-    let usdFoilButton = UIButton(configuration: .tinted())
-    let tixButton = UIButton(configuration: .tinted())
+    let usdButton = UIButton(configuration: .tinted(), primaryAction: UIAction(handler: { _ in
+      action(.didSelectURL(card.tcgPlayerPurchaseURL?.url))
+    }))
+    let usdFoilButton = UIButton(configuration: .tinted(), primaryAction: UIAction(handler: { _ in
+      action(.didSelectURL(card.tcgPlayerPurchaseURL?.url))
+    }))
+    let tixButton = UIButton(configuration: .tinted(), primaryAction: UIAction(handler: { _ in
+      action(.didSelectURL(card.cardhoarderPurchaseURL?.url))
+    }))
     
     usdButton.configuration?.attributedTitle = AttributedString(
       "$\(card.getPrice(for: .usd) ?? "0.00")",
@@ -76,5 +86,9 @@ final class PriceButtonsRowView: UIView {
     stackView.topAnchor == titleLabel.bottomAnchor + 13
     preservesSuperviewLayoutMargins = true
     stackView.preservesSuperviewLayoutMargins = true
+    
+    usdButton.isEnabled = card.getPrice(for: .usd) != nil
+    usdFoilButton.isEnabled = card.getPrice(for: .usdFoil) != nil
+    tixButton.isEnabled = card.getPrice(for: .tix) != nil
   }
 }

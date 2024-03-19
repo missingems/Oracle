@@ -12,10 +12,6 @@ final class SetDetailCollectionViewCell: SinkableCollectionViewCell {
     imageView.edgeAnchors == contentView.edgeAnchors
   }
   
-  init(type: CardView.Size) {
-    super.init(frame: .zero)
-  }
-  
   required init?(coder: NSCoder) {
     fatalError()
   }
