@@ -26,7 +26,7 @@ extension UIImageView {
     sd_setImage(
       with: url,
       placeholderImage: nil,
-      options: [.refreshCached, .retryFailed, .avoidAutoSetImage],
+      options: [.refreshCached, .retryFailed, .avoidAutoSetImage, .avoidAutoCancelImage],
       context: [
         .imageThumbnailPixelSize : CGSize(width: 30 * UIScreen.main.nativeScale, height: 30 * UIScreen.main.nativeScale),
         .imagePreserveAspectRatio : true
