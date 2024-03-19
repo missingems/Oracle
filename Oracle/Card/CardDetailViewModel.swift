@@ -7,10 +7,11 @@ final class CardDetailViewModel {
   private weak var coordinator: SetCoordinator?
   var selectedFace: Card.Face?
   var stateHandler: ((Message) -> ())?
+  var set: (any GameSet)?
   private(set) var versions: [Card]
   
   var loyalty: String? {
-    guard let loyalty = flippable ? selectedFace?.loyalty : card.loyalty else {
+    guard let loyalty = card.isFlippable ? selectedFace?.loyalty : card.loyalty else {
       return nil
     }
     
@@ -19,8 +20,8 @@ final class CardDetailViewModel {
   
   var powerToughness: String? {
     guard 
-      let power = flippable ? selectedFace?.power : card.power,
-      let toughness = flippable ? selectedFace?.toughness : card.toughness
+      let power = card.isFlippable ? selectedFace?.power : card.power,
+      let toughness = card.isFlippable ? selectedFace?.toughness : card.toughness
     else {
       return nil
     }
@@ -30,9 +31,9 @@ final class CardDetailViewModel {
   
   var name: String? {
     if isPhyrexian {
-      return flippable ? selectedFace?.name : card.name
+      return card.isFlippable ? selectedFace?.name : card.name
     } else {
-      return flippable ? selectedFace?.printedName ?? selectedFace?.name : card.printedName ?? card.name
+      return card.isFlippable ? selectedFace?.printedName ?? selectedFace?.name : card.printedName ?? card.name
     }
   }
   
@@ -44,10 +45,10 @@ final class CardDetailViewModel {
     let attributedText: NSAttributedString?
     
     if isPhyrexian {
-      let text = flippable ? selectedFace?.oracleText : card.oracleText
+      let text = card.isFlippable ? selectedFace?.oracleText : card.oracleText
       attributedText = text?.attributedText(for: .magicTheGathering, font: .preferredFont(forTextStyle: .body))
     } else {
-      let text = flippable ? selectedFace?.printedText ?? selectedFace?.oracleText : card.printedText ?? card.oracleText
+      let text = card.isFlippable ? selectedFace?.printedText ?? selectedFace?.oracleText : card.printedText ?? card.oracleText
       attributedText = text?.attributedText(for: .magicTheGathering, font: .preferredFont(forTextStyle: .body))
     }
     
@@ -56,9 +57,9 @@ final class CardDetailViewModel {
   
   var typeLine: String? {
     if isPhyrexian {
-      return flippable ? selectedFace?.typeLine : card.typeLine
+      return card.isFlippable ? selectedFace?.typeLine : card.typeLine
     } else {
-      return flippable ? selectedFace?.printedTypeLine ?? selectedFace?.typeLine : card.printedTypeLine ?? card.typeLine
+      return card.isFlippable ? selectedFace?.printedTypeLine ?? selectedFace?.typeLine : card.printedTypeLine ?? card.typeLine
     }
   }
   
@@ -68,7 +69,7 @@ final class CardDetailViewModel {
   }
   
   var flavorText: String? {
-    flippable ? selectedFace?.flavorText : card.flavorText
+    card.isFlippable ? selectedFace?.flavorText : card.flavorText
   }
   
   var cardImageURL: URL? {
@@ -95,19 +96,13 @@ final class CardDetailViewModel {
     String(localized: "Illustrated by")
   }
   
-  var flippable: Bool {
-    card.layout == .transform ||
-    card.layout == .modalDfc ||
-    card.layout == .reversibleCard ||
-    card.layout == .flip
-  }
-  
   var viewRulingsLabel: String {
     String(localized: "View Rulings")
   }
   
-  init(card: Card, coordinator: SetCoordinator) {
+  init(card: Card, set: (any GameSet)?, coordinator: SetCoordinator) {
     self.coordinator = coordinator
+    self.set = set
     client = ScryfallClient(networkLogLevel: .minimal)
     self.card = card
     self.selectedFace = card.cardFaces?.first
@@ -121,23 +116,25 @@ final class CardDetailViewModel {
       
     case let .didSelectCard(card):
       if card.id != self.card.id {
-        coordinator?.show(destination: .showCard(card))
+        coordinator?.show(destination: .showCard(card, set: nil))
       } else {
         stateHandler?(.shouldWiggleView)
       }
       
     case .viewDidLoad:
       fetchAllPrints()
-    }
-  }
-  
-  func transformTapped() {
-    if let faces = card.cardFaces {
-      if selectedFace == faces.first {
-        selectedFace = faces.last
-      } else {
-        selectedFace = faces.first
+      fetchCardIfNeeded()
+      
+    case .transformTapped:
+      if let faces = card.cardFaces {
+        if selectedFace == faces.first {
+          selectedFace = faces.last
+        } else {
+          selectedFace = faces.first
+        }
       }
+      
+      stateHandler?(.shouldReconfigureCardDetailPage)
     }
   }
   
@@ -166,6 +163,25 @@ final class CardDetailViewModel {
       }
     }
   }
+  
+  func fetchCardIfNeeded() {
+    guard set == nil else {
+      return
+    }
+    
+    client.getSet(identifier: .code(code: card.set)) { result in
+      DispatchQueue.main.async { [weak self] in
+        switch result {
+        case let .success(set):
+          self?.set = set
+          self?.stateHandler?(.shouldReconfigureCardDetailPage)
+          
+        case .failure:
+          break
+        }
+      }
+    }
+  }
 }
 
 extension CardDetailViewModel {
@@ -173,6 +189,7 @@ extension CardDetailViewModel {
     case viewDidLoad
     case didSelectRulings
     case didSelectCard(Card)
+    case transformTapped
   }
   
   enum Message {

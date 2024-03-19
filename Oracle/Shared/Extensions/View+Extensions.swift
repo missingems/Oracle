@@ -93,8 +93,34 @@ extension UIView {
     }
   }
   
+  func withDivider() -> Self {
+    let divider = UIView.divider()
+    addSubview(divider)
+    divider.trailingAnchor == trailingAnchor
+    divider.verticalAnchors == verticalAnchors
+    return self
+  }
+  
+  func wrapped(size: CGSize) -> UIView {
+    let view = UIView()
+    view.addSubview(self)
+    self.horizontalAnchors == view.horizontalAnchors
+    self.centerYAnchor == view.centerYAnchor
+    self.sizeAnchors == size
+    return view
+  }
+  
   enum Rotation {
     case degrees(CGFloat)
     case identity
+  }
+}
+
+extension UIStackView {
+  func withVerticalAxis() -> Self {
+    addArrangedSubview(UIView())
+    axis = .vertical
+    preservesSuperviewLayoutMargins = true
+    return self
   }
 }

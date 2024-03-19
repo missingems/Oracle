@@ -14,7 +14,7 @@ import SwiftUI
 final class CardDetailViewController: UIViewController {
   private lazy var imageContainerRowView = CardDetailImageContainerRowView(
     imageURL: viewModel.cardImageURL,
-    layout: viewModel.card.layout
+    card: viewModel.card
   ) { [weak self] action in
     guard let self else {
       return
@@ -22,7 +22,7 @@ final class CardDetailViewController: UIViewController {
     
     switch action {
     case .transformTapped:
-      self.viewModel.transformTapped()
+      self.viewModel.update(.transformTapped)
       
     default:
       break
@@ -55,7 +55,7 @@ final class CardDetailViewController: UIViewController {
     self?.viewModel.update(.didSelectRulings)
   }
   
-  private lazy var informationRow = CardSetInformationRowView(viewModel.card)
+  private lazy var informationRow = CardSetInformationRowView(viewModel.card, setSymbolURI: viewModel.set?.iconURI)
   private lazy var versionRow = CardRelevanceView(cards: viewModel.versions)
   private var viewModel: CardDetailViewModel
   
@@ -78,52 +78,76 @@ final class CardDetailViewController: UIViewController {
     
     let arrangedViews: [UIView]
     
-    if viewModel.card.layout == .split {
-      let leftStackView = UIStackView(arrangedSubviews: [
-        CardTitleDetailRowView(
-          viewModel.card.cardFaces?.first?.name,
-          manaCost: viewModel.card.cardFaces?.first?.manaCost.attributedText(for: .magicTheGathering, font: .preferredFont(forTextStyle: .body))
-        ),
-        CardDetailRowView(viewModel.card.cardFaces?.first?.typeLine),
-        CardDetailRowView(viewModel.card.cardFaces?.first?.oracleText, shouldShowSeparator: false),
-        UIView(),
-      ])
-      leftStackView.axis = .vertical
-      leftStackView.preservesSuperviewLayoutMargins = true
+    if viewModel.card.layout == .split || viewModel.card.layout == .adventure {
+      var faces = viewModel.card.cardFaces
       
-      let leftContentView = UIView()
-      leftContentView.addSubview(leftStackView)
-      leftStackView.edgeAnchors == leftContentView.edgeAnchors
-      let divider = UIView.divider()
-      leftContentView.addSubview(divider)
-      divider.trailingAnchor == leftContentView.trailingAnchor
-      divider.verticalAnchors == leftContentView.verticalAnchors
-      leftContentView.preservesSuperviewLayoutMargins = true
+      if viewModel.card.layout == .adventure {
+        faces = faces?.reversed()
+      }
       
-      let rightStackView = UIStackView(arrangedSubviews: [
-        CardTitleDetailRowView(
-          viewModel.card.cardFaces?.last?.name,
-          manaCost: viewModel.card.cardFaces?.last?.manaCost.attributedText(for: .magicTheGathering, font: .preferredFont(forTextStyle: .body)),
-          shouldShowSeparatorFullWidth: true
-        ),
-        CardDetailRowView(viewModel.card.cardFaces?.last?.typeLine, shouldShowSeparatorFullWidth: true),
-        CardDetailRowView(viewModel.card.cardFaces?.last?.oracleText, shouldShowSeparator: false),
-        UIView(),
-      ])
-      rightStackView.axis = .vertical
-      rightStackView.preservesSuperviewLayoutMargins = true
+      let leftDetailRowView = CardTitleDetailRowView(
+        faces?.first?.name,
+        manaCost: faces?.first?.manaCost.attributedText(for: .magicTheGathering, font: .preferredFont(forTextStyle: .body)),
+        shouldShowSeparator: false
+      )
       
-      let stackView = UIStackView(arrangedSubviews: [
-        leftContentView,
-        rightStackView,
+      let rightDetailRowView = CardTitleDetailRowView(
+        faces?.last?.name,
+        manaCost: faces?.last?.manaCost.attributedText(for: .magicTheGathering, font: .preferredFont(forTextStyle: .body)),
+        shouldShowSeparator: false
+      )
+      
+      let titleStackView = UIStackView(arrangedSubviews: [
+        leftDetailRowView.withDivider(), rightDetailRowView
       ])
-      stackView.spacing = 0
-      stackView.distribution = .fillEqually
-      stackView.preservesSuperviewLayoutMargins = true
+      titleStackView.preservesSuperviewLayoutMargins = true
+      titleStackView.distribution = .fillEqually
+      
+      let leftTypeLineRowView = CardDetailRowView(faces?.first?.typeLine, shouldShowSeparator: false)
+      let rightTypelineRowView = CardDetailRowView(faces?.last?.typeLine, shouldShowSeparator: false)
+      let typelineStackView = UIStackView(arrangedSubviews: [
+        leftTypeLineRowView.withDivider(), rightTypelineRowView
+      ])
+      typelineStackView.preservesSuperviewLayoutMargins = true
+      typelineStackView.distribution = .fillEqually
+      
+      let oracleStackView = UIStackView(arrangedSubviews: [
+        UIStackView(
+          arrangedSubviews: [
+            CardDetailRowView(
+              faces?.first?.oracleText?.attributedText(
+                for: .magicTheGathering,
+                font: .preferredFont(forTextStyle: .body)
+              ),
+              shouldShowSeparator: false
+            )
+          ]
+        )
+        .withVerticalAxis()
+        .withDivider(),
+        UIStackView(
+          arrangedSubviews: [
+            CardDetailRowView(
+              faces?.last?.oracleText?.attributedText(
+                for: .magicTheGathering,
+                font: .preferredFont(forTextStyle: .body)
+              ),
+              shouldShowSeparator: false
+            )
+          ]
+        )
+        .withVerticalAxis(),
+      ])
+      oracleStackView.preservesSuperviewLayoutMargins = true
+      oracleStackView.distribution = .fillEqually
       
       arrangedViews = [
         imageContainerRowView,
-        stackView,
+        titleStackView,
+        .separator(),
+        typelineStackView,
+        .separator(),
+        oracleStackView,
         .separator(),
         illustratorRow,
         informationRow,
@@ -181,13 +205,14 @@ final class CardDetailViewController: UIViewController {
   }
   
   private func configure() {
-    imageContainerRowView.configure(with: viewModel.cardImageURL, layout: viewModel.card.layout)
+    imageContainerRowView.configure(with: viewModel.cardImageURL, card: viewModel.card)
     titleDetailRow.configure(viewModel.name, manaCost: viewModel.manaCost)
     typelineRow.configure(with: viewModel.typeLine)
     textRow.configure(with: viewModel.text)
     flavorRow.configure(with: viewModel.flavorText)
     loyaltyRow.configure(with: viewModel.loyalty)
     powerToughnessRow.configure(with: viewModel.powerToughness)
+    informationRow.configure(viewModel.card, setSymbolURI: viewModel.set?.iconURI)
     illustratorRow.configure(title: viewModel.illstrautedLabel, buttonText: viewModel.artist)
     versionRow.configure(viewModel.versions)
   }

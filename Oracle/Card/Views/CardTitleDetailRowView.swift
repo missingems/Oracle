@@ -22,7 +22,7 @@ final class CardTitleDetailRowView: UIView {
     return label
   }()
   
-  init(_ title: String?, manaCost: NSAttributedString?, shouldShowSeparatorFullWidth: Bool = false) {
+  init(_ title: String?, manaCost: NSAttributedString?, shouldShowSeparatorFullWidth: Bool = false, shouldShowSeparator: Bool = true) {
     super.init(frame: .zero)
     
     let titleDetailStackView = UIStackView(arrangedSubviews: [
@@ -37,6 +37,9 @@ final class CardTitleDetailRowView: UIView {
     preservesSuperviewLayoutMargins = true
     titleDetailStackView.verticalAnchors == verticalAnchors + 11
     
+    configure(title, manaCost: manaCost)
+    
+    guard shouldShowSeparator else { return }
     let separator: UIView
     
     if shouldShowSeparatorFullWidth {
@@ -48,7 +51,6 @@ final class CardTitleDetailRowView: UIView {
     addSubview(separator)
     separator.bottomAnchor == bottomAnchor
     separator.horizontalAnchors == horizontalAnchors
-    configure(title, manaCost: manaCost)
   }
   
   required init?(coder: NSCoder) {
