@@ -73,7 +73,7 @@ final class CardSetInformationRowView: UIView {
   
   func configure(_ card: Card) {
     rarityLabel.text = card.rarity.rawValue.capitalized
-    cardNumberLabel.text = "\(card.collectorNumber)"
+    cardNumberLabel.text = "#\(card.collectorNumber)"
     setIdLabel.text = card.set.uppercased()
     setNameLabel.text = card.setName
   }
