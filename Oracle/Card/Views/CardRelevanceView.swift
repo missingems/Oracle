@@ -14,7 +14,7 @@ final class CardRelevanceView: UIView, UICollectionViewDataSource, UICollectionV
       host: self,
       configuration: Ambient.Configuration(
         titleFont: .preferredFont(forTextStyle: .headline),
-        title: String(localized: "Versions"),
+        title: String(localized: "Prints"),
         flowLayout: flowLayout
       )
     )

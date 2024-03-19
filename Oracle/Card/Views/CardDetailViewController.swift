@@ -124,8 +124,9 @@ final class CardDetailViewController: UIViewController {
         .separator(),
         illustratorRow,
         informationRow,
-        viewRulingsButtonRow,
         CardDetailLegalityRowView(legalities: viewModel.card.legalities),
+        PriceButtonsRowView(card: viewModel.card),
+        viewRulingsButtonRow,
         versionRow
       ]
     } else {
@@ -139,8 +140,9 @@ final class CardDetailViewController: UIViewController {
         powerToughnessRow,
         illustratorRow,
         informationRow,
-        viewRulingsButtonRow,
         CardDetailLegalityRowView(legalities: viewModel.card.legalities),
+        PriceButtonsRowView(card: viewModel.card),
+        viewRulingsButtonRow,
         versionRow
       ]
     }

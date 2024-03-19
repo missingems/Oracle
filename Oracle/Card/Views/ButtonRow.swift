@@ -33,8 +33,16 @@ final class ButtonRow: UIView {
     
     super.init(frame: .zero)
     addSubview(button)
-    button.edgeAnchors == layoutMarginsGuide.edgeAnchors
-    button.heightAnchor >= 44.0
+    button.horizontalAnchors == layoutMarginsGuide.horizontalAnchors
+    button.topAnchor == topAnchor
+    button.bottomAnchor == bottomAnchor - 13.0
+    button.heightAnchor >= 49.0
+    
+    let separatorView = UIView.separator(fullWidth: true)
+    addSubview(separatorView)
+    separatorView.bottomAnchor == bottomAnchor
+    separatorView.horizontalAnchors == horizontalAnchors
+    
     preservesSuperviewLayoutMargins = true
   }
 }

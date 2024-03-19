@@ -39,6 +39,7 @@
 		BFCD54D82BA9664B00A0C439 /* RulingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD54D72BA9664B00A0C439 /* RulingTableViewController.swift */; };
 		BFCD54DA2BA972E800A0C439 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD54D92BA972E800A0C439 /* LoadingView.swift */; };
 		BFCD54DC2BA973EE00A0C439 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD54DB2BA973EE00A0C439 /* ErrorView.swift */; };
+		BFCD54DE2BA97F5400A0C439 /* PriceButtonsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD54DD2BA97F5400A0C439 /* PriceButtonsRowView.swift */; };
 		BFD077C22B941B82009C6B4C /* CardRelevanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C12B941B82009C6B4C /* CardRelevanceView.swift */; };
 		BFD077C42B9444F8009C6B4C /* Ambient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C32B9444F8009C6B4C /* Ambient.swift */; };
 		BFD077C62B946F4E009C6B4C /* SinkableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C52B946F4E009C6B4C /* SinkableCell.swift */; };
@@ -103,6 +104,7 @@
 		BFCD54D72BA9664B00A0C439 /* RulingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulingTableViewController.swift; sourceTree = "<group>"; };
 		BFCD54D92BA972E800A0C439 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		BFCD54DB2BA973EE00A0C439 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		BFCD54DD2BA97F5400A0C439 /* PriceButtonsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceButtonsRowView.swift; sourceTree = "<group>"; };
 		BFD077C12B941B82009C6B4C /* CardRelevanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRelevanceView.swift; sourceTree = "<group>"; };
 		BFD077C32B9444F8009C6B4C /* Ambient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ambient.swift; sourceTree = "<group>"; };
 		BFD077C52B946F4E009C6B4C /* SinkableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinkableCell.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				BFD077C12B941B82009C6B4C /* CardRelevanceView.swift */,
 				BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */,
 				BFCD54D72BA9664B00A0C439 /* RulingTableViewController.swift */,
+				BFCD54DD2BA97F5400A0C439 /* PriceButtonsRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				BF5478B32B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift in Sources */,
 				BF5478D42B90367A004D2CC8 /* CardDetailTypelineRowView.swift in Sources */,
 				BFFCAD5F2B962AA100986C34 /* InsetLabel.swift in Sources */,
+				BFCD54DE2BA97F5400A0C439 /* PriceButtonsRowView.swift in Sources */,
 				BF5478E42B90779B004D2CC8 /* CardIllustratorRowView.swift in Sources */,
 				BF56E6772B847C730018B620 /* SetTableViewCell.swift in Sources */,
 				BFCD54D62BA94C1700A0C439 /* ButtonRow.swift in Sources */,
