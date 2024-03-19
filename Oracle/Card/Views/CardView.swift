@@ -129,13 +129,13 @@ final class CardView: UIView {
     
     if card.isFlippable {
       flipButton.setImage(UIImage(systemName: "arrow.left.and.right.righttriangle.left.righttriangle.right.fill"), for: .normal)
-      flipContainerView.isHidden = false
-    } else if card.isRotatable {
-      flipButton.setImage(UIImage(systemName: "rotate.right"), for: .normal)
-      flipContainerView.isHidden = false
-    } else {
-      flipContainerView.isHidden = true
     }
+    
+    if card.isRotatable {
+      flipButton.setImage(UIImage(systemName: "rotate.right"), for: .normal)
+    }
+    
+    flipContainerView.isHidden = !(card.isRotatable || card.isFlippable)
     
     imageView.setAsyncImage(imageURL, placeholder: .mtgBack) { [weak self] image in
       guard let image = image, let cgImage = image.cgImage, card.isLandscape == true, size == .large else {

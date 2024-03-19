@@ -48,7 +48,8 @@ extension Card {
     layout == .reversibleCard ||
     layout == .doubleSided ||
     layout == .doubleFacedToken ||
-    layout == .battle
+    layout == .battle ||
+    layout == .flip
   }
   
   var isRotatable: Bool {
