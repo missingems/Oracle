@@ -120,6 +120,7 @@ final class CardDetailViewController: UIViewController {
         .separator(),
         illustratorRow,
         informationRow,
+        ButtonRow(title: "View Rulings"),
         CardDetailLegalityRowView(legalities: viewModel.card.legalities),
         versionRow
       ]
@@ -134,6 +135,7 @@ final class CardDetailViewController: UIViewController {
         powerToughnessRow,
         illustratorRow,
         informationRow,
+        ButtonRow(title: "View Rulings"),
         CardDetailLegalityRowView(legalities: viewModel.card.legalities),
         versionRow
       ]
