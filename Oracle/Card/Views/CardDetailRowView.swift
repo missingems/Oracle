@@ -13,8 +13,8 @@ final class CardDetailRowView: UIView {
   ) {
     super.init(frame: .zero)
     
-    label.attributedText = attributedString
     commonInit(with: font, color: color, shouldShowSeparator: shouldShowSeparator, shouldShowSeparatorFullWidth: shouldShowSeparatorFullWidth)
+    configure(with: attributedString)
   }
   
   init(
@@ -26,8 +26,8 @@ final class CardDetailRowView: UIView {
   ) {
     super.init(frame: .zero)
     
-    label.text = string
     commonInit(with: font, color: color, shouldShowSeparator: shouldShowSeparator, shouldShowSeparatorFullWidth: shouldShowSeparatorFullWidth)
+    configure(with: string)
   }
   
   private func commonInit(with font: UIFont, color: UIColor, shouldShowSeparator: Bool, shouldShowSeparatorFullWidth: Bool) {
