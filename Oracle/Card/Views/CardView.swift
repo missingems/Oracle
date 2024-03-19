@@ -102,7 +102,7 @@ final class CardView: UIView {
     shouldFlipFromRight.toggle()
     didTappedTransform?(shouldFlipFromRight)
     
-    if card?.isLandscape == true {
+    if card?.isRotatable == true {
       imageContainerView.animateRotate(to: shouldFlipFromRight ? .degrees(180) : .identity)
     } else {
       imageContainerView.animateFlip(options: shouldFlipFromRight ? .transitionFlipFromRight : .transitionFlipFromLeft)
@@ -127,16 +127,13 @@ final class CardView: UIView {
     priceContainerView.isHidden = price == nil
     drawCornerRadius(size: size)
     
-    switch card.layout {
-    case .transform, .modalDfc, .reversibleCard:
+    if card.isFlippable {
       flipButton.setImage(UIImage(systemName: "arrow.left.and.right.righttriangle.left.righttriangle.right.fill"), for: .normal)
       flipContainerView.isHidden = false
-      
-    case .flip:
+    } else if card.isRotatable {
       flipButton.setImage(UIImage(systemName: "rotate.right"), for: .normal)
       flipContainerView.isHidden = false
-      
-    default:
+    } else {
       flipContainerView.isHidden = true
     }
     

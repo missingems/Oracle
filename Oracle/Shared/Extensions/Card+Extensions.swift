@@ -46,10 +46,13 @@ extension Card {
     layout == .transform ||
     layout == .modalDfc ||
     layout == .reversibleCard ||
-    layout == .flip ||
     layout == .doubleSided ||
     layout == .doubleFacedToken ||
     layout == .battle
+  }
+  
+  var isRotatable: Bool {
+    layout == .flip
   }
   
   var isLandscape: Bool {
