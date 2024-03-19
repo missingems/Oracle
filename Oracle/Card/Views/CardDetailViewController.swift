@@ -51,20 +51,24 @@ final class CardDetailViewController: UIViewController {
     print("tapped")
   }
   
+  private lazy var viewRulingsButtonRow = ButtonRow(title: viewModel.viewRulingsLabel) { [weak self] in
+    self?.viewModel.update(.didSelectRulings)
+  }
+  
   private lazy var informationRow = CardSetInformationRowView(viewModel.card)
   private lazy var versionRow = CardRelevanceView(cards: viewModel.versions)
-  
-  
-  
-  private var viewModel: CardDetailViewModel {
-    didSet {
-      configure()
-    }
-  }
+  private var viewModel: CardDetailViewModel
   
   init(viewModel: CardDetailViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
+    
+    viewModel.stateHandler = { [weak self] message in
+      switch message {
+      case .shouldReconfigureCardDetailPage:
+        self?.configure()
+      }
+    }
     
     view.backgroundColor = .tertiarySystemGroupedBackground
     view.preservesSuperviewLayoutMargins = true
@@ -120,6 +124,7 @@ final class CardDetailViewController: UIViewController {
         .separator(),
         illustratorRow,
         informationRow,
+        viewRulingsButtonRow,
         CardDetailLegalityRowView(legalities: viewModel.card.legalities),
         versionRow
       ]
@@ -134,6 +139,7 @@ final class CardDetailViewController: UIViewController {
         powerToughnessRow,
         illustratorRow,
         informationRow,
+        viewRulingsButtonRow,
         CardDetailLegalityRowView(legalities: viewModel.card.legalities),
         versionRow
       ]
@@ -160,11 +166,7 @@ final class CardDetailViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    configure()
-    
-    Task { [weak self] in
-      await self?.viewModel.fetchAllPrints()
-    }
+    viewModel.update(.viewDidLoad)
   }
   
   private func configure() {

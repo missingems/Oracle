@@ -32,9 +32,8 @@ final class SetTableViewModel {
       coordinator?.show(destination: .showSetDetail(set: set))
       
     case .pullToRefreshInvoked:
-      fetchSets { [weak self] in
-        self?.didUpdate?(.shouldReloadData)
-        self?.didUpdate?(.shouldEndRefreshing)
+      fetchSets { [weak self] (sections, dataSource) in
+        self?.updateDisplayingDataSource(sections: sections, dataSource: dataSource)
       }
       
     case .searchBarResigned:
@@ -42,60 +41,60 @@ final class SetTableViewModel {
       didUpdate?(.shouldReloadData)
       
     case let .searchBarTextChanged(query):
-      querySets(query: query) { [weak self] in
-        self?.didUpdate?(.shouldReloadData)
+      querySets(query: query) { [weak self] sections in
+        self?.updateDisplayingDataSource(sections: sections, dataSource: self?.dataSource ?? [])
       }
       
-
     case .viewDidLoad:
       didUpdate?(.isLoading)
-      fetchSets { [weak self] in
-        self?.didUpdate?(.shouldReloadData)
+      fetchSets { [weak self] (sections, dataSource) in
+        self?.updateDisplayingDataSource(sections: sections, dataSource: dataSource)
       }
     }
   }
   
-  private func fetchSets(onComplete: (() -> Void)? = nil) {
+  private func updateDisplayingDataSource(sections: [Section], dataSource: [any GameSet]) {
+    DispatchQueue.main.async { [weak self] in
+      self?.dataSource = dataSource
+      self?.displayingDataSource = sections
+      self?.didUpdate?(.shouldReloadData)
+      self?.didUpdate?(.shouldEndRefreshing)
+    }
+  }
+  
+  private func fetchSets(onComplete: (((sections: [Section], dataSource: [any GameSet])) -> Void)? = nil) {
     didUpdate?(.isLoading)
     
-    client.fetchSets { [weak self] result in
+    client.fetchSets { result in
       switch result {
       case let .success(value):
-        self?.dataSource = value
-        self?.displayingDataSource = [.sets(value)]
-        onComplete?()
+        onComplete?((sections: [.sets(value)], dataSource: value))
         
-      case let .failure(value):
-        self?.displayingDataSource = []
-        self?.didUpdate?(.shouldDisplayError(value))
-        onComplete?()
+      case .failure:
+        onComplete?((sections: [], dataSource: []))
       }
     }
   }
   
-  private func querySets(query: String, onComplete: (() -> Void)? = nil) {
-    didUpdate?(.isLoading)
+  private func querySets(query: String, onComplete: (([Section]) -> Void)? = nil) {
     guard let client = coordinator?.makeNewServiceClient() else { return }
     self.client = client
     
-    client.querySets(query: query, in: dataSource) { [weak self] result in
+    client.querySets(query: query, in: dataSource) { result in
       switch result {
       case let .success(sets):
-        self?.client.queryCards(query: query) { [weak self] result in
+        client.queryCards(query: query) { result in
           switch result {
           case let .success(cards):
-            self?.displayingDataSource = [.sets(sets), .cards(cards)].filter { $0.numberOfRows != 0 }
-            onComplete?()
+            onComplete?([.sets(sets), .cards(cards)].filter { $0.numberOfRows != 0 })
             
-          case let .failure(value):
-            self?.displayingDataSource = []
-            onComplete?()
+          case .failure:
+            onComplete?([])
           }
         }
         
-      case let .failure(value):
-        self?.displayingDataSource = []
-        onComplete?()
+      case .failure:
+        onComplete?([])
       }
     }
   }

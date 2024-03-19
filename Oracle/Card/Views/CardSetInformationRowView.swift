@@ -60,11 +60,6 @@ final class CardSetInformationRowView: UIView {
     backgroundView.verticalAnchors == verticalAnchors
     preservesSuperviewLayoutMargins = true
     configure(card)
-    
-    let separator = UIView.separator()
-    addSubview(separator)
-    separator.horizontalAnchors == horizontalAnchors
-    separator.bottomAnchor == bottomAnchor
   }
   
   required init?(coder: NSCoder) {

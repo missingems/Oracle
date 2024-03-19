@@ -14,6 +14,7 @@ final class SetCoordinator {
     case showCardResult(cardName: String)
     case showSetDetail(set: any GameSet)
     case showSets
+    case showRulings(card: Card)
   }
   
   private(set) lazy var rootViewController = viewController(for: root)
@@ -31,13 +32,20 @@ final class SetCoordinator {
     navigationController.pushViewController(viewController(for: destination), animated: true)
   }
   
+  func present(destination: Destination) {
+    navigationController.present(UINavigationController(rootViewController: viewController(for: destination)), animated: true)
+  }
+  
   private func viewController(for destination: Destination) -> UIViewController {
     switch destination {
     case let .showCard(card):
-      return CardDetailViewController(viewModel: CardDetailViewModel(card: card))
+      return CardDetailViewController(viewModel: CardDetailViewModel(card: card, coordinator: self))
       
     case let .showCardResult(cardName):
       return SetDetailCollectionViewController(SetDetailCollectionViewModel(query: .card(cardName), client: ScryfallClient(), coordinator: self))
+      
+    case let .showRulings(card):
+      return RulingTableViewController(viewModel: RulingTableViewModel(card: card))
       
     case let .showSetDetail(set):
       return SetDetailCollectionViewController(SetDetailCollectionViewModel(query: .set(set), client: ScryfallClient(), coordinator: self))

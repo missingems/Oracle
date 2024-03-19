@@ -1,10 +1,12 @@
 import ScryfallKit
 import Foundation
 
-struct CardDetailViewModel {
-  private let client: ScryfallClient
+final class CardDetailViewModel {
   let card: Card
+  private let client: ScryfallClient
+  private weak var coordinator: SetCoordinator?
   var selectedFace: Card.Face?
+  var stateHandler: ((Message) -> ())?
   private(set) var versions: [Card]
   
   var loyalty: String? {
@@ -96,14 +98,29 @@ struct CardDetailViewModel {
     card.layout == .flip
   }
   
-  init(card: Card) {
+  var viewRulingsLabel: String {
+    String(localized: "View Rulings")
+  }
+  
+  init(card: Card, coordinator: SetCoordinator) {
+    self.coordinator = coordinator
     client = ScryfallClient(networkLogLevel: .minimal)
     self.card = card
     self.selectedFace = card.cardFaces?.first
     versions = [card]
   }
   
-  mutating func transformTapped() {
+  func update(_ event: Event) {
+    switch event {
+    case .didSelectRulings:
+      coordinator?.present(destination: .showRulings(card: card))
+      
+    case .viewDidLoad:
+      fetchAllPrints()
+    }
+  }
+  
+  func transformTapped() {
     if let faces = card.cardFaces {
       if selectedFace == faces.first {
         selectedFace = faces.last
@@ -113,25 +130,40 @@ struct CardDetailViewModel {
     }
   }
   
-  @MainActor
-  mutating func fetchAllPrints() async {
-    guard let oracleId = card.oracleId else {
-      return
-    }
+  func fetchAllPrints() {
+    guard let oracleId = card.oracleId else { return }
     
-    do {
-      let result = try await client.searchCards(
-        filters: [.oracleId(oracleId), .game(.paper)],
-        unique: .prints,
-        order: .released,
-        sortDirection: .auto,
-        includeExtras: true,
-        includeMultilingual: false,
-        includeVariations: true,
-        page: nil
-      )
-      
-      versions = result.data
-    } catch {}
+    client.searchCards(
+      filters: [.oracleId(oracleId), .game(.paper)],
+      unique: .prints,
+      order: .released,
+      sortDirection: .auto,
+      includeExtras: true,
+      includeMultilingual: true,
+      includeVariations: true,
+      page: nil
+    ) { result in
+      DispatchQueue.main.async { [weak self] in
+        switch result {
+        case let .success(value):
+          self?.versions = value.data
+          self?.stateHandler?(.shouldReconfigureCardDetailPage)
+          
+        case .failure:
+          break
+        }
+      }
+    }
+  }
+}
+
+extension CardDetailViewModel {
+  enum Event {
+    case viewDidLoad
+    case didSelectRulings
+  }
+  
+  enum Message {
+    case shouldReconfigureCardDetailPage
   }
 }
