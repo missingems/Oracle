@@ -72,7 +72,7 @@ final class PriceButtonsRowView: UIView {
     
     let titleLabel = UILabel()
     titleLabel.font = .preferredFont(forTextStyle: .headline)
-    titleLabel.text = String(localized: "Prices")
+    titleLabel.text = String(localized: "Market Prices")
     addSubview(titleLabel)
     titleLabel.horizontalAnchors == layoutMarginsGuide.horizontalAnchors
     titleLabel.topAnchor == topAnchor + 13
