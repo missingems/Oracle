@@ -15,13 +15,22 @@ final class ButtonRow: UIView {
     fatalError()
   }
   
-  init(title: String?) {
+  init(title: String?, didTapped: @escaping () -> ()) {
     var configuration = UIButton.Configuration.tinted()
     configuration.image = UIImage(systemName: "book.closed.fill")
     configuration.imagePadding = 5.0
     configuration.cornerStyle = .large
     configuration.attributedTitle = AttributedString(title ?? "", attributes: AttributeContainer([NSAttributedString.Key.font : UIFont.preferredFont(forTextStyle: .body)]))
-    button = UIButton(configuration: configuration)
+    
+    button = UIButton(
+      configuration: configuration,
+      primaryAction: UIAction(
+        handler: { _ in
+          didTapped()
+        }
+      )
+    )
+    
     super.init(frame: .zero)
     addSubview(button)
     button.edgeAnchors == layoutMarginsGuide.edgeAnchors
