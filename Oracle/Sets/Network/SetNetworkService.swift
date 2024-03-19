@@ -46,7 +46,11 @@ extension ScryfallClient: SetNetworkService {
       return abs(Int(firstCharacter.asciiValue ?? 0) - Int(target.asciiValue ?? 0))
     }
     
-    DispatchQueue.global().async {
+    DispatchQueue.global().async { [weak self] in
+      guard self != nil else {
+        return
+      }
+      
       guard query.isEmpty == false else {
         completion(.failure(SetNetworkServiceError.noQuery))
         return
@@ -65,7 +69,11 @@ extension ScryfallClient: SetNetworkService {
   }
   
   func queryCards(query: String, completion: @escaping (Result<[String], Error>) -> ()) {
-    getCardNameAutocomplete(query: query) { result in
+    getCardNameAutocomplete(query: query) { [weak self] result in
+      guard self != nil else {
+        return
+      }
+      
       switch result {
       case let .success(value):
         completion(.success(value.data))

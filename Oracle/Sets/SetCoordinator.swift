@@ -46,4 +46,8 @@ final class SetCoordinator {
       return SetTableViewController(viewModel: SetTableViewModel(client: ScryfallClient(), coordinator: self))
     }
   }
+  
+  func makeNewServiceClient() -> ScryfallClient {
+    ScryfallClient()
+  }
 }

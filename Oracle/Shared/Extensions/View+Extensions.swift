@@ -70,4 +70,21 @@ extension UIView {
       options: options
     ) {}
   }
+  
+  func animateRotate(to rotation: Rotation) {
+    UIView.animate(withDuration: 0.315, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 1, options: .curveEaseInOut) {
+      switch rotation {
+      case let .degrees(value):
+        self.transform = CGAffineTransformMakeRotation(value * Double.pi/180);
+        
+      case .identity:
+        self.transform = .identity
+      }
+    }
+  }
+  
+  enum Rotation {
+    case degrees(CGFloat)
+    case identity
+  }
 }

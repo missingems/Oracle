@@ -92,7 +92,8 @@ struct CardDetailViewModel {
   var flippable: Bool {
     card.layout == .transform ||
     card.layout == .modalDfc ||
-    card.layout == .reversibleCard
+    card.layout == .reversibleCard ||
+    card.layout == .flip
   }
   
   init(card: Card) {

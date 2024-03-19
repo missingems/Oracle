@@ -24,9 +24,12 @@ final class CardView: UIView {
   private lazy var flipButton = UIButton(type: .system)
   private let flipContainerView = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
   private var shouldFlipFromRight = false
+  private var cardLayout: Card.Layout?
+
   var didTappedTransform: ((_ shouldFlipFromRight: Bool) -> ())?
   
   init(layout: Card.Layout? = nil) {
+    self.cardLayout = layout
     super.init(frame: .zero)
     
     let stackView = UIStackView(arrangedSubviews: [
@@ -81,11 +84,10 @@ final class CardView: UIView {
     
     flipContainerView.contentView.addSubview(flipButton)
     flipButton.edgeAnchors == flipContainerView.contentView.edgeAnchors
-    flipButton.setImage(UIImage(systemName: "arrow.left.and.right.righttriangle.left.righttriangle.right.fill"), for: .normal)
     addSubview(flipContainerView)
     flipContainerView.sizeAnchors == CGSize(width: 44, height: 44)
-    flipContainerView.centerXAnchor == trailingAnchor - 25
-    flipContainerView.centerYAnchor == imageContainerView.centerYAnchor - 22
+    flipContainerView.centerXAnchor == trailingAnchor - 27
+    flipContainerView.centerYAnchor == imageContainerView.centerYAnchor - 11
     flipContainerView.layer.cornerRadius = 22
     flipContainerView.clipsToBounds = true
     flipContainerView.layer.cornerCurve = .circular
@@ -99,7 +101,12 @@ final class CardView: UIView {
   private func flipButtonTapped() {
     shouldFlipFromRight.toggle()
     didTappedTransform?(shouldFlipFromRight)
-    imageContainerView.animateFlip(options: shouldFlipFromRight ? .transitionFlipFromRight : .transitionFlipFromLeft)
+    
+    if cardLayout == .flip {
+      imageContainerView.animateRotate(to: shouldFlipFromRight ? .degrees(180) : .identity)
+    } else {
+      imageContainerView.animateFlip(options: shouldFlipFromRight ? .transitionFlipFromRight : .transitionFlipFromLeft)
+    }  
   }
   
   func configure(
@@ -110,6 +117,8 @@ final class CardView: UIView {
     layout: Card.Layout,
     completion: ((UIImage?) -> ())? = nil
   ) {
+    cardLayout = layout
+    
     if let price {
       priceCapsuleLabel.text = "$\(price)"
     }
@@ -120,6 +129,11 @@ final class CardView: UIView {
     
     switch layout {
     case .transform, .modalDfc, .reversibleCard:
+      flipButton.setImage(UIImage(systemName: "arrow.left.and.right.righttriangle.left.righttriangle.right.fill"), for: .normal)
+      flipContainerView.isHidden = false
+      
+    case .flip:
+      flipButton.setImage(UIImage(systemName: "rotate.right"), for: .normal)
       flipContainerView.isHidden = false
       
     default:
