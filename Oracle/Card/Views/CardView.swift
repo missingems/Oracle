@@ -24,12 +24,12 @@ final class CardView: UIView {
   private lazy var flipButton = UIButton(type: .system)
   private let flipContainerView = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
   private var shouldFlipFromRight = false
-  private var cardLayout: Card.Layout?
+  private var card: Card?
 
   var didTappedTransform: ((_ shouldFlipFromRight: Bool) -> ())?
   
-  init(layout: Card.Layout? = nil) {
-    self.cardLayout = layout
+  init(card: Card? = nil) {
+    self.card = card
     super.init(frame: .zero)
     
     let stackView = UIStackView(arrangedSubviews: [
@@ -44,7 +44,7 @@ final class CardView: UIView {
     imageContainerView.addSubview(imageView)
     imageView.edgeAnchors == imageContainerView.edgeAnchors
     
-    if layout == .split {
+    if card?.isLandscape == true {
       imageContainerView.heightAnchor == imageContainerView.widthAnchor / 1.3928
     } else {
       imageContainerView.heightAnchor == imageContainerView.widthAnchor * 1.3928
@@ -102,7 +102,7 @@ final class CardView: UIView {
     shouldFlipFromRight.toggle()
     didTappedTransform?(shouldFlipFromRight)
     
-    if cardLayout == .flip {
+    if card?.isLandscape == true {
       imageContainerView.animateRotate(to: shouldFlipFromRight ? .degrees(180) : .identity)
     } else {
       imageContainerView.animateFlip(options: shouldFlipFromRight ? .transitionFlipFromRight : .transitionFlipFromLeft)
@@ -114,10 +114,10 @@ final class CardView: UIView {
     imageType: Card.ImageType,
     size: CardView.Size,
     price: String?,
-    layout: Card.Layout,
+    card: Card,
     completion: ((UIImage?) -> ())? = nil
   ) {
-    cardLayout = layout
+    self.card = card
     
     if let price {
       priceCapsuleLabel.text = "$\(price)"
@@ -127,7 +127,7 @@ final class CardView: UIView {
     priceContainerView.isHidden = price == nil
     drawCornerRadius(size: size)
     
-    switch layout {
+    switch card.layout {
     case .transform, .modalDfc, .reversibleCard:
       flipButton.setImage(UIImage(systemName: "arrow.left.and.right.righttriangle.left.righttriangle.right.fill"), for: .normal)
       flipContainerView.isHidden = false
@@ -141,7 +141,7 @@ final class CardView: UIView {
     }
     
     imageView.setAsyncImage(imageURL, placeholder: .mtgBack) { [weak self] image in
-      guard let image = image, let cgImage = image.cgImage, layout == .split, size == .large else {
+      guard let image = image, let cgImage = image.cgImage, card.isLandscape == true, size == .large else {
         completion?(image)
         return
       }

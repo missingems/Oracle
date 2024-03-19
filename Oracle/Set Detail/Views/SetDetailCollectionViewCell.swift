@@ -20,7 +20,7 @@ final class SetDetailCollectionViewCell: SinkableCollectionViewCell {
     fatalError()
   }
   
-  func configure(imageURL: URL?, size: CardView.Size = .regular, price: String?, layout: Card.Layout) {
-    imageView.configure(imageURL: imageURL, imageType: .normal, size: size, price: price, layout: layout)
+  func configure(imageURL: URL?, size: CardView.Size = .regular, price: String?, card: Card) {
+    imageView.configure(imageURL: imageURL, imageType: .normal, size: size, price: price, card: card)
   }
 }

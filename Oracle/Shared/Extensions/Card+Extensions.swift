@@ -41,6 +41,23 @@ extension Card.Legalities {
   }
 }
 
+extension Card {
+  var flippable: Bool {
+    layout == .transform ||
+    layout == .modalDfc ||
+    layout == .reversibleCard ||
+    layout == .flip ||
+    layout == .doubleSided ||
+    layout == .doubleFacedToken
+  }
+  
+  var isLandscape: Bool {
+    layout == .split ||
+    layout == .planar ||
+    layout == .battle
+  }
+}
+
 extension Card.Legality {
   var color: UIColor {
     switch self {

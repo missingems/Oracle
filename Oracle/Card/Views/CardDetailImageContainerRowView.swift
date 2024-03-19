@@ -9,12 +9,12 @@ final class CardDetailImageContainerRowView: UIView {
     case transformTapped
   }
   
-  private lazy var cardImageView = CardView(layout: cardLayout)
-  private var cardLayout: Card.Layout
+  private lazy var cardImageView = CardView(card: card)
+  private var card: Card
   private lazy var cardBackdropImageView = UIImageView()
   
-  init(imageURL: URL?, layout: Card.Layout, action: @escaping (Action) -> ()) {
-    cardLayout = layout
+  init(imageURL: URL?, card: Card, action: @escaping (Action) -> ()) {
+    self.card = card
     super.init(frame: .zero)
     addSubview(cardBackdropImageView)
     
@@ -27,7 +27,7 @@ final class CardDetailImageContainerRowView: UIView {
     cardContainerView.addSubview(cardImageView)
     cardImageView.verticalAnchors == cardContainerView.verticalAnchors
     
-    if layout == .split {
+    if card.isLandscape == true {
       cardImageView.horizontalAnchors == cardContainerView.layoutMarginsGuide.horizontalAnchors
     } else {
       cardImageView.horizontalAnchors == cardContainerView.layoutMarginsGuide.horizontalAnchors + 44
@@ -53,20 +53,20 @@ final class CardDetailImageContainerRowView: UIView {
       action(.transformTapped)
     }
     
-    configure(with: imageURL, layout: layout)
+    configure(with: imageURL, card: card)
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func configure(with imageURL: URL?, layout: Card.Layout) {
+  func configure(with imageURL: URL?, card: Card) {
     cardImageView.configure(
       imageURL: imageURL,
       imageType: .normal,
       size: .large,
       price: nil,
-      layout: layout
+      card: card
     ) { [weak self] image in
       self?.cardBackdropImageView.image = image
     }

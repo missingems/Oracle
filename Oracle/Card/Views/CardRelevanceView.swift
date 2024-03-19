@@ -50,7 +50,7 @@ final class CardRelevanceView: UIView, UICollectionViewDataSource, UICollectionV
       imageURL: card.getImageURL(type: .normal),
       size: .regular,
       price: card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00",
-      layout: card.layout
+      card: card
     )
     
     cell.imageView.didTappedTransform = { shouldFlipFromRight in
@@ -60,7 +60,7 @@ final class CardRelevanceView: UIView, UICollectionViewDataSource, UICollectionV
         imageURL: url,
         size: .regular,
         price: card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00",
-        layout: card.layout
+        card: card
       )
     }
     
