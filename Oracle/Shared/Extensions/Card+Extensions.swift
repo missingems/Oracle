@@ -94,3 +94,29 @@ extension Card.Legality {
     }
   }
 }
+
+extension Card {
+  var cardhoarderPurchaseURL: (title: String, url: URL?)? {
+    if let value = purchaseUris?["cardhoarder"] {
+      return (title: "CardHoarder", url: URL(string: value))
+    } else {
+      return nil
+    }
+  }
+  
+  var tcgPlayerPurchaseURL: (title: String, url: URL?)? {
+    if let value = purchaseUris?["tcgplayer"] {
+      return (title: "TCGPlayer", url: URL(string: value))
+    } else {
+      return nil
+    }
+  }
+  
+  var cardmarketPurchaseURL: (title: String, url: URL?)? {
+    if let value = purchaseUris?["cardmarket"] {
+      return (title: "CardMarket", url: URL(string: value))
+    } else {
+      return nil
+    }
+  }
+}

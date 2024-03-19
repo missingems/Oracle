@@ -18,7 +18,6 @@ final class CardView: UIView {
   
   private let imageContainerView = UIView()
   private let imageView = UIImageView()
-  private let foilView = FoilEffectView(frame: .zero)
   private let priceCapsuleLabel = InsetLabel(UIEdgeInsets(top: 3, left: 6, bottom: 3, right: 6))
   private let priceContainerView = UIView()
   private lazy var flipButton = UIButton(type: .system)
@@ -77,7 +76,6 @@ final class CardView: UIView {
     priceContainerView.addSubview(priceView)
     priceView.centerXAnchor == priceContainerView.centerXAnchor
     priceView.verticalAnchors == priceContainerView.verticalAnchors
-    priceCapsuleLabel.alpha = 0
     
     imageView.layer.borderWidth = 1 / UIScreen.main.nativeScale
     imageView.layer.borderColor = UIColor.separator.cgColor
@@ -121,10 +119,13 @@ final class CardView: UIView {
     
     if let price {
       priceCapsuleLabel.text = "$\(price)"
+      priceCapsuleLabel.backgroundColor = .capsule
+    } else {
+      priceCapsuleLabel.text = "#\(card.collectorNumber)"
+      priceCapsuleLabel.backgroundColor = .clear
     }
     
-    priceCapsuleLabel.alpha = 1
-    priceContainerView.isHidden = price == nil
+    priceContainerView.isHidden = size == .large
     drawCornerRadius(size: size)
     
     if card.isFlippable {

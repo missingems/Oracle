@@ -7,6 +7,7 @@
 
 import UIKit
 import ScryfallKit
+import SafariServices
 
 final class SetCoordinator {
   enum Destination {
@@ -15,6 +16,7 @@ final class SetCoordinator {
     case showSetDetail(set: any GameSet)
     case showSets
     case showRulings(card: Card)
+    case showURL(url: URL?)
   }
   
   private(set) lazy var rootViewController = viewController(for: root)
@@ -32,8 +34,16 @@ final class SetCoordinator {
     navigationController.pushViewController(viewController(for: destination), animated: true)
   }
   
-  func present(destination: Destination) {
-    navigationController.present(UINavigationController(rootViewController: viewController(for: destination)), animated: true)
+  func present(destination: Destination, shouldEmbedInNavigationController: Bool) {
+    let viewController: UIViewController
+    
+    if shouldEmbedInNavigationController {
+      viewController = UINavigationController(rootViewController: self.viewController(for: destination))
+    } else {
+      viewController = self.viewController(for: destination)
+    }
+    
+    navigationController.present(viewController, animated: true)
   }
   
   private func viewController(for destination: Destination) -> UIViewController {
@@ -52,6 +62,13 @@ final class SetCoordinator {
       
     case .showSets:
       return SetTableViewController(viewModel: SetTableViewModel(client: ScryfallClient(), coordinator: self))
+      
+    case let .showURL(value):
+      guard let value else {
+        fatalError("URL cannot be nil")
+      }
+      
+      return SFSafariViewController(url: value)
     }
   }
   
