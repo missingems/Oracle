@@ -80,7 +80,10 @@ final class RulingTableViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = UITableViewCell(style: .default, reuseIdentifier: "RulingTableViewCell")
-    cell.textLabel?.text = viewModel.rulings[indexPath.section].comment
+    cell.textLabel?.attributedText = viewModel
+      .rulings[indexPath.section]
+      .comment
+      .attributedText(for: .magicTheGathering, font: .preferredFont(forTextStyle: .body))
     cell.textLabel?.numberOfLines = 0
     cell.selectionStyle = .none
     return cell

@@ -139,7 +139,7 @@ final class CardDetailViewModel {
       order: .released,
       sortDirection: .auto,
       includeExtras: true,
-      includeMultilingual: true,
+      includeMultilingual: false,
       includeVariations: true,
       page: nil
     ) { result in
