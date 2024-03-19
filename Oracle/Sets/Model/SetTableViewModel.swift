@@ -10,7 +10,7 @@ import Foundation
 final class SetTableViewModel {
   typealias StateHandler = ((Message) -> ())
   
-  private let client: any SetNetworkService
+  private var client: any SetNetworkService
   let configuration: Configuration = Configuration()
   private weak var coordinator: SetCoordinator?
   private var dataSource: [any GameSet] = []
@@ -75,6 +75,8 @@ final class SetTableViewModel {
   
   private func querySets(query: String, onComplete: (() -> Void)? = nil) {
     didUpdate?(.isLoading)
+    guard let client = coordinator?.makeNewServiceClient() else { return }
+    self.client = client
     
     client.querySets(query: query, in: dataSource) { [weak self] result in
       switch result {
