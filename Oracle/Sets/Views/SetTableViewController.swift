@@ -22,23 +22,21 @@ final class SetTableViewController: UITableViewController {
     viewModel.didUpdate = { [weak self] state in
       guard let self else { return }
       
-      DispatchQueue.main.async {
-        switch state {
-        case .isLoading:
-          let loadingIndicator = UIActivityIndicatorView(style: .large)
-          loadingIndicator.startAnimating()
-          self.tableView.backgroundView = loadingIndicator
-          
-        case .shouldReloadData:
-          self.tableView.backgroundView = nil
-          self.tableView.reloadData()
-          
-        case .shouldEndRefreshing:
-          self.tableView.refreshControl?.endRefreshing()
-          
-        case let .shouldDisplayError(error):
-          break
-        }
+      switch state {
+      case .isLoading:
+        let loadingIndicator = UIActivityIndicatorView(style: .large)
+        loadingIndicator.startAnimating()
+        self.tableView.backgroundView = loadingIndicator
+        
+      case .shouldReloadData:
+        self.tableView.backgroundView = nil
+        self.tableView.reloadData()
+        
+      case .shouldEndRefreshing:
+        self.tableView.refreshControl?.endRefreshing()
+        
+      case let .shouldDisplayError(error):
+        break
       }
     }
     
