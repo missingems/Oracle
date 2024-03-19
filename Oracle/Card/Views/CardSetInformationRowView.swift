@@ -55,6 +55,11 @@ final class CardSetInformationRowView: UIView {
     contentStackView.horizontalAnchors == backgroundView.horizontalAnchors
     contentStackView.verticalAnchors == backgroundView.verticalAnchors + 13.0
     
+    let separatorView = UIView.separator()
+    addSubview(separatorView)
+    separatorView.bottomAnchor == bottomAnchor
+    separatorView.horizontalAnchors == horizontalAnchors
+    
     addSubview(backgroundView)
     backgroundView.horizontalAnchors == layoutMarginsGuide.horizontalAnchors
     backgroundView.verticalAnchors == verticalAnchors

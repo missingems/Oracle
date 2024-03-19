@@ -11,7 +11,7 @@ final class CardDetailLegalityRowView: UIView {
     
     view.edgeAnchors == edgeAnchors
     
-    let separator = UIView.separator(fullWidth: true)
+    let separator = UIView.separator()
     addSubview(separator)
     separator.bottomAnchor == bottomAnchor
     separator.horizontalAnchors == horizontalAnchors
