@@ -22,7 +22,7 @@ final class CardDetailViewController: UIViewController {
     
     switch action {
     case .transformTapped:
-      self.viewModel.transformTapped()
+      self.viewModel.update(.transformTapped)
       
     default:
       break
