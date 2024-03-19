@@ -36,6 +36,10 @@ final class CardDetailViewModel {
     }
   }
   
+  var backButtonItem: String? {
+    "\(name ?? "") #\(card.collectorNumber)"
+  }
+  
   var text: NSAttributedString? {
     let attributedText: NSAttributedString?
     
@@ -115,6 +119,13 @@ final class CardDetailViewModel {
     case .didSelectRulings:
       coordinator?.present(destination: .showRulings(card: card))
       
+    case let .didSelectCard(card):
+      if card.id != self.card.id {
+        coordinator?.show(destination: .showCard(card))
+      } else {
+        stateHandler?(.shouldWiggleView)
+      }
+      
     case .viewDidLoad:
       fetchAllPrints()
     }
@@ -161,9 +172,11 @@ extension CardDetailViewModel {
   enum Event {
     case viewDidLoad
     case didSelectRulings
+    case didSelectCard(Card)
   }
   
   enum Message {
     case shouldReconfigureCardDetailPage
+    case shouldWiggleView
   }
 }

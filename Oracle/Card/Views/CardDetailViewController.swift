@@ -67,6 +67,9 @@ final class CardDetailViewController: UIViewController {
       switch message {
       case .shouldReconfigureCardDetailPage:
         self?.configure()
+        
+      case .shouldWiggleView:
+        self?.view.animateWiggle()
       }
     }
     
@@ -147,6 +150,10 @@ final class CardDetailViewController: UIViewController {
       ]
     }
     
+    versionRow.didSelectCard = { [weak self] in
+      self?.viewModel.update(.didSelectCard($0))
+    }
+    
     let stackView = UIStackView(arrangedSubviews: arrangedViews)
     stackView.preservesSuperviewLayoutMargins = true
     stackView.axis = .vertical
@@ -160,6 +167,8 @@ final class CardDetailViewController: UIViewController {
     
     view.addSubview(scrollView)
     scrollView.edgeAnchors == view.edgeAnchors
+    
+    navigationItem.backButtonTitle = viewModel.backButtonItem
   }
   
   required init?(coder: NSCoder) {

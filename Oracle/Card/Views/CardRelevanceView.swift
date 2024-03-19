@@ -21,6 +21,7 @@ final class CardRelevanceView: UIView, UICollectionViewDataSource, UICollectionV
   }()
   
   private var cards: [Card]
+  var didSelectCard: ((Card) -> ())?
   
   init(cards: [Card]) {
     self.cards = cards
@@ -80,6 +81,12 @@ final class CardRelevanceView: UIView, UICollectionViewDataSource, UICollectionV
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     ambient.syncScroll(ambient.collectionView)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if collectionView === ambient.collectionView {
+      didSelectCard?(cards[indexPath.item])
+    }
   }
   
   func configure(_ cards: [Card]) {
