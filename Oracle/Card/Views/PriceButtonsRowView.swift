@@ -18,11 +18,11 @@ final class PriceButtonsRowView: UIView {
     super.init(frame: .zero)
     
     let usdButton = UIButton(configuration: .tinted())
+    let usdFoilButton = UIButton(configuration: .tinted())
     let eurButton = UIButton(configuration: .tinted())
-    let tixButton = UIButton(configuration: .tinted())
     
     usdButton.configuration?.attributedTitle = AttributedString(
-      "$\(card.getPrice(for: .usd) ?? card.getPrice(for: .usdFoil) ?? "0.00")",
+      "$\(card.getPrice(for: .usd) ?? "0.00")",
       attributes: AttributeContainer([NSAttributedString.Key.font : UIFont.monospacedDigitSystemFont(ofSize: 17, weight: .regular)])
     )
     usdButton.configuration?.attributedSubtitle = AttributedString(
@@ -31,6 +31,17 @@ final class PriceButtonsRowView: UIView {
     )
     usdButton.configuration?.titleAlignment = .center
     usdButton.configuration?.cornerStyle = .large
+    
+    usdFoilButton.configuration?.attributedTitle = AttributedString(
+      "$\(card.getPrice(for: .usdFoil) ?? "0.00")",
+      attributes: AttributeContainer([NSAttributedString.Key.font : UIFont.monospacedDigitSystemFont(ofSize: 17, weight: .regular)])
+    )
+    usdFoilButton.configuration?.attributedSubtitle = AttributedString(
+      "USD - Foil",
+      attributes: AttributeContainer([NSAttributedString.Key.font : UIFont.preferredFont(forTextStyle: .caption2)])
+    )
+    usdFoilButton.configuration?.titleAlignment = .center
+    usdFoilButton.configuration?.cornerStyle = .large
     
     eurButton.configuration?.attributedTitle = AttributedString(
       "€\(card.getPrice(for: .eur) ?? "0.00")",
@@ -43,21 +54,10 @@ final class PriceButtonsRowView: UIView {
     eurButton.configuration?.titleAlignment = .center
     eurButton.configuration?.cornerStyle = .large
     
-    tixButton.configuration?.attributedTitle = AttributedString(
-      "\(card.getPrice(for: .tix) ?? "0.00")",
-      attributes: AttributeContainer([NSAttributedString.Key.font: UIFont.monospacedDigitSystemFont(ofSize: 17, weight: .regular)])
-    )
-    tixButton.configuration?.attributedSubtitle = AttributedString(
-      "TIX",
-      attributes: AttributeContainer([NSAttributedString.Key.font : UIFont.preferredFont(forTextStyle: .caption2)])
-    )
-    tixButton.configuration?.titleAlignment = .center
-    tixButton.configuration?.cornerStyle = .large
-    
     let stackView = UIStackView(arrangedSubviews: [
       usdButton,
+      usdFoilButton,
       eurButton,
-      tixButton
     ])
     
     let titleLabel = UILabel()
