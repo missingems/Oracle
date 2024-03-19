@@ -55,7 +55,7 @@ final class CardDetailViewController: UIViewController {
     self?.viewModel.update(.didSelectRulings)
   }
   
-  private lazy var informationRow = CardSetInformationRowView(viewModel.card)
+  private lazy var informationRow = CardSetInformationRowView(viewModel.card, setSymbolURI: viewModel.set?.iconURI)
   private lazy var versionRow = CardRelevanceView(cards: viewModel.versions)
   private var viewModel: CardDetailViewModel
   
@@ -212,6 +212,7 @@ final class CardDetailViewController: UIViewController {
     flavorRow.configure(with: viewModel.flavorText)
     loyaltyRow.configure(with: viewModel.loyalty)
     powerToughnessRow.configure(with: viewModel.powerToughness)
+    informationRow.configure(viewModel.card, setSymbolURI: viewModel.set?.iconURI)
     illustratorRow.configure(title: viewModel.illstrautedLabel, buttonText: viewModel.artist)
     versionRow.configure(viewModel.versions)
   }

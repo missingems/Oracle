@@ -27,7 +27,12 @@ final class SetDetailCollectionViewModel {
   func update(_ event: Event) {
     switch event {
     case let .didSelectCard(card):
-      coordinator?.show(destination: .showCard(card))
+      switch query {
+      case let .set(gameSet):
+        coordinator?.show(destination: .showCard(card, set: gameSet))
+      case .card:
+        coordinator?.show(destination: .showCard(card, set: nil))
+      }
       
     case let .didSelectSortDirection(value):
       didUpdate?(.shouldShowIsLoading)

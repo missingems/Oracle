@@ -7,6 +7,7 @@ final class CardDetailViewModel {
   private weak var coordinator: SetCoordinator?
   var selectedFace: Card.Face?
   var stateHandler: ((Message) -> ())?
+  var set: (any GameSet)?
   private(set) var versions: [Card]
   
   var loyalty: String? {
@@ -99,8 +100,9 @@ final class CardDetailViewModel {
     String(localized: "View Rulings")
   }
   
-  init(card: Card, coordinator: SetCoordinator) {
+  init(card: Card, set: (any GameSet)?, coordinator: SetCoordinator) {
     self.coordinator = coordinator
+    self.set = set
     client = ScryfallClient(networkLogLevel: .minimal)
     self.card = card
     self.selectedFace = card.cardFaces?.first
@@ -114,13 +116,14 @@ final class CardDetailViewModel {
       
     case let .didSelectCard(card):
       if card.id != self.card.id {
-        coordinator?.show(destination: .showCard(card))
+        coordinator?.show(destination: .showCard(card, set: nil))
       } else {
         stateHandler?(.shouldWiggleView)
       }
       
     case .viewDidLoad:
       fetchAllPrints()
+      fetchCardIfNeeded()
       
     case .transformTapped:
       if let faces = card.cardFaces {
@@ -152,6 +155,25 @@ final class CardDetailViewModel {
         switch result {
         case let .success(value):
           self?.versions = value.data
+          self?.stateHandler?(.shouldReconfigureCardDetailPage)
+          
+        case .failure:
+          break
+        }
+      }
+    }
+  }
+  
+  func fetchCardIfNeeded() {
+    guard set == nil else {
+      return
+    }
+    
+    client.getSet(identifier: .code(code: card.set)) { result in
+      DispatchQueue.main.async { [weak self] in
+        switch result {
+        case let .success(set):
+          self?.set = set
           self?.stateHandler?(.shouldReconfigureCardDetailPage)
           
         case .failure:

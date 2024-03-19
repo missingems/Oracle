@@ -101,6 +101,15 @@ extension UIView {
     return self
   }
   
+  func wrapped(size: CGSize) -> UIView {
+    let view = UIView()
+    view.addSubview(self)
+    self.horizontalAnchors == view.horizontalAnchors
+    self.centerYAnchor == view.centerYAnchor
+    self.sizeAnchors == size
+    return view
+  }
+  
   enum Rotation {
     case degrees(CGFloat)
     case identity

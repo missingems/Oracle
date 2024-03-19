@@ -13,6 +13,7 @@ final class CardSetInformationRowView: UIView {
   private let rarityLabel = CardSetInformationRowView.makeLabel(font: .preferredFont(forTextStyle: .caption1))
   private let cardNumberLabel = CardSetInformationRowView.makeLabel(font: .preferredFont(forTextStyle: .caption1))
   private let setNameLabel = CardSetInformationRowView.makeLabel(font: .preferredFont(forTextStyle: .caption1), textColor: .secondaryLabel)
+  private let iconImageView = UIImageView()
   
   private lazy var setIdLabel = {
     let label = InsetLabel()
@@ -30,7 +31,7 @@ final class CardSetInformationRowView: UIView {
     return label
   }()
   
-  init(_ card: Card) {
+  init(_ card: Card, setSymbolURI: String?) {
     super.init(frame: .zero)
     
     let rarityAndCardNumberStackView = UIStackView(arrangedSubviews: [
@@ -43,39 +44,48 @@ final class CardSetInformationRowView: UIView {
     ])
     setStackView.spacing = 5
     
-    let contentStackView = UIStackView(arrangedSubviews: [
+    let verticalStackView = UIStackView(arrangedSubviews: [
       rarityAndCardNumberStackView,
       setStackView,
     ])
-    contentStackView.axis = .vertical
-    contentStackView.spacing = 5.0
+    verticalStackView.axis = .vertical
+    verticalStackView.spacing = 3
     
-    let backgroundView = UIView()
-    backgroundView.addSubview(contentStackView)
-    contentStackView.horizontalAnchors == backgroundView.horizontalAnchors
-    contentStackView.verticalAnchors == backgroundView.verticalAnchors + 13.0
+    let horizontalStackView = UIStackView(arrangedSubviews: [
+      verticalStackView,
+      UIView(),
+      iconImageView.wrapped(size: CGSize(width: 30, height: 30)),
+    ])
+    horizontalStackView.preservesSuperviewLayoutMargins = true
+    
+    addSubview(horizontalStackView)
+    horizontalStackView.horizontalAnchors == layoutMarginsGuide.horizontalAnchors
+    horizontalStackView.verticalAnchors == verticalAnchors + 13.0
     
     let separatorView = UIView.separator()
     addSubview(separatorView)
     separatorView.bottomAnchor == bottomAnchor
     separatorView.horizontalAnchors == horizontalAnchors
     
-    addSubview(backgroundView)
-    backgroundView.horizontalAnchors == layoutMarginsGuide.horizontalAnchors
-    backgroundView.verticalAnchors == verticalAnchors
     preservesSuperviewLayoutMargins = true
-    configure(card)
+    configure(card, setSymbolURI: setSymbolURI)
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func configure(_ card: Card) {
+  func configure(_ card: Card, setSymbolURI: String?) {
     rarityLabel.text = card.rarity.rawValue.capitalized
     cardNumberLabel.text = "#\(card.collectorNumber)"
     setIdLabel.text = card.set.uppercased()
     setNameLabel.text = card.setName
+    
+    if let setSymbolURI {
+      iconImageView.setSVGImage(URL(string: setSymbolURI))
+    } else {
+      iconImageView.image = nil
+    }
   }
   
   private static func makeLabel(font: UIFont, textColor: UIColor = .label) -> UILabel {
