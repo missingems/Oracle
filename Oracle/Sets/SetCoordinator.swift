@@ -16,7 +16,8 @@ final class SetCoordinator {
     case showSetDetail(set: any GameSet)
     case showSets
     case showRulings(card: Card)
-    case showURL(url: URL?)
+    case shareURL(URL)
+    case showURL(URL)
   }
   
   private(set) lazy var rootViewController = viewController(for: root)
@@ -34,7 +35,7 @@ final class SetCoordinator {
     navigationController.pushViewController(viewController(for: destination), animated: true)
   }
   
-  func present(destination: Destination, shouldEmbedInNavigationController: Bool) {
+  func present(destination: Destination, shouldEmbedInNavigationController: Bool = false) {
     let viewController: UIViewController
     
     if shouldEmbedInNavigationController {
@@ -63,11 +64,11 @@ final class SetCoordinator {
     case .showSets:
       return SetTableViewController(viewModel: SetTableViewModel(client: ScryfallClient(), coordinator: self))
       
-    case let .showURL(value):
-      guard let value else {
-        fatalError("URL cannot be nil")
-      }
+    case let .shareURL(value):
+      let activityViewController = UIActivityViewController(activityItems: [value], applicationActivities: nil)
+      return activityViewController
       
+    case let .showURL(value):
       return SFSafariViewController(url: value)
     }
   }

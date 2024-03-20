@@ -200,6 +200,17 @@ final class CardDetailViewController: UIViewController {
     scrollView.edgeAnchors == view.edgeAnchors
     
     navigationItem.backButtonTitle = viewModel.backButtonItem
+    navigationItem.rightBarButtonItems = [
+      UIBarButtonItem(
+        systemItem: .action, 
+        primaryAction: UIAction(
+          handler: { [weak self] _ in
+            self?.viewModel.update(.shareTapped)
+          }
+        )
+      ),
+      UIBarButtonItem(systemItem: .add)
+    ]
   }
   
   required init?(coder: NSCoder) {
