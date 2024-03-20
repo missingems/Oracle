@@ -29,10 +29,6 @@ final class SetTableViewController: UITableViewController {
         self.tableView.backgroundView = loadingIndicator
         
       case .shouldReloadData:
-        if viewModel.displayingDataSource.isEmpty == false {
-          self.tableView.backgroundView = nil
-        }
-        
         self.tableView.reloadData()
         
       case .shouldEndRefreshing:
@@ -43,6 +39,10 @@ final class SetTableViewController: UITableViewController {
           title: viewModel.configuration.errorTitle, 
           subtitle: error.localizedDescription
         )
+        
+      case .shouldDisplayData:
+        self.tableView.backgroundView = nil
+        self.tableView.reloadData()
       }
     }
     
