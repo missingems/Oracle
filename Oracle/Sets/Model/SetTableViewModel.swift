@@ -1,23 +1,16 @@
-//
-//  SetsTableViewModel.swift
-//  Oracle
-//
-//  Created by Jun on 2/14/24.
-//
-
 import Foundation
 
 final class SetTableViewModel {
   typealias StateHandler = ((Message) -> ())
   
-  private var client: any SetNetworkService
+  private var client: SetNetworkService
   let configuration: Configuration = Configuration()
   private weak var coordinator: SetCoordinator?
   private var dataSource: [any GameSet] = []
   private(set) var displayingDataSource: [Section] = []
   var didUpdate: StateHandler?
   
-  init(client: any SetNetworkService, coordinator: SetCoordinator) {
+  init(client: SetNetworkService, coordinator: SetCoordinator) {
     self.client = client
     self.coordinator = coordinator
   }
@@ -35,9 +28,13 @@ final class SetTableViewModel {
       didUpdate?(.shouldReloadData)
       
     case let .searchBarTextChanged(query):
-      querySets(query: query) { [weak self] result in
-        self?.updateDisplayingDataSource(with: result)
+      client = SetNetworkService()
+      client.query(query, sets: dataSource) { [weak self] result in
+        self?.updateDisplayingDataSource(with: result.map { response in
+          [.sets(response.sets), .cards(response.cardNames)]
+        })
       }
+      break
       
     case .viewDidLoad, .pullToRefreshInvoked:
       fetchSets { [weak self] result in
@@ -65,40 +62,11 @@ final class SetTableViewModel {
   private func fetchSets(onComplete: ((Result<[Section], Error>) -> Void)? = nil) {
     didUpdate?(.isLoading)
     
-    client.fetchSets { result in
+    client.fetchSets { [weak self] result in
       switch result {
       case let .success(value):
+        self?.dataSource = value
         onComplete?(.success([.sets(value)]))
-        
-      case let .failure(error):
-        onComplete?(.failure(error))
-      }
-    }
-  }
-  
-  private func querySets(query: String, onComplete: ((Result<[Section], Error>) -> Void)? = nil) {
-    guard let client = coordinator?.makeNewServiceClient() else { return }
-    self.client = client
-    
-    client.querySets(query: query, in: dataSource) { result in
-      switch result {
-      case let .success(sets):
-        client.queryCards(query: query) { result in
-          switch result {
-          case let .success(cards):
-            onComplete?(
-              .success(
-                [
-                  .sets(sets),
-                  .cards(cards)
-                ].filter { $0.numberOfRows != 0 }
-              )
-            )
-            
-          case let .failure(error):
-            onComplete?(.failure(error))
-          }
-        }
         
       case let .failure(error):
         onComplete?(.failure(error))
@@ -146,30 +114,12 @@ extension SetTableViewModel {
     case viewDidLoad
   }
   
-  enum Message: Equatable {
+  enum Message {
     case shouldDisplayError(Error)
     case shouldEndRefreshing
     case shouldReloadData
+    case shouldDisplayData
     case isLoading
-    
-    static func == (lhs: SetTableViewModel.Message, rhs: SetTableViewModel.Message) -> Bool {
-      switch (lhs, rhs) {
-      case let (.shouldDisplayError(lhsValue), .shouldDisplayError(rhsValue)):
-        return lhsValue.localizedDescription == rhsValue.localizedDescription
-        
-      case (.shouldEndRefreshing, .shouldEndRefreshing):
-        return true
-        
-      case (.shouldReloadData, .shouldReloadData):
-        return true
-        
-      case (.isLoading, .isLoading):
-        return true
-        
-      default:
-        return false
-      }
-    }
   }
 }
 
