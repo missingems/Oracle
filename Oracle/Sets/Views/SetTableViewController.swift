@@ -29,14 +29,20 @@ final class SetTableViewController: UITableViewController {
         self.tableView.backgroundView = loadingIndicator
         
       case .shouldReloadData:
-        self.tableView.backgroundView = nil
+        if viewModel.displayingDataSource.isEmpty == false {
+          self.tableView.backgroundView = nil
+        }
+        
         self.tableView.reloadData()
         
       case .shouldEndRefreshing:
         self.tableView.refreshControl?.endRefreshing()
         
       case let .shouldDisplayError(error):
-        break
+        self.tableView.backgroundView = ErrorView(
+          title: viewModel.configuration.errorTitle, 
+          subtitle: error.localizedDescription
+        )
       }
     }
     
@@ -86,11 +92,7 @@ extension SetTableViewController {
 
 extension SetTableViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
-    guard 
-      searchController.isActive,
-      let text = searchController.searchBar.text,
-      !text.isEmpty 
-    else {
+    guard searchController.isActive, let text = searchController.searchBar.text else {
       viewModel.update(.searchBarResigned)
       return
     }

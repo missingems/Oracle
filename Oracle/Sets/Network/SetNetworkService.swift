@@ -78,8 +78,8 @@ extension ScryfallClient: SetNetworkService {
       case let .success(value):
         completion(.success(value.data))
         
-      case .failure:
-        break
+      case let .failure(error):
+        completion(.failure(error))
       }
     }
   }
