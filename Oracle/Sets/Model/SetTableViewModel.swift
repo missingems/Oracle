@@ -170,7 +170,7 @@ extension SetTableViewModel {
   struct Configuration: Equatable {
     let searchBarPlaceholder = String(localized: "SetsTableViewControllerSearchBarPlaceholder")
     let title = String(localized: "SetsTableViewControllerTitle")
-    let tabBarSelectedSystemImageName = "book.pages.fill"
-    let tabBarDeselectedSystemImageName = "book.pages"
+    let tabBarSelectedSystemImageName = "list.bullet.rectangle.portrait.fill"
+    let tabBarDeselectedSystemImageName = "list.bullet.rectangle.portrait"
   }
 }
