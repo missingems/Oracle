@@ -62,7 +62,7 @@ final class SetCoordinator {
       return SetDetailCollectionViewController(SetDetailCollectionViewModel(query: .set(set), client: ScryfallClient(), coordinator: self))
       
     case .showSets:
-      return SetTableViewController(viewModel: SetTableViewModel(client: ScryfallClient(), coordinator: self))
+      return SetTableViewController(viewModel: SetTableViewModel(client: SetNetworkService(), coordinator: self))
       
     case let .shareURL(value):
       let activityViewController = UIActivityViewController(activityItems: [value], applicationActivities: nil)
