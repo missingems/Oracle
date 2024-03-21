@@ -119,8 +119,3 @@ final class SetNetworkService {
     }
   }
 }
-
-enum SetNetworkServiceError: Error {
-  case noQuery
-  case noResult
-}
