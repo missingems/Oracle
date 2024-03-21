@@ -19,30 +19,21 @@ final class SetTableViewController: UITableViewController {
     self.viewModel = viewModel
     super.init(style: .plain)
     
-    viewModel.didUpdate = { [weak self] state in
+    viewModel.didUpdate = { [weak self] message in
       guard let self else { return }
       
-      switch state {
-      case .isLoading:
-        let loadingIndicator = UIActivityIndicatorView(style: .large)
-        loadingIndicator.startAnimating()
-        self.tableView.backgroundView = loadingIndicator
-        
-      case .shouldReloadData:
-        self.tableView.reloadData()
-        
-      case .shouldEndRefreshing:
-        self.tableView.refreshControl?.endRefreshing()
-        
+      switch message {
       case let .shouldDisplayError(error):
         self.tableView.backgroundView = ErrorView(
           title: viewModel.configuration.errorTitle, 
           subtitle: error.localizedDescription
         )
+        self.tableView.refreshControl?.endRefreshing()
         
       case .shouldDisplayData:
         self.tableView.backgroundView = nil
         self.tableView.reloadData()
+        self.tableView.refreshControl?.endRefreshing()
       }
     }
     
@@ -51,6 +42,7 @@ final class SetTableViewController: UITableViewController {
       tableView.register(SetTableViewChildCell.self, forCellReuseIdentifier: "\(SetTableViewChildCell.self)")
       tableView.register(CardSearchTableViewCell.self, forCellReuseIdentifier: "\(CardSearchTableViewCell.self)")
       tableView.separatorStyle = .none
+      tableView.backgroundView = LoadingView()
       
       navigationItem.title = viewModel.configuration.title
       
@@ -84,7 +76,7 @@ extension SetTableViewController {
   }
   
   @objc private func pullToRefreshValueChanged() {
-    viewModel.update(.pullToRefreshInvoked)
+    viewModel.update(.pullToRefreshValueChanged)
   }
 }
 
@@ -159,12 +151,10 @@ extension SetTableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch viewModel.displayingDataSource[indexPath.section] {
     case let .cards(value):
-      let card = value[indexPath.row]
-      viewModel.update(.didSelectCard(name: card))
+      viewModel.update(.didSelectCardName(value[indexPath.row]))
       
     case let .sets(value):
-      let set = value[indexPath.row]
-      viewModel.update(.didSelectSet(set))
+      viewModel.update(.didSelectSet(value[indexPath.row]))
     }
   }
   
