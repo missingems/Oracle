@@ -113,7 +113,7 @@ extension SetTableViewController {
       let preview = values[indexPath.row]
       let cell: SetTableViewCell?
       
-      if preview.parentCode == nil || navigationItem.searchController?.isActive == true {
+      if preview.parentSetCode == nil || navigationItem.searchController?.isActive == true {
         cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewParentCell.self)", for: indexPath) as? SetTableViewParentCell
       } else {
         cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewChildCell.self)", for: indexPath) as? SetTableViewChildCell
@@ -122,8 +122,8 @@ extension SetTableViewController {
       cell?.configure(
         setID: preview.code,
         title: preview.name,
-        iconURI: preview.iconURI,
-        numberOfCards: preview.numberOfCards,
+        iconURI: preview.iconSvgUri,
+        numberOfCards: preview.cardCount,
         index: indexPath.row,
         query: navigationItem.searchController?.searchBar.text
       )

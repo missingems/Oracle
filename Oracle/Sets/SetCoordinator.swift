@@ -11,9 +11,9 @@ import SafariServices
 
 final class SetCoordinator {
   enum Destination {
-    case showCard(Card, set: (any GameSet)?)
+    case showCard(Card, set: MTGSet?)
     case showCardResult(cardName: String)
-    case showSetDetail(set: any GameSet)
+    case showSetDetail(set: MTGSet)
     case showSets
     case showRulings(card: Card)
     case shareURL(URL)

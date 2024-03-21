@@ -1,14 +1,14 @@
 import Foundation
+import ScryfallKit
 
 final class SetTableViewModel {
-  typealias StateHandler = ((Message) -> ())
-  
   private var client: SetNetworkService
   let configuration: Configuration = Configuration()
   private weak var coordinator: SetCoordinator?
-  private var dataSource: [any GameSet] = []
+  private var dataSource: [MTGSet] = []
   private(set) var displayingDataSource: [Section] = []
-  var didUpdate: StateHandler?
+  var didUpdate: ((Message) -> ())?
+  private var isSearchActive = false
   
   init(client: SetNetworkService, coordinator: SetCoordinator) {
     self.client = client
@@ -17,26 +17,27 @@ final class SetTableViewModel {
   
   func update(_ event: Event) {
     switch event {
-    case let .didSelectCard(name):
+    case let .didSelectCardName(name):
       coordinator?.show(destination: .showCardResult(cardName: name))
       
     case let .didSelectSet(set):
       coordinator?.show(destination: .showSetDetail(set: set))
       
     case .searchBarResigned:
-      resetDisplayingDatasource()
-      didUpdate?(.shouldReloadData)
+      isSearchActive = false
+      displayingDataSource = [.sets(dataSource)]
+      didUpdate?(.shouldDisplayData)
       
     case let .searchBarTextChanged(query):
+      isSearchActive = true
       client = SetNetworkService()
       client.query(query, sets: dataSource) { [weak self] result in
         self?.updateDisplayingDataSource(with: result.map { response in
           [.sets(response.sets), .cards(response.cardNames)]
         })
       }
-      break
       
-    case .viewDidLoad, .pullToRefreshInvoked:
+    case .viewDidLoad, .pullToRefreshValueChanged:
       fetchSets { [weak self] result in
         self?.updateDisplayingDataSource(with: result)
       }
@@ -47,21 +48,18 @@ final class SetTableViewModel {
     DispatchQueue.main.async { [weak self] in
       switch result {
       case let .success(sections):
-        self?.displayingDataSource = sections
+        self?.displayingDataSource = sections.filter { $0.numberOfRows != 0 }
         
       case let .failure(error):
         self?.displayingDataSource = []
         self?.didUpdate?(.shouldDisplayError(error))
       }
       
-      self?.didUpdate?(.shouldReloadData)
-      self?.didUpdate?(.shouldEndRefreshing)
+      self?.didUpdate?(.shouldDisplayData)
     }
   }
   
   private func fetchSets(onComplete: ((Result<[Section], Error>) -> Void)? = nil) {
-    didUpdate?(.isLoading)
-    
     client.fetchSets { [weak self] result in
       switch result {
       case let .success(value):
@@ -73,15 +71,11 @@ final class SetTableViewModel {
       }
     }
   }
-  
-  private func resetDisplayingDatasource() {
-    displayingDataSource = [.sets(dataSource)]
-  }
 }
 
 extension SetTableViewModel {
   enum Section {
-    case sets([any GameSet])
+    case sets([MTGSet])
     case cards([String])
     
     var numberOfRows: Int {
@@ -106,9 +100,9 @@ extension SetTableViewModel {
   }
   
   enum Event {
-    case didSelectCard(name: String)
-    case didSelectSet(any GameSet)
-    case pullToRefreshInvoked
+    case didSelectCardName(String)
+    case didSelectSet(MTGSet)
+    case pullToRefreshValueChanged
     case searchBarResigned
     case searchBarTextChanged(String)
     case viewDidLoad
@@ -116,10 +110,7 @@ extension SetTableViewModel {
   
   enum Message {
     case shouldDisplayError(Error)
-    case shouldEndRefreshing
-    case shouldReloadData
     case shouldDisplayData
-    case isLoading
   }
 }
 

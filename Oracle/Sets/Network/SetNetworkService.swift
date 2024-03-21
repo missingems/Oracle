@@ -2,19 +2,19 @@ import Foundation
 import ScryfallKit
 
 struct QueryResponse {
-  let sets: [any GameSet]
+  let sets: [MTGSet]
   let cardNames: [String]
 }
 
 final class SetNetworkService {
   private var client = ScryfallClient()
   
-  func fetchSets(completion: @escaping (Result<[any GameSet], any Error>) -> ()) {
+  func fetchSets(completion: @escaping (Result<[MTGSet], any Error>) -> ()) {
     client.getSets { result in
       switch result {
       case let .success(value):
         DispatchQueue.global().async {
-          var data = value.data.filter { $0.digital == false && $0.numberOfCards != 0 }
+          var data = value.data.filter { $0.digital == false && $0.cardCount != 0 }
           var sections = data.filter { $0.parentSetCode == nil }.map { [$0] }
           
           for (index, section) in sections.enumerated() {
@@ -35,10 +35,10 @@ final class SetNetworkService {
   
   func query(
     _ query: String,
-    sets: [any GameSet] = [],
+    sets: [MTGSet] = [],
     completion: @escaping (Result<QueryResponse, Error>) -> ()
   ) {
-    var gameSets: [any GameSet] = [] {
+    var gameSets: [MTGSet] = [] {
       didSet {
         completion(.success(QueryResponse(sets: gameSets, cardNames: cardNames)))
       }
@@ -78,8 +78,8 @@ final class SetNetworkService {
   
   func querySets(
     query: String,
-    in sets: [any GameSet],
-    completion: @escaping (Result<[any GameSet], Error>) -> ()
+    in sets: [MTGSet],
+    completion: @escaping (Result<[MTGSet], Error>) -> ()
   ) {
     func distanceFromTarget(_ string: String, target: Character) -> Int {
       guard let firstCharacter = string.uppercased().first else { return Int.max }
@@ -96,7 +96,8 @@ final class SetNetworkService {
       let results = sets.filter {
         $0.name.lowercased().contains(lowercasedQuery)
       }.sorted {
-        ($0.name.lowercased().hasPrefix(lowercasedQuery) ? 1 : 0) > ($1.name.lowercased().hasPrefix(lowercasedQuery) ? 1 : 0)
+        ($0.name.lowercased().hasPrefix(lowercasedQuery) ? 1 : 0) > 
+        ($1.name.lowercased().hasPrefix(lowercasedQuery) ? 1 : 0)
       }
       
       completion(.success(results))

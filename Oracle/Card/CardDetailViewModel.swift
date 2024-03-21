@@ -7,7 +7,7 @@ final class CardDetailViewModel {
   private weak var coordinator: SetCoordinator?
   var selectedFace: Card.Face?
   var stateHandler: ((Message) -> ())?
-  var set: (any GameSet)?
+  var set: MTGSet?
   private(set) var versions: [Card]
   
   var loyalty: String? {
@@ -100,7 +100,7 @@ final class CardDetailViewModel {
     String(localized: "View Rulings")
   }
   
-  init(card: Card, set: (any GameSet)?, coordinator: SetCoordinator) {
+  init(card: Card, set: MTGSet?, coordinator: SetCoordinator) {
     self.coordinator = coordinator
     self.set = set
     client = ScryfallClient(networkLogLevel: .minimal)

@@ -125,7 +125,7 @@ final class SetDetailCollectionViewModel {
 
 extension SetDetailCollectionViewModel {
   enum QueryType {
-    case set(any GameSet)
+    case set(MTGSet)
     case card(String)
     
     var title: String {
@@ -141,7 +141,7 @@ extension SetDetailCollectionViewModel {
     var subtitle: String? {
       switch self {
       case let .set(value):
-        return String(localized: "\(value.numberOfCards) Cards")
+        return String(localized: "\(value.cardCount) Cards")
         
       case .card:
         return nil
