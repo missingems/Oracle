@@ -274,7 +274,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		BFB366272B7CA669004814FB /* Sets */ = {
+		BFB366272B7CA669004814FB /* Set */ = {
 			isa = PBXGroup;
 			children = (
 				BF67DBDB2BA1B4D6002317A7 /* Model */,
@@ -282,7 +282,7 @@
 				BFB366282B7CA675004814FB /* Views */,
 				BF241C072BA29151001687CA /* SetCoordinator.swift */,
 			);
-			path = Sets;
+			path = Set;
 			sourceTree = "<group>";
 		};
 		BFB366282B7CA675004814FB /* Views */ = {
@@ -329,7 +329,7 @@
 				BF5478B42B8DD671004D2CC8 /* Card */,
 				BF67DBDC2BA1B4EA002317A7 /* Main */,
 				BF9862552B8CB62D00F5CB13 /* Set Detail */,
-				BFB366272B7CA669004814FB /* Sets */,
+				BFB366272B7CA669004814FB /* Set */,
 				BF67DBD82BA1B489002317A7 /* Shared */,
 				BFFFBF602B7C6A290004156B /* Assets.xcassets */,
 				BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */,
