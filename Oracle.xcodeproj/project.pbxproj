@@ -10,6 +10,7 @@
 		BF01330D2BAD8916006AFAF1 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BF01330C2BAD8916006AFAF1 /* ComposableArchitecture */; };
 		BF0133132BAD8B7F006AFAF1 /* SetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133122BAD8B7F006AFAF1 /* SetRow.swift */; };
 		BF0133142BAD8B7F006AFAF1 /* SetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133122BAD8B7F006AFAF1 /* SetRow.swift */; };
+		BF0133162BAD8BA7006AFAF1 /* OracleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */; };
 		BF241C012BA1C7D7001687CA /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF241C002BA1C7D7001687CA /* Anchorage */; };
 		BF241C042BA28D62001687CA /* SetDetailNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */; };
 		BF241C082BA29151001687CA /* SetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C072BA29151001687CA /* SetCoordinator.swift */; };
@@ -48,8 +49,6 @@
 		BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C92B94C2DE009C6B4C /* CardView.swift */; };
 		BFFCAD5F2B962AA100986C34 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */; };
 		BFFCAD622B96F6B800986C34 /* CardSetInformationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */; };
-		BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF542B7C6A280004156B /* AppDelegate.swift */; };
-		BFFFBF572B7C6A280004156B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF562B7C6A280004156B /* SceneDelegate.swift */; };
 		BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */; };
 		BFFFBF612B7C6A290004156B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF602B7C6A290004156B /* Assets.xcassets */; };
 		BFFFBF642B7C6A290004156B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */; };
@@ -77,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		BF0133122BAD8B7F006AFAF1 /* SetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRow.swift; sourceTree = "<group>"; };
+		BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleApp.swift; sourceTree = "<group>"; };
 		BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailNetworkService.swift; sourceTree = "<group>"; };
 		BF241C072BA29151001687CA /* SetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCoordinator.swift; sourceTree = "<group>"; };
 		BF241C0C2BA3E1FC001687CA /* CardSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -113,8 +113,6 @@
 		BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetInformationRowView.swift; sourceTree = "<group>"; };
 		BFFFBF512B7C6A280004156B /* Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oracle.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFFFBF542B7C6A280004156B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BFFFBF562B7C6A280004156B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BFFFBF5E2B7C6A280004156B /* Oracle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Oracle.xcdatamodel; sourceTree = "<group>"; };
 		BFFFBF602B7C6A290004156B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFFFBF632B7C6A290004156B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -244,8 +242,7 @@
 		BF67DBDC2BA1B4EA002317A7 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				BFFFBF542B7C6A280004156B /* AppDelegate.swift */,
-				BFFFBF562B7C6A280004156B /* SceneDelegate.swift */,
+				BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -510,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF0133132BAD8B7F006AFAF1 /* SetRow.swift in Sources */,
+				BF0133162BAD8BA7006AFAF1 /* OracleApp.swift in Sources */,
 				BF5478BB2B8ECB28004D2CC8 /* Card+Extensions.swift in Sources */,
 				BF5478B72B8DD680004D2CC8 /* CardDetailViewController.swift in Sources */,
 				BFCD54DC2BA973EE00A0C439 /* ErrorView.swift in Sources */,
@@ -535,13 +533,11 @@
 				BFD077C22B941B82009C6B4C /* CardRelevanceView.swift in Sources */,
 				BF241C042BA28D62001687CA /* SetDetailNetworkService.swift in Sources */,
 				BF67DBCE2BA16BCC002317A7 /* SetNetworkService.swift in Sources */,
-				BFFFBF552B7C6A280004156B /* AppDelegate.swift in Sources */,
 				BFD077C42B9444F8009C6B4C /* Ambient.swift in Sources */,
 				BFCD54BD2BA47DE900A0C439 /* UIImageView+Extensions.swift in Sources */,
 				BFFCAD622B96F6B800986C34 /* CardSetInformationRowView.swift in Sources */,
 				BF5478B92B8EBFFB004D2CC8 /* String+Extensions.swift in Sources */,
 				BF5478D02B9033B1004D2CC8 /* View+Extensions.swift in Sources */,
-				BFFFBF572B7C6A280004156B /* SceneDelegate.swift in Sources */,
 				BFB366242B7C9767004814FB /* SetTableViewController.swift in Sources */,
 				BF9862592B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift in Sources */,
 				BF5478BD2B8ECB3A004D2CC8 /* CardDetailViewModel.swift in Sources */,
