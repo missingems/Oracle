@@ -1,20 +1,13 @@
-//
-//  SetDetailNetworkService.swift
-//  Oracle
-//
-//  Created by Jun on 14/3/24.
-//
-
 import Foundation
 import ScryfallKit
 
 protocol SetDetailNetworkService {
-  func fetchSetDetail(gameSet: any GameSet, page: Int, sort: SortMode, direction: SortDirection, completion: @escaping (Result<(cards: [Card], hasNext: Bool), Error>) -> ())
+  func fetchSetDetail(gameSet: MTGSet, page: Int, sort: SortMode, direction: SortDirection, completion: @escaping (Result<(cards: [Card], hasNext: Bool), Error>) -> ())
   func fetchCards(cardName: String, page: Int, sort: SortMode, direction: SortDirection, completion: @escaping (Result<(cards: [Card], hasNext: Bool), Error>) -> ())
 }
 
 extension ScryfallClient: SetDetailNetworkService {
-  func fetchSetDetail(gameSet: any GameSet, page: Int, sort: SortMode, direction: SortDirection, completion: @escaping (Result<(cards: [Card], hasNext: Bool), Error>) -> ()) {
+  func fetchSetDetail(gameSet: MTGSet, page: Int, sort: SortMode, direction: SortDirection, completion: @escaping (Result<(cards: [Card], hasNext: Bool), Error>) -> ()) {
     searchCards(
       filters: [.set(gameSet.code), .game(.paper)],
       unique: .prints,

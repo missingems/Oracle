@@ -7,7 +7,7 @@ final class CardDetailViewModel {
   private weak var coordinator: SetCoordinator?
   var selectedFace: Card.Face?
   var stateHandler: ((Message) -> ())?
-  var set: (any GameSet)?
+  var set: MTGSet?
   private(set) var versions: [Card]
   
   var loyalty: String? {
@@ -100,7 +100,7 @@ final class CardDetailViewModel {
     String(localized: "View Rulings")
   }
   
-  init(card: Card, set: (any GameSet)?, coordinator: SetCoordinator) {
+  init(card: Card, set: MTGSet?, coordinator: SetCoordinator) {
     self.coordinator = coordinator
     self.set = set
     client = ScryfallClient(networkLogLevel: .minimal)
@@ -115,7 +115,8 @@ final class CardDetailViewModel {
       coordinator?.present(destination: .showRulings(card: card), shouldEmbedInNavigationController: true)
       
     case let .didSelectURL(url):
-      coordinator?.present(destination: .showURL(url: url), shouldEmbedInNavigationController: false)
+      guard let url else { return }
+      coordinator?.present(destination: .showURL(url))
       
     case let .didSelectCard(card):
       if card.id != self.card.id {
@@ -127,6 +128,10 @@ final class CardDetailViewModel {
     case .viewDidLoad:
       fetchAllPrints()
       fetchCardIfNeeded()
+      
+    case .shareTapped:
+      guard let url = URL(string: card.scryfallUri) else { return }
+      coordinator?.present(destination: .shareURL(url))
       
     case .transformTapped:
       if let faces = card.cardFaces {
@@ -193,6 +198,7 @@ extension CardDetailViewModel {
     case didSelectRulings
     case didSelectCard(Card)
     case didSelectURL(URL?)
+    case shareTapped
     case transformTapped
   }
   

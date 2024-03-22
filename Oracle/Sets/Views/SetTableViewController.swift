@@ -19,24 +19,21 @@ final class SetTableViewController: UITableViewController {
     self.viewModel = viewModel
     super.init(style: .plain)
     
-    viewModel.didUpdate = { [weak self] state in
+    viewModel.didUpdate = { [weak self] message in
       guard let self else { return }
       
-      switch state {
-      case .isLoading:
-        let loadingIndicator = UIActivityIndicatorView(style: .large)
-        loadingIndicator.startAnimating()
-        self.tableView.backgroundView = loadingIndicator
-        
-      case .shouldReloadData:
-        self.tableView.backgroundView = nil
-        self.tableView.reloadData()
-        
-      case .shouldEndRefreshing:
+      switch message {
+      case let .shouldDisplayError(error):
+        self.tableView.backgroundView = ErrorView(
+          title: viewModel.configuration.errorTitle, 
+          subtitle: error.localizedDescription
+        )
         self.tableView.refreshControl?.endRefreshing()
         
-      case let .shouldDisplayError(error):
-        break
+      case .shouldDisplayData:
+        self.tableView.backgroundView = nil
+        self.tableView.reloadData()
+        self.tableView.refreshControl?.endRefreshing()
       }
     }
     
@@ -45,6 +42,7 @@ final class SetTableViewController: UITableViewController {
       tableView.register(SetTableViewChildCell.self, forCellReuseIdentifier: "\(SetTableViewChildCell.self)")
       tableView.register(CardSearchTableViewCell.self, forCellReuseIdentifier: "\(CardSearchTableViewCell.self)")
       tableView.separatorStyle = .none
+      tableView.backgroundView = LoadingView()
       
       navigationItem.title = viewModel.configuration.title
       
@@ -78,7 +76,7 @@ extension SetTableViewController {
   }
   
   @objc private func pullToRefreshValueChanged() {
-    viewModel.update(.pullToRefreshInvoked)
+    viewModel.update(.pullToRefreshValueChanged)
   }
 }
 
@@ -86,11 +84,7 @@ extension SetTableViewController {
 
 extension SetTableViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
-    guard 
-      searchController.isActive,
-      let text = searchController.searchBar.text,
-      !text.isEmpty 
-    else {
+    guard searchController.isActive, let text = searchController.searchBar.text else {
       viewModel.update(.searchBarResigned)
       return
     }
@@ -119,7 +113,7 @@ extension SetTableViewController {
       let preview = values[indexPath.row]
       let cell: SetTableViewCell?
       
-      if preview.parentCode == nil || navigationItem.searchController?.isActive == true {
+      if preview.parentSetCode == nil || navigationItem.searchController?.isActive == true {
         cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewParentCell.self)", for: indexPath) as? SetTableViewParentCell
       } else {
         cell = tableView.dequeueReusableCell(withIdentifier: "\(SetTableViewChildCell.self)", for: indexPath) as? SetTableViewChildCell
@@ -128,8 +122,8 @@ extension SetTableViewController {
       cell?.configure(
         setID: preview.code,
         title: preview.name,
-        iconURI: preview.iconURI,
-        numberOfCards: preview.numberOfCards,
+        iconURI: preview.iconSvgUri,
+        numberOfCards: preview.cardCount,
         index: indexPath.row,
         query: navigationItem.searchController?.searchBar.text
       )
@@ -157,12 +151,10 @@ extension SetTableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch viewModel.displayingDataSource[indexPath.section] {
     case let .cards(value):
-      let card = value[indexPath.row]
-      viewModel.update(.didSelectCard(name: card))
+      viewModel.update(.didSelectCardName(value[indexPath.row]))
       
     case let .sets(value):
-      let set = value[indexPath.row]
-      viewModel.update(.didSelectSet(set))
+      viewModel.update(.didSelectSet(value[indexPath.row]))
     }
   }
   

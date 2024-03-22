@@ -91,6 +91,9 @@
     "Mana Value" : {
 
     },
+    "Market Prices" : {
+
+    },
     "Name" : {
 
     },
@@ -108,6 +111,9 @@
     "Number" : {
 
     },
+    "Oops, I missed a trigger..." : {
+
+    },
     "Order by %@" : {
 
     },
@@ -115,9 +121,6 @@
 
     },
     "Price" : {
-
-    },
-    "Prices" : {
 
     },
     "Prints" : {

@@ -1,112 +1,81 @@
-//
-//  SetsTableViewModel.swift
-//  Oracle
-//
-//  Created by Jun on 2/14/24.
-//
-
 import Foundation
+import ScryfallKit
 
 final class SetTableViewModel {
-  typealias StateHandler = ((Message) -> ())
-  
-  private var client: any SetNetworkService
+  private var client: SetNetworkService
   let configuration: Configuration = Configuration()
   private weak var coordinator: SetCoordinator?
-  private var dataSource: [any GameSet] = []
+  private var dataSource: [MTGSet] = []
   private(set) var displayingDataSource: [Section] = []
+  var didUpdate: ((Message) -> ())?
+  private var isSearchActive = false
   
-  var didUpdate: StateHandler?
-  
-  init(client: any SetNetworkService, coordinator: SetCoordinator) {
+  init(client: SetNetworkService, coordinator: SetCoordinator) {
     self.client = client
     self.coordinator = coordinator
   }
   
   func update(_ event: Event) {
     switch event {
-    case let .didSelectCard(name):
+    case let .didSelectCardName(name):
       coordinator?.show(destination: .showCardResult(cardName: name))
       
     case let .didSelectSet(set):
       coordinator?.show(destination: .showSetDetail(set: set))
       
-    case .pullToRefreshInvoked:
-      fetchSets { [weak self] (sections, dataSource) in
-        self?.updateDisplayingDataSource(sections: sections, dataSource: dataSource)
-      }
-      
     case .searchBarResigned:
-      resetDisplayingDatasource()
-      didUpdate?(.shouldReloadData)
+      isSearchActive = false
+      displayingDataSource = [.sets(dataSource)]
+      didUpdate?(.shouldDisplayData)
       
     case let .searchBarTextChanged(query):
-      querySets(query: query) { [weak self] sections in
-        self?.updateDisplayingDataSource(sections: sections, dataSource: self?.dataSource ?? [])
+      isSearchActive = true
+      client = SetNetworkService()
+      client.query(query, sets: dataSource) { [weak self] result in
+        self?.updateDisplayingDataSource(with: result.map { response in
+          [.sets(response.sets), .cards(response.cardNames)]
+        })
       }
       
-    case .viewDidLoad:
-      didUpdate?(.isLoading)
-      fetchSets { [weak self] (sections, dataSource) in
-        self?.updateDisplayingDataSource(sections: sections, dataSource: dataSource)
+    case .viewDidLoad, .pullToRefreshValueChanged:
+      fetchSets { [weak self] result in
+        self?.updateDisplayingDataSource(with: result)
       }
     }
   }
   
-  private func updateDisplayingDataSource(sections: [Section], dataSource: [any GameSet]) {
+  private func updateDisplayingDataSource(with result: Result<[Section], Error>) {
     DispatchQueue.main.async { [weak self] in
-      self?.dataSource = dataSource
-      self?.displayingDataSource = sections
-      self?.didUpdate?(.shouldReloadData)
-      self?.didUpdate?(.shouldEndRefreshing)
+      switch result {
+      case let .success(sections):
+        self?.displayingDataSource = sections.filter { $0.numberOfRows != 0 }
+        
+      case let .failure(error):
+        self?.displayingDataSource = []
+        self?.didUpdate?(.shouldDisplayError(error))
+      }
+      
+      self?.didUpdate?(.shouldDisplayData)
     }
   }
   
-  private func fetchSets(onComplete: (((sections: [Section], dataSource: [any GameSet])) -> Void)? = nil) {
-    didUpdate?(.isLoading)
-    
-    client.fetchSets { result in
+  private func fetchSets(onComplete: ((Result<[Section], Error>) -> Void)? = nil) {
+    client.fetchSets { [weak self] result in
       switch result {
       case let .success(value):
-        onComplete?((sections: [.sets(value)], dataSource: value))
+        self?.dataSource = value
+        onComplete?(.success([.sets(value)]))
         
-      case .failure:
-        onComplete?((sections: [], dataSource: []))
+      case let .failure(error):
+        onComplete?(.failure(error))
       }
     }
-  }
-  
-  private func querySets(query: String, onComplete: (([Section]) -> Void)? = nil) {
-    guard let client = coordinator?.makeNewServiceClient() else { return }
-    self.client = client
-    
-    client.querySets(query: query, in: dataSource) { result in
-      switch result {
-      case let .success(sets):
-        client.queryCards(query: query) { result in
-          switch result {
-          case let .success(cards):
-            onComplete?([.sets(sets), .cards(cards)].filter { $0.numberOfRows != 0 })
-            
-          case .failure:
-            onComplete?([])
-          }
-        }
-        
-      case .failure:
-        onComplete?([])
-      }
-    }
-  }
-  
-  private func resetDisplayingDatasource() {
-    displayingDataSource = [.sets(dataSource)]
   }
 }
 
 extension SetTableViewModel {
   enum Section {
-    case sets([any GameSet])
+    case sets([MTGSet])
     case cards([String])
     
     var numberOfRows: Int {
@@ -131,38 +100,17 @@ extension SetTableViewModel {
   }
   
   enum Event {
-    case didSelectCard(name: String)
-    case didSelectSet(any GameSet)
-    case pullToRefreshInvoked
+    case didSelectCardName(String)
+    case didSelectSet(MTGSet)
+    case pullToRefreshValueChanged
     case searchBarResigned
     case searchBarTextChanged(String)
     case viewDidLoad
   }
   
-  enum Message: Equatable {
+  enum Message {
     case shouldDisplayError(Error)
-    case shouldEndRefreshing
-    case shouldReloadData
-    case isLoading
-    
-    static func == (lhs: SetTableViewModel.Message, rhs: SetTableViewModel.Message) -> Bool {
-      switch (lhs, rhs) {
-      case let (.shouldDisplayError(lhsValue), .shouldDisplayError(rhsValue)):
-        return lhsValue.localizedDescription == rhsValue.localizedDescription
-        
-      case (.shouldEndRefreshing, .shouldEndRefreshing):
-        return true
-        
-      case (.shouldReloadData, .shouldReloadData):
-        return true
-        
-      case (.isLoading, .isLoading):
-        return true
-        
-      default:
-        return false
-      }
-    }
+    case shouldDisplayData
   }
 }
 
@@ -170,7 +118,8 @@ extension SetTableViewModel {
   struct Configuration: Equatable {
     let searchBarPlaceholder = String(localized: "SetsTableViewControllerSearchBarPlaceholder")
     let title = String(localized: "SetsTableViewControllerTitle")
-    let tabBarSelectedSystemImageName = "book.pages.fill"
-    let tabBarDeselectedSystemImageName = "book.pages"
+    let tabBarSelectedSystemImageName = "list.bullet.rectangle.portrait.fill"
+    let tabBarDeselectedSystemImageName = "list.bullet.rectangle.portrait"
+    let errorTitle = String(localized: "Oops, I missed a trigger...")
   }
 }

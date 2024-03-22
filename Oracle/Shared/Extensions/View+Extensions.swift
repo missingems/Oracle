@@ -85,7 +85,7 @@ extension UIView {
   
   func animateWiggle() {
     UIView.animate(withDuration: 0.315, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut) {
-      self.transform = .init(translationX: self.transform.tx + 10, y: self.transform.ty)
+      self.transform = .init(translationX: self.transform.tx - 10, y: self.transform.ty)
     }
     
     UIView.animate(withDuration: 0.3, delay: 0.1, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseInOut) {

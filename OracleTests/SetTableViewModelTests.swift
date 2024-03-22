@@ -17,7 +17,7 @@ final class SetTableViewModelTests: XCTestCase {
     let viewModel = viewModel(isSuccess: true)
     var capturedMessages: [SetTableViewModel.Message] = []
     viewModel.didUpdate = { capturedMessages.append($0) }
-    viewModel.update(.pullToRefreshInvoked)
+    viewModel.update(.pullToRefreshValueChanged)
     XCTAssertEqual(capturedMessages, [.shouldReloadData, .shouldEndRefreshing])
   }
   
