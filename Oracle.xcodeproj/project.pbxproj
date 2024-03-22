@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BF01330D2BAD8916006AFAF1 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BF01330C2BAD8916006AFAF1 /* ComposableArchitecture */; };
+		BF0133132BAD8B7F006AFAF1 /* SetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133122BAD8B7F006AFAF1 /* SetRow.swift */; };
+		BF0133142BAD8B7F006AFAF1 /* SetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133122BAD8B7F006AFAF1 /* SetRow.swift */; };
 		BF241C012BA1C7D7001687CA /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF241C002BA1C7D7001687CA /* Anchorage */; };
 		BF241C042BA28D62001687CA /* SetDetailNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */; };
 		BF241C082BA29151001687CA /* SetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C072BA29151001687CA /* SetCoordinator.swift */; };
@@ -74,6 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF0133122BAD8B7F006AFAF1 /* SetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRow.swift; sourceTree = "<group>"; };
 		BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailNetworkService.swift; sourceTree = "<group>"; };
 		BF241C072BA29151001687CA /* SetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCoordinator.swift; sourceTree = "<group>"; };
 		BF241C0C2BA3E1FC001687CA /* CardSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -291,6 +294,7 @@
 				BF241C0C2BA3E1FC001687CA /* CardSearchTableViewCell.swift */,
 				BF56E6762B847C730018B620 /* SetTableViewCell.swift */,
 				BFB366232B7C9767004814FB /* SetTableViewController.swift */,
+				BF0133122BAD8B7F006AFAF1 /* SetRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -505,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF0133132BAD8B7F006AFAF1 /* SetRow.swift in Sources */,
 				BF5478BB2B8ECB28004D2CC8 /* Card+Extensions.swift in Sources */,
 				BF5478B72B8DD680004D2CC8 /* CardDetailViewController.swift in Sources */,
 				BFCD54DC2BA973EE00A0C439 /* ErrorView.swift in Sources */,
@@ -549,6 +554,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF67DBD52BA17C90002317A7 /* SetTableViewModelTests.swift in Sources */,
+				BF0133142BAD8B7F006AFAF1 /* SetRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
