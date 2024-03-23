@@ -60,20 +60,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BFF7396A2BAF31E2009A4439 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFF739652BAF31E2009A4439 /* Set.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BFF7394B2BAF31E2009A4439;
-			remoteInfo = Set;
-		};
-		BFF7396C2BAF31E2009A4439 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFF739652BAF31E2009A4439 /* Set.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BFF739552BAF31E2009A4439;
-			remoteInfo = SetTests;
-		};
 		BFFFBF6C2B7C6A290004156B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFFFBF492B7C6A280004156B /* Project object */;
@@ -129,7 +115,6 @@
 		BFD077C32B9444F8009C6B4C /* Ambient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ambient.swift; sourceTree = "<group>"; };
 		BFD077C52B946F4E009C6B4C /* SinkableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinkableCell.swift; sourceTree = "<group>"; };
 		BFD077C92B94C2DE009C6B4C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		BFF739652BAF31E2009A4439 /* Set.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Set.xcodeproj; path = Set/Set.xcodeproj; sourceTree = "<group>"; };
 		BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetInformationRowView.swift; sourceTree = "<group>"; };
 		BFFFBF512B7C6A280004156B /* Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oracle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -326,19 +311,9 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BFF739662BAF31E2009A4439 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BFF7396B2BAF31E2009A4439 /* Set.framework */,
-				BFF7396D2BAF31E2009A4439 /* SetTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		BFFFBF482B7C6A280004156B = {
 			isa = PBXGroup;
 			children = (
-				BFF739652BAF31E2009A4439 /* Set.xcodeproj */,
 				BFFFBF532B7C6A280004156B /* Oracle */,
 				BFFFBF6E2B7C6A290004156B /* OracleTests */,
 				BFFFBF782B7C6A290004156B /* OracleUITests */,
@@ -498,12 +473,6 @@
 			);
 			productRefGroup = BFFFBF522B7C6A280004156B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = BFF739662BAF31E2009A4439 /* Products */;
-					ProjectRef = BFF739652BAF31E2009A4439 /* Set.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				BFFFBF502B7C6A280004156B /* Oracle */,
@@ -512,23 +481,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		BFF7396B2BAF31E2009A4439 /* Set.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Set.framework;
-			remoteRef = BFF7396A2BAF31E2009A4439 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BFF7396D2BAF31E2009A4439 /* SetTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SetTests.xctest;
-			remoteRef = BFF7396C2BAF31E2009A4439 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BFFFBF4F2B7C6A280004156B /* Resources */ = {
@@ -702,7 +654,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -761,7 +712,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -788,7 +738,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -823,7 +773,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
