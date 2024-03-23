@@ -16,7 +16,6 @@ struct SetRow: View {
     .padding(EdgeInsets(top: 13, leading: 13, bottom: 15, trailing: 13))
     .background { viewModel.backgroundColor }
     .clipShape(.buttonBorder)
-    .padding(.horizontal, 20)
   }
 }
 

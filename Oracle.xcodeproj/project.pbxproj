@@ -12,6 +12,7 @@
 		BF0133162BAD8BA7006AFAF1 /* OracleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */; };
 		BF0133182BAD8D45006AFAF1 /* SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133172BAD8D45006AFAF1 /* SetView.swift */; };
 		BF01331A2BAD913D006AFAF1 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133192BAD913D006AFAF1 /* CodeView.swift */; };
+		BF0DFD8B2BAE6A56001B8D32 /* SetFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0DFD8A2BAE6A56001B8D32 /* SetFeature.swift */; };
 		BF241C012BA1C7D7001687CA /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF241C002BA1C7D7001687CA /* Anchorage */; };
 		BF241C042BA28D62001687CA /* SetDetailNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */; };
 		BF241C082BA29151001687CA /* SetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C072BA29151001687CA /* SetCoordinator.swift */; };
@@ -80,6 +81,7 @@
 		BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleApp.swift; sourceTree = "<group>"; };
 		BF0133172BAD8D45006AFAF1 /* SetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetView.swift; sourceTree = "<group>"; };
 		BF0133192BAD913D006AFAF1 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
+		BF0DFD8A2BAE6A56001B8D32 /* SetFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFeature.swift; sourceTree = "<group>"; };
 		BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailNetworkService.swift; sourceTree = "<group>"; };
 		BF241C072BA29151001687CA /* SetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCoordinator.swift; sourceTree = "<group>"; };
 		BF241C0C2BA3E1FC001687CA /* CardSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 		BFB366272B7CA669004814FB /* Set */ = {
 			isa = PBXGroup;
 			children = (
+				BF0DFD8A2BAE6A56001B8D32 /* SetFeature.swift */,
 				BF67DBDB2BA1B4D6002317A7 /* Model */,
 				BF67DBCC2BA16BBE002317A7 /* Network */,
 				BFB366282B7CA675004814FB /* Views */,
@@ -535,6 +538,7 @@
 				BFCD54DA2BA972E800A0C439 /* LoadingView.swift in Sources */,
 				BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */,
 				BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */,
+				BF0DFD8B2BAE6A56001B8D32 /* SetFeature.swift in Sources */,
 				BF5478CE2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift in Sources */,
 				BFD077C22B941B82009C6B4C /* CardRelevanceView.swift in Sources */,
 				BF241C042BA28D62001687CA /* SetDetailNetworkService.swift in Sources */,

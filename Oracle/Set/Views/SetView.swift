@@ -1,18 +1,15 @@
+import ComposableArchitecture
 import SwiftUI
+import ScryfallKit
 
 struct SetView: View {
+  let store: StoreOf<SetFeature>
+  
   var body: some View {
-    SetRow(
-      viewModel: SetRow.ViewModel(
-        code: "MH2",
-        numberOfCards: "321 Cards",
-        index: 0,
-        title: "Diuleiloumou"
-      )
-    )
+    List(store.sets) { set in
+      Text(set.name)
+    }.onAppear(perform: {
+      store.send(.viewAppeared)
+    })
   }
-}
-
-#Preview {
-  SetView()
 }

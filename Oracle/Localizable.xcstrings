@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%lld Cards" : {
       "localizations" : {
         "en" : {
@@ -41,9 +44,6 @@
 
     },
     "Descending" : {
-
-    },
-    "Hello" : {
 
     },
     "Illustrated by" : {
