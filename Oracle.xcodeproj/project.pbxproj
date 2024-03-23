@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF01330D2BAD8916006AFAF1 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BF01330C2BAD8916006AFAF1 /* ComposableArchitecture */; };
 		BF0133132BAD8B7F006AFAF1 /* SetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133122BAD8B7F006AFAF1 /* SetRow.swift */; };
 		BF0133162BAD8BA7006AFAF1 /* OracleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */; };
 		BF0133182BAD8D45006AFAF1 /* SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133172BAD8D45006AFAF1 /* SetView.swift */; };
@@ -49,6 +48,7 @@
 		BFD077C42B9444F8009C6B4C /* Ambient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C32B9444F8009C6B4C /* Ambient.swift */; };
 		BFD077C62B946F4E009C6B4C /* SinkableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C52B946F4E009C6B4C /* SinkableCell.swift */; };
 		BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C92B94C2DE009C6B4C /* CardView.swift */; };
+		BFF739732BAF32A9009A4439 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BFF739722BAF32A9009A4439 /* ComposableArchitecture */; };
 		BFFCAD5F2B962AA100986C34 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */; };
 		BFFCAD622B96F6B800986C34 /* CardSetInformationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */; };
 		BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */; };
@@ -60,6 +60,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BFF7396A2BAF31E2009A4439 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFF739652BAF31E2009A4439 /* Set.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BFF7394B2BAF31E2009A4439;
+			remoteInfo = Set;
+		};
+		BFF7396C2BAF31E2009A4439 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFF739652BAF31E2009A4439 /* Set.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BFF739552BAF31E2009A4439;
+			remoteInfo = SetTests;
+		};
 		BFFFBF6C2B7C6A290004156B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFFFBF492B7C6A280004156B /* Project object */;
@@ -115,6 +129,7 @@
 		BFD077C32B9444F8009C6B4C /* Ambient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ambient.swift; sourceTree = "<group>"; };
 		BFD077C52B946F4E009C6B4C /* SinkableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinkableCell.swift; sourceTree = "<group>"; };
 		BFD077C92B94C2DE009C6B4C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		BFF739652BAF31E2009A4439 /* Set.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Set.xcodeproj; path = Set/Set.xcodeproj; sourceTree = "<group>"; };
 		BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetInformationRowView.swift; sourceTree = "<group>"; };
 		BFFFBF512B7C6A280004156B /* Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oracle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,7 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF01330D2BAD8916006AFAF1 /* ComposableArchitecture in Frameworks */,
+				BFF739732BAF32A9009A4439 /* ComposableArchitecture in Frameworks */,
 				BFCD54C02BA7B23F00A0C439 /* Kingfisher in Frameworks */,
 				BF241C012BA1C7D7001687CA /* Anchorage in Frameworks */,
 				BFFFBF8C2B7C86BA0004156B /* ScryfallKit in Frameworks */,
@@ -311,9 +326,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BFF739662BAF31E2009A4439 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BFF7396B2BAF31E2009A4439 /* Set.framework */,
+				BFF7396D2BAF31E2009A4439 /* SetTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		BFFFBF482B7C6A280004156B = {
 			isa = PBXGroup;
 			children = (
+				BFF739652BAF31E2009A4439 /* Set.xcodeproj */,
 				BFFFBF532B7C6A280004156B /* Oracle */,
 				BFFFBF6E2B7C6A290004156B /* OracleTests */,
 				BFFFBF782B7C6A290004156B /* OracleUITests */,
@@ -388,7 +413,7 @@
 				BF56E6742B847C200018B620 /* SDWebImageSVGNativeCoder */,
 				BF241C002BA1C7D7001687CA /* Anchorage */,
 				BFCD54BF2BA7B23F00A0C439 /* Kingfisher */,
-				BF01330C2BAD8916006AFAF1 /* ComposableArchitecture */,
+				BFF739722BAF32A9009A4439 /* ComposableArchitecture */,
 			);
 			productName = Oracle;
 			productReference = BFFFBF512B7C6A280004156B /* Oracle.app */;
@@ -469,10 +494,16 @@
 				BF56E6732B847C200018B620 /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */,
 				BF241BFF2BA1C7D7001687CA /* XCRemoteSwiftPackageReference "Anchorage" */,
 				BFCD54BE2BA7B23F00A0C439 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				BF01330B2BAD8916006AFAF1 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				BFF739712BAF32A9009A4439 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = BFFFBF522B7C6A280004156B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BFF739662BAF31E2009A4439 /* Products */;
+					ProjectRef = BFF739652BAF31E2009A4439 /* Set.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BFFFBF502B7C6A280004156B /* Oracle */,
@@ -481,6 +512,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BFF7396B2BAF31E2009A4439 /* Set.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Set.framework;
+			remoteRef = BFF7396A2BAF31E2009A4439 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BFF7396D2BAF31E2009A4439 /* SetTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SetTests.xctest;
+			remoteRef = BFF7396C2BAF31E2009A4439 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BFFFBF4F2B7C6A280004156B /* Resources */ = {
@@ -914,14 +962,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BF01330B2BAD8916006AFAF1 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.9.2;
-			};
-		};
 		BF241BFF2BA1C7D7001687CA /* XCRemoteSwiftPackageReference "Anchorage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Rightpoint/Anchorage";
@@ -946,6 +986,14 @@
 				minimumVersion = 7.11.0;
 			};
 		};
+		BFF739712BAF32A9009A4439 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture?tab=readme-ov-file#basic-usage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.2;
+			};
+		};
 		BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JacobHearst/ScryfallKit";
@@ -957,11 +1005,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BF01330C2BAD8916006AFAF1 /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF01330B2BAD8916006AFAF1 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
 		BF241C002BA1C7D7001687CA /* Anchorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BF241BFF2BA1C7D7001687CA /* XCRemoteSwiftPackageReference "Anchorage" */;
@@ -976,6 +1019,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BFCD54BE2BA7B23F00A0C439 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		BFF739722BAF32A9009A4439 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFF739712BAF32A9009A4439 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
 		};
 		BFFFBF8B2B7C86BA0004156B /* ScryfallKit */ = {
 			isa = XCSwiftPackageProductDependency;
