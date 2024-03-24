@@ -1,7 +1,7 @@
 import ComposableArchitecture
 
 @Observable
-final class SetViewModel {
+final class SetListViewModel {
   let store: StoreOf<Feature>
   
   init(store: StoreOf<Feature>) {

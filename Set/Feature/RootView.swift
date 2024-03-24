@@ -9,10 +9,12 @@ public struct RootView: View {
   public init() {}
   
   public var body: some View {
-    SetView(
-      viewModel: SetViewModel(store: Store(initialState: state) {
-        Feature { try await client.getSets() }
-      })
+    SetListView(
+      viewModel: SetListViewModel(
+        store: Store(initialState: state) {
+          Feature { try await client.getSets() }
+        }
+      )
     )
   }
 }
