@@ -12,6 +12,9 @@
 		BF660D082BB018010025218A /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D072BB018010025218A /* Spacing.swift */; };
 		BF660D1C2BB029220025218A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BF660D1B2BB029220025218A /* SDWebImageSwiftUI */; };
 		BF660D1E2BB0293A0025218A /* IconWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D1D2BB0293A0025218A /* IconWebImage.swift */; };
+		BF660D232BB02B230025218A /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D222BB02B230025218A /* Container.swift */; };
+		BF660D252BB030010025218A /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D242BB030010025218A /* Main.swift */; };
+		BF660D282BB030120025218A /* SDWebImageSVGNativeCoder in Frameworks */ = {isa = PBXBuildFile; productRef = BF660D272BB030120025218A /* SDWebImageSVGNativeCoder */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +33,8 @@
 		BF660D002BB016A60025218A /* PillText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillText.swift; sourceTree = "<group>"; };
 		BF660D072BB018010025218A /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		BF660D1D2BB0293A0025218A /* IconWebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconWebImage.swift; sourceTree = "<group>"; };
+		BF660D222BB02B230025218A /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		BF660D242BB030010025218A /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF660D282BB030120025218A /* SDWebImageSVGNativeCoder in Frameworks */,
 				BF660D1C2BB029220025218A /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +61,8 @@
 		BF660CDE2BB016820025218A = {
 			isa = PBXGroup;
 			children = (
+				BF660D242BB030010025218A /* Main.swift */,
+				BF660D222BB02B230025218A /* Container.swift */,
 				BF660D1D2BB0293A0025218A /* IconWebImage.swift */,
 				BF660D072BB018010025218A /* Spacing.swift */,
 				BF660D002BB016A60025218A /* PillText.swift */,
@@ -100,6 +108,7 @@
 			name = DesignComponent;
 			packageProductDependencies = (
 				BF660D1B2BB029220025218A /* SDWebImageSwiftUI */,
+				BF660D272BB030120025218A /* SDWebImageSVGNativeCoder */,
 			);
 			productName = DesignComponent;
 			productReference = BF660CE82BB016820025218A /* DesignComponent.framework */;
@@ -153,6 +162,7 @@
 			mainGroup = BF660CDE2BB016820025218A;
 			packageReferences = (
 				BF660D1A2BB029220025218A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				BF660D262BB030120025218A /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */,
 			);
 			productRefGroup = BF660CE92BB016820025218A /* Products */;
 			projectDirPath = "";
@@ -186,7 +196,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF660D252BB030010025218A /* Main.swift in Sources */,
 				BF660D1E2BB0293A0025218A /* IconWebImage.swift in Sources */,
+				BF660D232BB02B230025218A /* Container.swift in Sources */,
 				BF660D012BB016A60025218A /* PillText.swift in Sources */,
 				BF660D082BB018010025218A /* Spacing.swift in Sources */,
 			);
@@ -492,6 +504,14 @@
 				minimumVersion = 3.0.1;
 			};
 		};
+		BF660D262BB030120025218A /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSVGNativeCoder";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -499,6 +519,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF660D1A2BB029220025218A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		BF660D272BB030120025218A /* SDWebImageSVGNativeCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF660D262BB030120025218A /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */;
+			productName = SDWebImageSVGNativeCoder;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

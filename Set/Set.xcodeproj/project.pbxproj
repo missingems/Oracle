@@ -18,6 +18,7 @@
 		BF660CDD2BB011B60025218A /* SetListRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CDC2BB011B60025218A /* SetListRowViewModel.swift */; };
 		BF660D042BB016F20025218A /* DesignComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF660D032BB016F20025218A /* DesignComponent.framework */; };
 		BF660D052BB016F20025218A /* DesignComponent.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF660D032BB016F20025218A /* DesignComponent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF660D212BB02A310025218A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D202BB02A310025218A /* Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		BF660CDA2BB00FFD0025218A /* SetListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListRow.swift; sourceTree = "<group>"; };
 		BF660CDC2BB011B60025218A /* SetListRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListRowViewModel.swift; sourceTree = "<group>"; };
 		BF660D032BB016F20025218A /* DesignComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF660D202BB02A310025218A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		BF660C7A2BAFEE180025218A = {
 			isa = PBXGroup;
 			children = (
+				BF660D1F2BB02A130025218A /* Network */,
 				BF660CA72BAFF1D90025218A /* Feature */,
 				BF660C9F2BAFEF350025218A /* View */,
 				BF660C852BAFEE180025218A /* Products */,
@@ -123,6 +126,14 @@
 				BF660D032BB016F20025218A /* DesignComponent.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF660D1F2BB02A130025218A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BF660D202BB02A310025218A /* Request.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +258,7 @@
 				BF660CDB2BB00FFD0025218A /* SetListRow.swift in Sources */,
 				BF660CDD2BB011B60025218A /* SetListRowViewModel.swift in Sources */,
 				BF660CD82BB00E6F0025218A /* SetListViewModel.swift in Sources */,
+				BF660D212BB02A310025218A /* Request.swift in Sources */,
 				BF660CA12BAFEF3D0025218A /* RootView.swift in Sources */,
 				BF660CA62BAFF1BA0025218A /* SetListView.swift in Sources */,
 			);

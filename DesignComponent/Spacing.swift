@@ -1,7 +1,15 @@
 import Foundation
 
-public enum Spacing: CGFloat {
-  case tiny = 3.0
-  case small = 5.0
-  case regular = 13.0
+public extension CGFloat {
+  static var smallSpacing: CGFloat {
+    5.0
+  }
+  
+  static var tinySpacing: CGFloat {
+    3.0
+  }
+  
+  static var regularSpacing: CGFloat {
+    13.0
+  }
 }

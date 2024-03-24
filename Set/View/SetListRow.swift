@@ -6,39 +6,22 @@ struct SetListRow: View {
   
   var body: some View {
     HStack {
-      if viewModel.isParent == false {
-        Image(systemName: "arrow.turn.down.right")
-          .foregroundColor(Color(uiColor: .tertiaryLabel))
-          .frame(minWidth: 30, minHeight: 30)
-      }
+      childIndicatorImage
+      iconImage
       
-      if let url = viewModel.iconUrl {
-        IconWebImage(url)
-      }
-      
-      VStack(alignment: .leading, spacing: Spacing.small.rawValue) {
-        Text(viewModel.title)
+      VStack(alignment: .leading, spacing: .smallSpacing) {
+        titleLabel
         
-        HStack(spacing: Spacing.small.rawValue) {
-          PillText(viewModel.id).font(.caption).monospaced()
-          Text(viewModel.numberOfCardsLabel).font(.caption)
+        HStack(spacing: .smallSpacing) {
+          setCodeLabel
+          numberOfCardsLabel
         }
       }
       
       Spacer()
-      
-      Image(systemName: "chevron.right")
-        .foregroundColor(Color(uiColor: .tertiaryLabel))
-        .frame(minWidth: 20, minHeight: 20)
+      disclosureIndicator
     }
-    .padding(
-      EdgeInsets(
-        top: 13.0,
-        leading: 13.0,
-        bottom: 15.0,
-        trailing: 13.0
-      )
-    )
+    .padding(EdgeInsets(top: 13.0, leading: 13.0, bottom: 15.0, trailing: 13.0))
     .background {
       if viewModel.shouldSetBackground {
         Color(uiColor: .quaternarySystemFill)
@@ -47,5 +30,39 @@ struct SetListRow: View {
       }
     }
     .clipShape(.buttonBorder)
+  }
+}
+
+// MARK: - UI Properties
+
+extension SetListRow {
+  private var childIndicatorImage: some View {
+    Container(predicate: viewModel.isParent) {
+      Image(systemName: viewModel.childIndicatorImageName)
+        .foregroundColor(Color(uiColor: .tertiaryLabel))
+        .frame(minWidth: 30, minHeight: 30)
+    }
+  }
+  
+  private var iconImage: some View {
+    IconWebImage(viewModel.iconUrl)
+  }
+  
+  private var titleLabel: some View {
+    Text(viewModel.title)
+  }
+  
+  private var setCodeLabel: some View {
+    PillText(viewModel.id).font(.caption).monospaced()
+  }
+  
+  private var numberOfCardsLabel: some View {
+    Text(viewModel.numberOfCardsLabel).font(.caption)
+  }
+  
+  private var disclosureIndicator: some View {
+    Image(systemName: viewModel.disclosureIndicatorImageName)
+      .foregroundColor(Color(uiColor: .tertiaryLabel))
+      .frame(minWidth: 20, minHeight: 20)
   }
 }
