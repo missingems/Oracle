@@ -14,8 +14,5 @@ struct SetListView: View {
     }
     .environment(\.defaultMinListRowHeight, 0)
     .listStyle(.plain)
-    .tabItem {
-      Label(viewModel.store.title, systemImage: viewModel.store.tabItemImageName)
-    }
   }
 }

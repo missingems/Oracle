@@ -9,12 +9,17 @@ public struct RootView: View {
   public init() {}
   
   public var body: some View {
-    SetListView(
-      viewModel: SetListViewModel(
-        store: Store(initialState: state) {
-          Feature { try await networkEffect.fetchSets() }
-        }
+    NavigationView {
+      SetListView(
+        viewModel: SetListViewModel(
+          store: Store(initialState: state) {
+            Feature { try await networkEffect.fetchSets() }
+          }
+        )
       )
-    )
+      .navigationTitle(state.title)
+    }.tabItem {
+      Label(state.title, systemImage: state.tabItemImageName)
+    }
   }
 }

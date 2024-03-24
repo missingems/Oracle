@@ -5,14 +5,14 @@ struct SetListRow: View {
   let viewModel: SetListRowViewModel
   
   var body: some View {
-    HStack {
+    HStack(spacing: 11.0) {
       childIndicatorImage
       iconImage
       
-      VStack(alignment: .leading, spacing: .smallSpacing) {
+      VStack(alignment: .leading, spacing: .small) {
         titleLabel
         
-        HStack(spacing: .smallSpacing) {
+        HStack(spacing: .small) {
           setCodeLabel
           numberOfCardsLabel
         }
@@ -22,7 +22,7 @@ struct SetListRow: View {
       disclosureIndicator
     }
 #if os(iOS)
-    .padding(EdgeInsets(top: 13.0, leading: 13.0, bottom: 15.0, trailing: 13.0))
+    .padding(EdgeInsets(top: .standard, leading: .standard, bottom: 13, trailing: .standard))
     .background {
       if viewModel.shouldSetBackground {
         Color.quaternarySystemFill
