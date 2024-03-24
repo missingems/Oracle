@@ -7,5 +7,6 @@ struct SetListView: View {
     List(viewModel.store.sets) { set in
       Text(set.name)
     }
+    .listStyle(.plain)
   }
 }
