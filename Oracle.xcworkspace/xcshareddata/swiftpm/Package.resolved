@@ -1,30 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "anchorage",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Rightpoint/Anchorage",
-      "state" : {
-        "revision" : "23a6dd0ccf9529d2750d8679a2e74a161cff2f16",
-        "version" : "4.5.0"
-      }
-    },
-    {
       "identity" : "combine-schedulers",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/combine-schedulers",
       "state" : {
         "revision" : "9dc9cbe4bc45c65164fa653a563d8d8db61b09bb",
         "version" : "1.0.0"
-      }
-    },
-    {
-      "identity" : "kingfisher",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/onevcat/Kingfisher",
-      "state" : {
-        "revision" : "5b92f029fab2cce44386d28588098b5be0824ef5",
-        "version" : "7.11.0"
       }
     },
     {

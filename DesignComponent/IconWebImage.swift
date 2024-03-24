@@ -1,14 +1,6 @@
 import SDWebImageSwiftUI
 import SwiftUI
 
-#if os(iOS)
-import UIKit
-let nativeScale = UIScreen.main.nativeScale
-#elseif os(macOS)
-import AppKit
-let nativeScale = NSScreen.main?.backingScaleFactor ?? 1.0
-#endif
-
 public struct IconWebImage: View {
   private let url: URL?
   
@@ -22,7 +14,7 @@ public struct IconWebImage: View {
         url: url,
         options: [.refreshCached],
         context: [
-          .imageThumbnailPixelSize: CGSize(width: 30 * nativeScale, height: 30 * nativeScale),
+          .imageThumbnailPixelSize: CGSize(width: 30 * Main.nativeScale, height: 30 * Main.nativeScale),
           .imagePreserveAspectRatio: true
         ]
       )
