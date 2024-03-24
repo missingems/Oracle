@@ -1,20 +1,13 @@
-import ComposableArchitecture
-import ScryfallKit
 import SwiftUI
+import `Set`
 
 @main
 struct OracleApp: App {
-  private let client = ScryfallClient(networkLogLevel: .minimal)
+  typealias GameSet = `Set`
   
   var body: some Scene {
     WindowGroup {
-      SetView(
-        store: Store(initialState: SetFeature.State()) {
-          SetFeature(
-            setsFetcher: { try await client.getSets() }
-          )
-        }
-      )
+      RootView()
     }
   }
 }

@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		BF0133132BAD8B7F006AFAF1 /* SetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133122BAD8B7F006AFAF1 /* SetRow.swift */; };
 		BF0133162BAD8BA7006AFAF1 /* OracleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */; };
-		BF0133182BAD8D45006AFAF1 /* SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133172BAD8D45006AFAF1 /* SetView.swift */; };
 		BF01331A2BAD913D006AFAF1 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133192BAD913D006AFAF1 /* CodeView.swift */; };
-		BF0DFD8B2BAE6A56001B8D32 /* SetFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0DFD8A2BAE6A56001B8D32 /* SetFeature.swift */; };
 		BF241C012BA1C7D7001687CA /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF241C002BA1C7D7001687CA /* Anchorage */; };
 		BF241C042BA28D62001687CA /* SetDetailNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */; };
 		BF241C082BA29151001687CA /* SetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C072BA29151001687CA /* SetCoordinator.swift */; };
@@ -31,6 +29,9 @@
 		BF56E66F2B846E450018B620 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BF56E66E2B846E450018B620 /* Localizable.xcstrings */; };
 		BF56E6752B847C200018B620 /* SDWebImageSVGNativeCoder in Frameworks */ = {isa = PBXBuildFile; productRef = BF56E6742B847C200018B620 /* SDWebImageSVGNativeCoder */; };
 		BF56E6772B847C730018B620 /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E6762B847C730018B620 /* SetTableViewCell.swift */; };
+		BF660C522BAFEAEE0025218A /* ScryfallKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF660C512BAFEAEE0025218A /* ScryfallKit */; };
+		BF660CA32BAFEF710025218A /* Set.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF660CA22BAFEF710025218A /* Set.framework */; };
+		BF660CA42BAFEF710025218A /* Set.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF660CA22BAFEF710025218A /* Set.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF67DBCE2BA16BCC002317A7 /* SetNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBCD2BA16BCC002317A7 /* SetNetworkService.swift */; };
 		BF67DBD52BA17C90002317A7 /* SetTableViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBD42BA17C90002317A7 /* SetTableViewModelTests.swift */; };
 		BF9862592B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9862582B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift */; };
@@ -48,7 +49,6 @@
 		BFD077C42B9444F8009C6B4C /* Ambient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C32B9444F8009C6B4C /* Ambient.swift */; };
 		BFD077C62B946F4E009C6B4C /* SinkableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C52B946F4E009C6B4C /* SinkableCell.swift */; };
 		BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C92B94C2DE009C6B4C /* CardView.swift */; };
-		BFF739732BAF32A9009A4439 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BFF739722BAF32A9009A4439 /* ComposableArchitecture */; };
 		BFFCAD5F2B962AA100986C34 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */; };
 		BFFCAD622B96F6B800986C34 /* CardSetInformationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */; };
 		BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */; };
@@ -56,7 +56,6 @@
 		BFFFBF642B7C6A290004156B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */; };
 		BFFFBF7A2B7C6A290004156B /* OracleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF792B7C6A290004156B /* OracleUITests.swift */; };
 		BFFFBF7C2B7C6A290004156B /* OracleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */; };
-		BFFFBF8C2B7C86BA0004156B /* ScryfallKit in Frameworks */ = {isa = PBXBuildFile; productRef = BFFFBF8B2B7C86BA0004156B /* ScryfallKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,12 +75,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BF02DF7F2BAF4E0D0029D251 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF660CA42BAFEF710025218A /* Set.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		BF0133122BAD8B7F006AFAF1 /* SetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRow.swift; sourceTree = "<group>"; };
 		BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleApp.swift; sourceTree = "<group>"; };
-		BF0133172BAD8D45006AFAF1 /* SetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetView.swift; sourceTree = "<group>"; };
 		BF0133192BAD913D006AFAF1 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
-		BF0DFD8A2BAE6A56001B8D32 /* SetFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFeature.swift; sourceTree = "<group>"; };
 		BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailNetworkService.swift; sourceTree = "<group>"; };
 		BF241C072BA29151001687CA /* SetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCoordinator.swift; sourceTree = "<group>"; };
 		BF241C0C2BA3E1FC001687CA /* CardSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -99,6 +110,7 @@
 		BF5478E32B90779B004D2CC8 /* CardIllustratorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardIllustratorRowView.swift; sourceTree = "<group>"; };
 		BF56E66E2B846E450018B620 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		BF56E6762B847C730018B620 /* SetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
+		BF660CA22BAFEF710025218A /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF67DBCD2BA16BCC002317A7 /* SetNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNetworkService.swift; sourceTree = "<group>"; };
 		BF67DBD42BA17C90002317A7 /* SetTableViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewModelTests.swift; sourceTree = "<group>"; };
 		BF9862582B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewModel.swift; sourceTree = "<group>"; };
@@ -134,11 +146,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFF739732BAF32A9009A4439 /* ComposableArchitecture in Frameworks */,
 				BFCD54C02BA7B23F00A0C439 /* Kingfisher in Frameworks */,
 				BF241C012BA1C7D7001687CA /* Anchorage in Frameworks */,
-				BFFFBF8C2B7C86BA0004156B /* ScryfallKit in Frameworks */,
+				BF660C522BAFEAEE0025218A /* ScryfallKit in Frameworks */,
 				BF56E6752B847C200018B620 /* SDWebImageSVGNativeCoder in Frameworks */,
+				BF660CA32BAFEF710025218A /* Set.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +295,6 @@
 		BFB366272B7CA669004814FB /* Set */ = {
 			isa = PBXGroup;
 			children = (
-				BF0DFD8A2BAE6A56001B8D32 /* SetFeature.swift */,
 				BF67DBDB2BA1B4D6002317A7 /* Model */,
 				BF67DBCC2BA16BBE002317A7 /* Network */,
 				BFB366282B7CA675004814FB /* Views */,
@@ -299,7 +310,6 @@
 				BF56E6762B847C730018B620 /* SetTableViewCell.swift */,
 				BFB366232B7C9767004814FB /* SetTableViewController.swift */,
 				BF0133122BAD8B7F006AFAF1 /* SetRow.swift */,
-				BF0133172BAD8D45006AFAF1 /* SetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -307,6 +317,7 @@
 		BFCD54D22BA81B7100A0C439 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF660CA22BAFEF710025218A /* Set.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -377,6 +388,7 @@
 				BFFFBF4D2B7C6A280004156B /* Sources */,
 				BFFFBF4E2B7C6A280004156B /* Frameworks */,
 				BFFFBF4F2B7C6A280004156B /* Resources */,
+				BF02DF7F2BAF4E0D0029D251 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -384,11 +396,10 @@
 			);
 			name = Oracle;
 			packageProductDependencies = (
-				BFFFBF8B2B7C86BA0004156B /* ScryfallKit */,
 				BF56E6742B847C200018B620 /* SDWebImageSVGNativeCoder */,
 				BF241C002BA1C7D7001687CA /* Anchorage */,
 				BFCD54BF2BA7B23F00A0C439 /* Kingfisher */,
-				BFF739722BAF32A9009A4439 /* ComposableArchitecture */,
+				BF660C512BAFEAEE0025218A /* ScryfallKit */,
 			);
 			productName = Oracle;
 			productReference = BFFFBF512B7C6A280004156B /* Oracle.app */;
@@ -465,11 +476,10 @@
 			);
 			mainGroup = BFFFBF482B7C6A280004156B;
 			packageReferences = (
-				BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */,
 				BF56E6732B847C200018B620 /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */,
 				BF241BFF2BA1C7D7001687CA /* XCRemoteSwiftPackageReference "Anchorage" */,
 				BFCD54BE2BA7B23F00A0C439 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				BFF739712BAF32A9009A4439 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				BF660C502BAFEAEE0025218A /* XCRemoteSwiftPackageReference "ScryfallKit" */,
 			);
 			productRefGroup = BFFFBF522B7C6A280004156B /* Products */;
 			projectDirPath = "";
@@ -538,7 +548,6 @@
 				BFCD54DA2BA972E800A0C439 /* LoadingView.swift in Sources */,
 				BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */,
 				BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */,
-				BF0DFD8B2BAE6A56001B8D32 /* SetFeature.swift in Sources */,
 				BF5478CE2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift in Sources */,
 				BFD077C22B941B82009C6B4C /* CardRelevanceView.swift in Sources */,
 				BF241C042BA28D62001687CA /* SetDetailNetworkService.swift in Sources */,
@@ -548,7 +557,6 @@
 				BFFCAD622B96F6B800986C34 /* CardSetInformationRowView.swift in Sources */,
 				BF5478B92B8EBFFB004D2CC8 /* String+Extensions.swift in Sources */,
 				BF5478D02B9033B1004D2CC8 /* View+Extensions.swift in Sources */,
-				BF0133182BAD8D45006AFAF1 /* SetView.swift in Sources */,
 				BFB366242B7C9767004814FB /* SetTableViewController.swift in Sources */,
 				BF9862592B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift in Sources */,
 				BF5478BD2B8ECB3A004D2CC8 /* CardDetailViewModel.swift in Sources */,
@@ -732,7 +740,7 @@
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Oracle/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Topdecker;
+				INFOPLIST_KEY_CFBundleDisplayName = Mooligan;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -746,13 +754,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.Oracle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,3,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -767,7 +775,7 @@
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Oracle/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Topdecker;
+				INFOPLIST_KEY_CFBundleDisplayName = Mooligan;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -781,13 +789,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.Oracle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,3,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -928,28 +936,20 @@
 				minimumVersion = 0.2.0;
 			};
 		};
+		BF660C502BAFEAEE0025218A /* XCRemoteSwiftPackageReference "ScryfallKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JacobHearst/ScryfallKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
 		BFCD54BE2BA7B23F00A0C439 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 7.11.0;
-			};
-		};
-		BFF739712BAF32A9009A4439 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture?tab=readme-ov-file#basic-usage";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.9.2;
-			};
-		};
-		BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JacobHearst/ScryfallKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -965,20 +965,15 @@
 			package = BF56E6732B847C200018B620 /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */;
 			productName = SDWebImageSVGNativeCoder;
 		};
+		BF660C512BAFEAEE0025218A /* ScryfallKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF660C502BAFEAEE0025218A /* XCRemoteSwiftPackageReference "ScryfallKit" */;
+			productName = ScryfallKit;
+		};
 		BFCD54BF2BA7B23F00A0C439 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BFCD54BE2BA7B23F00A0C439 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		BFF739722BAF32A9009A4439 /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BFF739712BAF32A9009A4439 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
-		BFFFBF8B2B7C86BA0004156B /* ScryfallKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BFFFBF8A2B7C86BA0004156B /* XCRemoteSwiftPackageReference "ScryfallKit" */;
-			productName = ScryfallKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

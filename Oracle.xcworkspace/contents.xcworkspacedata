@@ -4,4 +4,7 @@
    <FileRef
       location = "container:Oracle.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Set/Set.xcodeproj">
+   </FileRef>
 </Workspace>

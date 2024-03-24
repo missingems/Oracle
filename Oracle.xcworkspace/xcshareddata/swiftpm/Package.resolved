@@ -91,9 +91,9 @@
       }
     },
     {
-      "identity" : "swift-composable-architecture?tab=readme-ov-file#basic-usage",
+      "identity" : "swift-composable-architecture",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pointfreeco/swift-composable-architecture?tab=readme-ov-file#basic-usage",
+      "location" : "https://github.com/pointfreeco/swift-composable-architecture",
       "state" : {
         "revision" : "115fe5af41d333b6156d4924d7c7058bc77fd580",
         "version" : "1.9.2"
