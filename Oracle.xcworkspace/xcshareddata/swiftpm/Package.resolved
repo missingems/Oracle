@@ -55,6 +55,15 @@
       }
     },
     {
+      "identity" : "sdwebimageswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImageSwiftUI",
+      "state" : {
+        "revision" : "3333a1200c702fa8aad0227018ac6d4c2e927b67",
+        "version" : "3.0.1"
+      }
+    },
+    {
       "identity" : "svgnative-xcode",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/svgnative-Xcode.git",
@@ -91,9 +100,9 @@
       }
     },
     {
-      "identity" : "swift-composable-architecture?tab=readme-ov-file#basic-usage",
+      "identity" : "swift-composable-architecture",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pointfreeco/swift-composable-architecture?tab=readme-ov-file#basic-usage",
+      "location" : "https://github.com/pointfreeco/swift-composable-architecture",
       "state" : {
         "revision" : "115fe5af41d333b6156d4924d7c7058bc77fd580",
         "version" : "1.9.2"
