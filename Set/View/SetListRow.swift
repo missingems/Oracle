@@ -21,14 +21,26 @@ struct SetListRow: View {
       Spacer()
       disclosureIndicator
     }
+#if os(iOS)
     .padding(EdgeInsets(top: 13.0, leading: 13.0, bottom: 15.0, trailing: 13.0))
     .background {
       if viewModel.shouldSetBackground {
-        Color.gray
+        Color.quaternarySystemFill
       } else {
         Color.clear
       }
+      
     }
+    .listRowInsets(
+      EdgeInsets(
+        top: 0,
+        leading: 16.0,
+        bottom: 0,
+        trailing: 16.0
+      )
+    )
+    .listRowSeparator(.hidden)
+#endif
     .clipShape(.buttonBorder)
   }
 }

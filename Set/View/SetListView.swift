@@ -10,17 +10,12 @@ struct SetListView: View {
           set: viewModel.store.sets[index],
           shouldSetBackground: viewModel.shouldSetBackgroundForRow(at: index)
         )
-      ).listRowInsets(
-        EdgeInsets(
-          top: 0,
-          leading: 16.0,
-          bottom: 0,
-          trailing: 16.0
-        )
       )
-      .listRowSeparator(.hidden)
     }
     .environment(\.defaultMinListRowHeight, 0)
     .listStyle(.plain)
+    .tabItem {
+      Label(viewModel.store.title, systemImage: viewModel.store.tabItemImageName)
+    }
   }
 }
