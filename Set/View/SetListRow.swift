@@ -24,7 +24,7 @@ struct SetListRow: View {
     .padding(EdgeInsets(top: 13.0, leading: 13.0, bottom: 15.0, trailing: 13.0))
     .background {
       if viewModel.shouldSetBackground {
-        Color(uiColor: .quaternarySystemFill)
+        Color.gray
       } else {
         Color.clear
       }
@@ -39,7 +39,7 @@ extension SetListRow {
   private var childIndicatorImage: some View {
     Container(predicate: viewModel.isParent) {
       Image(systemName: viewModel.childIndicatorImageName)
-        .foregroundColor(Color(uiColor: .tertiaryLabel))
+        .foregroundColor(.secondary)
         .frame(minWidth: 30, minHeight: 30)
     }
   }
@@ -62,7 +62,7 @@ extension SetListRow {
   
   private var disclosureIndicator: some View {
     Image(systemName: viewModel.disclosureIndicatorImageName)
-      .foregroundColor(Color(uiColor: .tertiaryLabel))
+      .foregroundColor(.secondary)
       .frame(minWidth: 20, minHeight: 20)
   }
 }

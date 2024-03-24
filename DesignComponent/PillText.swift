@@ -12,7 +12,7 @@ public struct PillText: View {
       .multilineTextAlignment(.center)
       .padding(.horizontal, .smallSpacing)
       .background {
-        Color(uiColor: .systemFill)
+        Color(.systemFill)
       }
       .clipShape(.buttonBorder)
   }
