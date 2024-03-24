@@ -7,128 +7,74 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF660C8D2BAFEE180025218A /* Set.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF660C842BAFEE180025218A /* Set.framework */; };
-		BF660C9E2BAFEE760025218A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BF660C9D2BAFEE760025218A /* ComposableArchitecture */; };
-		BF660CA12BAFEF3D0025218A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CA02BAFEF3D0025218A /* RootView.swift */; };
-		BF660CA62BAFF1BA0025218A /* SetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CA52BAFF1BA0025218A /* SetListView.swift */; };
-		BF660CA92BAFF2050025218A /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CA82BAFF2050025218A /* Feature.swift */; };
-		BF660CD62BB009CD0025218A /* ScryfallKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF660CD52BB009CD0025218A /* ScryfallKit */; };
-		BF660CD82BB00E6F0025218A /* SetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CD72BB00E6F0025218A /* SetListViewModel.swift */; };
-		BF660CDB2BB00FFD0025218A /* SetListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CDA2BB00FFD0025218A /* SetListRow.swift */; };
-		BF660CDD2BB011B60025218A /* SetListRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CDC2BB011B60025218A /* SetListRowViewModel.swift */; };
-		BF660D042BB016F20025218A /* DesignComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF660D032BB016F20025218A /* DesignComponent.framework */; };
-		BF660D052BB016F20025218A /* DesignComponent.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF660D032BB016F20025218A /* DesignComponent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF660CF12BB016820025218A /* DesignComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF660CE82BB016820025218A /* DesignComponent.framework */; };
+		BF660D012BB016A60025218A /* PillText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D002BB016A60025218A /* PillText.swift */; };
+		BF660D082BB018010025218A /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D072BB018010025218A /* Spacing.swift */; };
+		BF660D1C2BB029220025218A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BF660D1B2BB029220025218A /* SDWebImageSwiftUI */; };
+		BF660D1E2BB0293A0025218A /* IconWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D1D2BB0293A0025218A /* IconWebImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BF660C8E2BAFEE180025218A /* PBXContainerItemProxy */ = {
+		BF660CF22BB016820025218A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BF660C7B2BAFEE180025218A /* Project object */;
+			containerPortal = BF660CDF2BB016820025218A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BF660C832BAFEE180025218A;
-			remoteInfo = Set;
+			remoteGlobalIDString = BF660CE72BB016820025218A;
+			remoteInfo = DesignComponent;
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		BF660D062BB016F20025218A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				BF660D052BB016F20025218A /* DesignComponent.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		BF660C842BAFEE180025218A /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF660C8C2BAFEE180025218A /* SetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF660CA02BAFEF3D0025218A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		BF660CA52BAFF1BA0025218A /* SetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListView.swift; sourceTree = "<group>"; };
-		BF660CA82BAFF2050025218A /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
-		BF660CD72BB00E6F0025218A /* SetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListViewModel.swift; sourceTree = "<group>"; };
-		BF660CDA2BB00FFD0025218A /* SetListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListRow.swift; sourceTree = "<group>"; };
-		BF660CDC2BB011B60025218A /* SetListRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListRowViewModel.swift; sourceTree = "<group>"; };
-		BF660D032BB016F20025218A /* DesignComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF660CE82BB016820025218A /* DesignComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF660CF02BB016820025218A /* DesignComponentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesignComponentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF660D002BB016A60025218A /* PillText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillText.swift; sourceTree = "<group>"; };
+		BF660D072BB018010025218A /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
+		BF660D1D2BB0293A0025218A /* IconWebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconWebImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BF660C812BAFEE180025218A /* Frameworks */ = {
+		BF660CE52BB016820025218A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF660C9E2BAFEE760025218A /* ComposableArchitecture in Frameworks */,
-				BF660CD62BB009CD0025218A /* ScryfallKit in Frameworks */,
-				BF660D042BB016F20025218A /* DesignComponent.framework in Frameworks */,
+				BF660D1C2BB029220025218A /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF660C892BAFEE180025218A /* Frameworks */ = {
+		BF660CED2BB016820025218A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF660C8D2BAFEE180025218A /* Set.framework in Frameworks */,
+				BF660CF12BB016820025218A /* DesignComponent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BF660C7A2BAFEE180025218A = {
+		BF660CDE2BB016820025218A = {
 			isa = PBXGroup;
 			children = (
-				BF660CA72BAFF1D90025218A /* Feature */,
-				BF660C9F2BAFEF350025218A /* View */,
-				BF660C852BAFEE180025218A /* Products */,
-				BF660D022BB016F20025218A /* Frameworks */,
+				BF660D1D2BB0293A0025218A /* IconWebImage.swift */,
+				BF660D072BB018010025218A /* Spacing.swift */,
+				BF660D002BB016A60025218A /* PillText.swift */,
+				BF660CE92BB016820025218A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		BF660C852BAFEE180025218A /* Products */ = {
+		BF660CE92BB016820025218A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BF660C842BAFEE180025218A /* Set.framework */,
-				BF660C8C2BAFEE180025218A /* SetTests.xctest */,
+				BF660CE82BB016820025218A /* DesignComponent.framework */,
+				BF660CF02BB016820025218A /* DesignComponentTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		BF660C9F2BAFEF350025218A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				BF660CDA2BB00FFD0025218A /* SetListRow.swift */,
-				BF660CDC2BB011B60025218A /* SetListRowViewModel.swift */,
-				BF660CA52BAFF1BA0025218A /* SetListView.swift */,
-				BF660CD72BB00E6F0025218A /* SetListViewModel.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		BF660CA72BAFF1D90025218A /* Feature */ = {
-			isa = PBXGroup;
-			children = (
-				BF660CA82BAFF2050025218A /* Feature.swift */,
-				BF660CA02BAFEF3D0025218A /* RootView.swift */,
-			);
-			path = Feature;
-			sourceTree = "<group>";
-		};
-		BF660D022BB016F20025218A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BF660D032BB016F20025218A /* DesignComponent.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		BF660C7F2BAFEE180025218A /* Headers */ = {
+		BF660CE32BB016820025218A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -138,67 +84,65 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		BF660C832BAFEE180025218A /* Set */ = {
+		BF660CE72BB016820025218A /* DesignComponent */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF660C962BAFEE180025218A /* Build configuration list for PBXNativeTarget "Set" */;
+			buildConfigurationList = BF660CFA2BB016820025218A /* Build configuration list for PBXNativeTarget "DesignComponent" */;
 			buildPhases = (
-				BF660C7F2BAFEE180025218A /* Headers */,
-				BF660C802BAFEE180025218A /* Sources */,
-				BF660C812BAFEE180025218A /* Frameworks */,
-				BF660C822BAFEE180025218A /* Resources */,
-				BF660D062BB016F20025218A /* Embed Frameworks */,
+				BF660CE32BB016820025218A /* Headers */,
+				BF660CE42BB016820025218A /* Sources */,
+				BF660CE52BB016820025218A /* Frameworks */,
+				BF660CE62BB016820025218A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Set;
+			name = DesignComponent;
 			packageProductDependencies = (
-				BF660C9D2BAFEE760025218A /* ComposableArchitecture */,
-				BF660CD52BB009CD0025218A /* ScryfallKit */,
+				BF660D1B2BB029220025218A /* SDWebImageSwiftUI */,
 			);
-			productName = Set;
-			productReference = BF660C842BAFEE180025218A /* Set.framework */;
+			productName = DesignComponent;
+			productReference = BF660CE82BB016820025218A /* DesignComponent.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		BF660C8B2BAFEE180025218A /* SetTests */ = {
+		BF660CEF2BB016820025218A /* DesignComponentTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF660C992BAFEE180025218A /* Build configuration list for PBXNativeTarget "SetTests" */;
+			buildConfigurationList = BF660CFD2BB016820025218A /* Build configuration list for PBXNativeTarget "DesignComponentTests" */;
 			buildPhases = (
-				BF660C882BAFEE180025218A /* Sources */,
-				BF660C892BAFEE180025218A /* Frameworks */,
-				BF660C8A2BAFEE180025218A /* Resources */,
+				BF660CEC2BB016820025218A /* Sources */,
+				BF660CED2BB016820025218A /* Frameworks */,
+				BF660CEE2BB016820025218A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BF660C8F2BAFEE180025218A /* PBXTargetDependency */,
+				BF660CF32BB016820025218A /* PBXTargetDependency */,
 			);
-			name = SetTests;
-			productName = SetTests;
-			productReference = BF660C8C2BAFEE180025218A /* SetTests.xctest */;
+			name = DesignComponentTests;
+			productName = DesignComponentTests;
+			productReference = BF660CF02BB016820025218A /* DesignComponentTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		BF660C7B2BAFEE180025218A /* Project object */ = {
+		BF660CDF2BB016820025218A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
-					BF660C832BAFEE180025218A = {
+					BF660CE72BB016820025218A = {
 						CreatedOnToolsVersion = 15.2;
 						LastSwiftMigration = 1520;
 					};
-					BF660C8B2BAFEE180025218A = {
+					BF660CEF2BB016820025218A = {
 						CreatedOnToolsVersion = 15.2;
 					};
 				};
 			};
-			buildConfigurationList = BF660C7E2BAFEE180025218A /* Build configuration list for PBXProject "Set" */;
+			buildConfigurationList = BF660CE22BB016820025218A /* Build configuration list for PBXProject "DesignComponent" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -206,30 +150,29 @@
 				en,
 				Base,
 			);
-			mainGroup = BF660C7A2BAFEE180025218A;
+			mainGroup = BF660CDE2BB016820025218A;
 			packageReferences = (
-				BF660C9C2BAFEE760025218A /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
-				BF660CD42BB009CD0025218A /* XCRemoteSwiftPackageReference "ScryfallKit" */,
+				BF660D1A2BB029220025218A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
-			productRefGroup = BF660C852BAFEE180025218A /* Products */;
+			productRefGroup = BF660CE92BB016820025218A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BF660C832BAFEE180025218A /* Set */,
-				BF660C8B2BAFEE180025218A /* SetTests */,
+				BF660CE72BB016820025218A /* DesignComponent */,
+				BF660CEF2BB016820025218A /* DesignComponentTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BF660C822BAFEE180025218A /* Resources */ = {
+		BF660CE62BB016820025218A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF660C8A2BAFEE180025218A /* Resources */ = {
+		BF660CEE2BB016820025218A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -239,20 +182,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BF660C802BAFEE180025218A /* Sources */ = {
+		BF660CE42BB016820025218A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF660CA92BAFF2050025218A /* Feature.swift in Sources */,
-				BF660CDB2BB00FFD0025218A /* SetListRow.swift in Sources */,
-				BF660CDD2BB011B60025218A /* SetListRowViewModel.swift in Sources */,
-				BF660CD82BB00E6F0025218A /* SetListViewModel.swift in Sources */,
-				BF660CA12BAFEF3D0025218A /* RootView.swift in Sources */,
-				BF660CA62BAFF1BA0025218A /* SetListView.swift in Sources */,
+				BF660D1E2BB0293A0025218A /* IconWebImage.swift in Sources */,
+				BF660D012BB016A60025218A /* PillText.swift in Sources */,
+				BF660D082BB018010025218A /* Spacing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF660C882BAFEE180025218A /* Sources */ = {
+		BF660CEC2BB016820025218A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -262,15 +202,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BF660C8F2BAFEE180025218A /* PBXTargetDependency */ = {
+		BF660CF32BB016820025218A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF660C832BAFEE180025218A /* Set */;
-			targetProxy = BF660C8E2BAFEE180025218A /* PBXContainerItemProxy */;
+			target = BF660CE72BB016820025218A /* DesignComponent */;
+			targetProxy = BF660CF22BB016820025218A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		BF660C942BAFEE180025218A /* Debug */ = {
+		BF660CF82BB016820025218A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -305,7 +245,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -335,7 +274,7 @@
 			};
 			name = Debug;
 		};
-		BF660C952BAFEE180025218A /* Release */ = {
+		BF660CF92BB016820025218A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -370,7 +309,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -392,14 +330,12 @@
 			};
 			name = Release;
 		};
-		BF660C972BAFEE180025218A /* Debug */ = {
+		BF660CFB2BB016820025218A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -422,12 +358,11 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.oracle.Set;
+				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.oracle.DesignComponent;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -435,14 +370,12 @@
 			};
 			name = Debug;
 		};
-		BF660C982BAFEE180025218A /* Release */ = {
+		BF660CFC2BB016820025218A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -465,31 +398,29 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.oracle.Set;
+				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.oracle.DesignComponent;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		BF660C9A2BAFEE180025218A /* Debug */ = {
+		BF660CFE2BB016820025218A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.oracle.SetTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.oracle.DesignComponentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -499,19 +430,18 @@
 			};
 			name = Debug;
 		};
-		BF660C9B2BAFEE180025218A /* Release */ = {
+		BF660CFF2BB016820025218A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 25WL36ABTN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.oracle.SetTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.oracle.DesignComponentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -524,29 +454,29 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BF660C7E2BAFEE180025218A /* Build configuration list for PBXProject "Set" */ = {
+		BF660CE22BB016820025218A /* Build configuration list for PBXProject "DesignComponent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BF660C942BAFEE180025218A /* Debug */,
-				BF660C952BAFEE180025218A /* Release */,
+				BF660CF82BB016820025218A /* Debug */,
+				BF660CF92BB016820025218A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF660C962BAFEE180025218A /* Build configuration list for PBXNativeTarget "Set" */ = {
+		BF660CFA2BB016820025218A /* Build configuration list for PBXNativeTarget "DesignComponent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BF660C972BAFEE180025218A /* Debug */,
-				BF660C982BAFEE180025218A /* Release */,
+				BF660CFB2BB016820025218A /* Debug */,
+				BF660CFC2BB016820025218A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF660C992BAFEE180025218A /* Build configuration list for PBXNativeTarget "SetTests" */ = {
+		BF660CFD2BB016820025218A /* Build configuration list for PBXNativeTarget "DesignComponentTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BF660C9A2BAFEE180025218A /* Debug */,
-				BF660C9B2BAFEE180025218A /* Release */,
+				BF660CFE2BB016820025218A /* Debug */,
+				BF660CFF2BB016820025218A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -554,36 +484,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BF660C9C2BAFEE760025218A /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+		BF660D1A2BB029220025218A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.9.2;
-			};
-		};
-		BF660CD42BB009CD0025218A /* XCRemoteSwiftPackageReference "ScryfallKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JacobHearst/ScryfallKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.0;
+				minimumVersion = 3.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BF660C9D2BAFEE760025218A /* ComposableArchitecture */ = {
+		BF660D1B2BB029220025218A /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BF660C9C2BAFEE760025218A /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
-		BF660CD52BB009CD0025218A /* ScryfallKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF660CD42BB009CD0025218A /* XCRemoteSwiftPackageReference "ScryfallKit" */;
-			productName = ScryfallKit;
+			package = BF660D1A2BB029220025218A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = BF660C7B2BAFEE180025218A /* Project object */;
+	rootObject = BF660CDF2BB016820025218A /* Project object */;
 }
