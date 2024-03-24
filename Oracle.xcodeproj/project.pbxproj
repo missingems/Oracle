@@ -7,74 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF0133132BAD8B7F006AFAF1 /* SetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133122BAD8B7F006AFAF1 /* SetRow.swift */; };
 		BF0133162BAD8BA7006AFAF1 /* OracleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */; };
-		BF01331A2BAD913D006AFAF1 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133192BAD913D006AFAF1 /* CodeView.swift */; };
 		BF241C012BA1C7D7001687CA /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF241C002BA1C7D7001687CA /* Anchorage */; };
-		BF241C042BA28D62001687CA /* SetDetailNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */; };
-		BF241C082BA29151001687CA /* SetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C072BA29151001687CA /* SetCoordinator.swift */; };
-		BF241C0D2BA3E1FC001687CA /* CardSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241C0C2BA3E1FC001687CA /* CardSearchTableViewCell.swift */; };
-		BF5478B32B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B22B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift */; };
-		BF5478B72B8DD680004D2CC8 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */; };
 		BF5478B92B8EBFFB004D2CC8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */; };
 		BF5478BB2B8ECB28004D2CC8 /* Card+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478BA2B8ECB28004D2CC8 /* Card+Extensions.swift */; };
-		BF5478BD2B8ECB3A004D2CC8 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478BC2B8ECB3A004D2CC8 /* CardDetailViewModel.swift */; };
-		BF5478CE2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478CD2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift */; };
-		BF5478D02B9033B1004D2CC8 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478CF2B9033B1004D2CC8 /* View+Extensions.swift */; };
-		BF5478D22B9034A8004D2CC8 /* CardDetailRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478D12B9034A8004D2CC8 /* CardDetailRowView.swift */; };
-		BF5478D42B90367A004D2CC8 /* CardDetailTypelineRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478D32B90367A004D2CC8 /* CardDetailTypelineRowView.swift */; };
-		BF5478D62B903FA2004D2CC8 /* CardDetailImageContainerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478D52B903FA2004D2CC8 /* CardDetailImageContainerRowView.swift */; };
-		BF5478E22B905A78004D2CC8 /* CardDetailLegalityRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478E12B905A78004D2CC8 /* CardDetailLegalityRowView.swift */; };
-		BF5478E42B90779B004D2CC8 /* CardIllustratorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478E32B90779B004D2CC8 /* CardIllustratorRowView.swift */; };
 		BF56E66F2B846E450018B620 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BF56E66E2B846E450018B620 /* Localizable.xcstrings */; };
-		BF56E6772B847C730018B620 /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E6762B847C730018B620 /* SetTableViewCell.swift */; };
 		BF660C522BAFEAEE0025218A /* ScryfallKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF660C512BAFEAEE0025218A /* ScryfallKit */; };
 		BF660CA32BAFEF710025218A /* Set.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF660CA22BAFEF710025218A /* Set.framework */; };
 		BF660CA42BAFEF710025218A /* Set.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF660CA22BAFEF710025218A /* Set.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF660D2A2BB0305C0025218A /* DesignComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF660D292BB0305C0025218A /* DesignComponent.framework */; };
 		BF660D2B2BB0305C0025218A /* DesignComponent.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF660D292BB0305C0025218A /* DesignComponent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BF67DBCE2BA16BCC002317A7 /* SetNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBCD2BA16BCC002317A7 /* SetNetworkService.swift */; };
-		BF67DBD52BA17C90002317A7 /* SetTableViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF67DBD42BA17C90002317A7 /* SetTableViewModelTests.swift */; };
-		BF9862592B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9862582B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift */; };
-		BF98625B2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98625A2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift */; };
-		BFB366242B7C9767004814FB /* SetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB366232B7C9767004814FB /* SetTableViewController.swift */; };
-		BFB366262B7CA663004814FB /* SetTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB366252B7CA663004814FB /* SetTableViewModel.swift */; };
-		BFCD54BD2BA47DE900A0C439 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD54BC2BA47DE900A0C439 /* UIImageView+Extensions.swift */; };
 		BFCD54C02BA7B23F00A0C439 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BFCD54BF2BA7B23F00A0C439 /* Kingfisher */; };
-		BFCD54D62BA94C1700A0C439 /* ButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD54D52BA94C1700A0C439 /* ButtonRow.swift */; };
-		BFCD54D82BA9664B00A0C439 /* RulingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD54D72BA9664B00A0C439 /* RulingTableViewController.swift */; };
-		BFCD54DA2BA972E800A0C439 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD54D92BA972E800A0C439 /* LoadingView.swift */; };
-		BFCD54DC2BA973EE00A0C439 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD54DB2BA973EE00A0C439 /* ErrorView.swift */; };
-		BFCD54DE2BA97F5400A0C439 /* PriceButtonsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD54DD2BA97F5400A0C439 /* PriceButtonsRowView.swift */; };
-		BFD077C22B941B82009C6B4C /* CardRelevanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C12B941B82009C6B4C /* CardRelevanceView.swift */; };
-		BFD077C42B9444F8009C6B4C /* Ambient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C32B9444F8009C6B4C /* Ambient.swift */; };
-		BFD077C62B946F4E009C6B4C /* SinkableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C52B946F4E009C6B4C /* SinkableCell.swift */; };
-		BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD077C92B94C2DE009C6B4C /* CardView.swift */; };
-		BFFCAD5F2B962AA100986C34 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */; };
-		BFFCAD622B96F6B800986C34 /* CardSetInformationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */; };
-		BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */; };
 		BFFFBF612B7C6A290004156B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF602B7C6A290004156B /* Assets.xcassets */; };
-		BFFFBF642B7C6A290004156B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */; };
-		BFFFBF7A2B7C6A290004156B /* OracleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF792B7C6A290004156B /* OracleUITests.swift */; };
-		BFFFBF7C2B7C6A290004156B /* OracleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		BFFFBF6C2B7C6A290004156B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFFFBF492B7C6A280004156B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BFFFBF502B7C6A280004156B;
-			remoteInfo = Oracle;
-		};
-		BFFFBF762B7C6A290004156B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFFFBF492B7C6A280004156B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BFFFBF502B7C6A280004156B;
-			remoteInfo = Oracle;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		BF02DF7F2BAF4E0D0029D251 /* Embed Frameworks */ = {
@@ -92,56 +37,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BF0133122BAD8B7F006AFAF1 /* SetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRow.swift; sourceTree = "<group>"; };
 		BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleApp.swift; sourceTree = "<group>"; };
-		BF0133192BAD913D006AFAF1 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
-		BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailNetworkService.swift; sourceTree = "<group>"; };
-		BF241C072BA29151001687CA /* SetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCoordinator.swift; sourceTree = "<group>"; };
-		BF241C0C2BA3E1FC001687CA /* CardSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchTableViewCell.swift; sourceTree = "<group>"; };
-		BF5478B22B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewCell.swift; sourceTree = "<group>"; };
-		BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		BF5478BA2B8ECB28004D2CC8 /* Card+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Extensions.swift"; sourceTree = "<group>"; };
-		BF5478BC2B8ECB3A004D2CC8 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
-		BF5478CD2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTitleDetailRowView.swift; sourceTree = "<group>"; };
-		BF5478CF2B9033B1004D2CC8 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
-		BF5478D12B9034A8004D2CC8 /* CardDetailRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailRowView.swift; sourceTree = "<group>"; };
-		BF5478D32B90367A004D2CC8 /* CardDetailTypelineRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailTypelineRowView.swift; sourceTree = "<group>"; };
-		BF5478D52B903FA2004D2CC8 /* CardDetailImageContainerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailImageContainerRowView.swift; sourceTree = "<group>"; };
-		BF5478E12B905A78004D2CC8 /* CardDetailLegalityRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailLegalityRowView.swift; sourceTree = "<group>"; };
-		BF5478E32B90779B004D2CC8 /* CardIllustratorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardIllustratorRowView.swift; sourceTree = "<group>"; };
 		BF56E66E2B846E450018B620 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		BF56E6762B847C730018B620 /* SetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
 		BF660CA22BAFEF710025218A /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF660D292BB0305C0025218A /* DesignComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF67DBCD2BA16BCC002317A7 /* SetNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNetworkService.swift; sourceTree = "<group>"; };
-		BF67DBD42BA17C90002317A7 /* SetTableViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewModelTests.swift; sourceTree = "<group>"; };
-		BF9862582B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewModel.swift; sourceTree = "<group>"; };
-		BF98625A2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailCollectionViewController.swift; sourceTree = "<group>"; };
-		BFB366232B7C9767004814FB /* SetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewController.swift; sourceTree = "<group>"; };
-		BFB366252B7CA663004814FB /* SetTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewModel.swift; sourceTree = "<group>"; };
-		BFCD54BC2BA47DE900A0C439 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
-		BFCD54D52BA94C1700A0C439 /* ButtonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonRow.swift; sourceTree = "<group>"; };
-		BFCD54D72BA9664B00A0C439 /* RulingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulingTableViewController.swift; sourceTree = "<group>"; };
-		BFCD54D92BA972E800A0C439 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		BFCD54DB2BA973EE00A0C439 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		BFCD54DD2BA97F5400A0C439 /* PriceButtonsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceButtonsRowView.swift; sourceTree = "<group>"; };
-		BFD077C12B941B82009C6B4C /* CardRelevanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRelevanceView.swift; sourceTree = "<group>"; };
-		BFD077C32B9444F8009C6B4C /* Ambient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ambient.swift; sourceTree = "<group>"; };
-		BFD077C52B946F4E009C6B4C /* SinkableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinkableCell.swift; sourceTree = "<group>"; };
-		BFD077C92B94C2DE009C6B4C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
-		BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetInformationRowView.swift; sourceTree = "<group>"; };
 		BFFFBF512B7C6A280004156B /* Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oracle.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFFFBF5E2B7C6A280004156B /* Oracle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Oracle.xcdatamodel; sourceTree = "<group>"; };
 		BFFFBF602B7C6A290004156B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BFFFBF632B7C6A290004156B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFFFBF652B7C6A290004156B /* Oracle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Oracle.entitlements; sourceTree = "<group>"; };
 		BFFFBF662B7C6A290004156B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFFFBF6B2B7C6A290004156B /* OracleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OracleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFFFBF752B7C6A290004156B /* OracleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OracleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFFFBF792B7C6A290004156B /* OracleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleUITests.swift; sourceTree = "<group>"; };
-		BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,88 +62,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BFFFBF682B7C6A290004156B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFFFBF722B7C6A290004156B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BF241C022BA28D4A001687CA /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				BF241C032BA28D62001687CA /* SetDetailNetworkService.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		BF5478B42B8DD671004D2CC8 /* Card */ = {
-			isa = PBXGroup;
-			children = (
-				BF5478B52B8DD675004D2CC8 /* Views */,
-				BF5478BC2B8ECB3A004D2CC8 /* CardDetailViewModel.swift */,
-			);
-			path = Card;
-			sourceTree = "<group>";
-		};
-		BF5478B52B8DD675004D2CC8 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				BFCD54D52BA94C1700A0C439 /* ButtonRow.swift */,
-				BFD077C92B94C2DE009C6B4C /* CardView.swift */,
-				BF5478B62B8DD680004D2CC8 /* CardDetailViewController.swift */,
-				BF5478CD2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift */,
-				BF5478D12B9034A8004D2CC8 /* CardDetailRowView.swift */,
-				BF5478D32B90367A004D2CC8 /* CardDetailTypelineRowView.swift */,
-				BF5478D52B903FA2004D2CC8 /* CardDetailImageContainerRowView.swift */,
-				BF5478E12B905A78004D2CC8 /* CardDetailLegalityRowView.swift */,
-				BF5478E32B90779B004D2CC8 /* CardIllustratorRowView.swift */,
-				BFD077C12B941B82009C6B4C /* CardRelevanceView.swift */,
-				BFFCAD612B96F6B800986C34 /* CardSetInformationRowView.swift */,
-				BFCD54D72BA9664B00A0C439 /* RulingTableViewController.swift */,
-				BFCD54DD2BA97F5400A0C439 /* PriceButtonsRowView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		BF67DBCC2BA16BBE002317A7 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				BF67DBCD2BA16BCC002317A7 /* SetNetworkService.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		BF67DBD82BA1B489002317A7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				BF67DBDA2BA1B49E002317A7 /* Extensions */,
-				BF67DBD92BA1B494002317A7 /* Views */,
-				BF0133192BAD913D006AFAF1 /* CodeView.swift */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		BF67DBD92BA1B494002317A7 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				BFFCAD5E2B962AA100986C34 /* InsetLabel.swift */,
-				BFD077C32B9444F8009C6B4C /* Ambient.swift */,
-				BFD077C52B946F4E009C6B4C /* SinkableCell.swift */,
-				BFCD54D92BA972E800A0C439 /* LoadingView.swift */,
-				BFCD54DB2BA973EE00A0C439 /* ErrorView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		BF67DBDA2BA1B49E002317A7 /* Extensions */ = {
@@ -246,18 +78,8 @@
 			children = (
 				BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */,
 				BF5478BA2B8ECB28004D2CC8 /* Card+Extensions.swift */,
-				BF5478CF2B9033B1004D2CC8 /* View+Extensions.swift */,
-				BFCD54BC2BA47DE900A0C439 /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		BF67DBDB2BA1B4D6002317A7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				BFB366252B7CA663004814FB /* SetTableViewModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		BF67DBDC2BA1B4EA002317A7 /* Main */ = {
@@ -266,55 +88,6 @@
 				BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		BF9862552B8CB62D00F5CB13 /* Set Detail */ = {
-			isa = PBXGroup;
-			children = (
-				BF9862562B8CB63800F5CB13 /* Models */,
-				BF241C022BA28D4A001687CA /* Network */,
-				BF9862572B8CB63C00F5CB13 /* Views */,
-			);
-			path = "Set Detail";
-			sourceTree = "<group>";
-		};
-		BF9862562B8CB63800F5CB13 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				BF9862582B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		BF9862572B8CB63C00F5CB13 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				BF98625A2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift */,
-				BF5478B22B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		BFB366272B7CA669004814FB /* Set */ = {
-			isa = PBXGroup;
-			children = (
-				BF67DBDB2BA1B4D6002317A7 /* Model */,
-				BF67DBCC2BA16BBE002317A7 /* Network */,
-				BFB366282B7CA675004814FB /* Views */,
-				BF241C072BA29151001687CA /* SetCoordinator.swift */,
-			);
-			path = Set;
-			sourceTree = "<group>";
-		};
-		BFB366282B7CA675004814FB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				BF241C0C2BA3E1FC001687CA /* CardSearchTableViewCell.swift */,
-				BF56E6762B847C730018B620 /* SetTableViewCell.swift */,
-				BFB366232B7C9767004814FB /* SetTableViewController.swift */,
-				BF0133122BAD8B7F006AFAF1 /* SetRow.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		BFCD54D22BA81B7100A0C439 /* Frameworks */ = {
@@ -330,8 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				BFFFBF532B7C6A280004156B /* Oracle */,
-				BFFFBF6E2B7C6A290004156B /* OracleTests */,
-				BFFFBF782B7C6A290004156B /* OracleUITests */,
 				BFFFBF522B7C6A280004156B /* Products */,
 				BFCD54D22BA81B7100A0C439 /* Frameworks */,
 			);
@@ -341,8 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				BFFFBF512B7C6A280004156B /* Oracle.app */,
-				BFFFBF6B2B7C6A290004156B /* OracleTests.xctest */,
-				BFFFBF752B7C6A290004156B /* OracleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -350,36 +119,14 @@
 		BFFFBF532B7C6A280004156B /* Oracle */ = {
 			isa = PBXGroup;
 			children = (
-				BF5478B42B8DD671004D2CC8 /* Card */,
 				BF67DBDC2BA1B4EA002317A7 /* Main */,
-				BF9862552B8CB62D00F5CB13 /* Set Detail */,
-				BFB366272B7CA669004814FB /* Set */,
 				BF67DBD82BA1B489002317A7 /* Shared */,
 				BFFFBF602B7C6A290004156B /* Assets.xcassets */,
-				BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */,
 				BFFFBF652B7C6A290004156B /* Oracle.entitlements */,
 				BFFFBF662B7C6A290004156B /* Info.plist */,
 				BF56E66E2B846E450018B620 /* Localizable.xcstrings */,
-				BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */,
 			);
 			path = Oracle;
-			sourceTree = "<group>";
-		};
-		BFFFBF6E2B7C6A290004156B /* OracleTests */ = {
-			isa = PBXGroup;
-			children = (
-				BF67DBD42BA17C90002317A7 /* SetTableViewModelTests.swift */,
-			);
-			path = OracleTests;
-			sourceTree = "<group>";
-		};
-		BFFFBF782B7C6A290004156B /* OracleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BFFFBF792B7C6A290004156B /* OracleUITests.swift */,
-				BFFFBF7B2B7C6A290004156B /* OracleUITestsLaunchTests.swift */,
-			);
-			path = OracleUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,42 +155,6 @@
 			productReference = BFFFBF512B7C6A280004156B /* Oracle.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BFFFBF6A2B7C6A290004156B /* OracleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BFFFBF822B7C6A290004156B /* Build configuration list for PBXNativeTarget "OracleTests" */;
-			buildPhases = (
-				BFFFBF672B7C6A290004156B /* Sources */,
-				BFFFBF682B7C6A290004156B /* Frameworks */,
-				BFFFBF692B7C6A290004156B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BFFFBF6D2B7C6A290004156B /* PBXTargetDependency */,
-			);
-			name = OracleTests;
-			productName = OracleTests;
-			productReference = BFFFBF6B2B7C6A290004156B /* OracleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		BFFFBF742B7C6A290004156B /* OracleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BFFFBF852B7C6A290004156B /* Build configuration list for PBXNativeTarget "OracleUITests" */;
-			buildPhases = (
-				BFFFBF712B7C6A290004156B /* Sources */,
-				BFFFBF722B7C6A290004156B /* Frameworks */,
-				BFFFBF732B7C6A290004156B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BFFFBF772B7C6A290004156B /* PBXTargetDependency */,
-			);
-			name = OracleUITests;
-			productName = OracleUITests;
-			productReference = BFFFBF752B7C6A290004156B /* OracleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -456,15 +167,6 @@
 				TargetAttributes = {
 					BFFFBF502B7C6A280004156B = {
 						CreatedOnToolsVersion = 15.1;
-					};
-					BFFFBF6A2B7C6A290004156B = {
-						CreatedOnToolsVersion = 15.1;
-						LastSwiftMigration = 1530;
-						TestTargetID = BFFFBF502B7C6A280004156B;
-					};
-					BFFFBF742B7C6A290004156B = {
-						CreatedOnToolsVersion = 15.1;
-						TestTargetID = BFFFBF502B7C6A280004156B;
 					};
 				};
 			};
@@ -488,8 +190,6 @@
 			projectRoot = "";
 			targets = (
 				BFFFBF502B7C6A280004156B /* Oracle */,
-				BFFFBF6A2B7C6A290004156B /* OracleTests */,
-				BFFFBF742B7C6A290004156B /* OracleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -499,23 +199,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFFFBF642B7C6A290004156B /* LaunchScreen.storyboard in Resources */,
 				BFFFBF612B7C6A290004156B /* Assets.xcassets in Resources */,
 				BF56E66F2B846E450018B620 /* Localizable.xcstrings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFFFBF692B7C6A290004156B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFFFBF732B7C6A290004156B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,88 +211,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF0133132BAD8B7F006AFAF1 /* SetRow.swift in Sources */,
 				BF0133162BAD8BA7006AFAF1 /* OracleApp.swift in Sources */,
 				BF5478BB2B8ECB28004D2CC8 /* Card+Extensions.swift in Sources */,
-				BF5478B72B8DD680004D2CC8 /* CardDetailViewController.swift in Sources */,
-				BFCD54DC2BA973EE00A0C439 /* ErrorView.swift in Sources */,
-				BFD077C62B946F4E009C6B4C /* SinkableCell.swift in Sources */,
-				BF98625B2B8CB66600F5CB13 /* SetDetailCollectionViewController.swift in Sources */,
-				BF241C082BA29151001687CA /* SetCoordinator.swift in Sources */,
-				BFCD54D82BA9664B00A0C439 /* RulingTableViewController.swift in Sources */,
-				BF5478B32B8D83EF004D2CC8 /* SetDetailCollectionViewCell.swift in Sources */,
-				BF5478D42B90367A004D2CC8 /* CardDetailTypelineRowView.swift in Sources */,
-				BFFCAD5F2B962AA100986C34 /* InsetLabel.swift in Sources */,
-				BFCD54DE2BA97F5400A0C439 /* PriceButtonsRowView.swift in Sources */,
-				BF01331A2BAD913D006AFAF1 /* CodeView.swift in Sources */,
-				BF5478E42B90779B004D2CC8 /* CardIllustratorRowView.swift in Sources */,
-				BF56E6772B847C730018B620 /* SetTableViewCell.swift in Sources */,
-				BFCD54D62BA94C1700A0C439 /* ButtonRow.swift in Sources */,
-				BF241C0D2BA3E1FC001687CA /* CardSearchTableViewCell.swift in Sources */,
-				BF5478E22B905A78004D2CC8 /* CardDetailLegalityRowView.swift in Sources */,
-				BF5478D62B903FA2004D2CC8 /* CardDetailImageContainerRowView.swift in Sources */,
-				BF5478D22B9034A8004D2CC8 /* CardDetailRowView.swift in Sources */,
-				BFCD54DA2BA972E800A0C439 /* LoadingView.swift in Sources */,
-				BFD077CA2B94C2DE009C6B4C /* CardView.swift in Sources */,
-				BFFFBF5F2B7C6A280004156B /* Oracle.xcdatamodeld in Sources */,
-				BF5478CE2B8FFAE4004D2CC8 /* CardTitleDetailRowView.swift in Sources */,
-				BFD077C22B941B82009C6B4C /* CardRelevanceView.swift in Sources */,
-				BF241C042BA28D62001687CA /* SetDetailNetworkService.swift in Sources */,
-				BF67DBCE2BA16BCC002317A7 /* SetNetworkService.swift in Sources */,
-				BFD077C42B9444F8009C6B4C /* Ambient.swift in Sources */,
-				BFCD54BD2BA47DE900A0C439 /* UIImageView+Extensions.swift in Sources */,
-				BFFCAD622B96F6B800986C34 /* CardSetInformationRowView.swift in Sources */,
 				BF5478B92B8EBFFB004D2CC8 /* String+Extensions.swift in Sources */,
-				BF5478D02B9033B1004D2CC8 /* View+Extensions.swift in Sources */,
-				BFB366242B7C9767004814FB /* SetTableViewController.swift in Sources */,
-				BF9862592B8CB64E00F5CB13 /* SetDetailCollectionViewModel.swift in Sources */,
-				BF5478BD2B8ECB3A004D2CC8 /* CardDetailViewModel.swift in Sources */,
-				BFB366262B7CA663004814FB /* SetTableViewModel.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFFFBF672B7C6A290004156B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF67DBD52BA17C90002317A7 /* SetTableViewModelTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFFFBF712B7C6A290004156B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BFFFBF7C2B7C6A290004156B /* OracleUITestsLaunchTests.swift in Sources */,
-				BFFFBF7A2B7C6A290004156B /* OracleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BFFFBF6D2B7C6A290004156B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BFFFBF502B7C6A280004156B /* Oracle */;
-			targetProxy = BFFFBF6C2B7C6A290004156B /* PBXContainerItemProxy */;
-		};
-		BFFFBF772B7C6A290004156B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BFFFBF502B7C6A280004156B /* Oracle */;
-			targetProxy = BFFFBF762B7C6A290004156B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		BFFFBF622B7C6A290004156B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BFFFBF632B7C6A290004156B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BFFFBF7D2B7C6A290004156B /* Debug */ = {
@@ -756,13 +366,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.Oracle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3,7";
 			};
 			name = Debug;
 		};
@@ -791,92 +401,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.Oracle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		BFFFBF832B7C6A290004156B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 25WL36ABTN;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.OracleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oracle.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Oracle";
-			};
-			name = Debug;
-		};
-		BFFFBF842B7C6A290004156B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 25WL36ABTN;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.OracleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oracle.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Oracle";
-			};
-			name = Release;
-		};
-		BFFFBF862B7C6A290004156B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 25WL36ABTN;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.OracleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Oracle;
-			};
-			name = Debug;
-		};
-		BFFFBF872B7C6A290004156B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 25WL36ABTN;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.missingems.OracleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Oracle;
+				TARGETED_DEVICE_FAMILY = "1,2,3,7";
 			};
 			name = Release;
 		};
@@ -897,24 +428,6 @@
 			buildConfigurations = (
 				BFFFBF802B7C6A290004156B /* Debug */,
 				BFFFBF812B7C6A290004156B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BFFFBF822B7C6A290004156B /* Build configuration list for PBXNativeTarget "OracleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BFFFBF832B7C6A290004156B /* Debug */,
-				BFFFBF842B7C6A290004156B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BFFFBF852B7C6A290004156B /* Build configuration list for PBXNativeTarget "OracleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BFFFBF862B7C6A290004156B /* Debug */,
-				BFFFBF872B7C6A290004156B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -965,19 +478,6 @@
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		BFFFBF5D2B7C6A280004156B /* Oracle.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				BFFFBF5E2B7C6A280004156B /* Oracle.xcdatamodel */,
-			);
-			currentVersion = BFFFBF5E2B7C6A280004156B /* Oracle.xcdatamodel */;
-			path = Oracle.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = BFFFBF492B7C6A280004156B /* Project object */;
 }

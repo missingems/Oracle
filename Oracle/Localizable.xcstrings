@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%lld Cards" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -17,12 +18,6 @@
         }
       }
     },
-    "Ascending" : {
-
-    },
-    "Automatic" : {
-
-    },
     "Banned" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -34,16 +29,8 @@
         }
       }
     },
-    "Cards" : {
-
-    },
-    "Color" : {
-
-    },
-    "Descending" : {
-
-    },
     "Illustrated by" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -52,9 +39,6 @@
           }
         }
       }
-    },
-    "Latest" : {
-
     },
     "Legal" : {
       "extractionState" : "manual",
@@ -79,6 +63,7 @@
       }
     },
     "Loyalty: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -87,15 +72,6 @@
           }
         }
       }
-    },
-    "Mana Value" : {
-
-    },
-    "Market Prices" : {
-
-    },
-    "Name" : {
-
     },
     "Not Legal" : {
       "extractionState" : "manual",
@@ -108,27 +84,6 @@
         }
       }
     },
-    "Number" : {
-
-    },
-    "Oops, I missed a trigger..." : {
-
-    },
-    "Order by %@" : {
-
-    },
-    "Power" : {
-
-    },
-    "Price" : {
-
-    },
-    "Prints" : {
-
-    },
-    "Rarity" : {
-
-    },
     "Restricted" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -140,13 +95,8 @@
         }
       }
     },
-    "Rulings" : {
-
-    },
-    "Sets" : {
-
-    },
     "SetsTableViewControllerSearchBarPlaceholder" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -178,15 +128,6 @@
           }
         }
       }
-    },
-    "Sort by %@" : {
-
-    },
-    "Toughness" : {
-
-    },
-    "View Rulings" : {
-
     }
   },
   "version" : "1.0"
