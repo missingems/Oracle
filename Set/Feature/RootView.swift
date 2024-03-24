@@ -10,9 +10,9 @@ public struct RootView: View {
   
   public var body: some View {
     SetView(
-      store: Store(initialState: state) {
+      viewModel: SetViewModel(store: Store(initialState: state) {
         Feature { try await client.getSets() }
-      }
+      })
     )
   }
 }

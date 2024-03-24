@@ -13,6 +13,7 @@
 		BF660CA62BAFF1BA0025218A /* SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CA52BAFF1BA0025218A /* SetView.swift */; };
 		BF660CA92BAFF2050025218A /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CA82BAFF2050025218A /* Feature.swift */; };
 		BF660CD62BB009CD0025218A /* ScryfallKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF660CD52BB009CD0025218A /* ScryfallKit */; };
+		BF660CD82BB00E6F0025218A /* SetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CD72BB00E6F0025218A /* SetViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		BF660CA02BAFEF3D0025218A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		BF660CA52BAFF1BA0025218A /* SetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetView.swift; sourceTree = "<group>"; };
 		BF660CA82BAFF2050025218A /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		BF660CD72BB00E6F0025218A /* SetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +77,8 @@
 		BF660C9F2BAFEF350025218A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BF660CA02BAFEF3D0025218A /* RootView.swift */,
 				BF660CA52BAFF1BA0025218A /* SetView.swift */,
+				BF660CD72BB00E6F0025218A /* SetViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				BF660CA82BAFF2050025218A /* Feature.swift */,
+				BF660CA02BAFEF3D0025218A /* RootView.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF660CA92BAFF2050025218A /* Feature.swift in Sources */,
+				BF660CD82BB00E6F0025218A /* SetViewModel.swift in Sources */,
 				BF660CA12BAFEF3D0025218A /* RootView.swift in Sources */,
 				BF660CA62BAFF1BA0025218A /* SetView.swift in Sources */,
 			);

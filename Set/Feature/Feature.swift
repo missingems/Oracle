@@ -3,7 +3,7 @@ import ScryfallKit
 
 @Reducer
 struct Feature {
-  let setsFetcher: () async throws -> ObjectList<MTGSet>
+  let fetchSets: () async throws -> ObjectList<MTGSet>
   
   @ObservableState
   struct State: Equatable {
@@ -20,13 +20,19 @@ struct Feature {
     Reduce { state, action in
       switch action {
       case .fetchSets:
-        return fetchSets()
+        return .run { update in
+          do {
+            await update(.didReceiveSets(try fetchSets()))
+          } catch {
+            await update(.didReceiveError(error))
+          }
+        }
         
-      case .didReceiveError:
-        fatalError("Error handler not implemented")
+      case let .didReceiveError(error):
+        return update(state: &state, with: .failure(error))
         
       case let .didReceiveSets(result):
-        return update(state: &state, with: result)
+        return update(state: &state, with: .success(result))
       }
     }
   }
@@ -34,22 +40,19 @@ struct Feature {
 
 // MARK: - Effects
 
-extension Feature {
-  private func fetchSets() -> Effect<Action> {
-    .run { update in
-      do {
-        await update(.didReceiveSets(try setsFetcher()))
-      } catch {
-        await update(.didReceiveError(error))
-      }
-    }
-  }
-  
+extension Feature {  
   private func update(
     state: inout State,
-    with result: ObjectList<MTGSet>
+    with result: Result<ObjectList<MTGSet>, Error>
   ) -> Effect<Action> {
-    state.sets = result.data
+    switch result {
+    case let .success(response):
+      state.sets = response.data
+      
+    case .failure:
+      break
+    }
+    
     return .none
   }
 }

@@ -1,10 +1,11 @@
-import ComposableArchitecture
 import SwiftUI
 
 struct SetView: View {
-  let store: StoreOf<Feature>
+  var viewModel: SetViewModel
   
   public var body: some View {
-    Text("Hello")
+    List(viewModel.store.sets) { set in
+      Text(set.name)
+    }
   }
 }
