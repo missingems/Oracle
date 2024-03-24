@@ -3,7 +3,7 @@ import ScryfallKit
 
 @Reducer
 struct Feature {
-  let fetchSets: () async throws -> ObjectList<MTGSet>
+  let fetchSets: () async throws -> [MTGSet]
   
   @ObservableState
   struct State: Equatable {
@@ -12,7 +12,7 @@ struct Feature {
   
   enum Action {
     case fetchSets
-    case didReceiveSets(ObjectList<MTGSet>)
+    case didReceiveSets([MTGSet])
     case didReceiveError(Error)
   }
   
@@ -43,11 +43,11 @@ struct Feature {
 extension Feature {  
   private func update(
     state: inout State,
-    with result: Result<ObjectList<MTGSet>, Error>
+    with result: Result<[MTGSet], Error>
   ) -> Effect<Action> {
     switch result {
     case let .success(response):
-      state.sets = response.data
+      state.sets = response
       
     case .failure:
       break
