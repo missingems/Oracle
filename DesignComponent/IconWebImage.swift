@@ -21,6 +21,7 @@ public struct IconWebImage: View {
       .resizable()
       .renderingMode(.template)
       .indicator(.activity)
+      .aspectRatio(contentMode: .fit)
       .transition(.fade)
       .foregroundStyle(Color.accentColor)
       .frame(width: 30, height: 30, alignment: .center)

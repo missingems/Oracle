@@ -12,9 +12,13 @@ struct OracleApp: App {
   
   var body: some Scene {
     WindowGroup {
+      #if os(iOS)
       TabView {
         RootView()
       }
+      #else
+      RootView()
+      #endif
     }
   }
 }

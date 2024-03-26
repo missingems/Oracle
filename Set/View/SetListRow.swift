@@ -4,6 +4,9 @@ import SwiftUI
 struct SetListRow: View {
   let viewModel: SetListRowViewModel
   
+  @GestureState
+  private var isHighlighted = false
+  
   var body: some View {
     HStack(spacing: 11.0) {
       childIndicatorImage
@@ -18,30 +21,16 @@ struct SetListRow: View {
         }
       }
       
-      Spacer()
-      disclosureIndicator
+//      Spacer()
+//      disclosureIndicator
     }
 #if os(iOS)
     .padding(EdgeInsets(top: .standard, leading: .standard, bottom: 13, trailing: .standard))
-    .background {
-      if viewModel.shouldSetBackground {
-        Color.quaternarySystemFill
-      } else {
-        Color.clear
-      }
-      
-    }
-    .listRowInsets(
-      EdgeInsets(
-        top: 0,
-        leading: 16.0,
-        bottom: 0,
-        trailing: 16.0
-      )
-    )
+    .background { viewModel.shouldSetBackground ? Color.quaternarySystemFill : Color.clear }
+    .listRowInsets(EdgeInsets(top: 0, leading: 16.0, bottom: 0, trailing: 16.0))
     .listRowSeparator(.hidden)
-#endif
     .clipShape(.buttonBorder)
+#endif
   }
 }
 
@@ -49,7 +38,7 @@ struct SetListRow: View {
 
 extension SetListRow {
   private var childIndicatorImage: some View {
-    Container(predicate: viewModel.isParent) {
+    Container(predicate: viewModel.isSetParent) {
       Image(systemName: viewModel.childIndicatorImageName)
         .foregroundColor(.secondary)
         .frame(minWidth: 30, minHeight: 30)

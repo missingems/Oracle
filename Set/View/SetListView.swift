@@ -12,7 +12,5 @@ struct SetListView: View {
         )
       )
     }
-    .environment(\.defaultMinListRowHeight, 0)
-    .listStyle(.plain)
   }
 }

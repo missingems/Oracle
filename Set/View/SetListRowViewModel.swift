@@ -6,7 +6,7 @@ struct SetListRowViewModel: Equatable {
   let disclosureIndicatorImageName: String
   let iconUrl: URL?
   let id: String
-  let isParent: Bool
+  let isSetParent: Bool
   let numberOfCardsLabel: String
   let shouldSetBackground: Bool
   let title: String
@@ -16,7 +16,7 @@ struct SetListRowViewModel: Equatable {
     disclosureIndicatorImageName = "chevron.right"
     iconUrl = URL(string: set.iconSvgUri)
     id = set.code.uppercased()
-    isParent = set.parentSetCode != nil
+    isSetParent = set.parentSetCode != nil
     numberOfCardsLabel = String(localized: "\(set.cardCount) Cards")
     self.shouldSetBackground = shouldSetBackground
     title = set.name
