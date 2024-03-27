@@ -10,7 +10,6 @@
 		BF48F1772BB03C5800F874BF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF48F1762BB03C5800F874BF /* Color.swift */; };
 		BF660CF12BB016820025218A /* DesignComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF660CE82BB016820025218A /* DesignComponent.framework */; };
 		BF660D012BB016A60025218A /* PillText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D002BB016A60025218A /* PillText.swift */; };
-		BF660D082BB018010025218A /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D072BB018010025218A /* Spacing.swift */; };
 		BF660D1C2BB029220025218A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BF660D1B2BB029220025218A /* SDWebImageSwiftUI */; };
 		BF660D1E2BB0293A0025218A /* IconWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D1D2BB0293A0025218A /* IconWebImage.swift */; };
 		BF660D232BB02B230025218A /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D222BB02B230025218A /* Container.swift */; };
@@ -33,7 +32,6 @@
 		BF660CE82BB016820025218A /* DesignComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF660CF02BB016820025218A /* DesignComponentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesignComponentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF660D002BB016A60025218A /* PillText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillText.swift; sourceTree = "<group>"; };
-		BF660D072BB018010025218A /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		BF660D1D2BB0293A0025218A /* IconWebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconWebImage.swift; sourceTree = "<group>"; };
 		BF660D222BB02B230025218A /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		BF660D242BB030010025218A /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 				BF660D242BB030010025218A /* Main.swift */,
 				BF660D222BB02B230025218A /* Container.swift */,
 				BF660D1D2BB0293A0025218A /* IconWebImage.swift */,
-				BF660D072BB018010025218A /* Spacing.swift */,
 				BF660D002BB016A60025218A /* PillText.swift */,
 				BF660CE92BB016820025218A /* Products */,
 			);
@@ -203,7 +200,6 @@
 				BF660D1E2BB0293A0025218A /* IconWebImage.swift in Sources */,
 				BF660D232BB02B230025218A /* Container.swift in Sources */,
 				BF660D012BB016A60025218A /* PillText.swift in Sources */,
-				BF660D082BB018010025218A /* Spacing.swift in Sources */,
 				BF48F1772BB03C5800F874BF /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
