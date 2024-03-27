@@ -22,27 +22,35 @@ struct Feature {
   }
   
   enum Action {
+    case didReceiveCards([Card], MTGSet)
+    case didReceiveError(Error)
+    case didReceiveSets([MTGSet])
+    case didSelectSet(MTGSet)
     case fetchCards(MTGSet)
     case fetchSets
-    case didReceiveCards([Card], MTGSet)
-    case didReceiveSets([MTGSet])
-    case didReceiveError(Error)
-    case didSelectSet(MTGSet)
   }
   
   var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
-      case let .fetchCards(set):
-        return .run { update in
-          await update(.didReceiveCards(try await fetchCards(set, 1), set))
-        }
+      case .didReceiveCards:
+        return .none
+        
+      case let .didReceiveError(error):
+        return update(state: &state, with: .failure(error))
+        
+      case let .didReceiveSets(result):
+        return update(state: &state, with: .success(result))
         
       case let .didSelectSet(set):
         return .run { update in
           await update(.fetchCards(set))
         }
-
+        
+      case let .fetchCards(set):
+        return .run { update in
+          await update(.didReceiveCards(try await fetchCards(set, 1), set))
+        }
         
       case .fetchSets:
         return .run { update in
@@ -52,15 +60,6 @@ struct Feature {
             await update(.didReceiveError(error))
           }
         }
-        
-      case .didReceiveCards:
-        return .none
-        
-      case let .didReceiveError(error):
-        return update(state: &state, with: .failure(error))
-        
-      case let .didReceiveSets(result):
-        return update(state: &state, with: .success(result))
       }
     }
   }
