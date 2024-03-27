@@ -8,8 +8,4 @@ final class SetListViewModel {
     self.store = store
     store.send(.fetchSets)
   }
-  
-  func shouldSetBackgroundForRow(at index: Int) -> Bool {
-    index.isMultiple(of: 2)
-  }
 }

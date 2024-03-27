@@ -5,14 +5,14 @@ struct SetListRow: View {
   let viewModel: SetListRowViewModel
   
   var body: some View {
-    HStack {
-      childIndicatorImage
-      iconImage
+    HStack(spacing: 11.0) {
+      childIndicatorImage.frame(width: 30, height: 30, alignment: .trailing)
+      iconImage.frame(width: 30, height: 30, alignment: .center)
       
-      VStack(alignment: .leading, spacing: .smallSpacing) {
+      VStack(alignment: .leading, spacing: 5.0) {
         titleLabel
         
-        HStack(spacing: .smallSpacing) {
+        HStack(spacing: 5.0) {
           setCodeLabel
           numberOfCardsLabel
         }
@@ -21,15 +21,13 @@ struct SetListRow: View {
       Spacer()
       disclosureIndicator
     }
-    .padding(EdgeInsets(top: 13.0, leading: 13.0, bottom: 15.0, trailing: 13.0))
-    .background {
-      if viewModel.shouldSetBackground {
-        Color.gray
-      } else {
-        Color.clear
-      }
-    }
+#if os(iOS)
+    .padding(11.0)
+    .background { viewModel.shouldSetBackground ? Color.quaternarySystemFill : Color.clear }
+    .listRowInsets(EdgeInsets(top: 0, leading: 16.0, bottom: 0, trailing: 16.0))
+    .listRowSeparator(.hidden)
     .clipShape(.buttonBorder)
+#endif
   }
 }
 
@@ -37,10 +35,10 @@ struct SetListRow: View {
 
 extension SetListRow {
   private var childIndicatorImage: some View {
-    Container(predicate: viewModel.isParent) {
+    Container(predicate: viewModel.isSetParent) {
       Image(systemName: viewModel.childIndicatorImageName)
-        .foregroundColor(.secondary)
-        .frame(minWidth: 30, minHeight: 30)
+        .foregroundColor(.tertiaryLabel)
+        .imageScale(.small)
     }
   }
   
@@ -49,7 +47,7 @@ extension SetListRow {
   }
   
   private var titleLabel: some View {
-    Text(viewModel.title)
+    Text(viewModel.title).lineLimit(2)
   }
   
   private var setCodeLabel: some View {
@@ -62,7 +60,7 @@ extension SetListRow {
   
   private var disclosureIndicator: some View {
     Image(systemName: viewModel.disclosureIndicatorImageName)
-      .foregroundColor(.secondary)
-      .frame(minWidth: 20, minHeight: 20)
+      .foregroundColor(.tertiaryLabel)
+      .imageScale(.small)
   }
 }

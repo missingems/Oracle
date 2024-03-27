@@ -95,6 +95,23 @@
         }
       }
     },
+    "Sets" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sets"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セット"
+          }
+        }
+      }
+    },
     "SetsTableViewControllerSearchBarPlaceholder" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -108,23 +125,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "マジックカード検索"
-          }
-        }
-      }
-    },
-    "SetsTableViewControllerTitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sets"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "セット"
           }
         }
       }

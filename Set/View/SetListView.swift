@@ -8,19 +8,14 @@ struct SetListView: View {
       SetListRow(
         viewModel: SetListRowViewModel(
           set: viewModel.store.sets[index],
-          shouldSetBackground: viewModel.shouldSetBackgroundForRow(at: index)
-        )
-      ).listRowInsets(
-        EdgeInsets(
-          top: 0,
-          leading: 16.0,
-          bottom: 0,
-          trailing: 16.0
+          index: index
         )
       )
-      .listRowSeparator(.hidden)
     }
-    .environment(\.defaultMinListRowHeight, 0)
+#if os(iOS)
     .listStyle(.plain)
+#elseif os(macOS)
+    .listStyle(.sidebar)
+#endif
   }
 }

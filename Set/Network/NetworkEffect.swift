@@ -26,4 +26,8 @@ struct NetworkEffect {
       throw error
     }
   }
+  
+  func fetchCards(_ set: MTGSet, _ page: Int) async throws -> [Card] {
+    return []
+  }
 }
