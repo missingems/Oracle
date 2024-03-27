@@ -6,8 +6,8 @@ struct SetListRow: View {
   
   var body: some View {
     HStack(spacing: 11.0) {
-      childIndicatorImage
-      iconImage
+      childIndicatorImage.frame(width: 30, height: 30, alignment: .trailing)
+      iconImage.frame(width: 30, height: 30, alignment: .center)
       
       VStack(alignment: .leading, spacing: 5.0) {
         titleLabel
@@ -39,7 +39,6 @@ extension SetListRow {
       Image(systemName: viewModel.childIndicatorImageName)
         .foregroundColor(.tertiaryLabel)
         .imageScale(.small)
-        .frame(width: 30, height: 30, alignment: .trailing)
     }
   }
   
