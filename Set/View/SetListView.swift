@@ -12,5 +12,10 @@ struct SetListView: View {
         )
       )
     }
+    #if os(iOS)
+    .listStyle(.plain)
+    #elseif os(macOS)
+    .listStyle(.sidebar)
+    #endif
   }
 }

@@ -4,28 +4,25 @@ import SwiftUI
 struct SetListRow: View {
   let viewModel: SetListRowViewModel
   
-  @GestureState
-  private var isHighlighted = false
-  
   var body: some View {
     HStack(spacing: 11.0) {
       childIndicatorImage
       iconImage
       
-      VStack(alignment: .leading, spacing: .small) {
+      VStack(alignment: .leading, spacing: 3.0) {
         titleLabel
         
-        HStack(spacing: .small) {
+        HStack(spacing: 3.0) {
           setCodeLabel
           numberOfCardsLabel
         }
       }
       
-//      Spacer()
-//      disclosureIndicator
+      Spacer()
+      disclosureIndicator
     }
 #if os(iOS)
-    .padding(EdgeInsets(top: .standard, leading: .standard, bottom: 13, trailing: .standard))
+    .padding(11.0)
     .background { viewModel.shouldSetBackground ? Color.quaternarySystemFill : Color.clear }
     .listRowInsets(EdgeInsets(top: 0, leading: 16.0, bottom: 0, trailing: 16.0))
     .listRowSeparator(.hidden)
@@ -40,8 +37,9 @@ extension SetListRow {
   private var childIndicatorImage: some View {
     Container(predicate: viewModel.isSetParent) {
       Image(systemName: viewModel.childIndicatorImageName)
-        .foregroundColor(.secondary)
-        .frame(minWidth: 30, minHeight: 30)
+        .foregroundColor(.tertiaryLabel)
+        .imageScale(.small)
+        .frame(width: 30, height: 30, alignment: .trailing)
     }
   }
   
@@ -63,7 +61,7 @@ extension SetListRow {
   
   private var disclosureIndicator: some View {
     Image(systemName: viewModel.disclosureIndicatorImageName)
-      .foregroundColor(.secondary)
-      .frame(minWidth: 20, minHeight: 20)
+      .foregroundColor(.tertiaryLabel)
+      .imageScale(.small)
   }
 }
