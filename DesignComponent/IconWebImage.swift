@@ -13,16 +13,12 @@ public struct IconWebImage: View {
       WebImage(
         url: url,
         options: [.refreshCached],
-        context: [
-          .imageThumbnailPixelSize: CGSize(width: 30 * Main.nativeScale, height: 30 * Main.nativeScale),
-          .imagePreserveAspectRatio: true
-        ]
+        context: [.imagePreserveAspectRatio: true]
       )
       .resizable()
       .renderingMode(.template)
       .indicator(.activity)
       .aspectRatio(contentMode: .fit)
-      .transition(.fade)
       .foregroundStyle(Color.accentColor)
       .frame(width: 30, height: 30, alignment: .center)
     } else {
