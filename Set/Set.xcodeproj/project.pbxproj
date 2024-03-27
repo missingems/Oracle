@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0FDC392BB4065B00211199 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0FDC382BB4065B00211199 /* RootViewModel.swift */; };
 		BF660C9E2BAFEE760025218A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BF660C9D2BAFEE760025218A /* ComposableArchitecture */; };
 		BF660CA12BAFEF3D0025218A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CA02BAFEF3D0025218A /* RootView.swift */; };
 		BF660CA62BAFF1BA0025218A /* SetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CA52BAFF1BA0025218A /* SetListView.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF0FDC382BB4065B00211199 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		BF660C842BAFEE180025218A /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF660CA02BAFEF3D0025218A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		BF660CA52BAFF1BA0025218A /* SetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListView.swift; sourceTree = "<group>"; };
@@ -82,6 +84,8 @@
 		BF660C9F2BAFEF350025218A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF660CA02BAFEF3D0025218A /* RootView.swift */,
+				BF0FDC382BB4065B00211199 /* RootViewModel.swift */,
 				BF660CDA2BB00FFD0025218A /* SetListRow.swift */,
 				BF660CDC2BB011B60025218A /* SetListRowViewModel.swift */,
 				BF660CA52BAFF1BA0025218A /* SetListView.swift */,
@@ -94,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				BF660CA82BAFF2050025218A /* Feature.swift */,
-				BF660CA02BAFEF3D0025218A /* RootView.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				BF660CD82BB00E6F0025218A /* SetListViewModel.swift in Sources */,
 				BF660D212BB02A310025218A /* NetworkEffect.swift in Sources */,
 				BF660CA12BAFEF3D0025218A /* RootView.swift in Sources */,
+				BF0FDC392BB4065B00211199 /* RootViewModel.swift in Sources */,
 				BF660CA62BAFF1BA0025218A /* SetListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

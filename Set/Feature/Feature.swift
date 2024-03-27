@@ -8,13 +8,9 @@ struct Feature {
   @ObservableState
   struct State: Equatable {
     var sets: [MTGSet]
-    let title: String
-    let tabItemImageName: String
     
     init() {
       self.sets = []
-      self.title = String(localized: "Sets")
-      self.tabItemImageName = "list.bullet.rectangle.portrait"
     }
   }
   
