@@ -22,7 +22,10 @@ public struct RootView: View {
     SetListView(
       viewModel: SetListViewModel(
         store: Store(initialState: state) {
-          Feature { try await networkEffect.fetchSets() }
+          Feature(
+            fetchSets: networkEffect.fetchSets,
+            fetchCards: networkEffect.fetchCards(_:_:)
+          )
         }
       )
     )

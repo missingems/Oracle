@@ -4,9 +4,16 @@ import ScryfallKit
 @Reducer
 struct Feature {
   let fetchSets: () async throws -> [MTGSet]
+  let fetchCards: (_ set: MTGSet, _ page: Int) async throws -> [Card]
+  
+  @Reducer(state: .equatable)
+  enum Path {
+    case queryResult([Card])
+  }
   
   @ObservableState
   struct State: Equatable {
+    var path = StackState<Path.State>()
     var sets: [MTGSet]
     
     init() {
@@ -15,14 +22,28 @@ struct Feature {
   }
   
   enum Action {
+    case fetchCards(MTGSet)
     case fetchSets
+    case didReceiveCards([Card], MTGSet)
     case didReceiveSets([MTGSet])
     case didReceiveError(Error)
+    case didSelectSet(MTGSet)
   }
   
-  var body: some Reducer<State, Action> {
+  var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
+      case let .fetchCards(set):
+        return .run { update in
+          await update(.didReceiveCards(try await fetchCards(set, 1), set))
+        }
+        
+      case let .didSelectSet(set):
+        return .run { update in
+          await update(.fetchCards(set))
+        }
+
+        
       case .fetchSets:
         return .run { update in
           do {
@@ -31,6 +52,9 @@ struct Feature {
             await update(.didReceiveError(error))
           }
         }
+        
+      case .didReceiveCards:
+        return .none
         
       case let .didReceiveError(error):
         return update(state: &state, with: .failure(error))
