@@ -8,14 +8,14 @@ struct SetListView: View {
       SetListRow(
         viewModel: SetListRowViewModel(
           set: viewModel.store.sets[index],
-          shouldSetBackground: viewModel.shouldSetBackgroundForRow(at: index)
+          index: index
         )
       )
     }
-    #if os(iOS)
+#if os(iOS)
     .listStyle(.plain)
-    #elseif os(macOS)
+#elseif os(macOS)
     .listStyle(.sidebar)
-    #endif
+#endif
   }
 }

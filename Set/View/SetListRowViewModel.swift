@@ -11,14 +11,14 @@ struct SetListRowViewModel: Equatable {
   let shouldSetBackground: Bool
   let title: String
   
-  init(set: MTGSet, shouldSetBackground: Bool) {
+  init(set: MTGSet, index: Int) {
     childIndicatorImageName = "arrow.turn.down.right"
     disclosureIndicatorImageName = "chevron.right"
     iconUrl = URL(string: set.iconSvgUri)
     id = set.code.uppercased()
     isSetParent = set.parentSetCode != nil
     numberOfCardsLabel = String(localized: "\(set.cardCount) Cards")
-    self.shouldSetBackground = shouldSetBackground
+    shouldSetBackground = index.isMultiple(of: 2)
     title = set.name
   }
 }

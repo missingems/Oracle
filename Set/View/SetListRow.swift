@@ -9,10 +9,10 @@ struct SetListRow: View {
       childIndicatorImage
       iconImage
       
-      VStack(alignment: .leading, spacing: 3.0) {
+      VStack(alignment: .leading, spacing: 5.0) {
         titleLabel
         
-        HStack(spacing: 3.0) {
+        HStack(spacing: 5.0) {
           setCodeLabel
           numberOfCardsLabel
         }
@@ -48,7 +48,7 @@ extension SetListRow {
   }
   
   private var titleLabel: some View {
-    Text(viewModel.title)
+    Text(viewModel.title).lineLimit(2)
   }
   
   private var setCodeLabel: some View {
