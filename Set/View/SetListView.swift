@@ -6,7 +6,7 @@ struct SetListView: View {
   
   public var body: some View {
 #if os(iOS)
-    NavigationStack {
+    NavigationStack(path: viewModel.$store.scope(state: \.path, action: \.path)) {
       List(viewModel.store.loadingState.data.indices, id: \.self) { index in
         SetListRow(
           viewModel: SetListRowViewModel(
@@ -15,12 +15,30 @@ struct SetListView: View {
           )
         )
         .redacted(reason: viewModel.store.loadingState == .isLoading ? .placeholder : .invalidated)
+        .overlay {
+          NavigationLink(state: Feature.Path.State.selectSet) {
+            EmptyView()
+          }
+          .opacity(0)
+        }
+#if os(iOS)
+        .listRowInsets(EdgeInsets(top: 0, leading: 16.0, bottom: 0, trailing: 16.0))
+        .listRowSeparator(.hidden)
+#endif
       }
+      .scrollDisabled(viewModel.store.loadingState == .isLoading)
       .navigationTitle(viewModel.title)
+      .listStyle(.plain)
+    } destination: { store in
+      switch store.state {
+      case .selectSet:
+        Text("you did it")
+      }
     }
-    .listStyle(.plain)
+    
 #elseif os(macOS)
     .listStyle(.sidebar)
 #endif
   }
 }
+

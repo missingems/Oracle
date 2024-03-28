@@ -6,6 +6,40 @@ struct Feature {
   let fetchSets: () async throws -> [MTGSet]
   let fetchCards: (_ set: MTGSet, _ page: Int) async throws -> [Card]
   
+  @Reducer
+  struct Path {
+    @ObservableState
+    enum State: Equatable {
+      case selectSet
+    }
+    
+    enum Action: Equatable {
+      case selectSet
+    }
+    
+    var body: some ReducerOf<Self> {
+      Scope(state: \.selectSet, action: \.selectSet) {
+//        AddFeature()
+      }
+    }
+  }
+  
+  @ObservableState
+  struct State: Equatable {
+    var path = StackState<Path.State>()
+    var loadingState: LoadingState = .isLoading
+  }
+  
+  enum Action: Equatable {
+    case didReceiveCards([Card], MTGSet)
+    case didReceiveError
+    case didReceiveSets([MTGSet])
+    case didSelectSet(MTGSet)
+    case fetchCards(MTGSet)
+    case fetchSets
+    case path(StackAction<Path.State, Path.Action>)
+  }
+  
   enum LoadingState: Equatable {
     case isLoaded([MTGSet])
     case isLoading
@@ -21,34 +55,14 @@ struct Feature {
     }
   }
   
-  @Reducer(state: .equatable)
-  enum Path {
-    case queryResult([Card])
-  }
-  
-  @ObservableState
-  struct State: Equatable {
-    var path = StackState<Path.State>()
-    var loadingState: LoadingState = .isLoading
-  }
-  
-  enum Action {
-    case didReceiveCards([Card], MTGSet)
-    case didReceiveError(Error)
-    case didReceiveSets([MTGSet])
-    case didSelectSet(MTGSet)
-    case fetchCards(MTGSet)
-    case fetchSets
-  }
-  
   var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
       case .didReceiveCards:
         return .none
         
-      case let .didReceiveError(error):
-        return update(state: &state, with: .failure(error))
+      case .didReceiveError:
+        fatalError()
         
       case let .didReceiveSets(result):
         return update(state: &state, with: .success(result))
@@ -68,10 +82,20 @@ struct Feature {
           do {
             await update(.didReceiveSets(try fetchSets()))
           } catch {
-            await update(.didReceiveError(error))
+            await update(.didReceiveError)
           }
         }
+        
+      case .path(.element(_, action: .selectSet)):
+        state.path.append(.selectSet)
+        return .none
+        
+      case .path:
+        return .none
       }
+    }
+    .forEach(\.path, action: \.path) {
+      Path()
     }
   }
 }

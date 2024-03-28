@@ -1,8 +1,8 @@
+import SwiftUI
 import ComposableArchitecture
 
-@Observable
-final class SetListViewModel {
-  let store: StoreOf<Feature>
+struct SetListViewModel {
+  @Bindable var store: StoreOf<Feature>
   let title = String(localized: "Sets")
   
   init(store: StoreOf<Feature>) {
