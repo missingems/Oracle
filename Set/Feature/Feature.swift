@@ -6,6 +6,21 @@ struct Feature {
   let fetchSets: () async throws -> [MTGSet]
   let fetchCards: (_ set: MTGSet, _ page: Int) async throws -> [Card]
   
+  enum LoadingState: Equatable {
+    case isLoaded([MTGSet])
+    case isLoading
+    
+    var data: [MTGSet] {
+      switch self {
+      case let .isLoaded(sets):
+        return sets
+        
+      case .isLoading:
+        return MTGSet.stubs
+      }
+    }
+  }
+  
   @Reducer(state: .equatable)
   enum Path {
     case queryResult([Card])
@@ -14,11 +29,7 @@ struct Feature {
   @ObservableState
   struct State: Equatable {
     var path = StackState<Path.State>()
-    var sets: [MTGSet]
-    
-    init() {
-      self.sets = []
-    }
+    var loadingState: LoadingState = .isLoading
   }
   
   enum Action {
@@ -74,7 +85,7 @@ extension Feature {
   ) -> Effect<Action> {
     switch result {
     case let .success(response):
-      state.sets = response
+      state.loadingState = .isLoaded(response)
       
     case .failure:
       break

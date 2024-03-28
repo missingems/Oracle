@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BF0FDC392BB4065B00211199 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0FDC382BB4065B00211199 /* RootViewModel.swift */; };
+		BF636E4E2BB51B2500629CAA /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF636E4D2BB51B2500629CAA /* Stubs.swift */; };
+		BF636E512BB51BDD00629CAA /* setsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = BF636E502BB51BDD00629CAA /* setsSample.json */; };
 		BF660C9E2BAFEE760025218A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BF660C9D2BAFEE760025218A /* ComposableArchitecture */; };
 		BF660CA12BAFEF3D0025218A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CA02BAFEF3D0025218A /* RootView.swift */; };
 		BF660CA62BAFF1BA0025218A /* SetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CA52BAFF1BA0025218A /* SetListView.swift */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		BF0FDC382BB4065B00211199 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		BF636E4D2BB51B2500629CAA /* Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubs.swift; sourceTree = "<group>"; };
+		BF636E502BB51BDD00629CAA /* setsSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = setsSample.json; sourceTree = "<group>"; };
 		BF660C842BAFEE180025218A /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF660CA02BAFEF3D0025218A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		BF660CA52BAFF1BA0025218A /* SetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListView.swift; sourceTree = "<group>"; };
@@ -62,9 +66,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF636E4F2BB51B6B00629CAA /* JSONs */ = {
+			isa = PBXGroup;
+			children = (
+				BF636E502BB51BDD00629CAA /* setsSample.json */,
+			);
+			path = JSONs;
+			sourceTree = "<group>";
+		};
 		BF660C7A2BAFEE180025218A = {
 			isa = PBXGroup;
 			children = (
+				BF636E4F2BB51B6B00629CAA /* JSONs */,
 				BF660D1F2BB02A130025218A /* Network */,
 				BF660CA72BAFF1D90025218A /* Feature */,
 				BF660C9F2BAFEF350025218A /* View */,
@@ -114,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				BF660D202BB02A310025218A /* NetworkEffect.swift */,
+				BF636E4D2BB51B2500629CAA /* Stubs.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -197,6 +211,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF636E512BB51BDD00629CAA /* setsSample.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF636E4E2BB51B2500629CAA /* Stubs.swift in Sources */,
 				BF660CA92BAFF2050025218A /* Feature.swift in Sources */,
 				BF660CDB2BB00FFD0025218A /* SetListRow.swift in Sources */,
 				BF660CDD2BB011B60025218A /* SetListRowViewModel.swift in Sources */,
