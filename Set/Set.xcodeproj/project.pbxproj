@@ -12,15 +12,16 @@
 		BF636E512BB51BDD00629CAA /* setsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = BF636E502BB51BDD00629CAA /* setsSample.json */; };
 		BF660C9E2BAFEE760025218A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BF660C9D2BAFEE760025218A /* ComposableArchitecture */; };
 		BF660CA12BAFEF3D0025218A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CA02BAFEF3D0025218A /* RootView.swift */; };
-		BF660CA62BAFF1BA0025218A /* SetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CA52BAFF1BA0025218A /* SetListView.swift */; };
+		BF660CA62BAFF1BA0025218A /* SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CA52BAFF1BA0025218A /* SetView.swift */; };
 		BF660CA92BAFF2050025218A /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CA82BAFF2050025218A /* Feature.swift */; };
 		BF660CD62BB009CD0025218A /* ScryfallKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF660CD52BB009CD0025218A /* ScryfallKit */; };
-		BF660CD82BB00E6F0025218A /* SetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CD72BB00E6F0025218A /* SetListViewModel.swift */; };
+		BF660CD82BB00E6F0025218A /* SetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CD72BB00E6F0025218A /* SetViewModel.swift */; };
 		BF660CDB2BB00FFD0025218A /* SetListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CDA2BB00FFD0025218A /* SetListRow.swift */; };
 		BF660CDD2BB011B60025218A /* SetListRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660CDC2BB011B60025218A /* SetListRowViewModel.swift */; };
 		BF660D042BB016F20025218A /* DesignComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF660D032BB016F20025218A /* DesignComponent.framework */; };
 		BF660D052BB016F20025218A /* DesignComponent.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF660D032BB016F20025218A /* DesignComponent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF660D212BB02A310025218A /* NetworkEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D202BB02A310025218A /* NetworkEffect.swift */; };
+		BF7F05D82BB67F9100B53C22 /* QueryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F05D72BB67F9100B53C22 /* QueryResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,13 +44,14 @@
 		BF636E502BB51BDD00629CAA /* setsSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = setsSample.json; sourceTree = "<group>"; };
 		BF660C842BAFEE180025218A /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF660CA02BAFEF3D0025218A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		BF660CA52BAFF1BA0025218A /* SetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListView.swift; sourceTree = "<group>"; };
+		BF660CA52BAFF1BA0025218A /* SetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetView.swift; sourceTree = "<group>"; };
 		BF660CA82BAFF2050025218A /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
-		BF660CD72BB00E6F0025218A /* SetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListViewModel.swift; sourceTree = "<group>"; };
+		BF660CD72BB00E6F0025218A /* SetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewModel.swift; sourceTree = "<group>"; };
 		BF660CDA2BB00FFD0025218A /* SetListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListRow.swift; sourceTree = "<group>"; };
 		BF660CDC2BB011B60025218A /* SetListRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListRowViewModel.swift; sourceTree = "<group>"; };
 		BF660D032BB016F20025218A /* DesignComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF660D202BB02A310025218A /* NetworkEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEffect.swift; sourceTree = "<group>"; };
+		BF7F05D72BB67F9100B53C22 /* QueryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +99,13 @@
 		BF660C9F2BAFEF350025218A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF7F05D72BB67F9100B53C22 /* QueryResultView.swift */,
 				BF660CA02BAFEF3D0025218A /* RootView.swift */,
 				BF0FDC382BB4065B00211199 /* RootViewModel.swift */,
 				BF660CDA2BB00FFD0025218A /* SetListRow.swift */,
 				BF660CDC2BB011B60025218A /* SetListRowViewModel.swift */,
-				BF660CA52BAFF1BA0025218A /* SetListView.swift */,
-				BF660CD72BB00E6F0025218A /* SetListViewModel.swift */,
+				BF660CA52BAFF1BA0025218A /* SetView.swift */,
+				BF660CD72BB00E6F0025218A /* SetViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -226,11 +229,12 @@
 				BF660CA92BAFF2050025218A /* Feature.swift in Sources */,
 				BF660CDB2BB00FFD0025218A /* SetListRow.swift in Sources */,
 				BF660CDD2BB011B60025218A /* SetListRowViewModel.swift in Sources */,
-				BF660CD82BB00E6F0025218A /* SetListViewModel.swift in Sources */,
+				BF660CD82BB00E6F0025218A /* SetViewModel.swift in Sources */,
 				BF660D212BB02A310025218A /* NetworkEffect.swift in Sources */,
 				BF660CA12BAFEF3D0025218A /* RootView.swift in Sources */,
 				BF0FDC392BB4065B00211199 /* RootViewModel.swift in Sources */,
-				BF660CA62BAFF1BA0025218A /* SetListView.swift in Sources */,
+				BF7F05D82BB67F9100B53C22 /* QueryResultView.swift in Sources */,
+				BF660CA62BAFF1BA0025218A /* SetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
