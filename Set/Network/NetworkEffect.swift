@@ -28,6 +28,8 @@ struct NetworkEffect {
   }
   
   func fetchCards(_ set: MTGSet, _ page: Int) async throws -> [Card] {
-    return []
+    try await client.searchCards(filters: [
+      .set(set.code)
+    ]).data
   }
 }

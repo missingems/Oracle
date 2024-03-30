@@ -22,6 +22,7 @@
 		BF660D052BB016F20025218A /* DesignComponent.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF660D032BB016F20025218A /* DesignComponent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF660D212BB02A310025218A /* NetworkEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D202BB02A310025218A /* NetworkEffect.swift */; };
 		BF7F05D82BB67F9100B53C22 /* QueryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F05D72BB67F9100B53C22 /* QueryResultView.swift */; };
+		BF7F05DA2BB79B4500B53C22 /* QueryResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F05D92BB79B4500B53C22 /* QueryResultViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +53,7 @@
 		BF660D032BB016F20025218A /* DesignComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF660D202BB02A310025218A /* NetworkEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEffect.swift; sourceTree = "<group>"; };
 		BF7F05D72BB67F9100B53C22 /* QueryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryResultView.swift; sourceTree = "<group>"; };
+		BF7F05D92BB79B4500B53C22 /* QueryResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryResultViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				BF7F05D72BB67F9100B53C22 /* QueryResultView.swift */,
+				BF7F05D92BB79B4500B53C22 /* QueryResultViewModel.swift */,
 				BF660CA02BAFEF3D0025218A /* RootView.swift */,
 				BF0FDC382BB4065B00211199 /* RootViewModel.swift */,
 				BF660CDA2BB00FFD0025218A /* SetListRow.swift */,
@@ -233,6 +236,7 @@
 				BF660D212BB02A310025218A /* NetworkEffect.swift in Sources */,
 				BF660CA12BAFEF3D0025218A /* RootView.swift in Sources */,
 				BF0FDC392BB4065B00211199 /* RootViewModel.swift in Sources */,
+				BF7F05DA2BB79B4500B53C22 /* QueryResultViewModel.swift in Sources */,
 				BF7F05D82BB67F9100B53C22 /* QueryResultView.swift in Sources */,
 				BF660CA62BAFF1BA0025218A /* SetView.swift in Sources */,
 			);

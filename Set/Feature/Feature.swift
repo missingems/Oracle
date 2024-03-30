@@ -9,50 +9,30 @@ struct Feature {
   @Reducer
   struct Path {
     @ObservableState
-    enum State: Equatable {
-      case selectSet
+    enum State {
+      case selectSet(MTGSet)
     }
     
-    enum Action: Equatable {
-      case selectSet
-    }
-    
-    var body: some ReducerOf<Self> {
-      Scope(state: \.selectSet, action: \.selectSet) {
-//        AddFeature()
-      }
+    enum Action {
+      case selectSet(MTGSet)
     }
   }
   
   @ObservableState
-  struct State: Equatable {
+  struct State {
+    var cards: [Card] = []
+    var mockSets = MTGSet.stubs
     var path = StackState<Path.State>()
-    var loadingState: LoadingState = .isLoading
+    var sets: [MTGSet] = []    
   }
   
-  enum Action: Equatable {
+  enum Action {
     case didReceiveCards([Card], MTGSet)
     case didReceiveError
     case didReceiveSets([MTGSet])
-    case didSelectSet(MTGSet)
     case fetchCards(MTGSet)
     case fetchSets
     case path(StackAction<Path.State, Path.Action>)
-  }
-  
-  enum LoadingState: Equatable {
-    case isLoaded([MTGSet])
-    case isLoading
-    
-    var data: [MTGSet] {
-      switch self {
-      case let .isLoaded(sets):
-        return sets
-        
-      case .isLoading:
-        return MTGSet.stubs
-      }
-    }
   }
   
   var body: some ReducerOf<Self> {
@@ -66,11 +46,6 @@ struct Feature {
         
       case let .didReceiveSets(result):
         return update(state: &state, with: .success(result))
-        
-      case let .didSelectSet(set):
-        return .run { update in
-          await update(.fetchCards(set))
-        }
         
       case let .fetchCards(set):
         return .run { update in
@@ -86,17 +61,12 @@ struct Feature {
           }
         }
         
-      case .path(.element(_, action: .selectSet)):
-        state.path.append(.selectSet)
-        return .none
-        
       case .path:
         return .none
       }
     }
-    .forEach(\.path, action: \.path) {
-      Path()
-    }
+    .forEach(\.path, action: \.path) { Path() }
+    ._printChanges(.actionLabels)
   }
 }
 
@@ -109,7 +79,7 @@ extension Feature {
   ) -> Effect<Action> {
     switch result {
     case let .success(response):
-      state.loadingState = .isLoaded(response)
+      state.sets = response
       
     case .failure:
       break
