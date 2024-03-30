@@ -18,13 +18,13 @@ struct QueryFeature {
   }
   
   enum Action {
-    case fetchCards
+    case viewAppeared
   }
   
   var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
-      case .fetchCards:
+      case .viewAppeared:
         return .none
       }
     }

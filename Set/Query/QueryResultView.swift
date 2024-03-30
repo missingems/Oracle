@@ -17,13 +17,13 @@ struct QueryResultView: View {
           Text(store.title)
             .font(.headline)
           
-          Text("\(store.subtitle)")
+          Text(store.subtitle)
             .font(.caption)
         }
       }
     }
     .onAppear {
-      store.send(.fetchCards)
+      store.send(.viewAppeared)
     }
   }
 }
