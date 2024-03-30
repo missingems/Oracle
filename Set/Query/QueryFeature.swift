@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import ScryfallKit
+import SwiftUI
 
 @Reducer
 struct QueryFeature {
@@ -16,6 +17,14 @@ struct QueryFeature {
     
     var subtitle: String {
       String(localized: "\(selectedSet.cardCount) Cards")
+    }
+    
+    var displayingCards: [Card] {
+      cards.isEmpty ? Card.stubs : cards
+    }
+    
+    var redactionReason: RedactionReasons {
+      cards.isEmpty ? .placeholder : .invalidated
     }
   }
   
