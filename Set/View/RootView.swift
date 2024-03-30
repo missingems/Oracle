@@ -4,24 +4,13 @@ import SwiftUI
 
 public struct RootView: View {
   private let networkEffect = NetworkEffect(client: ScryfallClient(networkLogLevel: .minimal))
-  private let state = Feature.State()
-  private let viewModel = RootViewModel()
   
   public init() {}
   
   public var body: some View {
-#if os(iOS)
-    NavigationStack {
-      listView
-    }
-    .tabItem { Label(viewModel.title, systemImage: viewModel.tabItemImageName) }
-#endif
-  }
-  
-  private var listView: some View {
-    SetListView(
-      viewModel: SetListViewModel(
-        store: Store(initialState: state) {
+    SetView(
+      viewModel: SetViewModel(
+        store: Store(initialState: Feature.State()) {
           Feature(
             fetchSets: networkEffect.fetchSets,
             fetchCards: networkEffect.fetchCards(_:_:)
@@ -29,10 +18,5 @@ public struct RootView: View {
         }
       )
     )
-#if os(macOS)
-    .toolbar { Text(viewModel.title) }
-#elseif os(iOS)
-    .navigationTitle(viewModel.title)
-#endif
   }
 }
