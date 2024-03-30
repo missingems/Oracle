@@ -15,6 +15,8 @@
 		BF660D232BB02B230025218A /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D222BB02B230025218A /* Container.swift */; };
 		BF660D252BB030010025218A /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D242BB030010025218A /* Main.swift */; };
 		BF660D282BB030120025218A /* SDWebImageSVGNativeCoder in Frameworks */ = {isa = PBXBuildFile; productRef = BF660D272BB030120025218A /* SDWebImageSVGNativeCoder */; };
+		BF897D2F2BB83ADE00279F66 /* AmbientWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF897D2E2BB83ADE00279F66 /* AmbientWebImage.swift */; };
+		BF897D312BB8430F00279F66 /* TokenisedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF897D302BB8430F00279F66 /* TokenisedText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 		BF660D1D2BB0293A0025218A /* IconWebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconWebImage.swift; sourceTree = "<group>"; };
 		BF660D222BB02B230025218A /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		BF660D242BB030010025218A /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		BF897D2E2BB83ADE00279F66 /* AmbientWebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbientWebImage.swift; sourceTree = "<group>"; };
+		BF897D302BB8430F00279F66 /* TokenisedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenisedText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 		BF660CDE2BB016820025218A = {
 			isa = PBXGroup;
 			children = (
+				BF897D302BB8430F00279F66 /* TokenisedText.swift */,
+				BF897D2E2BB83ADE00279F66 /* AmbientWebImage.swift */,
 				BF48F1762BB03C5800F874BF /* Color.swift */,
 				BF660D242BB030010025218A /* Main.swift */,
 				BF660D222BB02B230025218A /* Container.swift */,
@@ -200,7 +206,9 @@
 				BF660D1E2BB0293A0025218A /* IconWebImage.swift in Sources */,
 				BF660D232BB02B230025218A /* Container.swift in Sources */,
 				BF660D012BB016A60025218A /* PillText.swift in Sources */,
+				BF897D312BB8430F00279F66 /* TokenisedText.swift in Sources */,
 				BF48F1772BB03C5800F874BF /* Color.swift in Sources */,
+				BF897D2F2BB83ADE00279F66 /* AmbientWebImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,19 +26,11 @@ struct SetViewModel {
   }
   
   func navigationState(at index: Int) -> Feature.Path.State {
-    return Feature.Path.State.selectSet(displayingSets[index])
+    .showQuery(.init(selectedSet: displayingSets[index]))
   }
   
   func navigate(with store: StoreOf<Feature.Path>) -> some View {
-    switch store.state {
-    case let .selectSet(set):
-      QueryResultView(
-        viewModel: QueryResultViewModel(
-          selectedSet: set,
-          store: self.store
-        )
-      )
-    }
+    EmptyView()
   }
   
   func makeSetListRowViewModel(for index: Int) -> SetListRowViewModel {
