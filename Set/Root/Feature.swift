@@ -62,6 +62,6 @@ struct Feature {
       }
     }
     .forEach(\.path, action: \.path) { Path() }
-    ._printChanges()
+    ._printChanges(.actionLabels)
   }
 }

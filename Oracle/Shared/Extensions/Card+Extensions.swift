@@ -1,5 +1,4 @@
 //import ScryfallKit
-//import UIKit
 //
 //extension Card.Legalities {
 //  enum LegalityType {
