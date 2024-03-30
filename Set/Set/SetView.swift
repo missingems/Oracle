@@ -19,8 +19,13 @@ struct SetView: View {
       .scrollDisabled(viewModel.isScrollEnabled)
       .navigationTitle(viewModel.title)
       .listStyle(.plain)
-    } destination: {
-      viewModel.navigate(with: $0)
+    } destination: { store in
+      switch store.state {
+      case .showQuery:
+        if let store = store.scope(state: \.showQuery, action: \.showQuery) {
+          QueryResultView(store: store)
+        }
+      }
     }
     .tabItem {
       Label(viewModel.title, systemImage: viewModel.tabItemImageName)
