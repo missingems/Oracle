@@ -52,9 +52,6 @@ extension QueryResultView {
         }
         .redacted(reason: store.state.redactionReason)
         .listSectionSeparator(.hidden, edges: .top)
-        .alignmentGuide(.listRowSeparatorLeading) { dimension in
-          dimension[.leading]
-        }
         .listRowInsets(EdgeInsets(top: 13, leading: 8, bottom: 13, trailing: 16))
         .listRowBackground(Color.clear)
         .onAppear { store.send(.loadMoreIfNeeded(index)) }
