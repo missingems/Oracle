@@ -23,6 +23,7 @@
 		BF660D212BB02A310025218A /* NetworkEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D202BB02A310025218A /* NetworkEffect.swift */; };
 		BF7F05D82BB67F9100B53C22 /* QueryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F05D72BB67F9100B53C22 /* QueryResultView.swift */; };
 		BF897D2B2BB7DD9100279F66 /* QueryFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF897D2A2BB7DD9100279F66 /* QueryFeature.swift */; };
+		BF897D352BB89C6E00279F66 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = BF897D342BB89C6E00279F66 /* cards.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,6 +55,7 @@
 		BF660D202BB02A310025218A /* NetworkEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEffect.swift; sourceTree = "<group>"; };
 		BF7F05D72BB67F9100B53C22 /* QueryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryResultView.swift; sourceTree = "<group>"; };
 		BF897D2A2BB7DD9100279F66 /* QueryFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryFeature.swift; sourceTree = "<group>"; };
+		BF897D342BB89C6E00279F66 /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		BF636E4F2BB51B6B00629CAA /* Samples */ = {
 			isa = PBXGroup;
 			children = (
+				BF897D342BB89C6E00279F66 /* cards.json */,
 				BF636E502BB51BDD00629CAA /* setsSample.json */,
 			);
 			path = Samples;
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF636E512BB51BDD00629CAA /* setsSample.json in Resources */,
+				BF897D352BB89C6E00279F66 /* cards.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

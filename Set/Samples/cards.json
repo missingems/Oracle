@@ -1,0 +1,648 @@
+{
+    "object": "list",
+    "total_cards": 5,
+    "has_more": false,
+    "data": [
+        {
+            "object": "card",
+            "id": "390c96b3-68da-4a42-89ab-d9ccc79ce0dd",
+            "oracle_id": "d627996b-cbcd-4162-bd13-9ab286de64d1",
+            "multiverse_ids": [],
+            "tcgplayer_id": 541384,
+            "name": "Bria, Riptide Rogue",
+            "lang": "en",
+            "released_at": "2024-08-02",
+            "uri": "https://api.scryfall.com/cards/390c96b3-68da-4a42-89ab-d9ccc79ce0dd",
+            "scryfall_uri": "https://scryfall.com/card/blb/379/bria-riptide-rogue?utm_source=api",
+            "layout": "normal",
+            "highres_image": true,
+            "image_status": "highres_scan",
+            "image_uris": {
+                "small": "https://cards.scryfall.io/small/front/3/9/390c96b3-68da-4a42-89ab-d9ccc79ce0dd.jpg?1708732113",
+                "normal": "https://cards.scryfall.io/normal/front/3/9/390c96b3-68da-4a42-89ab-d9ccc79ce0dd.jpg?1708732113",
+                "large": "https://cards.scryfall.io/large/front/3/9/390c96b3-68da-4a42-89ab-d9ccc79ce0dd.jpg?1708732113",
+                "png": "https://cards.scryfall.io/png/front/3/9/390c96b3-68da-4a42-89ab-d9ccc79ce0dd.png?1708732113",
+                "art_crop": "https://cards.scryfall.io/art_crop/front/3/9/390c96b3-68da-4a42-89ab-d9ccc79ce0dd.jpg?1708732113",
+                "border_crop": "https://cards.scryfall.io/border_crop/front/3/9/390c96b3-68da-4a42-89ab-d9ccc79ce0dd.jpg?1708732113"
+            },
+            "mana_cost": "{2}{U}{R}",
+            "cmc": 4.0,
+            "type_line": "Legendary Creature — Otter Rogue",
+            "oracle_text": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nOther creatures you control have prowess. (If a creature has multiple instances of prowess, each triggers separately.)\nWhenever you cast a noncreature spell, target creature you control can't be blocked this turn.",
+            "power": "3",
+            "toughness": "3",
+            "colors": [
+                "R",
+                "U"
+            ],
+            "color_identity": [
+                "R",
+                "U"
+            ],
+            "keywords": [
+                "Prowess"
+            ],
+            "legalities": {
+                "standard": "not_legal",
+                "future": "not_legal",
+                "historic": "not_legal",
+                "timeless": "not_legal",
+                "gladiator": "not_legal",
+                "pioneer": "not_legal",
+                "explorer": "not_legal",
+                "modern": "not_legal",
+                "legacy": "not_legal",
+                "pauper": "not_legal",
+                "vintage": "not_legal",
+                "penny": "not_legal",
+                "commander": "not_legal",
+                "oathbreaker": "not_legal",
+                "standardbrawl": "not_legal",
+                "brawl": "not_legal",
+                "alchemy": "not_legal",
+                "paupercommander": "not_legal",
+                "duel": "not_legal",
+                "oldschool": "not_legal",
+                "premodern": "not_legal",
+                "predh": "not_legal"
+            },
+            "games": [
+                "paper",
+                "mtgo",
+                "arena"
+            ],
+            "reserved": false,
+            "foil": true,
+            "nonfoil": true,
+            "finishes": [
+                "nonfoil",
+                "foil"
+            ],
+            "oversized": false,
+            "promo": false,
+            "reprint": false,
+            "variation": false,
+            "set_id": "a2f58272-bba6-439d-871e-7a46686ac018",
+            "set": "blb",
+            "set_name": "Bloomburrow",
+            "set_type": "expansion",
+            "set_uri": "https://api.scryfall.com/sets/a2f58272-bba6-439d-871e-7a46686ac018",
+            "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Ablb&unique=prints",
+            "scryfall_set_uri": "https://scryfall.com/sets/blb?utm_source=api",
+            "rulings_uri": "https://api.scryfall.com/cards/390c96b3-68da-4a42-89ab-d9ccc79ce0dd/rulings",
+            "prints_search_uri": "https://api.scryfall.com/cards/search?order=released&q=oracleid%3Ad627996b-cbcd-4162-bd13-9ab286de64d1&unique=prints",
+            "collector_number": "379",
+            "digital": false,
+            "rarity": "mythic",
+            "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+            "artist": "Borja Pindado",
+            "artist_ids": [
+                "1624a1a8-3492-4c0b-9abc-83dcf2653111"
+            ],
+            "illustration_id": "8a4d01fd-0ec9-419f-a2ad-fd26e468fcdd",
+            "border_color": "black",
+            "frame": "2015",
+            "frame_effects": [
+                "legendary"
+            ],
+            "security_stamp": "oval",
+            "full_art": false,
+            "textless": false,
+            "booster": false,
+            "story_spotlight": false,
+            "edhrec_rank": 17752,
+            "prices": {
+                "usd": null,
+                "usd_foil": "50.00",
+                "usd_etched": null,
+                "eur": null,
+                "eur_foil": null,
+                "tix": null
+            },
+            "related_uris": {
+                "tcgplayer_infinite_articles": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Darticle%26game%3Dmagic%26partner%3Dscryfall%26q%3DBria%252C%2BRiptide%2BRogue",
+                "tcgplayer_infinite_decks": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Ddeck%26game%3Dmagic%26partner%3Dscryfall%26q%3DBria%252C%2BRiptide%2BRogue",
+                "edhrec": "https://edhrec.com/route/?cc=Bria%2C+Riptide+Rogue"
+            },
+            "purchase_uris": {
+                "tcgplayer": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F541384%3Fpage%3D1",
+                "cardmarket": "https://www.cardmarket.com/en/Magic/Products/Search?referrer=scryfall&searchString=Bria%2C+Riptide+Rogue&utm_campaign=card_prices&utm_medium=text&utm_source=scryfall",
+                "cardhoarder": "https://www.cardhoarder.com/cards?affiliate_id=scryfall&data%5Bsearch%5D=Bria%2C+Riptide+Rogue&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall"
+            }
+        },
+        {
+            "object": "card",
+            "id": "6441abd3-320b-424a-9753-61e3581fe1a9",
+            "oracle_id": "e9c6e4e6-0c3f-4048-93e6-161a1221ea36",
+            "multiverse_ids": [],
+            "tcgplayer_id": 541388,
+            "name": "Byrke, Long Ear of the Law",
+            "lang": "en",
+            "released_at": "2024-08-02",
+            "uri": "https://api.scryfall.com/cards/6441abd3-320b-424a-9753-61e3581fe1a9",
+            "scryfall_uri": "https://scryfall.com/card/blb/380/byrke-long-ear-of-the-law?utm_source=api",
+            "layout": "normal",
+            "highres_image": true,
+            "image_status": "highres_scan",
+            "image_uris": {
+                "small": "https://cards.scryfall.io/small/front/6/4/6441abd3-320b-424a-9753-61e3581fe1a9.jpg?1708704673",
+                "normal": "https://cards.scryfall.io/normal/front/6/4/6441abd3-320b-424a-9753-61e3581fe1a9.jpg?1708704673",
+                "large": "https://cards.scryfall.io/large/front/6/4/6441abd3-320b-424a-9753-61e3581fe1a9.jpg?1708704673",
+                "png": "https://cards.scryfall.io/png/front/6/4/6441abd3-320b-424a-9753-61e3581fe1a9.png?1708704673",
+                "art_crop": "https://cards.scryfall.io/art_crop/front/6/4/6441abd3-320b-424a-9753-61e3581fe1a9.jpg?1708704673",
+                "border_crop": "https://cards.scryfall.io/border_crop/front/6/4/6441abd3-320b-424a-9753-61e3581fe1a9.jpg?1708704673"
+            },
+            "mana_cost": "{4}{G}{W}",
+            "cmc": 6.0,
+            "type_line": "Legendary Creature — Rabbit Soldier",
+            "oracle_text": "Vigilance\nWhen Byrke, Long Ear of the Law enters, put a +1/+1 counter on each of up to two target creatures.\nWhenever a creature you control with a +1/+1 counter on it attacks, double the number of +1/+1 counters on it.",
+            "power": "4",
+            "toughness": "4",
+            "colors": [
+                "G",
+                "W"
+            ],
+            "color_identity": [
+                "G",
+                "W"
+            ],
+            "keywords": [
+                "Vigilance"
+            ],
+            "legalities": {
+                "standard": "not_legal",
+                "future": "not_legal",
+                "historic": "not_legal",
+                "timeless": "not_legal",
+                "gladiator": "not_legal",
+                "pioneer": "not_legal",
+                "explorer": "not_legal",
+                "modern": "not_legal",
+                "legacy": "not_legal",
+                "pauper": "not_legal",
+                "vintage": "not_legal",
+                "penny": "not_legal",
+                "commander": "not_legal",
+                "oathbreaker": "not_legal",
+                "standardbrawl": "not_legal",
+                "brawl": "not_legal",
+                "alchemy": "not_legal",
+                "paupercommander": "not_legal",
+                "duel": "not_legal",
+                "oldschool": "not_legal",
+                "premodern": "not_legal",
+                "predh": "not_legal"
+            },
+            "games": [
+                "paper",
+                "mtgo",
+                "arena"
+            ],
+            "reserved": false,
+            "foil": true,
+            "nonfoil": true,
+            "finishes": [
+                "nonfoil",
+                "foil"
+            ],
+            "oversized": false,
+            "promo": false,
+            "reprint": false,
+            "variation": false,
+            "set_id": "a2f58272-bba6-439d-871e-7a46686ac018",
+            "set": "blb",
+            "set_name": "Bloomburrow",
+            "set_type": "expansion",
+            "set_uri": "https://api.scryfall.com/sets/a2f58272-bba6-439d-871e-7a46686ac018",
+            "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Ablb&unique=prints",
+            "scryfall_set_uri": "https://scryfall.com/sets/blb?utm_source=api",
+            "rulings_uri": "https://api.scryfall.com/cards/6441abd3-320b-424a-9753-61e3581fe1a9/rulings",
+            "prints_search_uri": "https://api.scryfall.com/cards/search?order=released&q=oracleid%3Ae9c6e4e6-0c3f-4048-93e6-161a1221ea36&unique=prints",
+            "collector_number": "380",
+            "digital": false,
+            "rarity": "mythic",
+            "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+            "artist": "Manuel Castañón",
+            "artist_ids": [
+                "35f11eeb-36ff-4059-bb70-d1274f5bd858"
+            ],
+            "illustration_id": "3c00f5ae-b4d6-40f1-922d-f908ad340492",
+            "border_color": "black",
+            "frame": "2015",
+            "frame_effects": [
+                "legendary"
+            ],
+            "security_stamp": "oval",
+            "full_art": false,
+            "textless": false,
+            "booster": false,
+            "story_spotlight": false,
+            "edhrec_rank": 22381,
+            "prices": {
+                "usd": null,
+                "usd_foil": "40.00",
+                "usd_etched": null,
+                "eur": null,
+                "eur_foil": null,
+                "tix": null
+            },
+            "related_uris": {
+                "tcgplayer_infinite_articles": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Darticle%26game%3Dmagic%26partner%3Dscryfall%26q%3DByrke%252C%2BLong%2BEar%2Bof%2Bthe%2BLaw",
+                "tcgplayer_infinite_decks": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Ddeck%26game%3Dmagic%26partner%3Dscryfall%26q%3DByrke%252C%2BLong%2BEar%2Bof%2Bthe%2BLaw",
+                "edhrec": "https://edhrec.com/route/?cc=Byrke%2C+Long+Ear+of+the+Law"
+            },
+            "purchase_uris": {
+                "tcgplayer": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F541388%3Fpage%3D1",
+                "cardmarket": "https://www.cardmarket.com/en/Magic/Products/Search?referrer=scryfall&searchString=Byrke%2C+Long+Ear+of+the+Law&utm_campaign=card_prices&utm_medium=text&utm_source=scryfall",
+                "cardhoarder": "https://www.cardhoarder.com/cards?affiliate_id=scryfall&data%5Bsearch%5D=Byrke%2C+Long+Ear+of+the+Law&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall"
+            }
+        },
+        {
+            "object": "card",
+            "id": "ae4f3aaf-3960-48cd-b34b-32e4ae5ae088",
+            "oracle_id": "97a84e9d-bfc4-4ca2-b1e8-908dba56ccdb",
+            "multiverse_ids": [],
+            "tcgplayer_id": 541369,
+            "name": "Lumra, Bellow of the Woods",
+            "lang": "en",
+            "released_at": "2024-08-02",
+            "uri": "https://api.scryfall.com/cards/ae4f3aaf-3960-48cd-b34b-32e4ae5ae088",
+            "scryfall_uri": "https://scryfall.com/card/blb/183/lumra-bellow-of-the-woods?utm_source=api",
+            "layout": "normal",
+            "highres_image": true,
+            "image_status": "highres_scan",
+            "image_uris": {
+                "small": "https://cards.scryfall.io/small/front/a/e/ae4f3aaf-3960-48cd-b34b-32e4ae5ae088.jpg?1708704722",
+                "normal": "https://cards.scryfall.io/normal/front/a/e/ae4f3aaf-3960-48cd-b34b-32e4ae5ae088.jpg?1708704722",
+                "large": "https://cards.scryfall.io/large/front/a/e/ae4f3aaf-3960-48cd-b34b-32e4ae5ae088.jpg?1708704722",
+                "png": "https://cards.scryfall.io/png/front/a/e/ae4f3aaf-3960-48cd-b34b-32e4ae5ae088.png?1708704722",
+                "art_crop": "https://cards.scryfall.io/art_crop/front/a/e/ae4f3aaf-3960-48cd-b34b-32e4ae5ae088.jpg?1708704722",
+                "border_crop": "https://cards.scryfall.io/border_crop/front/a/e/ae4f3aaf-3960-48cd-b34b-32e4ae5ae088.jpg?1708704722"
+            },
+            "mana_cost": "{4}{G}{G}",
+            "cmc": 6.0,
+            "type_line": "Legendary Creature — Elemental Bear",
+            "oracle_text": "Vigilance, reach\nLumra, Bellow of the Woods's power and toughness are each equal to the number of lands you control.\nWhen Lumra enters, mill four cards. Then return all land cards from your graveyard to the battlefield tapped.",
+            "power": "*",
+            "toughness": "*",
+            "colors": [
+                "G"
+            ],
+            "color_identity": [
+                "G"
+            ],
+            "keywords": [
+                "Reach",
+                "Vigilance",
+                "Mill"
+            ],
+            "legalities": {
+                "standard": "not_legal",
+                "future": "not_legal",
+                "historic": "not_legal",
+                "timeless": "not_legal",
+                "gladiator": "not_legal",
+                "pioneer": "not_legal",
+                "explorer": "not_legal",
+                "modern": "not_legal",
+                "legacy": "not_legal",
+                "pauper": "not_legal",
+                "vintage": "not_legal",
+                "penny": "not_legal",
+                "commander": "not_legal",
+                "oathbreaker": "not_legal",
+                "standardbrawl": "not_legal",
+                "brawl": "not_legal",
+                "alchemy": "not_legal",
+                "paupercommander": "not_legal",
+                "duel": "not_legal",
+                "oldschool": "not_legal",
+                "premodern": "not_legal",
+                "predh": "not_legal"
+            },
+            "games": [
+                "paper",
+                "mtgo",
+                "arena"
+            ],
+            "reserved": false,
+            "foil": true,
+            "nonfoil": true,
+            "finishes": [
+                "nonfoil",
+                "foil"
+            ],
+            "oversized": false,
+            "promo": false,
+            "reprint": false,
+            "variation": false,
+            "set_id": "a2f58272-bba6-439d-871e-7a46686ac018",
+            "set": "blb",
+            "set_name": "Bloomburrow",
+            "set_type": "expansion",
+            "set_uri": "https://api.scryfall.com/sets/a2f58272-bba6-439d-871e-7a46686ac018",
+            "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Ablb&unique=prints",
+            "scryfall_set_uri": "https://scryfall.com/sets/blb?utm_source=api",
+            "rulings_uri": "https://api.scryfall.com/cards/ae4f3aaf-3960-48cd-b34b-32e4ae5ae088/rulings",
+            "prints_search_uri": "https://api.scryfall.com/cards/search?order=released&q=oracleid%3A97a84e9d-bfc4-4ca2-b1e8-908dba56ccdb&unique=prints",
+            "collector_number": "183",
+            "digital": false,
+            "rarity": "mythic",
+            "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+            "artist": "Matt Stewart",
+            "artist_ids": [
+                "20871267-2d8a-41d5-b03a-be3d557c5734"
+            ],
+            "illustration_id": "30239c59-a9ce-435d-9bb2-8ca7d3c3f542",
+            "border_color": "black",
+            "frame": "2015",
+            "frame_effects": [
+                "legendary"
+            ],
+            "security_stamp": "oval",
+            "full_art": false,
+            "textless": false,
+            "booster": false,
+            "story_spotlight": false,
+            "edhrec_rank": 17310,
+            "prices": {
+                "usd": "30.00",
+                "usd_foil": "40.00",
+                "usd_etched": null,
+                "eur": null,
+                "eur_foil": null,
+                "tix": null
+            },
+            "related_uris": {
+                "tcgplayer_infinite_articles": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Darticle%26game%3Dmagic%26partner%3Dscryfall%26q%3DLumra%252C%2BBellow%2Bof%2Bthe%2BWoods",
+                "tcgplayer_infinite_decks": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Ddeck%26game%3Dmagic%26partner%3Dscryfall%26q%3DLumra%252C%2BBellow%2Bof%2Bthe%2BWoods",
+                "edhrec": "https://edhrec.com/route/?cc=Lumra%2C+Bellow+of+the+Woods"
+            },
+            "purchase_uris": {
+                "tcgplayer": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F541369%3Fpage%3D1",
+                "cardmarket": "https://www.cardmarket.com/en/Magic/Products/Search?referrer=scryfall&searchString=Lumra%2C+Bellow+of+the+Woods&utm_campaign=card_prices&utm_medium=text&utm_source=scryfall",
+                "cardhoarder": "https://www.cardhoarder.com/cards?affiliate_id=scryfall&data%5Bsearch%5D=Lumra%2C+Bellow+of+the+Woods&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall"
+            }
+        },
+        {
+            "object": "card",
+            "id": "be6627fd-729d-44f2-b6bf-5299f49d1e3d",
+            "oracle_id": "4b11e435-5888-4e3b-a255-db817392163f",
+            "multiverse_ids": [],
+            "tcgplayer_id": 541372,
+            "name": "Mabel, Heir to Cragflame",
+            "lang": "en",
+            "released_at": "2024-08-02",
+            "uri": "https://api.scryfall.com/cards/be6627fd-729d-44f2-b6bf-5299f49d1e3d",
+            "scryfall_uri": "https://scryfall.com/card/blb/224/mabel-heir-to-cragflame?utm_source=api",
+            "layout": "normal",
+            "highres_image": true,
+            "image_status": "highres_scan",
+            "image_uris": {
+                "small": "https://cards.scryfall.io/small/front/b/e/be6627fd-729d-44f2-b6bf-5299f49d1e3d.jpg?1708704450",
+                "normal": "https://cards.scryfall.io/normal/front/b/e/be6627fd-729d-44f2-b6bf-5299f49d1e3d.jpg?1708704450",
+                "large": "https://cards.scryfall.io/large/front/b/e/be6627fd-729d-44f2-b6bf-5299f49d1e3d.jpg?1708704450",
+                "png": "https://cards.scryfall.io/png/front/b/e/be6627fd-729d-44f2-b6bf-5299f49d1e3d.png?1708704450",
+                "art_crop": "https://cards.scryfall.io/art_crop/front/b/e/be6627fd-729d-44f2-b6bf-5299f49d1e3d.jpg?1708704450",
+                "border_crop": "https://cards.scryfall.io/border_crop/front/b/e/be6627fd-729d-44f2-b6bf-5299f49d1e3d.jpg?1708704450"
+            },
+            "mana_cost": "{1}{R}{W}",
+            "cmc": 3.0,
+            "type_line": "Legendary Creature — Mouse Soldier",
+            "oracle_text": "Other Mice you control get +1/+1.\nWhen Mabel, Heir to Cragflame enters, create Cragflame, a legendary colorless Equipment artifact token with \"Equipped creature gets +1/+1 and has vigilance, trample, and haste\" and equip {2}.",
+            "power": "3",
+            "toughness": "3",
+            "colors": [
+                "R",
+                "W"
+            ],
+            "color_identity": [
+                "R",
+                "W"
+            ],
+            "keywords": [],
+            "all_parts": [
+                {
+                    "object": "related_card",
+                    "id": "cfbdaae3-acba-44e1-bdd6-9c7066143d33",
+                    "component": "combo_piece",
+                    "name": "Mabel, Heir to Cragflame",
+                    "type_line": "Legendary Creature — Mouse Soldier",
+                    "uri": "https://api.scryfall.com/cards/cfbdaae3-acba-44e1-bdd6-9c7066143d33"
+                },
+                {
+                    "object": "related_card",
+                    "id": "c76fa1c6-6000-47b2-9188-9c15b2c73f8f",
+                    "component": "token",
+                    "name": "Cragflame",
+                    "type_line": "Token Legendary Artifact — Equipment",
+                    "uri": "https://api.scryfall.com/cards/c76fa1c6-6000-47b2-9188-9c15b2c73f8f"
+                }
+            ],
+            "legalities": {
+                "standard": "not_legal",
+                "future": "not_legal",
+                "historic": "not_legal",
+                "timeless": "not_legal",
+                "gladiator": "not_legal",
+                "pioneer": "not_legal",
+                "explorer": "not_legal",
+                "modern": "not_legal",
+                "legacy": "not_legal",
+                "pauper": "not_legal",
+                "vintage": "not_legal",
+                "penny": "not_legal",
+                "commander": "not_legal",
+                "oathbreaker": "not_legal",
+                "standardbrawl": "not_legal",
+                "brawl": "not_legal",
+                "alchemy": "not_legal",
+                "paupercommander": "not_legal",
+                "duel": "not_legal",
+                "oldschool": "not_legal",
+                "premodern": "not_legal",
+                "predh": "not_legal"
+            },
+            "games": [
+                "paper",
+                "mtgo",
+                "arena"
+            ],
+            "reserved": false,
+            "foil": true,
+            "nonfoil": true,
+            "finishes": [
+                "nonfoil",
+                "foil"
+            ],
+            "oversized": false,
+            "promo": false,
+            "reprint": false,
+            "variation": false,
+            "set_id": "a2f58272-bba6-439d-871e-7a46686ac018",
+            "set": "blb",
+            "set_name": "Bloomburrow",
+            "set_type": "expansion",
+            "set_uri": "https://api.scryfall.com/sets/a2f58272-bba6-439d-871e-7a46686ac018",
+            "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Ablb&unique=prints",
+            "scryfall_set_uri": "https://scryfall.com/sets/blb?utm_source=api",
+            "rulings_uri": "https://api.scryfall.com/cards/be6627fd-729d-44f2-b6bf-5299f49d1e3d/rulings",
+            "prints_search_uri": "https://api.scryfall.com/cards/search?order=released&q=oracleid%3A4b11e435-5888-4e3b-a255-db817392163f&unique=prints",
+            "collector_number": "224",
+            "digital": false,
+            "rarity": "rare",
+            "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+            "artist": "Aurore Folny",
+            "artist_ids": [
+                "02f6cdda-7a80-4184-853d-20b28d580868"
+            ],
+            "illustration_id": "4a4e4bd9-2ab3-43d4-a2c3-bfeb9e36a954",
+            "border_color": "black",
+            "frame": "2015",
+            "frame_effects": [
+                "legendary"
+            ],
+            "security_stamp": "oval",
+            "full_art": false,
+            "textless": false,
+            "booster": false,
+            "story_spotlight": false,
+            "edhrec_rank": 24352,
+            "prices": {
+                "usd": "30.00",
+                "usd_foil": null,
+                "usd_etched": null,
+                "eur": null,
+                "eur_foil": null,
+                "tix": null
+            },
+            "related_uris": {
+                "tcgplayer_infinite_articles": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Darticle%26game%3Dmagic%26partner%3Dscryfall%26q%3DMabel%252C%2BHeir%2Bto%2BCragflame",
+                "tcgplayer_infinite_decks": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Ddeck%26game%3Dmagic%26partner%3Dscryfall%26q%3DMabel%252C%2BHeir%2Bto%2BCragflame",
+                "edhrec": "https://edhrec.com/route/?cc=Mabel%2C+Heir+to+Cragflame"
+            },
+            "purchase_uris": {
+                "tcgplayer": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F541372%3Fpage%3D1",
+                "cardmarket": "https://www.cardmarket.com/en/Magic/Products/Search?referrer=scryfall&searchString=Mabel%2C+Heir+to+Cragflame&utm_campaign=card_prices&utm_medium=text&utm_source=scryfall",
+                "cardhoarder": "https://www.cardhoarder.com/cards?affiliate_id=scryfall&data%5Bsearch%5D=Mabel%2C+Heir+to+Cragflame&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall"
+            }
+        },
+        {
+            "object": "card",
+            "id": "c1bba8fb-d763-4efa-8db1-e5e81994b5f9",
+            "oracle_id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+            "multiverse_ids": [],
+            "tcgplayer_id": 541382,
+            "name": "Mountain",
+            "lang": "en",
+            "released_at": "2024-08-02",
+            "uri": "https://api.scryfall.com/cards/c1bba8fb-d763-4efa-8db1-e5e81994b5f9",
+            "scryfall_uri": "https://scryfall.com/card/blb/274/mountain?utm_source=api",
+            "layout": "normal",
+            "highres_image": true,
+            "image_status": "highres_scan",
+            "image_uris": {
+                "small": "https://cards.scryfall.io/small/front/c/1/c1bba8fb-d763-4efa-8db1-e5e81994b5f9.jpg?1711795997",
+                "normal": "https://cards.scryfall.io/normal/front/c/1/c1bba8fb-d763-4efa-8db1-e5e81994b5f9.jpg?1711795997",
+                "large": "https://cards.scryfall.io/large/front/c/1/c1bba8fb-d763-4efa-8db1-e5e81994b5f9.jpg?1711795997",
+                "png": "https://cards.scryfall.io/png/front/c/1/c1bba8fb-d763-4efa-8db1-e5e81994b5f9.png?1711795997",
+                "art_crop": "https://cards.scryfall.io/art_crop/front/c/1/c1bba8fb-d763-4efa-8db1-e5e81994b5f9.jpg?1711795997",
+                "border_crop": "https://cards.scryfall.io/border_crop/front/c/1/c1bba8fb-d763-4efa-8db1-e5e81994b5f9.jpg?1711795997"
+            },
+            "mana_cost": "",
+            "cmc": 0.0,
+            "type_line": "Basic Land — Mountain",
+            "oracle_text": "({T}: Add {R}.)",
+            "colors": [],
+            "color_identity": [
+                "R"
+            ],
+            "keywords": [],
+            "produced_mana": [
+                "R"
+            ],
+            "legalities": {
+                "standard": "legal",
+                "future": "legal",
+                "historic": "legal",
+                "timeless": "legal",
+                "gladiator": "legal",
+                "pioneer": "legal",
+                "explorer": "legal",
+                "modern": "legal",
+                "legacy": "legal",
+                "pauper": "legal",
+                "vintage": "legal",
+                "penny": "legal",
+                "commander": "legal",
+                "oathbreaker": "legal",
+                "standardbrawl": "legal",
+                "brawl": "legal",
+                "alchemy": "legal",
+                "paupercommander": "legal",
+                "duel": "legal",
+                "oldschool": "not_legal",
+                "premodern": "legal",
+                "predh": "legal"
+            },
+            "games": [
+                "paper",
+                "mtgo",
+                "arena"
+            ],
+            "reserved": false,
+            "foil": true,
+            "nonfoil": true,
+            "finishes": [
+                "nonfoil",
+                "foil"
+            ],
+            "oversized": false,
+            "promo": false,
+            "reprint": true,
+            "variation": false,
+            "set_id": "a2f58272-bba6-439d-871e-7a46686ac018",
+            "set": "blb",
+            "set_name": "Bloomburrow",
+            "set_type": "expansion",
+            "set_uri": "https://api.scryfall.com/sets/a2f58272-bba6-439d-871e-7a46686ac018",
+            "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Ablb&unique=prints",
+            "scryfall_set_uri": "https://scryfall.com/sets/blb?utm_source=api",
+            "rulings_uri": "https://api.scryfall.com/cards/c1bba8fb-d763-4efa-8db1-e5e81994b5f9/rulings",
+            "prints_search_uri": "https://api.scryfall.com/cards/search?order=released&q=oracleid%3Aa3fb7228-e76b-4e96-a40e-20b5fed75685&unique=prints",
+            "collector_number": "274",
+            "digital": false,
+            "rarity": "common",
+            "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+            "artist": "Andrew Theophilopoulos",
+            "artist_ids": [
+                "d33390eb-7f00-45a0-a61c-88c923662be7"
+            ],
+            "illustration_id": "bb45c1d5-f698-4a39-80f9-d242a070c2e7",
+            "border_color": "black",
+            "frame": "2015",
+            "full_art": true,
+            "textless": false,
+            "booster": false,
+            "story_spotlight": false,
+            "prices": {
+                "usd": null,
+                "usd_foil": null,
+                "usd_etched": null,
+                "eur": null,
+                "eur_foil": null,
+                "tix": null
+            },
+            "related_uris": {
+                "tcgplayer_infinite_articles": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Darticle%26game%3Dmagic%26partner%3Dscryfall%26q%3DMountain",
+                "tcgplayer_infinite_decks": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Ddeck%26game%3Dmagic%26partner%3Dscryfall%26q%3DMountain",
+                "edhrec": "https://edhrec.com/route/?cc=Mountain"
+            },
+            "purchase_uris": {
+                "tcgplayer": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F541382%3Fpage%3D1",
+                "cardmarket": "https://www.cardmarket.com/en/Magic/Products/Search?referrer=scryfall&searchString=Mountain&utm_campaign=card_prices&utm_medium=text&utm_source=scryfall",
+                "cardhoarder": "https://www.cardhoarder.com/cards?affiliate_id=scryfall&data%5Bsearch%5D=Mountain&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall"
+            }
+        }
+    ]
+}

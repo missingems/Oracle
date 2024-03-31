@@ -24,10 +24,19 @@ class JSONLoader {
   }
 
 }
+
 extension MTGSet {
   static var stubs: [Self] {
     let loader = JSONLoader()
     let list = loader.loadJsonFromFile("setsSample", as: ObjectList<MTGSet>.self)
+    return list?.data ?? []
+  }
+}
+
+extension Card {
+  static var stubs: [Self] {
+    let loader = JSONLoader()
+    let list = loader.loadJsonFromFile("cards", as: ObjectList<Card>.self)
     return list?.data ?? []
   }
 }

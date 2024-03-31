@@ -9,7 +9,7 @@ struct QueryResultView: View {
   var store: StoreOf<QueryFeature>
   
   var body: some View {
-    List(store.cards) { card in
+    List(store.displayingCards) { card in
       HStack(alignment: .top, spacing: 8.0) {
         AmbientWebImage(url: card.getImageURL(type: .normal), placeholderName: "mtgBack")
           .aspectRatio(contentMode: .fit)
@@ -49,6 +49,7 @@ struct QueryResultView: View {
           }
         }
       }
+      .redacted(reason: store.state.redactionReason)
       .listSectionSeparator(.hidden, edges: .top)
       .alignmentGuide(.listRowSeparatorLeading) { dimension in
         dimension[.leading]
