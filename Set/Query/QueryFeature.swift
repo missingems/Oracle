@@ -95,10 +95,10 @@ struct QueryFeature {
         }
         
       case let .didReceivedCards(cards):
-        if var object = state.cards {
-          var newObject = cards
-          newObject.data.insert(contentsOf: object.data, at: 0)
-          state.cards = newObject
+        if let oldCards = state.cards {
+          var newCards = cards
+          newCards.data.insert(contentsOf: oldCards.data, at: 0)
+          state.cards = newCards
         } else {
           state.cards = cards
         }
