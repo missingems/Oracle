@@ -24,6 +24,8 @@
 		BF7F05D82BB67F9100B53C22 /* QueryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F05D72BB67F9100B53C22 /* QueryResultView.swift */; };
 		BF897D2B2BB7DD9100279F66 /* QueryFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF897D2A2BB7DD9100279F66 /* QueryFeature.swift */; };
 		BF897D352BB89C6E00279F66 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = BF897D342BB89C6E00279F66 /* cards.json */; };
+		BF897D372BB8FDED00279F66 /* QueryResultGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF897D362BB8FDED00279F66 /* QueryResultGridView.swift */; };
+		BF897D392BB8FEDE00279F66 /* QueryResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF897D382BB8FEDE00279F66 /* QueryResultListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +58,8 @@
 		BF7F05D72BB67F9100B53C22 /* QueryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryResultView.swift; sourceTree = "<group>"; };
 		BF897D2A2BB7DD9100279F66 /* QueryFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryFeature.swift; sourceTree = "<group>"; };
 		BF897D342BB89C6E00279F66 /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
+		BF897D362BB8FDED00279F66 /* QueryResultGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryResultGridView.swift; sourceTree = "<group>"; };
+		BF897D382BB8FEDE00279F66 /* QueryResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryResultListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,8 @@
 			children = (
 				BF897D2A2BB7DD9100279F66 /* QueryFeature.swift */,
 				BF7F05D72BB67F9100B53C22 /* QueryResultView.swift */,
+				BF897D362BB8FDED00279F66 /* QueryResultGridView.swift */,
+				BF897D382BB8FEDE00279F66 /* QueryResultListView.swift */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -245,11 +251,13 @@
 				BF660CDB2BB00FFD0025218A /* SetListRow.swift in Sources */,
 				BF660CDD2BB011B60025218A /* SetListRowViewModel.swift in Sources */,
 				BF660CD82BB00E6F0025218A /* SetViewModel.swift in Sources */,
+				BF897D392BB8FEDE00279F66 /* QueryResultListView.swift in Sources */,
 				BF660D212BB02A310025218A /* NetworkEffect.swift in Sources */,
 				BF660CA12BAFEF3D0025218A /* RootView.swift in Sources */,
 				BF0FDC392BB4065B00211199 /* RootViewModel.swift in Sources */,
 				BF7F05D82BB67F9100B53C22 /* QueryResultView.swift in Sources */,
 				BF660CA62BAFF1BA0025218A /* SetView.swift in Sources */,
+				BF897D372BB8FDED00279F66 /* QueryResultGridView.swift in Sources */,
 				BF897D2B2BB7DD9100279F66 /* QueryFeature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
