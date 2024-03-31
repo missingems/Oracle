@@ -9,13 +9,10 @@ struct QueryResultView: View {
   var store: StoreOf<QueryFeature>
   
   var body: some View {
-    QueryResultView.GridView(store: store)
+    QueryResultView.ListView(store: store)
       .navigationBarTitleDisplayMode(.inline)
       .navigationTitle(store.title)
-      .background {
-        Color(.secondarySystemBackground).ignoresSafeArea()
-      }
+      .background { Color(.secondarySystemBackground).ignoresSafeArea() }
       .onAppear { store.send(.viewAppeared) }
   }
 }
-

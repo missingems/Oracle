@@ -8,7 +8,9 @@ extension QueryResultView {
     var store: StoreOf<QueryFeature>
     
     var body: some View {
-      List(store.displayingCards) { card in
+      List(store.displayingCards.indices, id: \.self) { index in
+        let card = store.displayingCards[index]
+        
         HStack(alignment: .top, spacing: 13.0) {
           AmbientWebImage(url: card.getImageURL(type: .normal), placeholderName: "mtgBack")
             .aspectRatio(contentMode: .fit)
@@ -50,11 +52,9 @@ extension QueryResultView {
         }
         .redacted(reason: store.state.redactionReason)
         .listSectionSeparator(.hidden, edges: .top)
-        .alignmentGuide(.listRowSeparatorLeading) { dimension in
-          dimension[.leading]
-        }
-        .listRowInsets(EdgeInsets(top: 13, leading: 16, bottom: 13, trailing: 16))
+        .listRowInsets(EdgeInsets(top: 13, leading: 8, bottom: 13, trailing: 16))
         .listRowBackground(Color.clear)
+        .onAppear { store.send(.loadMoreIfNeeded(index)) }
       }
       .listStyle(.plain)
     }

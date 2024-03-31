@@ -9,7 +9,8 @@ struct QueryFeature {
   @ObservableState
   struct State {
     let selectedSet: MTGSet
-    var cards: [Card] = []
+    var cards: ObjectList<Card>?
+    var currentPage = 1
     
     var title: String {
       selectedSet.name
@@ -20,18 +21,19 @@ struct QueryFeature {
     }
     
     var displayingCards: [Card] {
-      cards.isEmpty ? Card.stubs : cards
+      cards?.data.isEmpty == true ? Card.stubs : cards?.data ?? []
     }
     
     var redactionReason: RedactionReasons {
-      cards.isEmpty ? .placeholder : .invalidated
+      cards?.data.isEmpty == true ? .placeholder : .invalidated
     }
   }
   
   enum Action {
-    case viewAppeared
+    case didReceivedCards(ObjectList<Card>)
     case fetchCards(filter: [CardFieldFilter], page: Int)
-    case didReceivedCards([Card])
+    case loadMoreIfNeeded(Int)
+    case viewAppeared
   }
   
   var body: some ReducerOf<Self> {
@@ -41,20 +43,22 @@ struct QueryFeature {
         return .run { update in
           let result = try await client.searchCards(
             filters: filter,
-            unique: nil,
+            unique: .prints,
             order: nil,
             sortDirection: nil,
             includeExtras: true,
             includeMultilingual: false,
             includeVariations: true,
             page: page
-          ).data
+          )
           
           await update(.didReceivedCards(result))
         }
         
       case .viewAppeared:
         let code = state.selectedSet.code
+        let currentPage = state.currentPage
+        
         return .run { update in
           await update(
             .fetchCards(
@@ -62,13 +66,43 @@ struct QueryFeature {
                 .set(code),
                 .game(.paper)
               ],
-              page: 1
+              page: currentPage
             )
           )
         }
         
+      case let .loadMoreIfNeeded(index):
+        if let cards = state.cards,
+            cards.hasMore == true,
+            cards.data.count - 3 == index {
+          state.currentPage += 1
+          let code = state.selectedSet.code
+          let currentPage = state.currentPage
+          
+          return .run { update in
+            await update(
+              .fetchCards(
+                filter: [
+                  .set(code),
+                  .game(.paper)
+                ],
+                page: currentPage
+              )
+            )
+          }
+        } else {
+          return .none
+        }
+        
       case let .didReceivedCards(cards):
-        state.cards = cards
+        if let oldCards = state.cards {
+          var newCards = cards
+          newCards.data.insert(contentsOf: oldCards.data, at: 0)
+          state.cards = newCards
+        } else {
+          state.cards = cards
+        }
+        
         return .none
       }
     }
