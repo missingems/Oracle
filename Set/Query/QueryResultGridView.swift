@@ -16,10 +16,11 @@ extension QueryResultView {
       GeometryReader { proxy in
         ScrollView {
           LazyVGrid(columns: columns, spacing: 0) {
-            ForEach(store.displayingCards) { item in
-              AmbientWebImage(url: item.getImageURL(type: .normal), placeholderName: "mtgBack")
+            ForEach(store.displayingCards.indices, id: \.self) { index in
+              AmbientWebImage(url: store.displayingCards[index].getImageURL(type: .normal), placeholderName: "mtgBack")
                 .frame(minWidth: (proxy.size.width)/2)
                 .redacted(reason: store.redactionReason)
+                .onAppear { store.send(.loadMoreIfNeeded(index)) }
             }
           }
         }
