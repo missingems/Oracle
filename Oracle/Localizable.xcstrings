@@ -29,6 +29,12 @@
         }
       }
     },
+    "Collection" : {
+
+    },
+    "Game" : {
+
+    },
     "Illustrated by" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -84,6 +90,9 @@
         }
       }
     },
+    "Profile" : {
+
+    },
     "Restricted" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -94,6 +103,9 @@
           }
         }
       }
+    },
+    "Search" : {
+
     },
     "Sets" : {
       "extractionState" : "manual",
