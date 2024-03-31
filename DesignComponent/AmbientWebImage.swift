@@ -18,9 +18,8 @@ public struct AmbientWebImage: View {
         Image(placeholderName, bundle: .main).resizable()
       }
       .scaledToFit()
-      .padding(.top, 15)
       .aspectRatio(contentMode: .fit)
-      .opacity(0.618)
+      .opacity(0.38)
       
       WebImage(url: url) { image in
         image.resizable()
@@ -29,7 +28,8 @@ public struct AmbientWebImage: View {
       }
       .scaledToFit()
       .aspectRatio(contentMode: .fit)
-      .clipShape(.rect(cornerRadii: .init(topLeading: 7, bottomLeading: 7, bottomTrailing: 7, topTrailing: 7)))
+      .clipShape(.rect(cornerRadii: .init(topLeading: 9, bottomLeading: 9, bottomTrailing: 9, topTrailing: 9)))
+      .overlay(RoundedRectangle(cornerRadius: 9).stroke(.separator).opacity(0.618))
     }
   }
 }
