@@ -47,7 +47,7 @@ struct QueryFeature {
             order: nil,
             sortDirection: nil,
             includeExtras: true,
-            includeMultilingual: true,
+            includeMultilingual: false,
             includeVariations: true,
             page: page
           )
