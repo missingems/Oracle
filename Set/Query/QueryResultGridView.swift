@@ -22,7 +22,6 @@ extension QueryResultView {
                 .redacted(reason: store.redactionReason)
             }
           }
-//          .padding(.horizontal, 8.0)
         }
       }
     }
