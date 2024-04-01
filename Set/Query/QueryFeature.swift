@@ -6,11 +6,17 @@ import SwiftUI
 struct QueryFeature {
   let client = ScryfallClient()
   
+  enum Layout: Equatable {
+    case list
+    case grid
+  }
+  
   @ObservableState
   struct State {
     let selectedSet: MTGSet
     var cards: ObjectList<Card>?
     var currentPage = 1
+    var viewState = Layout.grid
     
     var title: String {
       selectedSet.name
@@ -21,11 +27,19 @@ struct QueryFeature {
     }
     
     var displayingCards: [Card] {
-      cards?.data.isEmpty == true ? Card.stubs : cards?.data ?? []
+      guard let cards else {
+        return Card.stubs
+      }
+      
+      return cards.data
     }
     
     var redactionReason: RedactionReasons {
-      cards?.data.isEmpty == true ? .placeholder : .invalidated
+      guard cards != nil else {
+        return .placeholder
+      }
+      
+      return .invalidated
     }
   }
   
@@ -34,6 +48,7 @@ struct QueryFeature {
     case fetchCards(filter: [CardFieldFilter], page: Int)
     case loadMoreIfNeeded(Int)
     case viewAppeared
+    case viewStateChanged(Layout)
   }
   
   var body: some ReducerOf<Self> {
@@ -70,6 +85,10 @@ struct QueryFeature {
             )
           )
         }
+        
+      case let .viewStateChanged(viewState):
+        state.viewState = viewState
+        return .none
         
       case let .loadMoreIfNeeded(index):
         if let cards = state.cards,
