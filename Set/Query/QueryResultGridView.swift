@@ -7,13 +7,15 @@ extension QueryResultView {
     @Bindable
     var store: StoreOf<QueryFeature>
     
+    var proxy: GeometryProxy
+    
     let columns: [GridItem] = [
       GridItem(.flexible(), spacing: 5),
       GridItem(.flexible(), spacing: 5),
     ]
     
     var body: some View {
-      GeometryReader { proxy in
+      if proxy.size != .zero {
         let itemWidth = (proxy.size.width - 15) / CGFloat(columns.count)
         let itemHeight = itemWidth * 1.3928
         
@@ -25,7 +27,8 @@ extension QueryResultView {
                 .redacted(reason: store.redactionReason)
                 .onAppear { store.send(.loadMoreIfNeeded(index)) }
             }
-          }.padding(.horizontal, 5.0)
+          }
+          .padding(EdgeInsets(top: 8, leading: 5, bottom: 13, trailing: 5))
         }
       }
     }
