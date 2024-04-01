@@ -29,10 +29,6 @@ struct SetViewModel {
     .showQuery(.init(selectedSet: displayingSets[index]))
   }
   
-  func navigate(with store: StoreOf<Feature.Path>) -> some View {
-    EmptyView()
-  }
-  
   func makeSetListRowViewModel(for index: Int) -> SetListRowViewModel {
     SetListRowViewModel(
       set: displayingSets[index],
