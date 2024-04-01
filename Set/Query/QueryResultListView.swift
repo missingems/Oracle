@@ -18,7 +18,7 @@ extension QueryResultView {
           
           VStack(alignment: .leading, spacing: 5.0) {
             HStack(alignment: .top) {
-              Text(card.name).font(.system(size: 15.0, weight: .bold, design: .default)).padding(.trailing, 8)
+              Text(card.name).font(.system(size: 15.0, weight: .semibold, design: .default)).padding(.trailing, 8)
               
               if let manaCost = card.manaCost {
                 Spacer()
