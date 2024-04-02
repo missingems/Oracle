@@ -4,8 +4,7 @@ import ScryfallKit
 import SwiftUI
 
 struct QueryResultView: View {
-  @Bindable
-  var store: StoreOf<QueryFeature>
+  let store: StoreOf<QueryFeature>
   
   var body: some View {
     content
@@ -39,3 +38,4 @@ struct QueryResultView: View {
     }
   }
 }
+

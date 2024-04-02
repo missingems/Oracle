@@ -4,10 +4,12 @@ import SwiftUI
 public struct AmbientWebImage: View {
   public let url: URL?
   public let placeholderName: String
+  private let cornerRadius: CGFloat
   
-  public init(url: URL?, placeholderName: String) {
+  public init(url: URL?, placeholderName: String, cornerRadius: CGFloat = 9) {
     self.url = url
     self.placeholderName = placeholderName
+    self.cornerRadius = cornerRadius
   }
   
   public var body: some View {
@@ -15,7 +17,7 @@ public struct AmbientWebImage: View {
       WebImage(url: url) { image in
         image.resizable().blur(radius: 20, opaque: false)
       } placeholder: {
-        Image(placeholderName, bundle: .main).resizable()
+        Image(placeholderName, bundle: .main).resizable().clipShape(.rect(cornerRadii: .init(topLeading: cornerRadius, bottomLeading: cornerRadius, bottomTrailing: cornerRadius, topTrailing: cornerRadius)))
       }
       .scaledToFit()
       .aspectRatio(contentMode: .fit)
@@ -24,12 +26,12 @@ public struct AmbientWebImage: View {
       WebImage(url: url) { image in
         image.resizable()
       } placeholder: {
-        Image(placeholderName, bundle: .main).resizable().clipShape(.rect(cornerRadii: .init(topLeading: 9, bottomLeading: 9, bottomTrailing: 9, topTrailing: 9)))
+        Image(placeholderName, bundle: .main).resizable().clipShape(.rect(cornerRadii: .init(topLeading: cornerRadius, bottomLeading: cornerRadius, bottomTrailing: cornerRadius, topTrailing: cornerRadius)))
       }
       .scaledToFit()
       .aspectRatio(contentMode: .fit)
-      .clipShape(.rect(cornerRadii: .init(topLeading: 9, bottomLeading: 9, bottomTrailing: 9, topTrailing: 9)))
-      .overlay(RoundedRectangle(cornerRadius: 9).stroke(.separator).opacity(0.618))
+      .clipShape(.rect(cornerRadii: .init(topLeading: cornerRadius, bottomLeading: cornerRadius, bottomTrailing: cornerRadius, topTrailing: cornerRadius)))
+      .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(.separator).opacity(0.618))
     }
   }
 }

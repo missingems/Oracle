@@ -12,13 +12,8 @@ struct SetView: View {
             NavigationLink(state: viewModel.navigationState(at: index)) {
               SetListRow(viewModel: viewModel.makeSetListRowViewModel(for: index))
                 .redacted(reason: viewModel.redactionReason)
-                .overlay {
-                  NavigationLink(state: viewModel.navigationState(at: index)) {
-                    EmptyView()
-                  }
-                  .opacity(0)
-                }
             }
+            .disabled(viewModel.isInteractivable)
           }
         }
       }
@@ -28,6 +23,11 @@ struct SetView: View {
       case .showQuery:
         if let store = store.scope(state: \.showQuery, action: \.showQuery) {
           QueryResultView(store: store)
+        }
+        
+      case .showCard:
+        if let store = store.scope(state: \.showCard, action: \.showCard) {
+          CardView(store: store)
         }
       }
     }

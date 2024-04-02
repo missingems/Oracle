@@ -16,7 +16,7 @@ struct QueryFeature {
     let selectedSet: MTGSet
     var cards: ObjectList<Card>?
     var currentPage = 1
-    var viewState = Layout.grid
+    var viewState = Layout.list
     
     var title: String {
       selectedSet.name
@@ -32,6 +32,10 @@ struct QueryFeature {
       }
       
       return cards.data
+    }
+    
+    var isInteractivable: Bool {
+      cards == nil
     }
     
     var redactionReason: RedactionReasons {
@@ -74,6 +78,10 @@ struct QueryFeature {
         let code = state.selectedSet.code
         let currentPage = state.currentPage
         
+        guard state.cards == nil else {
+          return .none
+        }
+        
         return .run { update in
           await update(
             .fetchCards(
@@ -92,8 +100,8 @@ struct QueryFeature {
         
       case let .loadMoreIfNeeded(index):
         if let cards = state.cards,
-            cards.hasMore == true,
-            cards.data.count - 3 == index {
+           cards.hasMore == true,
+           cards.data.count - 3 == index {
           state.currentPage += 1
           let code = state.selectedSet.code
           let currentPage = state.currentPage
