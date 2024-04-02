@@ -44,13 +44,13 @@ struct CardView: View {
         
         HStack(spacing: 3.0) {
           VStack(spacing: 2.0) {
-            ForEach(Array(store.allLegalities.prefix(5)).indices, id: \.self) { index in
+            ForEach(store.allLegalities.prefix(5).indices, id: \.self) { index in
               legalityRow(index: index)
             }
           }
           
           VStack(spacing: 2.0) {
-            ForEach(Array(store.allLegalities.suffix(5)).indices, id: \.self) { index in
+            ForEach(store.allLegalities.suffix(5).indices, id: \.self) { index in
               legalityRow(index: index)
             }
           }
