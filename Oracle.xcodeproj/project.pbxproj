@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BF0133162BAD8BA7006AFAF1 /* OracleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */; };
-		BF5478B92B8EBFFB004D2CC8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */; };
-		BF5478BB2B8ECB28004D2CC8 /* Card+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5478BA2B8ECB28004D2CC8 /* Card+Extensions.swift */; };
 		BF56E66F2B846E450018B620 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BF56E66E2B846E450018B620 /* Localizable.xcstrings */; };
 		BF660CA32BAFEF710025218A /* Set.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF660CA22BAFEF710025218A /* Set.framework */; };
 		BF660CA42BAFEF710025218A /* Set.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF660CA22BAFEF710025218A /* Set.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -35,8 +33,6 @@
 
 /* Begin PBXFileReference section */
 		BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleApp.swift; sourceTree = "<group>"; };
-		BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		BF5478BA2B8ECB28004D2CC8 /* Card+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Extensions.swift"; sourceTree = "<group>"; };
 		BF56E66E2B846E450018B620 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		BF660CA22BAFEF710025218A /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF660D292BB0305C0025218A /* DesignComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,8 +66,6 @@
 		BF67DBDA2BA1B49E002317A7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BF5478B82B8EBFFB004D2CC8 /* String+Extensions.swift */,
-				BF5478BA2B8ECB28004D2CC8 /* Card+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -200,8 +194,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF0133162BAD8BA7006AFAF1 /* OracleApp.swift in Sources */,
-				BF5478BB2B8ECB28004D2CC8 /* Card+Extensions.swift in Sources */,
-				BF5478B92B8EBFFB004D2CC8 /* String+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

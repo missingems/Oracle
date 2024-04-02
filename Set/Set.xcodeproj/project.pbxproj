@@ -28,6 +28,7 @@
 		BF897D392BB8FEDE00279F66 /* QueryResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF897D382BB8FEDE00279F66 /* QueryResultListView.swift */; };
 		BFF33C902BBBF7A500DFB1D1 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF33C8F2BBBF7A500DFB1D1 /* CardView.swift */; };
 		BFF33C922BBBF8AD00DFB1D1 /* CardFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF33C912BBBF8AD00DFB1D1 /* CardFeature.swift */; };
+		BFF33C942BBC699D00DFB1D1 /* Card+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF33C932BBC699D00DFB1D1 /* Card+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,6 +65,7 @@
 		BF897D382BB8FEDE00279F66 /* QueryResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryResultListView.swift; sourceTree = "<group>"; };
 		BFF33C8F2BBBF7A500DFB1D1 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		BFF33C912BBBF8AD00DFB1D1 /* CardFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFeature.swift; sourceTree = "<group>"; };
+		BFF33C932BBC699D00DFB1D1 /* Card+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			children = (
 				BFF33C8F2BBBF7A500DFB1D1 /* CardView.swift */,
 				BFF33C912BBBF8AD00DFB1D1 /* CardFeature.swift */,
+				BFF33C932BBC699D00DFB1D1 /* Card+Extensions.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFF33C902BBBF7A500DFB1D1 /* CardView.swift in Sources */,
+				BFF33C942BBC699D00DFB1D1 /* Card+Extensions.swift in Sources */,
 				BF636E4E2BB51B2500629CAA /* Stubs.swift in Sources */,
 				BF660CA92BAFF2050025218A /* Feature.swift in Sources */,
 				BF660CDB2BB00FFD0025218A /* SetListRow.swift in Sources */,

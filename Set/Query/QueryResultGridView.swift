@@ -22,7 +22,7 @@ extension QueryResultView {
               ForEach(store.displayingCards.indices, id: \.self) { index in
                 let card = store.displayingCards[index]
                 
-                NavigationLink(state: Feature.Path.State.showCard(CardFeature.State(selectedCard: card))) {
+                NavigationLink(state: Feature.Path.State.showCard(CardFeature.State(card: card))) {
                   AmbientWebImage(url: card.getImageURL(type: .normal), placeholderName: "mtgBack")
                     .frame(width: itemWidth, height: itemHeight)
                     .redacted(reason: store.redactionReason)
