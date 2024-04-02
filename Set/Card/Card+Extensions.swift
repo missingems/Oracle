@@ -8,13 +8,13 @@ extension Card.Legalities {
     }
     
     case standard
+    case pioneer
     case modern
     case vintage
     case legacy
-    case historic
     case commander
     case pauper
-    case pioneer
+    case historic
     case brawl
     case penny
   }
