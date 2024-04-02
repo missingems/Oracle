@@ -16,7 +16,7 @@ struct QueryFeature {
     let selectedSet: MTGSet
     var cards: ObjectList<Card>?
     var currentPage = 1
-    var viewState = Layout.grid
+    var viewState = Layout.list
     
     var title: String {
       selectedSet.name
@@ -77,6 +77,10 @@ struct QueryFeature {
       case .viewAppeared:
         let code = state.selectedSet.code
         let currentPage = state.currentPage
+        
+        guard state.cards == nil else {
+          return .none
+        }
         
         return .run { update in
           await update(
