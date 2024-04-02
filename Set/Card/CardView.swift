@@ -42,31 +42,16 @@ struct CardView: View {
         
         Text(store.legalityLabel).font(.headline).padding(.leading, 16.0)
         
-        LazyVGrid(columns: [GridItem(), GridItem()], spacing: 3.0) {
-          ForEach(store.allLegalities.indices, id: \.self) { index in
-            let legality = store.allLegalities[index]
-            let value = store.card.legalities.type(legality)
-            var counter = 0
-            
-            HStack {
-              Text("\(value.1?.localisedDescription ?? "")")
-                .foregroundStyle(Color.white)
-                .frame(minWidth: 0, maxWidth: .infinity).font(.system(size: 12))
-                .padding(.vertical, 5.0)
-                .font(.system(size: 12, weight: .medium))
-                .monospaced()
-                .background {
-                  if let color = value.1?.color {
-                    Color(uiColor: color)
-                  }
-                }
-                .clipShape(ButtonBorderShape.roundedRectangle)
-              Text("\(value.0)")
-                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                .font(.system(size: 12, weight: .regular))
-                .multilineTextAlignment(.leading)
-            }.background {
-              Color.quaternarySystemFill.clipShape(ButtonBorderShape.roundedRectangle)
+        HStack(spacing: 3.0) {
+          VStack(spacing: 2.0) {
+            ForEach(Array(store.allLegalities.prefix(5)).indices, id: \.self) { index in
+              legalityRow(index: index)
+            }
+          }
+          
+          VStack(spacing: 2.0) {
+            ForEach(Array(store.allLegalities.suffix(5)).indices, id: \.self) { index in
+              legalityRow(index: index)
             }
           }
         }
@@ -74,5 +59,36 @@ struct CardView: View {
       }
     }
     .background { Color(.secondarySystemBackground).ignoresSafeArea() }
+  }
+  
+  @ViewBuilder
+  private func legalityRow(index: Int) -> some View {
+    let legality = store.allLegalities[index]
+    let value = store.card.legalities.type(legality)
+    
+    HStack {
+      Text("\(value.1?.localisedDescription ?? "")")
+        .foregroundStyle(Color.white)
+        .frame(minWidth: 0, maxWidth: .infinity).font(.system(size: 12))
+        .padding(.vertical, 5.0)
+        .font(.system(size: 12, weight: .medium))
+        .monospaced()
+        .background {
+          if let color = value.1?.color {
+            Color(uiColor: color)
+          }
+        }
+        .clipShape(ButtonBorderShape.roundedRectangle)
+      Text("\(value.0)")
+        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+        .font(.system(size: 12, weight: .regular))
+        .multilineTextAlignment(.leading)
+    }.background {
+      if index.isMultiple(of: 2) {
+        Color.quaternarySystemFill.clipShape(ButtonBorderShape.roundedRectangle)
+      } else {
+        Color.clear
+      }
+    }
   }
 }
