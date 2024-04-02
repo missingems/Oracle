@@ -11,9 +11,9 @@ struct CardView: View {
         AmbientWebImage(url: store.cardImageURL, placeholderName: "mtgBack", cornerRadius: 15.0).padding(EdgeInsets(top: 11, leading: 55, bottom: 11, trailing: 55))
         Divider().padding(.leading, 16.0)
         
-        HStack(alignment: .top) {
+        HStack(alignment: .center) {
           if let name = store.name {
-            Text(name).font(.headline).padding(.horizontal, 16.0)
+            Text(name).font(.title2).bold().padding(.horizontal, 16.0)
           }
           
           Spacer()
@@ -40,7 +40,7 @@ struct CardView: View {
         
         Divider().padding(.leading, 16.0)
         
-        Text(store.viewRulingsLabel).font(.headline).padding(.leading, 16.0)
+        Text(store.legalityLabel).font(.headline).padding(.leading, 16.0)
         
         LazyVGrid(columns: [GridItem(), GridItem()], spacing: 3.0) {
           ForEach(store.allLegalities.indices, id: \.self) { index in
@@ -63,7 +63,7 @@ struct CardView: View {
                 .clipShape(ButtonBorderShape.roundedRectangle)
               Text("\(value.0)")
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                .font(.system(size: 12, weight: .medium))
+                .font(.system(size: 12, weight: .regular))
                 .multilineTextAlignment(.leading)
             }.background {
               Color.quaternarySystemFill.clipShape(ButtonBorderShape.roundedRectangle)

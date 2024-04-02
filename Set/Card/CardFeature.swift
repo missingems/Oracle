@@ -78,19 +78,8 @@ struct CardFeature {
       String(localized: "View Rulings")
     }
     
-    var legalities: [Card.Legality] {
-      [
-        card.legalities.standard,
-        card.legalities.pioneer,
-        card.legalities.modern,
-        card.legalities.historic,
-        card.legalities.legacy,
-        card.legalities.brawl,
-        card.legalities.vintage,
-        card.legalities.commander,
-        card.legalities.pauper,
-        card.legalities.penny,
-      ].compactMap { $0 }
+    var legalityLabel: String {
+      String(localized: "Legality")
     }
     
     var allLegalities: [Card.Legalities.LegalityType] {
