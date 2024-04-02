@@ -17,7 +17,7 @@ struct SetViewModel {
     store.sets.isEmpty ? .placeholder : .invalidated
   }
   
-  var inInteractive: Bool {
+  var isInteractivable: Bool {
     store.sets.isEmpty
   }
   

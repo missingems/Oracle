@@ -12,13 +12,8 @@ struct SetView: View {
             NavigationLink(state: viewModel.navigationState(at: index)) {
               SetListRow(viewModel: viewModel.makeSetListRowViewModel(for: index))
                 .redacted(reason: viewModel.redactionReason)
-                .overlay {
-                  NavigationLink(state: viewModel.navigationState(at: index)) {
-                    EmptyView()
-                  }
-                  .opacity(0)
-                }
             }
+            .disabled(viewModel.isInteractivable)
           }
         }
       }

@@ -34,6 +34,10 @@ struct QueryFeature {
       return cards.data
     }
     
+    var isInteractivable: Bool {
+      cards == nil
+    }
+    
     var redactionReason: RedactionReasons {
       guard cards != nil else {
         return .placeholder
