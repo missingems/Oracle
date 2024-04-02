@@ -17,7 +17,7 @@ struct SetViewModel {
     store.sets.isEmpty ? .placeholder : .invalidated
   }
   
-  var isScrollEnabled: Bool {
+  var inInteractive: Bool {
     store.sets.isEmpty
   }
   

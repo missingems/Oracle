@@ -32,14 +32,10 @@ struct QueryResultView: View {
   
   @ViewBuilder
   private var content: some View {
-    VStack {
-      
-      
-      if store.viewState == .grid {
-        QueryResultView.GridView(store: store)
-      } else {
-        QueryResultView.ListView(store: store)
-      }
+    if store.viewState == .grid {
+      QueryResultView.GridView(store: store)
+    } else {
+      QueryResultView.ListView(store: store)
     }
   }
 }

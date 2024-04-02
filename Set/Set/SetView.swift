@@ -6,19 +6,23 @@ struct SetView: View {
   
   public var body: some View {
     NavigationStack(path: viewModel.$store.scope(state: \.path, action: \.path)) {
-      List(viewModel.displayingSets.indices, id: \.self) { index in
-        SetListRow(viewModel: viewModel.makeSetListRowViewModel(for: index))
-          .redacted(reason: viewModel.redactionReason)
-          .overlay {
+      ScrollView {
+        LazyVGrid(columns: [GridItem(spacing: 0, alignment: .leading)], spacing: 0) {
+          ForEach(viewModel.displayingSets.indices, id: \.self) { index in
             NavigationLink(state: viewModel.navigationState(at: index)) {
-              EmptyView()
+              SetListRow(viewModel: viewModel.makeSetListRowViewModel(for: index))
+                .redacted(reason: viewModel.redactionReason)
+                .overlay {
+                  NavigationLink(state: viewModel.navigationState(at: index)) {
+                    EmptyView()
+                  }
+                  .opacity(0)
+                }
             }
-            .opacity(0)
           }
+        }
       }
-      .scrollDisabled(viewModel.isScrollEnabled)
       .navigationTitle(viewModel.title)
-      .listStyle(.plain)
     } destination: { store in
       switch store.state {
       case .showQuery:
