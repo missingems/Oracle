@@ -24,7 +24,7 @@ public struct AmbientWebImage: View {
       WebImage(url: url) { image in
         image.resizable()
       } placeholder: {
-        Image(placeholderName, bundle: .main).resizable()
+        Image(placeholderName, bundle: .main).resizable().clipShape(.rect(cornerRadii: .init(topLeading: 9, bottomLeading: 9, bottomTrailing: 9, topTrailing: 9)))
       }
       .scaledToFit()
       .aspectRatio(contentMode: .fit)
