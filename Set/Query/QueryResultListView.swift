@@ -56,11 +56,11 @@ extension QueryResultView {
                 }
                 .redacted(reason: store.state.redactionReason)
                 .padding(EdgeInsets(top: 11, leading: 16, bottom: 11, trailing: 16))
-                .onAppear { store.send(.loadMoreIfNeeded(index)) }
                 
                 Divider().padding(.leading, 16.0)
               }
             }
+            .onAppear { store.send(.loadMoreIfNeeded(index)) }
           }
         }
       }
