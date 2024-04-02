@@ -11,15 +11,21 @@ struct Feature {
     @ObservableState
     enum State {
       case showQuery(QueryFeature.State)
+      case showCard(CardFeature.State)
     }
     
     enum Action {
       case showQuery(QueryFeature.Action)
+      case showCard(CardFeature.Action)
     }
     
     var body: some ReducerOf<Self> {
       Scope(state: \.showQuery, action: \.showQuery) {
         QueryFeature()
+      }
+      
+      Scope(state: \.showCard, action: \.showCard) {
+        CardFeature()
       }
     }
   }

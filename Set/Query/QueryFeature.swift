@@ -92,8 +92,8 @@ struct QueryFeature {
         
       case let .loadMoreIfNeeded(index):
         if let cards = state.cards,
-            cards.hasMore == true,
-            cards.data.count - 3 == index {
+           cards.hasMore == true,
+           cards.data.count - 3 == index {
           state.currentPage += 1
           let code = state.selectedSet.code
           let currentPage = state.currentPage

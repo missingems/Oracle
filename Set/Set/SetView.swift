@@ -29,6 +29,11 @@ struct SetView: View {
         if let store = store.scope(state: \.showQuery, action: \.showQuery) {
           QueryResultView(store: store)
         }
+        
+      case .showCard:
+        if let store = store.scope(state: \.showCard, action: \.showCard) {
+          CardView(store: store)
+        }
       }
     }
     .tabItem {
