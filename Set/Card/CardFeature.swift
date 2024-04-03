@@ -9,6 +9,8 @@ struct CardFeature {
   @ObservableState
   struct State {
     let card: Card
+    let cardSetImageURI: String?
+    
     var selectedFace: Card.Face? {
       card.cardFaces?.first
     }
