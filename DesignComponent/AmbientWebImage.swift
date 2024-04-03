@@ -5,25 +5,38 @@ public struct AmbientWebImage: View {
   public let url: URL?
   public let placeholderName: String
   private let cornerRadius: CGFloat
+  private let blurRadius: CGFloat
+  private let offset: CGPoint
+  private let scale: CGSize
   
-  public init(url: URL?, placeholderName: String, cornerRadius: CGFloat = 9) {
+  public init(
+    url: URL? = nil,
+    placeholderName: String,
+    cornerRadius: CGFloat = 9,
+    blurRadius: CGFloat = 13,
+    offset: CGPoint = CGPoint(x: 0, y: 3),
+    scale: CGSize = CGSize(width: 1, height: 1)
+  ) {
     self.url = url
     self.placeholderName = placeholderName
     self.cornerRadius = cornerRadius
+    self.blurRadius = blurRadius
+    self.offset = offset
+    self.scale = scale
   }
   
   public var body: some View {
     ZStack {
       WebImage(url: url) { image in
-        image.resizable().blur(radius: 44, opaque: false)
+        image.resizable().blur(radius: blurRadius, opaque: false)
       } placeholder: {
         Image(placeholderName, bundle: .main).resizable().clipShape(.rect(cornerRadii: .init(topLeading: cornerRadius, bottomLeading: cornerRadius, bottomTrailing: cornerRadius, topTrailing: cornerRadius)))
       }
       .scaledToFit()
       .aspectRatio(contentMode: .fit)
       .opacity(0.38)
-      .scaleEffect(CGSize(width: 1.1, height: 1.1))
-      .offset(x: 0, y: 10)
+      .scaleEffect(scale)
+      .offset(x: offset.x, y: offset.y)
       
       WebImage(url: url) { image in
         image.resizable()

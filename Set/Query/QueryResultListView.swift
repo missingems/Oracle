@@ -25,7 +25,7 @@ extension QueryResultView {
                       
                       if let manaCost = card.manaCost {
                         Spacer()
-                        TokenizedTextView(manaCost, font: .systemFont(ofSize: 15.0)).tint(.primary)
+                        TokenizedTextView(manaCost, font: .systemFont(ofSize: 15.0), paragraphSpacing: 0).tint(.primary)
                       }
                     }
                     
@@ -34,7 +34,7 @@ extension QueryResultView {
                     }
                     
                     if let text = card.oracleText {
-                      TokenizedTextView(text, font: .systemFont(ofSize: 13.0)).tint(.primary)
+                      TokenizedTextView(text, font: .systemFont(ofSize: 13.0), paragraphSpacing: 5.0).tint(.primary)
                     }
                     
                     if let flavorText = card.flavorText {

@@ -16,7 +16,7 @@ struct QueryFeature {
     let selectedSet: MTGSet
     var cards: ObjectList<Card>?
     var currentPage = 1
-    var viewState = Layout.list
+    var viewState = Layout.grid
     var isLoadingMore = false
     
     var title: String {
