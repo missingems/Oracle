@@ -10,7 +10,7 @@ public struct PillText: View {
   public var body: some View {
     Text(label)
       .multilineTextAlignment(.center)
-      .padding(.horizontal, 3.0)
+      .padding(EdgeInsets(top: 1, leading: 3, bottom: 1, trailing: 3))
       .background {
         Color(.systemFill)
       }

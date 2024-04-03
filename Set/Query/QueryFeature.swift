@@ -16,7 +16,8 @@ struct QueryFeature {
     let selectedSet: MTGSet
     var cards: ObjectList<Card>?
     var currentPage = 1
-    var viewState = Layout.list
+    var viewState = Layout.grid
+    var isLoadingMore = false
     
     var title: String {
       selectedSet.name
@@ -101,10 +102,12 @@ struct QueryFeature {
       case let .loadMoreIfNeeded(index):
         if let cards = state.cards,
            cards.hasMore == true,
-           cards.data.count - 3 == index {
+           cards.data.count - 3 == index,
+           state.isLoadingMore == false {
           state.currentPage += 1
           let code = state.selectedSet.code
           let currentPage = state.currentPage
+          state.isLoadingMore = true
           
           return .run { update in
             await update(
@@ -122,6 +125,8 @@ struct QueryFeature {
         }
         
       case let .didReceivedCards(cards):
+        state.isLoadingMore = false
+        
         if let oldCards = state.cards {
           var newCards = cards
           newCards.data.insert(contentsOf: oldCards.data, at: 0)

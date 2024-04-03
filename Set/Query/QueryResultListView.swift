@@ -12,7 +12,7 @@ extension QueryResultView {
           ForEach(store.displayingCards.indices, id: \.self) { index in
             let card = store.displayingCards[index]
             
-            NavigationLink(state: Feature.Path.State.showCard(CardFeature.State(card: card))) {
+            NavigationLink(state: Feature.Path.State.showCard(CardFeature.State(card: card, cardSetImageURI: store.selectedSet.iconSvgUri))) {
               VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .top, spacing: 13.0) {
                   AmbientWebImage(url: card.getImageURL(type: .normal), placeholderName: "mtgBack")
@@ -21,24 +21,24 @@ extension QueryResultView {
                   
                   VStack(alignment: .leading, spacing: 5.0) {
                     HStack(alignment: .top) {
-                      Text(card.name).font(.system(size: 15.0, weight: .semibold, design: .default)).padding(.trailing, 8)
+                      Text(card.name).font(.system(size: 15.0, weight: .semibold, design: .default)).padding(.trailing, 8).tint(.primary)
                       
                       if let manaCost = card.manaCost {
                         Spacer()
-                        TokenizedTextView(manaCost, font: .systemFont(ofSize: 15.0))
+                        TokenizedTextView(manaCost, font: .systemFont(ofSize: 15.0), paragraphSpacing: 0).tint(.primary)
                       }
                     }
                     
                     if let typeline = card.typeLine {
-                      Text(typeline).font(.system(size: 13.0, weight: .semibold, design: .default))
+                      Text(typeline).font(.system(size: 13.0, weight: .semibold, design: .default)).tint(.primary)
                     }
                     
                     if let text = card.oracleText {
-                      TokenizedTextView(text, font: .systemFont(ofSize: 13.0))
+                      TokenizedTextView(text, font: .systemFont(ofSize: 13.0), paragraphSpacing: 5.0).tint(.primary)
                     }
                     
                     if let flavorText = card.flavorText {
-                      Text(flavorText).font(.system(size: 13, weight: .regular, design: .serif).italic()).foregroundStyle(.secondary)
+                      Text(flavorText).font(.system(size: 13, weight: .regular, design: .serif).italic()).tint(.secondary)
                     }
                     
                     if let power = card.power, let toughness = card.toughness {
@@ -56,11 +56,11 @@ extension QueryResultView {
                 }
                 .redacted(reason: store.state.redactionReason)
                 .padding(EdgeInsets(top: 11, leading: 16, bottom: 11, trailing: 16))
-                .onAppear { store.send(.loadMoreIfNeeded(index)) }
                 
                 Divider().padding(.leading, 16.0)
               }
             }
+            .onAppear { store.send(.loadMoreIfNeeded(index)) }
           }
         }
       }

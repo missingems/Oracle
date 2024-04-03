@@ -3,17 +3,17 @@ import SwiftUI
 public struct TokenizedTextView: View {
   private var text: String
   private var font: UIFont
+  private let paragraphSpacing: CGFloat
   
-  public init(_ text: String, font: UIFont) {
+  public init(_ text: String, font: UIFont, paragraphSpacing: CGFloat) {
     self.text = text
     self.font = font
-    
-    
+    self.paragraphSpacing = paragraphSpacing
   }
   
   @ViewBuilder
   func build() -> some View {
-    VStack(alignment: .leading, spacing: 5.0) {
+    VStack(alignment: .leading, spacing: paragraphSpacing) {
       ForEach(text.split(separator: "\n"), id: \.self) { element in
         build(elements: parseText(String(element)))
       }
@@ -74,7 +74,7 @@ public struct TokenizedTextView: View {
       }
     }
     
-    return text ?? Text("")
+    return (text ?? Text("")).fixedSize(horizontal: false, vertical: true)
   }
   
   private func getCustomImage(image: String, newSize: CGSize) -> Text {

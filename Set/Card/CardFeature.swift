@@ -9,6 +9,9 @@ struct CardFeature {
   @ObservableState
   struct State {
     let card: Card
+    let cardSetImageURI: String?
+    var prints: [Card]
+    
     var selectedFace: Card.Face? {
       card.cardFaces?.first
     }
@@ -50,6 +53,30 @@ struct CardFeature {
       card.isFlippable ? selectedFace?.flavorText : card.flavorText
     }
     
+    var loyalty: String? {
+      guard let loyalty = card.isFlippable ? selectedFace?.loyalty : card.loyalty else {
+        return nil
+      }
+      
+      return loyalty
+    }
+    
+    var power: String? {
+      guard let power = card.isFlippable ? selectedFace?.power : card.power else {
+        return nil
+      }
+      
+      return power
+    }
+    
+    var toughness: String? {
+      guard let toughness = card.isFlippable ? selectedFace?.toughness : card.toughness else {
+        return nil
+      }
+      
+      return toughness
+    }
+    
     var cardImageURL: URL? {
       guard let uri = selectedFace?.imageUris?.normal ?? card.imageUris?.normal else {
         return nil
@@ -85,16 +112,40 @@ struct CardFeature {
     var allLegalities: [Card.Legalities.LegalityType] {
       Card.Legalities.LegalityType.allCases
     }
+    
+    var displayReleasedDate: String {
+      String(localized: "Release Date: \(card.releasedAt)")
+    }
+    
+    init(
+      card: Card,
+      cardSetImageURI: String?
+    ) {
+      self.card = card
+      self.cardSetImageURI = cardSetImageURI
+      self.prints = [card]
+    }
   }
   
   enum Action {
     case viewAppeared
+    case showPrints([Card])
   }
   
   var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
       case .viewAppeared:
+        guard let oracleId = state.card.oracleId else {
+          return .none
+        }
+        return .run { send in
+          let value = try await client.searchCards(filters: [.oracleId(oracleId)], unique: .prints, order: .released, sortDirection: .auto, includeExtras: true, includeMultilingual: false, includeVariations: true, page: nil)
+          await send(.showPrints(value.data))
+        }
+        
+      case let .showPrints(cards):
+        state.prints = cards
         return .none
       }
     }
