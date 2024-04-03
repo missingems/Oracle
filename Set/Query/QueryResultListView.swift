@@ -12,7 +12,7 @@ extension QueryResultView {
           ForEach(store.displayingCards.indices, id: \.self) { index in
             let card = store.displayingCards[index]
             
-            NavigationLink(state: Feature.Path.State.showCard(CardFeature.State(card: card))) {
+            NavigationLink(state: Feature.Path.State.showCard(CardFeature.State(card: card, cardSetImageURI: store.selectedSet.iconSvgUri))) {
               VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .top, spacing: 13.0) {
                   AmbientWebImage(url: card.getImageURL(type: .normal), placeholderName: "mtgBack")
