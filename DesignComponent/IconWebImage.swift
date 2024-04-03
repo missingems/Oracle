@@ -19,7 +19,7 @@ public struct IconWebImage: View {
       .renderingMode(.template)
       .indicator(.activity)
       .aspectRatio(contentMode: .fit)
-      .foregroundStyle(Color.accentColor)
+      .tint(Color.accentColor)
     } else {
       EmptyView()
     }

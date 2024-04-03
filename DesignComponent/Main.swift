@@ -8,11 +8,11 @@ import AppKit
 
 public struct Main {
   #if os(iOS)
-    static let nativeScale = UIScreen.main.nativeScale
+    public static let nativeScale = UIScreen.main.nativeScale
   #elseif os(macOS)
-    static let nativeScale = NSScreen.main?.backingScaleFactor ?? 1.0
+  public static let nativeScale = NSScreen.main?.backingScaleFactor ?? 1.0
   #else
-    static let nativeScale = 3.0
+  public static let nativeScale = 3.0
   #endif
     
   public static func setupSVGCoder() {
