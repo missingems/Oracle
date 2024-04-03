@@ -74,7 +74,7 @@ public struct TokenizedTextView: View {
       }
     }
     
-    return text ?? Text("")
+    return (text ?? Text("")).fixedSize(horizontal: false, vertical: true)
   }
   
   private func getCustomImage(image: String, newSize: CGSize) -> Text {
