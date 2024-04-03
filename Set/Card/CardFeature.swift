@@ -87,6 +87,10 @@ struct CardFeature {
     var allLegalities: [Card.Legalities.LegalityType] {
       Card.Legalities.LegalityType.allCases
     }
+    
+    var displayReleasedDate: String {
+      card.releasedAt
+    }
   }
   
   enum Action {
