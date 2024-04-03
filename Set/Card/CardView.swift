@@ -10,6 +10,7 @@ struct CardView: View {
       VStack(alignment: .leading, spacing: 13) {
         header
         content
+        footerView
       }
       .padding(.bottom, 13.0)
     }
@@ -28,9 +29,7 @@ extension CardView {
       typelineRow
       textRow
       flavorTextRow
-      powerAndToughnessRow
-      loyaltyRow
-      illustratorRow
+      informationRow
       legalityRow
       marketPriceRow
       printsRow
@@ -49,7 +48,7 @@ extension CardView {
       scale: CGSize(width: 1.1, height: 1.1)
     )
     .padding(EdgeInsets(top: 11, leading: 55, bottom: 11, trailing: 55))
-  } 
+  }
   
   @ViewBuilder
   private var nameAndManaCostRow: some View {
@@ -57,9 +56,9 @@ extension CardView {
       Divider()
       
       HStack(alignment: .center) {
-        Text(name).font(.title2).bold()
+        Text(name).font(.headline)
         Spacer()
-        TokenizedTextView(mana, font: .preferredFont(forTextStyle: .body), paragraphSpacing: 8.0)
+        TokenizedTextView(mana, font: .preferredFont(forTextStyle: .body), paragraphSpacing: 8.0).offset(x: 0, y: 2)
       }
       .padding(.horizontal, 16.0)
     } else {
@@ -72,12 +71,8 @@ extension CardView {
     if let typeline = store.typeLine {
       makeDivider()
       
-      HStack {
-        Text(typeline).font(.headline)
-        Spacer()
-        IconWebImage(URL(string: store.cardSetImageURI!)).frame(width: 21, height: 21)
-      }
-      .padding(.horizontal, 16.0)
+      Text(typeline).font(.headline)
+        .padding(.horizontal, 16.0)
     } else {
       EmptyView()
     }
@@ -117,14 +112,14 @@ extension CardView {
       Text(store.legalityLabel).font(.headline)
       Text(store.displayReleasedDate).font(.caption).foregroundStyle(.secondary)
       
-      HStack(spacing: 5.0) {
-        VStack(spacing: 2.0) {
+      HStack(spacing: 8.0) {
+        VStack(spacing: 3.0) {
           ForEach(store.allLegalities.prefix(5).indices, id: \.self) { index in
             legalityRow(index: index, startingIndex: 0)
           }
         }
         
-        VStack(spacing: 2.0) {
+        VStack(spacing: 3.0) {
           ForEach(store.allLegalities.suffix(5).indices, id: \.self) { index in
             legalityRow(index: index, startingIndex: 5)
           }
@@ -145,14 +140,13 @@ extension CardView {
         .foregroundStyle(Color.white)
         .frame(minWidth: 0, maxWidth: .infinity).font(.system(size: 12))
         .padding(.vertical, 5.0)
-        .font(.system(size: 12, weight: .medium))
-        .monospaced()
+        .font(.caption)
         .background { color }
         .clipShape(ButtonBorderShape.roundedRectangle)
         .shadow(color: color?.opacity(0.38) ?? .clear, radius: 5.0)
       Text("\(value.0)")
         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-        .font(.system(size: 12, weight: .regular))
+        .font(.caption)
         .multilineTextAlignment(.leading)
     }
     .background {
@@ -165,26 +159,45 @@ extension CardView {
   }
   
   @ViewBuilder
-  private var powerAndToughnessRow: some View {
-    if let power = store.power, let toughness = store.toughness {
-      makeDivider()
+  private var informationRow: some View {
+    makeDivider()
+    
+    VStack(alignment: .leading) {
+      Text("Information").font(.headline)
+        .padding(.horizontal, 16.0)
       
-      HStack {
+      ScrollView(.horizontal, showsIndicators: false) {
+        LazyHStack {
+          powerAndToughnessWidgetView
+          loyaltyWidgetView
+          manaValueView
+          setView
+          collectionNumberView
+        }
+        .padding(.horizontal, 16.0)
+      }
+    }
+  }
+  
+  @ViewBuilder
+  private var powerAndToughnessWidgetView: some View {
+    if let power = store.power, let toughness = store.toughness {
+      VStack(alignment: .center) {
         HStack {
           Image("power")
             .resizable()
             .renderingMode(.template)
             .aspectRatio(contentMode: .fit)
-            .foregroundStyle(Color.accentColor)
+            .foregroundStyle(Color.primary)
             .frame(height: UIFont.preferredFont(forTextStyle: .headline).pointSize + 8.0)
           
-          Text("\(power)/\(toughness)").font(.headline).fontDesign(.serif)
+          Text("\(power)/\(toughness)").font(.body).fontDesign(.serif)
           
           Image("toughness")
             .resizable()
             .renderingMode(.template)
             .aspectRatio(contentMode: .fit)
-            .foregroundStyle(Color.accentColor)
+            .foregroundStyle(Color.primary)
             .frame(height: UIFont.preferredFont(forTextStyle: .headline).pointSize + 8.0)
         }
         .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8))
@@ -192,36 +205,101 @@ extension CardView {
           Color(.systemFill)
         }
         .clipShape(.buttonBorder)
+        
+        Text("Power\nToughness").font(.caption2).foregroundStyle(.secondary).multilineTextAlignment(.center)
+        Spacer(minLength: 0)
       }
-      .padding(.horizontal, 16.0)
     } else {
       EmptyView()
     }
   }
   
   @ViewBuilder
-  private var loyaltyRow: some View {
-    if let loyalty = store.loyalty {
-      makeDivider()
-      
-      HStack {
-        ZStack(alignment: .center) {
-          Image("loyalty")
-            .resizable()
-            .renderingMode(.template)
-            .aspectRatio(contentMode: .fit)
-            .tint(.accentColor)
-            .frame(height: UIFont.preferredFont(forTextStyle: .headline).pointSize + 8.0)
-          
-          Text(loyalty).foregroundStyle(Color("capsule")).font(.headline).fontDesign(.serif)
+  private var setView: some View {
+    if let cardSetImageURI = store.cardSetImageURI, let url = URL(string: cardSetImageURI) {
+      VStack(alignment: .center) {
+        HStack(spacing: 5.0) {
+          IconWebImage(url).frame(width: 25, height: 25).tint(.primary)
+          Text(store.card.set.uppercased()).font(.body).fontDesign(.serif)
         }
+        .frame(minWidth: 66.125, minHeight: 25.0)
         .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8))
         .background {
           Color(.systemFill)
         }
         .clipShape(.buttonBorder)
+        
+        Text("Set\nCode").font(.caption2).foregroundStyle(.secondary).multilineTextAlignment(.center)
+        Spacer(minLength: 0)
       }
-      .padding(.horizontal, 16.0)
+    } else {
+      EmptyView()
+    }
+  }
+  
+  @ViewBuilder
+  private var collectionNumberView: some View {
+    VStack(alignment: .center) {
+      HStack {
+        Text("#\(store.card.collectorNumber)".uppercased()).font(.body).fontDesign(.serif)
+      }
+      .frame(minWidth: 66.125, minHeight: 25.0)
+      .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8))
+      .background {
+        Color(.systemFill)
+      }
+      .clipShape(.buttonBorder)
+      
+      Text("Collector\nNumber").font(.caption2).foregroundStyle(.secondary).multilineTextAlignment(.center)
+      Spacer(minLength: 0)
+    }
+  }
+  
+  @ViewBuilder
+  private var manaValueView: some View {
+    let string = store.card.colorIdentity.map { "{\($0.rawValue)}" }
+    
+    VStack(alignment: .center) {
+      HStack(alignment: .center, spacing: 5.0) {
+        ForEach(string.indices, id: \.self) { index in
+          Image(string[index]).resizable().aspectRatio(contentMode: .fit).frame(height: 21.0)
+        }
+      }
+      .frame(minWidth: 66.125, minHeight: 25.0)
+      .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8))
+      .background { Color(.systemFill) }
+      .clipShape(.buttonBorder)
+      
+      Text("Color\nIdentity").font(.caption2).foregroundStyle(.secondary).multilineTextAlignment(.center)
+      Spacer(minLength: 0)
+    }
+  }
+  
+  @ViewBuilder
+  private var loyaltyWidgetView: some View {
+    if let loyalty = store.loyalty {
+      VStack(alignment: .center) {
+        HStack {
+          ZStack(alignment: .center) {
+            Image("loyalty")
+              .resizable()
+              .renderingMode(.template)
+              .aspectRatio(contentMode: .fit)
+              .tint(.accentColor)
+            
+            Text(loyalty).foregroundStyle(Color("capsule")).font(.headline).fontDesign(.serif)
+          }
+          .frame(minWidth: 66.125, minHeight: 25.0)
+          .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8))
+          .background {
+            Color(.systemFill)
+          }
+          .clipShape(.buttonBorder)
+        }
+        
+        Text("Loyalty\nCounters").font(.caption2).foregroundStyle(.secondary).multilineTextAlignment(.center)
+        Spacer(minLength: 0)
+      }
     } else {
       EmptyView()
     }
@@ -230,25 +308,22 @@ extension CardView {
   @ViewBuilder
   private var illustratorRow: some View {
     if let artist = store.card.artist {
-      makeDivider()
-      
       NavigationLink {
         Text("Artist")
       } label: {
-        VStack(alignment: .leading, spacing: 2.0) {
-          Text(store.illstrautedLabel).font(.headline).tint(.primary)
-          
-          HStack(alignment: .center, spacing: 5.0) {
-            Image("artist")
-              .renderingMode(.template)
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .frame(height: 12)
-            Text(artist).font(.caption)
-          }
-        }
+        Text(store.illstrautedLabel).font(.headline).tint(.primary)
         
         Spacer()
+        
+        HStack(alignment: .center, spacing: 5.0) {
+          Image("artist")
+            .renderingMode(.template)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(height: 12)
+          Text(artist).font(.body)
+        }
+        .tint(.secondary)
         
         Image(systemName: "chevron.right")
           .tint(.tertiaryLabel)
@@ -274,37 +349,46 @@ extension CardView {
         Button {
           print("Implement View Rulings")
         } label: {
-          VStack {
-            Text("$\(usdPrice ?? "0.00")").monospaced()
-            Text("USD").font(.caption).foregroundStyle(.secondary)
+          VStack(spacing: 0) {
+            Text("$\(usdPrice ?? "0.00")")
+              .font(usdPrice == nil ? .body : .headline)
+              .monospaced()
+            Text("USD").font(.caption).tint(.secondary)
           }
           .frame(maxWidth: .infinity)
         }
         .buttonStyle(.bordered)
+        .disabled(usdPrice == nil)
         
         let usdFoilPrice = store.card.getPrice(for: .usdFoil)
         Button {
           print("Implement View Rulings")
         } label: {
-          VStack {
-            Text("$\(usdFoilPrice ?? "0.00")").monospaced()
-            Text("USD - Foil").font(.caption).foregroundStyle(.secondary)
+          VStack(spacing: 0) {
+            Text("$\(usdFoilPrice ?? "0.00")")
+              .font(usdFoilPrice == nil ? .body : .headline)
+              .monospaced()
+            Text("USD - Foil").font(.caption).tint(.secondary)
           }
           .frame(maxWidth: .infinity)
         }
         .buttonStyle(.bordered)
+        .disabled(usdFoilPrice == nil)
         
         let tixPrice = store.card.getPrice(for: .tix)
         Button {
           print("Implement View Rulings")
         } label: {
-          VStack {
-            Text("\(tixPrice ?? "0.00")").monospaced()
-            Text("Tix").font(.caption).foregroundStyle(.secondary)
+          VStack(spacing: 0) {
+            Text("\(tixPrice ?? "0.00")")
+              .font(tixPrice == nil ? .body : .headline)
+              .monospaced()
+            Text("Tix").font(.caption).tint(.secondary)
           }
           .frame(maxWidth: .infinity)
         }
         .buttonStyle(.bordered)
+        .disabled(tixPrice == nil)
       }
     }
     .padding(.horizontal, 16.0)
@@ -315,7 +399,7 @@ extension CardView {
     makeDivider()
     
     VStack(alignment: .leading) {
-      Text("Variants").font(.headline).padding(.horizontal, 16.0)
+      Text("Prints").font(.headline).padding(.horizontal, 16.0)
       Text("\(store.prints.count) Results").font(.caption).foregroundStyle(.secondary).padding(.horizontal, 16.0)
       
       ScrollView(.horizontal, showsIndicators: false) {
@@ -327,7 +411,7 @@ extension CardView {
                   .aspectRatio(contentMode: .fit)
                   .frame(width: 144, height: 144 * 1.3928)
                 
-                PillText("$\(card.getPrice(for: .usd) ?? "0.00")").font(.caption).monospaced()
+                PillText("$\(card.getPrice(for: .usd) ?? "0.00")", insets: EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5)).font(.caption).monospaced()
               }
             }
           }
@@ -343,3 +427,4 @@ extension CardView {
       .padding(.leading, 16.0)
   }
 }
+

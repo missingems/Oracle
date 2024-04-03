@@ -6,11 +6,48 @@ import ScryfallKit
 struct CardFeature {
   let client = ScryfallClient()
   
+  struct FooterConfiguration: Identifiable {
+    let id: UUID = UUID()
+    let iconName: String?
+    let systemIconName: String?
+    let title: String
+    let detail: String
+    
+    init(iconName: String? = nil, systemIconName: String? = nil, title: String, detail: String) {
+      self.iconName = iconName
+      self.systemIconName = systemIconName
+      self.title = title
+      self.detail = detail
+    }
+  }
+  
   @ObservableState
   struct State {
     let card: Card
     let cardSetImageURI: String?
     var prints: [Card]
+    
+    var footerConfigurations: [FooterConfiguration] {
+      [
+        FooterConfiguration(
+          iconName: "artist", 
+          title: String(localized: "Artist"),
+          detail: card.artist ?? ""
+        ),
+        FooterConfiguration(
+          iconName: nil,
+          systemIconName: "text.book.closed.fill",
+          title: String(localized: "Rulings"),
+          detail: String(localized: "View")
+        ),
+        FooterConfiguration(
+          iconName: nil,
+          systemIconName: "ellipsis.circle",
+          title: String(localized: "Related"),
+          detail: String(localized: "View")
+        )
+      ]
+    }
     
     var selectedFace: Card.Face? {
       card.cardFaces?.first
@@ -98,11 +135,11 @@ struct CardFeature {
     }
     
     var illstrautedLabel: String {
-      String(localized: "Illustrated by")
+      String(localized: "Artist")
     }
     
     var viewRulingsLabel: String {
-      String(localized: "View Rulings")
+      String(localized: "Rulings")
     }
     
     var legalityLabel: String {

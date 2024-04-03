@@ -17,6 +17,8 @@
 		BF660D282BB030120025218A /* SDWebImageSVGNativeCoder in Frameworks */ = {isa = PBXBuildFile; productRef = BF660D272BB030120025218A /* SDWebImageSVGNativeCoder */; };
 		BF897D2F2BB83ADE00279F66 /* AmbientWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF897D2E2BB83ADE00279F66 /* AmbientWebImage.swift */; };
 		BF897D312BB8430F00279F66 /* TokenizedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF897D302BB8430F00279F66 /* TokenizedTextView.swift */; };
+		BFF33CAB2BBD9C8400DFB1D1 /* SelectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF33CAA2BBD9C8400DFB1D1 /* SelectionRow.swift */; };
+		BFF33CAD2BBD9F7A00DFB1D1 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF33CAC2BBD9F7A00DFB1D1 /* SectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,8 @@
 		BF660D242BB030010025218A /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		BF897D2E2BB83ADE00279F66 /* AmbientWebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbientWebImage.swift; sourceTree = "<group>"; };
 		BF897D302BB8430F00279F66 /* TokenizedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizedTextView.swift; sourceTree = "<group>"; };
+		BFF33CAA2BBD9C8400DFB1D1 /* SelectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionRow.swift; sourceTree = "<group>"; };
+		BFF33CAC2BBD9F7A00DFB1D1 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 		BF660CDE2BB016820025218A = {
 			isa = PBXGroup;
 			children = (
+				BFF33CAC2BBD9F7A00DFB1D1 /* SectionView.swift */,
+				BFF33CAA2BBD9C8400DFB1D1 /* SelectionRow.swift */,
 				BF897D302BB8430F00279F66 /* TokenizedTextView.swift */,
 				BF897D2E2BB83ADE00279F66 /* AmbientWebImage.swift */,
 				BF48F1762BB03C5800F874BF /* Color.swift */,
@@ -204,7 +210,9 @@
 			files = (
 				BF660D252BB030010025218A /* Main.swift in Sources */,
 				BF660D1E2BB0293A0025218A /* IconWebImage.swift in Sources */,
+				BFF33CAD2BBD9F7A00DFB1D1 /* SectionView.swift in Sources */,
 				BF660D232BB02B230025218A /* Container.swift in Sources */,
+				BFF33CAB2BBD9C8400DFB1D1 /* SelectionRow.swift in Sources */,
 				BF660D012BB016A60025218A /* PillText.swift in Sources */,
 				BF897D312BB8430F00279F66 /* TokenizedTextView.swift in Sources */,
 				BF48F1772BB03C5800F874BF /* Color.swift in Sources */,
