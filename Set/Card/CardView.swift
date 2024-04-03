@@ -8,64 +8,8 @@ struct CardView: View {
   var body: some View {
     ScrollView {
       VStack(alignment: .leading, spacing: 11) {
-        AmbientWebImage(url: store.cardImageURL, placeholderName: "mtgBack", cornerRadius: 15.0).padding(EdgeInsets(top: 11, leading: 55, bottom: 11, trailing: 55))
-        
-        VStack(alignment: .leading, spacing: 11) {
-          Divider()
-          
-          HStack(alignment: .center) {
-            if let name = store.name {
-              Text(name).font(.title2).bold().padding(.horizontal, 16.0)
-            }
-            
-            Spacer()
-            
-            if let mana = store.manaCost {
-              TokenizedTextView(mana, font: .preferredFont(forTextStyle: .body)).padding(.horizontal, 16.0)
-            }
-          }
-          
-          if let typeline = store.typeLine {
-            Divider().padding(.leading, 16.0)
-            
-            HStack {
-              Text(typeline).font(.body)
-              Spacer()
-              IconWebImage(URL(string: store.cardSetImageURI!)).frame(width: 21, height: 21)
-            }
-            .padding(.horizontal, 16.0)
-          }
-          
-          if let text = store.text {
-            Divider().padding(.leading, 16.0)
-            TokenizedTextView(text, font: .preferredFont(forTextStyle: .body)).padding(.horizontal, 16.0)
-          }
-          
-          if let flavorText = store.flavorText {
-            Divider().padding(.leading, 16.0)
-            Text(flavorText).font(.body).fontDesign(.serif).italic().foregroundStyle(Color.secondary).padding(.horizontal, 16.0)
-          }
-          
-          Divider().padding(.leading, 16.0)
-          
-          Text(store.legalityLabel).font(.headline).padding(.leading, 16.0)
-          
-          HStack(spacing: 5.0) {
-            VStack(spacing: 2.0) {
-              ForEach(store.allLegalities.prefix(5).indices, id: \.self) { index in
-                legalityRow(index: index, startingIndex: 0)
-              }
-            }
-            
-            VStack(spacing: 2.0) {
-              ForEach(store.allLegalities.suffix(5).indices, id: \.self) { index in
-                legalityRow(index: index, startingIndex: 5)
-              }
-            }
-          }
-          .padding(.horizontal, 16.0)
-        }
-        .background { Color(.secondarySystemBackground) }
+        header
+        content
       }
     }
     .background { Color(.secondarySystemBackground).ignoresSafeArea() }
@@ -102,5 +46,117 @@ struct CardView: View {
         Color.clear
       }
     }
+  }
+}
+
+extension CardView {
+  @ViewBuilder
+  private var content: some View {
+    VStack(alignment: .leading, spacing: 11) {
+      nameAndManaCostRow
+      typelineRow
+      textRow
+      flavorTextRow
+      legalityRow
+    }
+    .background { Color(.secondarySystemBackground) }
+  }
+  
+  @ViewBuilder
+  private var header: some View {
+    AmbientWebImage(
+      url: store.cardImageURL,
+      placeholderName: "mtgBack",
+      cornerRadius: 15.0
+    )
+    .padding(EdgeInsets(top: 11, leading: 55, bottom: 11, trailing: 55))
+  }
+  
+  @ViewBuilder
+  private var nameAndManaCostRow: some View {
+    if let name = store.name, let mana = store.manaCost {
+      Divider()
+      
+      HStack(alignment: .center) {
+        Text(name).font(.title2).bold()
+        Spacer()
+        TokenizedTextView(mana, font: .preferredFont(forTextStyle: .body))
+      }
+      .padding(.horizontal, 16.0)
+    } else {
+      EmptyView()
+    }
+  }
+  
+  @ViewBuilder
+  private var typelineRow: some View {
+    if let typeline = store.typeLine {
+      makeDivider()
+      
+      HStack {
+        Text(typeline).font(.body)
+        Spacer()
+        IconWebImage(URL(string: store.cardSetImageURI!)).frame(width: 21, height: 21)
+      }
+      .padding(.horizontal, 16.0)
+    } else {
+      EmptyView()
+    }
+  }
+  
+  @ViewBuilder
+  private var textRow: some View {
+    if let text = store.text {
+      makeDivider()
+      TokenizedTextView(text, font: .preferredFont(forTextStyle: .body))
+        .padding(.horizontal, 16.0)
+    } else {
+      EmptyView()
+    }
+  }
+  
+  @ViewBuilder
+  private var flavorTextRow: some View {
+    if let flavorText = store.flavorText {
+      makeDivider()
+      Text(flavorText)
+        .font(.body)
+        .fontDesign(.serif)
+        .italic()
+        .foregroundStyle(Color.secondary)
+        .padding(.horizontal, 16.0)
+    } else {
+      EmptyView()
+    }
+  }
+  
+  @ViewBuilder
+  private var legalityRow: some View {
+    makeDivider()
+    
+    VStack(alignment: .leading) {
+      Text(store.legalityLabel).font(.headline)
+      Text(store.displayReleasedDate).font(.caption).foregroundStyle(.secondary)
+      
+      HStack(spacing: 5.0) {
+        VStack(spacing: 2.0) {
+          ForEach(store.allLegalities.prefix(5).indices, id: \.self) { index in
+            legalityRow(index: index, startingIndex: 0)
+          }
+        }
+        
+        VStack(spacing: 2.0) {
+          ForEach(store.allLegalities.suffix(5).indices, id: \.self) { index in
+            legalityRow(index: index, startingIndex: 5)
+          }
+        }
+      }
+    }
+    .padding(.horizontal, 16.0)
+  }
+  
+  private func makeDivider() -> some View {
+    Divider()
+      .padding(.leading, 16.0)
   }
 }
