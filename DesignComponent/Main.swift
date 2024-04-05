@@ -1,3 +1,4 @@
+import SDWebImage
 import SDWebImageSVGNativeCoder
 
 #if os(iOS)
@@ -18,5 +19,8 @@ public struct Main {
   public static func setupSVGCoder() {
     let SVGCoder = SDImageSVGNativeCoder.shared
     SDImageCodersManager.shared.addCoder(SVGCoder)
+    
+    SDImageCache.shared.config.maxMemoryCost = 10000000 * 20 // 200mb
+    SDImageCache.shared.config.maxDiskSize = 100000000 * 20 // 200mb
   }
 }

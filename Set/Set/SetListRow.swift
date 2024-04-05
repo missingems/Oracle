@@ -12,7 +12,7 @@ struct SetListRow: View {
       childIndicatorImage.frame(width: 30, height: 30)
       iconImage.frame(width: 30, height: 30, alignment: .center)
       
-      VStack(alignment: .leading, spacing: 5.0) {
+      VStack(alignment: .leading, spacing: 3.0) {
         titleLabel
         
         HStack(spacing: 5.0) {
@@ -24,10 +24,36 @@ struct SetListRow: View {
       Spacer()
       disclosureIndicator
     }
-    .padding(EdgeInsets(top: 8, leading: 13, bottom: 11, trailing: 13))
-    .background { viewModel.shouldSetBackground ? Color.quaternarySystemFill : Color.clear }
+    .padding(insets)
+    .background { backgroundColor }
     .clipShape(.buttonBorder)
-    .padding(EdgeInsets(top: 0, leading: 16.0, bottom: 0, trailing: 16.0))
+    .padding(margins)
+  }
+}
+
+// MARK: - Configuration
+
+extension SetListRow {
+  private var insets: EdgeInsets {
+    EdgeInsets(
+      top: viewModel.shouldSetBackground ? 8 : 11,
+      leading: 11,
+      bottom: viewModel.shouldSetBackground ? 11 : 13,
+      trailing: 13
+    )
+  }
+  
+  private var margins: EdgeInsets {
+    EdgeInsets(
+      top: 0,
+      leading: 16.0,
+      bottom: 0,
+      trailing: 16.0
+    )
+  }
+  
+  private var backgroundColor: Color {
+    viewModel.shouldSetBackground ? Color.quaternarySystemFill : Color.clear
   }
 }
 
@@ -43,7 +69,7 @@ extension SetListRow {
     }
   }
   
-  private var iconImage: some View {
+  private var iconImage: IconWebImage {
     IconWebImage(viewModel.iconUrl)
   }
   

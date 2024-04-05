@@ -41,7 +41,6 @@ extension CardView {
   private var header: some View {
     AmbientWebImage(
       url: store.cardImageURL,
-      placeholderName: "mtgBack",
       cornerRadius: 15.0,
       blurRadius: 44.0,
       offset: CGPoint(x: 0, y: 10),
@@ -407,7 +406,7 @@ extension CardView {
           ForEach(store.prints) { card in
             NavigationLink(state: Feature.Path.State.showCard(CardFeature.State(card: card, cardSetImageURI: store.cardSetImageURI))) {
               LazyVStack(alignment: .center, spacing: 8.0) {
-                AmbientWebImage(url: card.getImageURL(type: .normal), placeholderName: "mtgBack")
+                AmbientWebImage(url: card.getImageURL(type: .normal))
                   .aspectRatio(contentMode: .fit)
                   .frame(width: 144, height: 144 * 1.3928)
                 
@@ -427,4 +426,3 @@ extension CardView {
       .padding(.leading, 16.0)
   }
 }
-

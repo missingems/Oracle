@@ -10,18 +10,12 @@ public struct IconWebImage: View {
   
   public var body: some View {
     if let url {
-      WebImage(
-        url: url,
-        options: [.refreshCached],
-        context: [.imagePreserveAspectRatio: true]
-      )
+      WebImage(url: url)
       .resizable()
       .renderingMode(.template)
       .indicator(.activity)
       .aspectRatio(contentMode: .fit)
       .tint(Color.accentColor)
-    } else {
-      EmptyView()
     }
   }
 }

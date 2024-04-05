@@ -15,7 +15,7 @@ extension QueryResultView {
             NavigationLink(state: Feature.Path.State.showCard(CardFeature.State(card: card, cardSetImageURI: store.selectedSet.iconSvgUri))) {
               VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .top, spacing: 13.0) {
-                  AmbientWebImage(url: card.getImageURL(type: .normal), placeholderName: "mtgBack")
+                  AmbientWebImage(url: card.getImageURL(type: .normal))
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 144, height: 144 * 1.3928, alignment: .leading)
                   
