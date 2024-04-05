@@ -171,6 +171,14 @@ struct CardFeature {
       String(localized: "Release Date: \(card.releasedAt)")
     }
     
+    var colorIdentity: [String] {
+      guard card.colorIdentity.isEmpty == false else {
+        return ["{C}"]
+      }
+      
+      return card.colorIdentity.map { "{\($0.rawValue)}" }
+    }
+    
     init(
       card: Card,
       cardSetImageURI: String?

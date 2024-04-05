@@ -175,7 +175,7 @@ extension CardView {
             Widget.loyalty(counters: loyalty).view
           }
           
-          Widget.colorIdentity(store.card.colorIdentity.map { "{\($0.rawValue)}"}).view
+          Widget.colorIdentity(store.colorIdentity).view
           
           if let manaValue = store.card.cmc {
             Widget.manaValue("\(manaValue)").view
