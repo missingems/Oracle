@@ -82,8 +82,25 @@ struct CardFeature {
       }
     }
     
-    var manaCost: String? {
-      selectedFace?.manaCost ?? card.manaCost
+    var manaCost: [String] {
+      guard let manaCost = card.manaCost else {
+        return []
+      }
+      
+      let regex = try? NSRegularExpression(pattern: "\\{[^}]+\\}", options: [])
+      
+      let matches = regex?.matches(
+        in: manaCost,
+        options: [],
+        range: NSRange(location: 0, length: manaCost.utf16.count)
+      )
+      
+      let results = matches?.compactMap { result -> String in
+        let range = Range(result.range, in: manaCost)!
+        return String(manaCost[range])
+      }
+      
+      return results ?? []
     }
     
     var flavorText: String? {

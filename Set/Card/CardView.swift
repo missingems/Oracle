@@ -51,13 +51,13 @@ extension CardView {
   
   @ViewBuilder
   private var nameAndManaCostRow: some View {
-    if let name = store.name, let mana = store.manaCost {
+    if let name = store.name {
       Divider()
       
       HStack(alignment: .center) {
         Text(name).font(.headline)
         Spacer()
-        TokenizedTextView(mana, font: .preferredFont(forTextStyle: .body), paragraphSpacing: 8.0).offset(x: 0, y: 2)
+        ManaView(identity: store.manaCost, size: CGSize(width: 21, height: 21))
       }
       .padding(.horizontal, 16.0)
     } else {
@@ -167,140 +167,28 @@ extension CardView {
       
       ScrollView(.horizontal, showsIndicators: false) {
         LazyHStack {
-          powerAndToughnessWidgetView
-          loyaltyWidgetView
-          manaValueView
-          setView
-          collectionNumberView
+          if let power = store.power, let toughness = store.toughness {
+            Widget.powerToughness(power: power, toughness: toughness).view
+          }
+          
+          if let loyalty = store.card.loyalty {
+            Widget.loyalty(counters: loyalty).view
+          }
+          
+          Widget.colorIdentity(store.card.colorIdentity.map { "{\($0.rawValue)}"}).view
+          
+          if let manaValue = store.card.cmc {
+            Widget.manaValue("\(manaValue)").view
+          }
+          
+          if let uri = store.cardSetImageURI, let url = URL(string: uri) {
+            Widget.setCode(store.card.set, iconURL: url).view
+          }
+          
+          Widget.collectorNumber(rarity: "\(store.card.rarity.rawValue.prefix(1))", store.card.collectorNumber).view
         }
         .padding(.horizontal, 16.0)
       }
-    }
-  }
-  
-  @ViewBuilder
-  private var powerAndToughnessWidgetView: some View {
-    if let power = store.power, let toughness = store.toughness {
-      VStack(alignment: .center) {
-        HStack {
-          Image("power")
-            .resizable()
-            .renderingMode(.template)
-            .aspectRatio(contentMode: .fit)
-            .foregroundStyle(Color.primary)
-            .frame(height: UIFont.preferredFont(forTextStyle: .headline).pointSize + 8.0)
-          
-          Text("\(power)/\(toughness)").font(.body).fontDesign(.serif)
-          
-          Image("toughness")
-            .resizable()
-            .renderingMode(.template)
-            .aspectRatio(contentMode: .fit)
-            .foregroundStyle(Color.primary)
-            .frame(height: UIFont.preferredFont(forTextStyle: .headline).pointSize + 8.0)
-        }
-        .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8))
-        .background {
-          Color(.systemFill)
-        }
-        .clipShape(.buttonBorder)
-        
-        Text("Power\nToughness").font(.caption2).foregroundStyle(.secondary).multilineTextAlignment(.center)
-        Spacer(minLength: 0)
-      }
-    } else {
-      EmptyView()
-    }
-  }
-  
-  @ViewBuilder
-  private var setView: some View {
-    if let cardSetImageURI = store.cardSetImageURI, let url = URL(string: cardSetImageURI) {
-      VStack(alignment: .center) {
-        HStack(spacing: 5.0) {
-          IconWebImage(url).frame(width: 25, height: 25).tint(.primary)
-          Text(store.card.set.uppercased()).font(.body).fontDesign(.serif)
-        }
-        .frame(minWidth: 66.125, minHeight: 25.0)
-        .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8))
-        .background {
-          Color(.systemFill)
-        }
-        .clipShape(.buttonBorder)
-        
-        Text("Set\nCode").font(.caption2).foregroundStyle(.secondary).multilineTextAlignment(.center)
-        Spacer(minLength: 0)
-      }
-    } else {
-      EmptyView()
-    }
-  }
-  
-  @ViewBuilder
-  private var collectionNumberView: some View {
-    VStack(alignment: .center) {
-      HStack {
-        Text("#\(store.card.collectorNumber)".uppercased()).font(.body).fontDesign(.serif)
-      }
-      .frame(minWidth: 66.125, minHeight: 25.0)
-      .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8))
-      .background {
-        Color(.systemFill)
-      }
-      .clipShape(.buttonBorder)
-      
-      Text("Collector\nNumber").font(.caption2).foregroundStyle(.secondary).multilineTextAlignment(.center)
-      Spacer(minLength: 0)
-    }
-  }
-  
-  @ViewBuilder
-  private var manaValueView: some View {
-    let string = store.card.colorIdentity.map { "{\($0.rawValue)}" }
-    
-    VStack(alignment: .center) {
-      HStack(alignment: .center, spacing: 5.0) {
-        ForEach(string.indices, id: \.self) { index in
-          Image(string[index]).resizable().aspectRatio(contentMode: .fit).frame(height: 21.0)
-        }
-      }
-      .frame(minWidth: 66.125, minHeight: 25.0)
-      .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8))
-      .background { Color(.systemFill) }
-      .clipShape(.buttonBorder)
-      
-      Text("Color\nIdentity").font(.caption2).foregroundStyle(.secondary).multilineTextAlignment(.center)
-      Spacer(minLength: 0)
-    }
-  }
-  
-  @ViewBuilder
-  private var loyaltyWidgetView: some View {
-    if let loyalty = store.loyalty {
-      VStack(alignment: .center) {
-        HStack {
-          ZStack(alignment: .center) {
-            Image("loyalty")
-              .resizable()
-              .renderingMode(.template)
-              .aspectRatio(contentMode: .fit)
-              .tint(.accentColor)
-            
-            Text(loyalty).foregroundStyle(Color("capsule")).font(.headline).fontDesign(.serif)
-          }
-          .frame(minWidth: 66.125, minHeight: 25.0)
-          .padding(EdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8))
-          .background {
-            Color(.systemFill)
-          }
-          .clipShape(.buttonBorder)
-        }
-        
-        Text("Loyalty\nCounters").font(.caption2).foregroundStyle(.secondary).multilineTextAlignment(.center)
-        Spacer(minLength: 0)
-      }
-    } else {
-      EmptyView()
     }
   }
   
