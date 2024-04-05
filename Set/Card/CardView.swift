@@ -52,7 +52,7 @@ extension CardView {
   @ViewBuilder
   private var nameAndManaCostRow: some View {
     if let name = store.configuration?.name {
-      makeDivider()
+      Divider()
       
       HStack(alignment: .center) {
         Text(name).font(.headline)
