@@ -138,7 +138,7 @@ private extension Widget {
   func manaValueView(_ manaValue: String) -> some View {
     VStack(alignment: .center) {
       content {
-        Text(manaValue).font(.body).fontDesign(.serif)
+        Text(manaValue).font(.body).fontDesign(.monospaced)
       }
       
       Text(String(localized: "Mana\nValue"))
