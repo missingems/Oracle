@@ -38,7 +38,6 @@ private extension Widget {
     VStack(alignment: .center) {
       content {
         Image("power")
-          .resizable()
           .renderingMode(.template)
           .aspectRatio(contentMode: .fit)
           .foregroundStyle(Color.primary)
@@ -48,7 +47,6 @@ private extension Widget {
           .fontDesign(.serif)
         
         Image("toughness")
-          .resizable()
           .renderingMode(.template)
           .aspectRatio(contentMode: .fit)
           .foregroundStyle(Color.primary)

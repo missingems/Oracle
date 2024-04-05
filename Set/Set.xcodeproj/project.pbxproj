@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0761C82BC0281B00B6C21C /* CardConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0761C72BC0281B00B6C21C /* CardConfiguration.swift */; };
+		BF0761CA2BC029A700B6C21C /* CardFaceDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0761C92BC029A700B6C21C /* CardFaceDisplayable.swift */; };
 		BF0FDC392BB4065B00211199 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0FDC382BB4065B00211199 /* RootViewModel.swift */; };
 		BF636E4E2BB51B2500629CAA /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF636E4D2BB51B2500629CAA /* Stubs.swift */; };
 		BF636E512BB51BDD00629CAA /* setsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = BF636E502BB51BDD00629CAA /* setsSample.json */; };
@@ -47,6 +49,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF0761C72BC0281B00B6C21C /* CardConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardConfiguration.swift; sourceTree = "<group>"; };
+		BF0761C92BC029A700B6C21C /* CardFaceDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFaceDisplayable.swift; sourceTree = "<group>"; };
 		BF0FDC382BB4065B00211199 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		BF636E4D2BB51B2500629CAA /* Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubs.swift; sourceTree = "<group>"; };
 		BF636E502BB51BDD00629CAA /* setsSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = setsSample.json; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 				BFF33C912BBBF8AD00DFB1D1 /* CardFeature.swift */,
 				BFF33C932BBC699D00DFB1D1 /* Card+Extensions.swift */,
 				BFF33CA82BBD9BE700DFB1D1 /* CardFooterView.swift */,
+				BF0761C72BC0281B00B6C21C /* CardConfiguration.swift */,
+				BF0761C92BC029A700B6C21C /* CardFaceDisplayable.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -274,6 +280,7 @@
 				BF660CDB2BB00FFD0025218A /* SetListRow.swift in Sources */,
 				BF660CDD2BB011B60025218A /* SetListRowViewModel.swift in Sources */,
 				BF660CD82BB00E6F0025218A /* SetViewModel.swift in Sources */,
+				BF0761C82BC0281B00B6C21C /* CardConfiguration.swift in Sources */,
 				BF897D392BB8FEDE00279F66 /* QueryResultListView.swift in Sources */,
 				BF660D212BB02A310025218A /* NetworkEffect.swift in Sources */,
 				BF660CA12BAFEF3D0025218A /* RootView.swift in Sources */,
@@ -282,6 +289,7 @@
 				BF660CA62BAFF1BA0025218A /* SetView.swift in Sources */,
 				BF897D372BB8FDED00279F66 /* QueryResultGridView.swift in Sources */,
 				BFF33C922BBBF8AD00DFB1D1 /* CardFeature.swift in Sources */,
+				BF0761CA2BC029A700B6C21C /* CardFaceDisplayable.swift in Sources */,
 				BF897D2B2BB7DD9100279F66 /* QueryFeature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

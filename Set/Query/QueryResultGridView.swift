@@ -23,7 +23,7 @@ extension QueryResultView {
                   state: Feature.Path.State.showCard(
                     CardFeature.State(
                       card: card,
-                      cardSetImageURI: store.state.selectedSet.iconSvgUri
+                      cardSetImageURL: URL(string: store.state.selectedSet.iconSvgUri)
                     )
                   )
                 ) {
