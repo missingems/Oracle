@@ -10,6 +10,7 @@
 		BF0761C82BC0281B00B6C21C /* CardConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0761C72BC0281B00B6C21C /* CardConfiguration.swift */; };
 		BF0761CA2BC029A700B6C21C /* CardFaceDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0761C92BC029A700B6C21C /* CardFaceDisplayable.swift */; };
 		BF0FDC392BB4065B00211199 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0FDC382BB4065B00211199 /* RootViewModel.swift */; };
+		BF14B5152BC1110100EB2BB5 /* NavigationCardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF14B5142BC1110100EB2BB5 /* NavigationCardImageView.swift */; };
 		BF636E4E2BB51B2500629CAA /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF636E4D2BB51B2500629CAA /* Stubs.swift */; };
 		BF636E512BB51BDD00629CAA /* setsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = BF636E502BB51BDD00629CAA /* setsSample.json */; };
 		BF660C9E2BAFEE760025218A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BF660C9D2BAFEE760025218A /* ComposableArchitecture */; };
@@ -52,6 +53,7 @@
 		BF0761C72BC0281B00B6C21C /* CardConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardConfiguration.swift; sourceTree = "<group>"; };
 		BF0761C92BC029A700B6C21C /* CardFaceDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFaceDisplayable.swift; sourceTree = "<group>"; };
 		BF0FDC382BB4065B00211199 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		BF14B5142BC1110100EB2BB5 /* NavigationCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCardImageView.swift; sourceTree = "<group>"; };
 		BF636E4D2BB51B2500629CAA /* Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubs.swift; sourceTree = "<group>"; };
 		BF636E502BB51BDD00629CAA /* setsSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = setsSample.json; sourceTree = "<group>"; };
 		BF660C842BAFEE180025218A /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF14B5132BC110F600EB2BB5 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BF14B5142BC1110100EB2BB5 /* NavigationCardImageView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		BF636E4F2BB51B6B00629CAA /* Samples */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +110,7 @@
 		BF660C7A2BAFEE180025218A = {
 			isa = PBXGroup;
 			children = (
+				BF14B5132BC110F600EB2BB5 /* Shared */,
 				BFF33C8E2BBBF79D00DFB1D1 /* Card */,
 				BF897D2D2BB7E3C800279F66 /* Query */,
 				BF660CA72BAFF1D90025218A /* Root */,
@@ -284,6 +295,7 @@
 				BF897D392BB8FEDE00279F66 /* QueryResultListView.swift in Sources */,
 				BF660D212BB02A310025218A /* NetworkEffect.swift in Sources */,
 				BF660CA12BAFEF3D0025218A /* RootView.swift in Sources */,
+				BF14B5152BC1110100EB2BB5 /* NavigationCardImageView.swift in Sources */,
 				BF0FDC392BB4065B00211199 /* RootViewModel.swift in Sources */,
 				BF7F05D82BB67F9100B53C22 /* QueryResultView.swift in Sources */,
 				BF660CA62BAFF1BA0025218A /* SetView.swift in Sources */,
