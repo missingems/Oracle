@@ -82,8 +82,13 @@ struct CardFeature {
       cardSetImageURL: URL?
     ) {
       self.card = card
-      let selectedFace: any CardFaceDisplayable = card.cardFaces?.first ?? card
-      self.selectedFace = selectedFace
+      
+      if card.isFlippable, let cardFace = card.cardFaces?.first {
+        selectedFace = cardFace
+      } else {
+        selectedFace = card
+      }
+      
       self.prints = [card]
       self.cardSetImageURL = cardSetImageURL
     }
