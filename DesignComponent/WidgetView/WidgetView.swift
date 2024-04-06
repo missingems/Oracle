@@ -108,7 +108,7 @@ private extension Widget {
         Text("\(rarity) #\(number)".uppercased()).font(.body).fontDesign(.serif)
       }
       
-      Text(String(stringLiteral: "Collector\nNumber"))
+      Text(String(localized: "Collector\nNumber"))
         .font(.caption2)
         .foregroundStyle(.secondary)
         .multilineTextAlignment(.center)
