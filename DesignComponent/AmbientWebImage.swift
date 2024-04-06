@@ -38,7 +38,7 @@ public struct AmbientWebImage: View {
         .scaledToFit()
         .aspectRatio(contentMode: .fit)
         .clipShape(.rect(cornerRadii: .init(topLeading: cornerRadius, bottomLeading: cornerRadius, bottomTrailing: cornerRadius, topTrailing: cornerRadius)))
-        .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(.separator).opacity(0.618))
+        .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(Color(.separator), lineWidth: 1 / Main.nativeScale).opacity(0.618))
     }
   }
 }
