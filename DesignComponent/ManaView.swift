@@ -18,7 +18,7 @@ public struct ManaView: View {
           .resizable()
           .aspectRatio(contentMode: .fit)
           .frame(width: size.width, height: size.height)
-          .background { Circle().fill(Color.black).offset(x: -0.5, y: 1.5) }
+          .background { Circle().fill(Color.black).offset(x: -0.75, y: 1.5) }
       }
     }
   }
