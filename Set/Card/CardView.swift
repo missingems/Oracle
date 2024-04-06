@@ -40,7 +40,7 @@ extension CardView {
   @ViewBuilder
   private var header: some View {
     AmbientWebImage(
-      url: store.configuration?.imageURL,
+      url: [store.configuration?.imageURL],
       cornerRadius: 15.0,
       blurRadius: 44.0,
       offset: CGPoint(x: 0, y: 10),
@@ -305,7 +305,7 @@ extension CardView {
               )
             ) {
               LazyVStack(alignment: .center, spacing: 8.0) {
-                AmbientWebImage(url: card.getImageURL(type: .normal))
+                AmbientWebImage(url: [card.getImageURL(type: .normal)])
                   .aspectRatio(contentMode: .fit)
                   .frame(width: 144, height: 144 * 1.3928)
                 
