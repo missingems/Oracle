@@ -3,48 +3,6 @@ import SDWebImageSwiftUI
 import SwiftUI
 import Kingfisher
 
-struct CustomRotationImageProcessor: ImageProcessor {
-  // The identifier should be unique to your processor.
-  let identifier: String = "com.yourdomain.CustomRotationImageProcessor"
-  let degrees: CGFloat
-  
-  init(degrees: CGFloat) {
-    self.degrees = degrees
-  }
-  
-  func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
-    switch item {
-    case let .image(value):
-      return value
-      
-    case let .data(value):
-      return rotate(image: UIImage(data: value)!, degrees: degrees)
-    }
-  }
-  
-  private func rotate(image: UIImage, degrees: CGFloat) -> UIImage? {
-    guard image.cgImage != nil else { return nil }
-    
-    let radians = degrees * CGFloat.pi / 180
-    let rotatedSize = CGRect(origin: .zero, size: image.size)
-      .applying(CGAffineTransform(rotationAngle: radians))
-      .integral.size
-    
-    UIGraphicsBeginImageContextWithOptions(rotatedSize, false, image.scale)
-    guard let context = UIGraphicsGetCurrentContext() else { return nil }
-    
-    context.translateBy(x: rotatedSize.width / 2, y: rotatedSize.height / 2)
-    context.rotate(by: radians)
-    
-    image.draw(in: CGRect(x: -image.size.width / 2, y: -image.size.height / 2, width: image.size.width, height: image.size.height))
-    
-    let rotatedImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    
-    return rotatedImage
-  }
-}
-
 public struct Cycle {
   let max: Int
   private(set) var current: Int
@@ -97,7 +55,7 @@ public struct AmbientWebImage: View {
   public var body: some View {
     ZStack {
       KFImage(url[cycle.current])
-        .setProcessor(CustomRotationImageProcessor(degrees: rotation))
+        .setProcessor(RotationImageProcessor(degrees: rotation))
         .resizable()
         .blur(radius: blurRadius, opaque: false)
         .scaledToFit()
@@ -107,7 +65,7 @@ public struct AmbientWebImage: View {
         .offset(x: offset.x, y: offset.y)
       
       KFImage(url[cycle.current])
-        .setProcessor(CustomRotationImageProcessor(degrees: rotation))
+        .setProcessor(RotationImageProcessor(degrees: rotation))
         .resizable()
         .scaledToFit()
         .aspectRatio(contentMode: .fit)
