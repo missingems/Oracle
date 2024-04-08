@@ -25,6 +25,7 @@
 		BF660D052BB016F20025218A /* DesignComponent.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF660D032BB016F20025218A /* DesignComponent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF660D212BB02A310025218A /* NetworkEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF660D202BB02A310025218A /* NetworkEffect.swift */; };
 		BF7F05D82BB67F9100B53C22 /* QueryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F05D72BB67F9100B53C22 /* QueryResultView.swift */; };
+		BF8539582BC389DA00CB8E19 /* CardView+MultiFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8539572BC389DA00CB8E19 /* CardView+MultiFace.swift */; };
 		BF897D2B2BB7DD9100279F66 /* QueryFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF897D2A2BB7DD9100279F66 /* QueryFeature.swift */; };
 		BF897D352BB89C6E00279F66 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = BF897D342BB89C6E00279F66 /* cards.json */; };
 		BF897D372BB8FDED00279F66 /* QueryResultGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF897D362BB8FDED00279F66 /* QueryResultGridView.swift */; };
@@ -66,6 +67,7 @@
 		BF660D032BB016F20025218A /* DesignComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF660D202BB02A310025218A /* NetworkEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEffect.swift; sourceTree = "<group>"; };
 		BF7F05D72BB67F9100B53C22 /* QueryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryResultView.swift; sourceTree = "<group>"; };
+		BF8539572BC389DA00CB8E19 /* CardView+MultiFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardView+MultiFace.swift"; sourceTree = "<group>"; };
 		BF897D2A2BB7DD9100279F66 /* QueryFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryFeature.swift; sourceTree = "<group>"; };
 		BF897D342BB89C6E00279F66 /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
 		BF897D362BB8FDED00279F66 /* QueryResultGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryResultGridView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				BFF33CA82BBD9BE700DFB1D1 /* CardFooterView.swift */,
 				BF0761C72BC0281B00B6C21C /* CardConfiguration.swift */,
 				BF0761C92BC029A700B6C21C /* CardFaceDisplayable.swift */,
+				BF8539572BC389DA00CB8E19 /* CardView+MultiFace.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				BF14B5152BC1110100EB2BB5 /* NavigationCardImageView.swift in Sources */,
 				BF0FDC392BB4065B00211199 /* RootViewModel.swift in Sources */,
 				BF7F05D82BB67F9100B53C22 /* QueryResultView.swift in Sources */,
+				BF8539582BC389DA00CB8E19 /* CardView+MultiFace.swift in Sources */,
 				BF660CA62BAFF1BA0025218A /* SetView.swift in Sources */,
 				BF897D372BB8FDED00279F66 /* QueryResultGridView.swift in Sources */,
 				BFF33C922BBBF8AD00DFB1D1 /* CardFeature.swift in Sources */,

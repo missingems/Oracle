@@ -7,9 +7,10 @@ struct CardView: View {
   
   var body: some View {
     ScrollView {
-      VStack(alignment: .leading, spacing: 13) {
+      VStack(alignment: .leading, spacing: 0) {
         header
         content
+        Spacer(minLength: 13.0)
         footerView
       }
       .padding(.bottom, 13.0)
@@ -25,43 +26,11 @@ extension CardView {
   @ViewBuilder
   private var content: some View {
     VStack(alignment: .leading, spacing: 13) {
-      if store.card.layout == .split,
-         let cardFaces = store.card.cardFaces,
-         cardFaces.count == 2,
-         let leftFace = cardFaces.first,
-         let rightFace = cardFaces.last {
-        ZStack {
-          VStack(alignment: .leading, spacing: 13) {
-            HStack(alignment: .top, spacing: 0) {
-              nameAndManaCostRow(name: leftFace.name, manaCost: leftFace.tokenisedManaCost, shouldRenderDivider: false)
-              nameAndManaCostRow(name: rightFace.name, manaCost: rightFace.tokenisedManaCost, shouldRenderDivider: false)
-            }
-            
-            makeDivider()
-            
-            HStack(alignment: .top, spacing: 0) {
-              typelineRow(typeline: leftFace.typeLine, shouldRenderDivider: false)
-              typelineRow(typeline: rightFace.typeLine, shouldRenderDivider: false)
-            }
-            
-            makeDivider()
-            
-            HStack(alignment: .top, spacing: 0) {
-              textRow(text: leftFace.oracleText, shouldRenderDivider: false)
-              textRow(text: rightFace.oracleText, shouldRenderDivider: false)
-            }
-            
-//            HStack(alignment: .top, spacing: 0) {
-//              flavorTextRow(flavorText: leftFace.flavorText, shouldRenderDivider: false)
-//              flavorTextRow(flavorText: rightFace.flavorText, shouldRenderDivider: false)
-//            }
-          }
-          
-          Rectangle().fill(Color(.separator)).frame(width: 1/Main.nativeScale).padding(.vertical, -13)
-        }
-        .padding(.top, 13)
+      if store.card.layout == .split {
+        multiFaceContentView(leftFace: store.card.cardFaces?.first, rightFace: store.card.cardFaces?.last)
       } else {
         nameAndManaCostRow(name: store.configuration?.name, manaCost: store.configuration?.manaCost)
+          .padding(.top, 13.0)
         typelineRow(typeline: store.configuration?.typeline)
         textRow(text: store.configuration?.text)
         flavorTextRow(flavorText: store.configuration?.flavorText)
@@ -77,30 +46,23 @@ extension CardView {
   
   @ViewBuilder
   private var header: some View {
-    AmbientWebImage(
-      url: [store.configuration?.imageURL],
-      cornerRadius: 15.0,
-      blurRadius: 44.0,
-      offset: CGPoint(x: 0, y: 10),
-      scale: CGSize(width: 1.1, height: 1.1)
-    )
-    .padding(EdgeInsets(top: 11, leading: 55, bottom: 11, trailing: 55))
-  }
-  
-  @ViewBuilder
-  private var nameAndManaCostRow: some View {
-    if let name = store.configuration?.name {
+    ZStack(alignment: .bottom) {
+      AmbientWebImage(
+        url: [store.configuration?.imageURL],
+        cornerRadius: 15.0,
+        blurRadius: 44.0,
+        offset: CGPoint(x: 0, y: 10),
+        scale: CGSize(width: 1.1, height: 1.1)
+      )
+      .padding(EdgeInsets(top: 13, leading: 55, bottom: 21, trailing: 55))
+      
       Divider()
     }
   }
   
   @ViewBuilder
-  private func nameAndManaCostRow(name: String?, manaCost: [String]?, shouldRenderDivider: Bool = true) -> some View {
+  func nameAndManaCostRow(name: String?, manaCost: [String]?) -> some View {
     if let name {
-      if shouldRenderDivider {
-        Divider()
-      }
-      
       HStack(alignment: .center) {
         Text(name)
           .font(.headline)
@@ -121,7 +83,7 @@ extension CardView {
   }
   
   @ViewBuilder
-  private func typelineRow(typeline: String?, shouldRenderDivider: Bool = true) -> some View {
+  func typelineRow(typeline: String?, shouldRenderDivider: Bool = true) -> some View {
     if let typeline {
       if shouldRenderDivider {
         makeDivider()
@@ -138,7 +100,7 @@ extension CardView {
   }
   
   @ViewBuilder
-  private func textRow(text: String?, shouldRenderDivider: Bool = true) -> some View {
+  func textRow(text: String?, shouldRenderDivider: Bool = true) -> some View {
     if let text {
       if shouldRenderDivider {
         makeDivider()
@@ -154,7 +116,7 @@ extension CardView {
   }
   
   @ViewBuilder
-  private func flavorTextRow(flavorText: String?, shouldRenderDivider: Bool = true) -> some View {
+  func flavorTextRow(flavorText: String?, shouldRenderDivider: Bool = true) -> some View {
     if let flavorText {
       if shouldRenderDivider {
         makeDivider()
