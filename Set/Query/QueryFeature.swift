@@ -14,6 +14,7 @@ struct QueryFeature {
   @ObservableState
   struct State {
     let selectedSet: MTGSet
+    var displayingCards: [Card] = []
     var cards: ObjectList<Card>?
     var currentPage = 1
     var viewState = Layout.grid
@@ -27,14 +28,6 @@ struct QueryFeature {
       String(localized: "\(selectedSet.cardCount) Cards")
     }
     
-    var displayingCards: [Card] {
-      guard let cards else {
-        return Card.stubs
-      }
-      
-      return cards.data
-    }
-    
     var isInteractivable: Bool {
       cards == nil
     }
@@ -45,6 +38,31 @@ struct QueryFeature {
       }
       
       return .invalidated
+    }
+    
+    func shouldShowTransformButton(at index: Int) -> Bool {
+      displayingCards[index].isFlippable
+    }
+    
+    func images(at index: Int) -> [URL?] {
+      guard let card = cards?.data[index] else {
+        return []
+      }
+      
+      if card.isFlippable {
+        return card.cardFaces?.compactMap { $0.imageURL } ?? []
+      } else {
+        return [card.getImageURL(type: .normal)]
+      }
+    }
+    
+    func pathState(at index: Int) -> Feature.Path.State {
+      Feature.Path.State.showCard(
+        CardFeature.State(
+          card: (cards?.data[index])!,
+          cardSetImageURL: URL(string: selectedSet.iconSvgUri)
+        )
+      )
     }
   }
   
@@ -134,6 +152,8 @@ struct QueryFeature {
         } else {
           state.cards = cards
         }
+        
+        state.displayingCards = state.cards?.data ?? []
         
         return .none
       }

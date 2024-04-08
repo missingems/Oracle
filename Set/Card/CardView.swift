@@ -25,10 +25,48 @@ extension CardView {
   @ViewBuilder
   private var content: some View {
     VStack(alignment: .leading, spacing: 13) {
-      nameAndManaCostRow
-      typelineRow
-      textRow
-      flavorTextRow
+      if store.card.layout == .split,
+         let cardFaces = store.card.cardFaces,
+         cardFaces.count == 2,
+         let leftFace = cardFaces.first,
+         let rightFace = cardFaces.last {
+        ZStack {
+          VStack(alignment: .leading, spacing: 13) {
+            HStack(alignment: .top, spacing: 0) {
+              nameAndManaCostRow(name: leftFace.name, manaCost: leftFace.tokenisedManaCost, shouldRenderDivider: false)
+              nameAndManaCostRow(name: rightFace.name, manaCost: rightFace.tokenisedManaCost, shouldRenderDivider: false)
+            }
+            
+            makeDivider()
+            
+            HStack(alignment: .top, spacing: 0) {
+              typelineRow(typeline: leftFace.typeLine, shouldRenderDivider: false)
+              typelineRow(typeline: rightFace.typeLine, shouldRenderDivider: false)
+            }
+            
+            makeDivider()
+            
+            HStack(alignment: .top, spacing: 0) {
+              textRow(text: leftFace.oracleText, shouldRenderDivider: false)
+              textRow(text: rightFace.oracleText, shouldRenderDivider: false)
+            }
+            
+//            HStack(alignment: .top, spacing: 0) {
+//              flavorTextRow(flavorText: leftFace.flavorText, shouldRenderDivider: false)
+//              flavorTextRow(flavorText: rightFace.flavorText, shouldRenderDivider: false)
+//            }
+          }
+          
+          Rectangle().fill(Color(.separator)).frame(width: 1/Main.nativeScale).padding(.vertical, -13)
+        }
+        .padding(.top, 13)
+      } else {
+        nameAndManaCostRow(name: store.configuration?.name, manaCost: store.configuration?.manaCost)
+        typelineRow(typeline: store.configuration?.typeline)
+        textRow(text: store.configuration?.text)
+        flavorTextRow(flavorText: store.configuration?.flavorText)
+      }
+      
       informationRow
       legalityRow
       marketPriceRow
@@ -40,7 +78,7 @@ extension CardView {
   @ViewBuilder
   private var header: some View {
     AmbientWebImage(
-      url: store.cardImageURL,
+      url: [store.configuration?.imageURL],
       cornerRadius: 15.0,
       blurRadius: 44.0,
       offset: CGPoint(x: 0, y: 10),
@@ -51,13 +89,30 @@ extension CardView {
   
   @ViewBuilder
   private var nameAndManaCostRow: some View {
-    if let name = store.name {
+    if let name = store.configuration?.name {
       Divider()
+    }
+  }
+  
+  @ViewBuilder
+  private func nameAndManaCostRow(name: String?, manaCost: [String]?, shouldRenderDivider: Bool = true) -> some View {
+    if let name {
+      if shouldRenderDivider {
+        Divider()
+      }
       
       HStack(alignment: .center) {
-        Text(name).font(.headline)
+        Text(name)
+          .font(.headline)
+          .multilineTextAlignment(.leading)
+        
         Spacer()
-        ManaView(identity: store.manaCost, size: CGSize(width: 21, height: 21))
+        
+        ManaView(
+          identity: manaCost ?? [],
+          size: CGSize(width: 17, height: 17),
+          spacing: 2.0
+        )
       }
       .padding(.horizontal, 16.0)
     } else {
@@ -66,11 +121,16 @@ extension CardView {
   }
   
   @ViewBuilder
-  private var typelineRow: some View {
-    if let typeline = store.typeLine {
-      makeDivider()
+  private func typelineRow(typeline: String?, shouldRenderDivider: Bool = true) -> some View {
+    if let typeline {
+      if shouldRenderDivider {
+        makeDivider()
+      }
       
-      Text(typeline).font(.headline)
+      Text(typeline)
+        .font(.headline)
+        .multilineTextAlignment(.leading)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16.0)
     } else {
       EmptyView()
@@ -78,10 +138,15 @@ extension CardView {
   }
   
   @ViewBuilder
-  private var textRow: some View {
-    if let text = store.text {
-      makeDivider()
+  private func textRow(text: String?, shouldRenderDivider: Bool = true) -> some View {
+    if let text {
+      if shouldRenderDivider {
+        makeDivider()
+      }
+      
       TokenizedTextView(text, font: .preferredFont(forTextStyle: .body), paragraphSpacing: 8.0)
+        .multilineTextAlignment(.leading)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16.0)
     } else {
       EmptyView()
@@ -89,14 +154,18 @@ extension CardView {
   }
   
   @ViewBuilder
-  private var flavorTextRow: some View {
-    if let flavorText = store.flavorText {
-      makeDivider()
+  private func flavorTextRow(flavorText: String?, shouldRenderDivider: Bool = true) -> some View {
+    if let flavorText {
+      if shouldRenderDivider {
+        makeDivider()
+      }
+      
       Text(flavorText)
         .font(.body)
         .fontDesign(.serif)
         .italic()
         .foregroundStyle(Color.secondary)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16.0)
     } else {
       EmptyView()
@@ -132,7 +201,7 @@ extension CardView {
   private func legalityRow(index: Int, startingIndex: Int) -> some View {
     let legality = store.allLegalities[index]
     let value = store.card.legalities.type(legality)
-    let color = value.1?.color.map { Color(uiColor: $0) }
+    let color = value.1?.color.map { $0 }
     
     HStack {
       Text("\(value.1?.localisedDescription ?? "")")
@@ -143,6 +212,7 @@ extension CardView {
         .background { color }
         .clipShape(ButtonBorderShape.roundedRectangle)
         .shadow(color: color?.opacity(0.38) ?? .clear, radius: 5.0)
+      
       Text("\(value.0)")
         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
         .font(.caption)
@@ -162,28 +232,27 @@ extension CardView {
     makeDivider()
     
     VStack(alignment: .leading) {
-      Text("Information").font(.headline)
+      Text("Information")
+        .font(.headline)
         .padding(.horizontal, 16.0)
       
       ScrollView(.horizontal, showsIndicators: false) {
         LazyHStack {
-          if let power = store.power, let toughness = store.toughness {
+          if let power = store.configuration?.power, let toughness = store.configuration?.toughness {
             Widget.powerToughness(power: power, toughness: toughness).view
           }
           
-          if let loyalty = store.card.loyalty {
+          if let loyalty = store.configuration?.loyalty {
             Widget.loyalty(counters: loyalty).view
           }
           
-          Widget.colorIdentity(store.colorIdentity).view
+          Widget.colorIdentity(store.configuration?.colorIdentity ?? []).view
           
-          if let manaValue = store.card.cmc {
+          if let manaValue = store.configuration?.cmc {
             Widget.manaValue("\(manaValue)").view
           }
           
-          if let uri = store.cardSetImageURI, let url = URL(string: uri) {
-            Widget.setCode(store.card.set, iconURL: url).view
-          }
+          Widget.setCode(store.card.set, iconURL: store.cardSetImageURL).view
           
           Widget.collectorNumber(rarity: "\(store.card.rarity.rawValue.prefix(1))", store.card.collectorNumber).view
         }
@@ -194,7 +263,7 @@ extension CardView {
   
   @ViewBuilder
   private var illustratorRow: some View {
-    if let artist = store.card.artist {
+    if let artist = store.configuration?.artist {
       NavigationLink {
         Text("Artist")
       } label: {
@@ -232,7 +301,7 @@ extension CardView {
       Text("Data from Scryfall").font(.caption).foregroundStyle(.secondary)
       
       HStack(alignment: .center, spacing: 5.0) {
-        let usdPrice = store.card.getPrice(for: .usd)
+        let usdPrice = store.configuration?.usdPrice
         Button {
           print("Implement View Rulings")
         } label: {
@@ -247,7 +316,7 @@ extension CardView {
         .buttonStyle(.bordered)
         .disabled(usdPrice == nil)
         
-        let usdFoilPrice = store.card.getPrice(for: .usdFoil)
+        let usdFoilPrice = store.configuration?.usdFoilPrice
         Button {
           print("Implement View Rulings")
         } label: {
@@ -262,7 +331,7 @@ extension CardView {
         .buttonStyle(.bordered)
         .disabled(usdFoilPrice == nil)
         
-        let tixPrice = store.card.getPrice(for: .tix)
+        let tixPrice = store.configuration?.tixPrice
         Button {
           print("Implement View Rulings")
         } label: {
@@ -292,9 +361,16 @@ extension CardView {
       ScrollView(.horizontal, showsIndicators: false) {
         LazyHStack {
           ForEach(store.prints) { card in
-            NavigationLink(state: Feature.Path.State.showCard(CardFeature.State(card: card, cardSetImageURI: store.cardSetImageURI))) {
+            NavigationLink(
+              state: Feature.Path.State.showCard(
+                CardFeature.State(
+                  card: card, 
+                  cardSetImageURL: store.cardSetImageURL
+                )
+              )
+            ) {
               LazyVStack(alignment: .center, spacing: 8.0) {
-                AmbientWebImage(url: card.getImageURL(type: .normal))
+                AmbientWebImage(url: [card.getImageURL(type: .normal)])
                   .aspectRatio(contentMode: .fit)
                   .frame(width: 144, height: 144 * 1.3928)
                 

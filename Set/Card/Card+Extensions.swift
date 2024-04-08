@@ -1,4 +1,4 @@
-import UIKit
+import SwiftUI
 import ScryfallKit
 
 extension Card.Legalities {
@@ -63,22 +63,26 @@ extension Card {
   var isLandscape: Bool {
     layout == .split
   }
+  
+  var isPhyrexian: Bool {
+    lang == "ph"
+  }
 }
 
 extension Card.Legality {
-  var color: UIColor? {
+  var color: Color? {
     switch self {
     case .banned:
-      return UIColor(named: "banned")
+      return Color("banned")
       
     case .legal:
-      return UIColor(named: "legal")
+      return Color("legal")
       
     case .restricted:
-      return UIColor(named: "restricted")
+      return Color("restricted")
       
     case .notLegal:
-      return UIColor(named: "notLegal")
+      return Color("notLegal")
     }
   }
   

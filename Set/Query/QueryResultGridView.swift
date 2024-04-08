@@ -1,3 +1,4 @@
+import ScryfallKit
 import ComposableArchitecture
 import DesignComponent
 import SwiftUI
@@ -17,20 +18,13 @@ extension QueryResultView {
           ScrollView {
             LazyVGrid(columns: columns, spacing: 8) {
               ForEach(store.displayingCards.indices, id: \.self) { index in
-                let card = store.displayingCards[index]
-                
-                NavigationLink(
-                  state: Feature.Path.State.showCard(
-                    CardFeature.State(
-                      card: card,
-                      cardSetImageURI: store.state.selectedSet.iconSvgUri
-                    )
-                  )
-                ) {
-                  AmbientWebImage(url: card.getImageURL(type: .normal))
-                    .frame(height: ((proxy.size.width - 24.0) / 2 * 1.3928).rounded())
-                    .redacted(reason: store.redactionReason)
-                }
+                NavigationCardImageView(
+                  images: store.state.images(at: index),
+                  linkState: store.state.pathState(at: index),
+                  shouldShowTransformButton: store.state.shouldShowTransformButton(at: index),
+                  width: (proxy.size.width - 24.0) / 2, 
+                  cycle: Cycle(max: store.state.images(at: index).count)
+                )
                 .onAppear { store.send(.loadMoreIfNeeded(index)) }
               }
             }
@@ -40,4 +34,8 @@ extension QueryResultView {
       }
     }
   }
+}
+
+extension QueryResultView {
+  
 }
