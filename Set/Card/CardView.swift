@@ -25,10 +25,48 @@ extension CardView {
   @ViewBuilder
   private var content: some View {
     VStack(alignment: .leading, spacing: 13) {
-      nameAndManaCostRow
-      typelineRow
-      textRow
-      flavorTextRow
+      if store.card.layout == .split,
+         let cardFaces = store.card.cardFaces,
+         cardFaces.count == 2,
+         let leftFace = cardFaces.first,
+         let rightFace = cardFaces.last {
+        ZStack {
+          VStack(alignment: .leading, spacing: 13) {
+            HStack(alignment: .top, spacing: 0) {
+              nameAndManaCostRow(name: leftFace.name, manaCost: leftFace.tokenisedManaCost, shouldRenderDivider: false)
+              nameAndManaCostRow(name: rightFace.name, manaCost: rightFace.tokenisedManaCost, shouldRenderDivider: false)
+            }
+            
+            makeDivider()
+            
+            HStack(alignment: .top, spacing: 0) {
+              typelineRow(typeline: leftFace.typeLine, shouldRenderDivider: false)
+              typelineRow(typeline: rightFace.typeLine, shouldRenderDivider: false)
+            }
+            
+            makeDivider()
+            
+            HStack(alignment: .top, spacing: 0) {
+              textRow(text: leftFace.oracleText, shouldRenderDivider: false)
+              textRow(text: rightFace.oracleText, shouldRenderDivider: false)
+            }
+            
+//            HStack(alignment: .top, spacing: 0) {
+//              flavorTextRow(flavorText: leftFace.flavorText, shouldRenderDivider: false)
+//              flavorTextRow(flavorText: rightFace.flavorText, shouldRenderDivider: false)
+//            }
+          }
+          
+          Rectangle().fill(Color(.separator)).frame(width: 1/Main.nativeScale).padding(.vertical, -13)
+        }
+        .padding(.top, 13)
+      } else {
+        nameAndManaCostRow(name: store.configuration?.name, manaCost: store.configuration?.manaCost)
+        typelineRow(typeline: store.configuration?.typeline)
+        textRow(text: store.configuration?.text)
+        flavorTextRow(flavorText: store.configuration?.flavorText)
+      }
+      
       informationRow
       legalityRow
       marketPriceRow
@@ -53,12 +91,25 @@ extension CardView {
   private var nameAndManaCostRow: some View {
     if let name = store.configuration?.name {
       Divider()
+    }
+  }
+  
+  @ViewBuilder
+  private func nameAndManaCostRow(name: String?, manaCost: [String]?, shouldRenderDivider: Bool = true) -> some View {
+    if let name {
+      if shouldRenderDivider {
+        Divider()
+      }
       
       HStack(alignment: .center) {
-        Text(name).font(.headline)
+        Text(name)
+          .font(.headline)
+          .multilineTextAlignment(.leading)
+        
         Spacer()
+        
         ManaView(
-          identity: store.configuration?.manaCost ?? [],
+          identity: manaCost ?? [],
           size: CGSize(width: 17, height: 17),
           spacing: 2.0
         )
@@ -70,11 +121,16 @@ extension CardView {
   }
   
   @ViewBuilder
-  private var typelineRow: some View {
-    if let typeline = store.configuration?.typeline {
-      makeDivider()
+  private func typelineRow(typeline: String?, shouldRenderDivider: Bool = true) -> some View {
+    if let typeline {
+      if shouldRenderDivider {
+        makeDivider()
+      }
       
-      Text(typeline).font(.headline)
+      Text(typeline)
+        .font(.headline)
+        .multilineTextAlignment(.leading)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16.0)
     } else {
       EmptyView()
@@ -82,10 +138,15 @@ extension CardView {
   }
   
   @ViewBuilder
-  private var textRow: some View {
-    if let text = store.configuration?.text {
-      makeDivider()
+  private func textRow(text: String?, shouldRenderDivider: Bool = true) -> some View {
+    if let text {
+      if shouldRenderDivider {
+        makeDivider()
+      }
+      
       TokenizedTextView(text, font: .preferredFont(forTextStyle: .body), paragraphSpacing: 8.0)
+        .multilineTextAlignment(.leading)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16.0)
     } else {
       EmptyView()
@@ -93,14 +154,18 @@ extension CardView {
   }
   
   @ViewBuilder
-  private var flavorTextRow: some View {
-    if let flavorText = store.configuration?.flavorText {
-      makeDivider()
+  private func flavorTextRow(flavorText: String?, shouldRenderDivider: Bool = true) -> some View {
+    if let flavorText {
+      if shouldRenderDivider {
+        makeDivider()
+      }
+      
       Text(flavorText)
         .font(.body)
         .fontDesign(.serif)
         .italic()
         .foregroundStyle(Color.secondary)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16.0)
     } else {
       EmptyView()
