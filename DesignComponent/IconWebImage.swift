@@ -11,11 +11,12 @@ public struct IconWebImage: View {
   public var body: some View {
     if let url {
       WebImage(url: url)
-      .resizable()
-      .renderingMode(.template)
-      .indicator(.activity)
-      .aspectRatio(contentMode: .fit)
-      .tint(Color.accentColor)
+        .resizable()
+        .renderingMode(.template)
+        .indicator(.activity)
+        .aspectRatio(contentMode: .fit)
+        .tint(Color.accentColor)
     }
   }
 }
+

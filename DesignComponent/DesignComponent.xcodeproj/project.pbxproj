@@ -19,6 +19,8 @@
 		BF897D312BB8430F00279F66 /* TokenizedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF897D302BB8430F00279F66 /* TokenizedTextView.swift */; };
 		BFADDB122BBFC7EF00F0C052 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFADDB112BBFC7EF00F0C052 /* WidgetView.swift */; };
 		BFE1AB412BBFDAEF00633035 /* ManaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE1AB402BBFDAEF00633035 /* ManaView.swift */; };
+		BFEBA89B2BC3AC7B007CC97A /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = BFEBA89A2BC3AC7B007CC97A /* NukeUI */; };
+		BFEBA89E2BC3B5EC007CC97A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BFEBA89D2BC3B5EC007CC97A /* Kingfisher */; };
 		BFF33CAB2BBD9C8400DFB1D1 /* SelectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF33CAA2BBD9C8400DFB1D1 /* SelectionRow.swift */; };
 		BFF33CAD2BBD9F7A00DFB1D1 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF33CAC2BBD9F7A00DFB1D1 /* SectionView.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFEBA89E2BC3B5EC007CC97A /* Kingfisher in Frameworks */,
+				BFEBA89B2BC3AC7B007CC97A /* NukeUI in Frameworks */,
 				BF660D282BB030120025218A /* SDWebImageSVGNativeCoder in Frameworks */,
 				BF660D1C2BB029220025218A /* SDWebImageSwiftUI in Frameworks */,
 			);
@@ -135,6 +139,8 @@
 			packageProductDependencies = (
 				BF660D1B2BB029220025218A /* SDWebImageSwiftUI */,
 				BF660D272BB030120025218A /* SDWebImageSVGNativeCoder */,
+				BFEBA89A2BC3AC7B007CC97A /* NukeUI */,
+				BFEBA89D2BC3B5EC007CC97A /* Kingfisher */,
 			);
 			productName = DesignComponent;
 			productReference = BF660CE82BB016820025218A /* DesignComponent.framework */;
@@ -189,6 +195,8 @@
 			packageReferences = (
 				BF660D1A2BB029220025218A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				BF660D262BB030120025218A /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */,
+				BFEBA8992BC3AC7B007CC97A /* XCRemoteSwiftPackageReference "Nuke" */,
+				BFEBA89C2BC3B5EC007CC97A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = BF660CE92BB016820025218A /* Products */;
 			projectDirPath = "";
@@ -554,6 +562,22 @@
 				minimumVersion = 0.2.0;
 			};
 		};
+		BFEBA8992BC3AC7B007CC97A /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.5.0;
+			};
+		};
+		BFEBA89C2BC3B5EC007CC97A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -566,6 +590,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF660D262BB030120025218A /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */;
 			productName = SDWebImageSVGNativeCoder;
+		};
+		BFEBA89A2BC3AC7B007CC97A /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFEBA8992BC3AC7B007CC97A /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
+		BFEBA89D2BC3B5EC007CC97A /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFEBA89C2BC3B5EC007CC97A /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
