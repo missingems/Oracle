@@ -12,7 +12,7 @@ public struct ManaView: View {
   }
   
   public var body: some View {
-    HStack(spacing: spacing) {
+    WrappingHStack(alignment: .trailing, horizontalSpacing: spacing, verticalSpacing: 2.0, fitContentWidth: true) {
       ForEach(identity.indices, id: \.self) { index in
         Image(identity[index])
           .resizable()
@@ -23,4 +23,3 @@ public struct ManaView: View {
     }
   }
 }
-
