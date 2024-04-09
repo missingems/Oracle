@@ -52,7 +52,7 @@ extension CardFeature {
         self.colorIdentity = colorIdentity
       }
       
-      manaCost = card.tokenisedManaCost
+      manaCost = selectedFace?.tokenisedManaCost ?? []
       usdPrice = card.getPrice(for: .usd)
       usdFoilPrice = card.getPrice(for: .usdFoil)
       tixPrice = card.getPrice(for: .tix)

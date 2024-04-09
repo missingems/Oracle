@@ -98,6 +98,7 @@ extension CardView {
         Text(name)
           .font(.headline)
           .multilineTextAlignment(.leading)
+          .frame(maxWidth: .infinity, alignment: .leading)
         
         Spacer()
         
@@ -239,8 +240,7 @@ extension CardView {
           }
           
           Widget.setCode(store.card.set, iconURL: store.cardSetImageURL).view
-          
-          Widget.collectorNumber(rarity: "\(store.card.rarity.rawValue.prefix(1))", store.card.collectorNumber).view
+          Widget.collectorNumber(store.card.collectorNumber).view
         }
         .padding(.horizontal, 16.0)
       }
@@ -364,7 +364,7 @@ extension CardView {
                   )
                 } else {
                   PillText(
-                    "\(card.rarity.rawValue.prefix(1))#\(card.collectorNumber)".uppercased(),
+                    "#\(card.collectorNumber)".uppercased(),
                     insets: EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5),
                     background: Color.clear
                   )
