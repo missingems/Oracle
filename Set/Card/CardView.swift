@@ -53,7 +53,10 @@ extension CardView {
           }
         } label: {
           HStack {
-            Label("Transform", systemImage: "rectangle.portrait.rotate").font(.headline).frame(maxWidth: .infinity).foregroundStyle(Color("ReversedAccent"))
+            Label("Transform", systemImage: "rectangle.portrait.rotate")
+              .font(.headline)
+              .frame(maxWidth: .infinity)
+              .foregroundStyle(Color("ReversedAccent"))
           }
         }
         
