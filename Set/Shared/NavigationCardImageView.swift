@@ -1,11 +1,12 @@
 import DesignComponent
 import SwiftUI
 
-struct NavigationCardImageView: View {
+struct NavigationCardImageView<Content: View>: View {
   private let images: [URL?]
   private let linkState: Feature.Path.State
   private let shouldShowTransformButton: Bool
   private let width: CGFloat
+  private let content: Content
   
   @State
   private var cycle: Cycle
@@ -15,19 +16,25 @@ struct NavigationCardImageView: View {
     linkState: Feature.Path.State,
     shouldShowTransformButton: Bool,
     width: CGFloat,
-    cycle: Cycle
+    cycle: Cycle,
+    @ViewBuilder content: () -> Content
   ) {
     self.images = images
     self.linkState = linkState
     self.shouldShowTransformButton = shouldShowTransformButton
     self.width = width
     self.cycle = cycle
+    self.content = content()
   }
   
   var body: some View {
     ZStack {
       NavigationLink(state: linkState) {
-        AmbientWebImage(url: images, cycle: cycle)
+        VStack(spacing: 5.0) {
+          AmbientWebImage(url: images, cycle: cycle)
+            .frame(width: width, height: (width * 1.3928).rounded())
+          content
+        }
       }
       
       if shouldShowTransformButton {
@@ -48,6 +55,5 @@ struct NavigationCardImageView: View {
         .defersSystemGestures(on: .vertical)
       }
     }
-    .frame(width: width, height: (width * 1.3928).rounded())
   }
 }

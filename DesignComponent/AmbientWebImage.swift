@@ -8,7 +8,7 @@ struct RotationImageProcessor: ImageProcessing {
     return rotate(image: image, degrees: degrees)
   }
   
-  var identifier = UUID().uuidString
+  var identifier = "com.missingems.mooligan.rotationImageProcessor"
   private let degrees: CGFloat
   
   public init(degrees: CGFloat) {
@@ -101,7 +101,6 @@ public struct AmbientWebImage: View {
         state.image?
           .resizable()
           .aspectRatio(contentMode: .fit)
-          .scaledToFit()
       }
       .blur(radius: blurRadius, opaque: false)
       .opacity(0.38)
@@ -121,19 +120,18 @@ public struct AmbientWebImage: View {
           state.image?
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .scaledToFit()
-            .clipShape(
-              .rect(
-                cornerRadii: .init(
-                  topLeading: cornerRadius,
-                  bottomLeading: cornerRadius,
-                  bottomTrailing: cornerRadius,
-                  topTrailing: cornerRadius
-                )
-              )
-            )
         }
       }
+      .clipShape(
+        .rect(
+          cornerRadii: .init(
+            topLeading: cornerRadius,
+            bottomLeading: cornerRadius,
+            bottomTrailing: cornerRadius,
+            topTrailing: cornerRadius
+          )
+        )
+      )
     }
   }
 }

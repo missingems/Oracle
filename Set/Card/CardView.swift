@@ -338,9 +338,14 @@ extension CardView {
             ) {
               VStack(alignment: .center, spacing: 8.0) {
                 AmbientWebImage(url: [card.getImageURL(type: .normal)])
-                  .frame(width: 144, height: 144 * 1.3928)
+                  .frame(width: 144, height: 200)
                 
-                PillText("$\(card.getPrice(for: .usd) ?? "0.00")", insets: EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5)).font(.caption).monospaced()
+                PillText(
+                  "$\(card.getPrice(for: .usd) ?? "0.00")",
+                  insets: EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5)
+                )
+                .font(.caption)
+                .monospaced()
               }
             }
           }
