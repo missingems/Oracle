@@ -105,17 +105,29 @@ public struct AmbientWebImage: View {
       LazyImage(
         request: ImageRequest(
           url: url[cycle.current],
-          processors: [
-            RotationImageProcessor(degrees: rotation),
-            .roundedCorners(radius: 9, unit: .points)
-          ]
-        )
+          processors: rotation != 0 ? [RotationImageProcessor(degrees: rotation)] : []
+        ),
+        transaction: Transaction(animation: .easeInOut(duration: 0.15))
       ) { state in
-        state.image?.resizable().aspectRatio(contentMode: .fit).scaledToFit()
+        if state.isLoading {
+          RoundedRectangle(cornerRadius: cornerRadius).fill(Color.quaternarySystemFill)
+        } else {
+          state.image?
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .scaledToFit()
+            .clipShape(
+              .rect(
+                cornerRadii: .init(
+                  topLeading: cornerRadius,
+                  bottomLeading: cornerRadius,
+                  bottomTrailing: cornerRadius,
+                  topTrailing: cornerRadius
+                )
+              )
+            )
+        }
       }
     }
   }
 }
-
-
-
