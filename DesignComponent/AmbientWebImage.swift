@@ -95,10 +95,13 @@ public struct AmbientWebImage: View {
       LazyImage(
         request: ImageRequest(
           url: url[cycle.current],
-          processors: [RotationImageProcessor(degrees: rotation)]
+          processors: rotation != 0 ? [RotationImageProcessor(degrees: rotation)] : []
         )
       ) { state in
-        state.image?.resizable().aspectRatio(contentMode: .fit).scaledToFit()
+        state.image?
+          .resizable()
+          .aspectRatio(contentMode: .fit)
+          .scaledToFit()
       }
       .blur(radius: blurRadius, opaque: false)
       .opacity(0.38)
