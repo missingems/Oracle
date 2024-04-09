@@ -56,7 +56,8 @@ extension CardView {
         offset: CGPoint(x: 0, y: 10),
         scale: CGSize(width: 1.1, height: 1.1),
         rotation: store.card.layout == .split ? 90 : 0,
-        transaction: Transaction(animation: nil)
+        transaction: Transaction(animation: nil), 
+        width: 300
       )
       .padding(EdgeInsets(top: 13, leading: 55, bottom: 21, trailing: 55))
       
@@ -328,25 +329,34 @@ extension CardView {
       ScrollView(.horizontal, showsIndicators: false) {
         LazyHStack {
           ForEach(store.prints) { card in
-            NavigationLink(
-              state: Feature.Path.State.showCard(
-                CardFeature.State(
-                  card: card, 
-                  cardSetImageURL: store.cardSetImageURL
-                )
-              )
+            NavigationCardImageView(
+              imageURLs: card.imageURLs,
+              linkState: Feature.Path.State.showCard(CardFeature.State(card: card, cardSetImageURL: store.cardSetImageURL)),
+              shouldShowTransformButton: card.isFlippable,
+              width: 144
             ) {
-              VStack(alignment: .center, spacing: 8.0) {
-                AmbientWebImage(url: [card.getImageURL(type: .normal)])
-                  .frame(width: 144, height: 200)
-                
-                PillText(
-                  "$\(card.getPrice(for: .usd) ?? "0.00")",
-                  insets: EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5)
-                )
-                .font(.caption)
-                .monospaced()
+              Group {
+                if let usd = card.getPrice(for: .usd) {
+                  PillText(
+                    "$\(usd)",
+                    insets: EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5)
+                  )
+                } else if let usdFoil = card.getPrice(for: .usd) {
+                  PillText(
+                    "$\(usdFoil)",
+                    insets: EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5)
+                  )
+                } else {
+                  PillText(
+                    "\(card.rarity.rawValue.prefix(1))#\(card.collectorNumber)".uppercased(),
+                    insets: EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5),
+                    background: Color.clear
+                  )
+                }
               }
+              .font(.caption)
+              .fontWeight(.medium)
+              .monospaced()
             }
           }
         }

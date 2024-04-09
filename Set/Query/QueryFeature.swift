@@ -17,7 +17,6 @@ struct QueryFeature {
     var displayingCards: [Card] = []
     var cards: ObjectList<Card>?
     var currentPage = 1
-    var viewState = Layout.grid
     var isLoadingMore = false
     
     var title: String {
@@ -44,18 +43,6 @@ struct QueryFeature {
       displayingCards[index].isFlippable
     }
     
-    func images(at index: Int) -> [URL?] {
-      guard let card = cards?.data[index] else {
-        return []
-      }
-      
-      if card.isFlippable {
-        return card.cardFaces?.compactMap { $0.imageURL } ?? []
-      } else {
-        return [card.getImageURL(type: .normal)]
-      }
-    }
-    
     func pathState(at index: Int) -> Feature.Path.State {
       Feature.Path.State.showCard(
         CardFeature.State(
@@ -71,7 +58,6 @@ struct QueryFeature {
     case fetchCards(filter: [CardFieldFilter], page: Int)
     case loadMoreIfNeeded(Int)
     case viewAppeared
-    case viewStateChanged(Layout)
   }
   
   var body: some ReducerOf<Self> {
@@ -112,10 +98,6 @@ struct QueryFeature {
             )
           )
         }
-        
-      case let .viewStateChanged(viewState):
-        state.viewState = viewState
-        return .none
         
       case let .loadMoreIfNeeded(index):
         if let cards = state.cards,

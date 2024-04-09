@@ -2,7 +2,7 @@ import DesignComponent
 import SwiftUI
 
 struct NavigationCardImageView<Content: View>: View {
-  private let images: [URL?]
+  private let imageURLs: [URL?]
   private let linkState: Feature.Path.State
   private let shouldShowTransformButton: Bool
   private let width: CGFloat
@@ -12,18 +12,17 @@ struct NavigationCardImageView<Content: View>: View {
   private var cycle: Cycle
   
   init(
-    images: [URL?],
+    imageURLs: [URL?],
     linkState: Feature.Path.State,
     shouldShowTransformButton: Bool,
     width: CGFloat,
-    cycle: Cycle,
     @ViewBuilder content: () -> Content
   ) {
-    self.images = images
+    self.imageURLs = imageURLs
     self.linkState = linkState
     self.shouldShowTransformButton = shouldShowTransformButton
     self.width = width
-    self.cycle = cycle
+    self.cycle = Cycle(max: imageURLs.count)
     self.content = content()
   }
   
@@ -31,8 +30,7 @@ struct NavigationCardImageView<Content: View>: View {
     ZStack {
       NavigationLink(state: linkState) {
         VStack(spacing: 5.0) {
-          AmbientWebImage(url: images, cycle: cycle)
-            .frame(width: width, height: (width * 1.3928).rounded())
+          AmbientWebImage(url: imageURLs, cycle: cycle, width: width).frame(width: width, height: (width * 1.3928).rounded())
           content
         }
       }

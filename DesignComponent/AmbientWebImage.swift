@@ -66,9 +66,8 @@ public struct AmbientWebImage: View {
   private let offset: CGPoint
   private let scale: CGSize
   private var cycle: Cycle
-  private var selectedURL: URL?
-  private let rotation: CGFloat
   private let transaction: Transaction
+  private let transformers: [ImageProcessing]
   
   public init(
     url: [URL?] = [],
@@ -78,7 +77,8 @@ public struct AmbientWebImage: View {
     scale: CGSize = CGSize(width: 1, height: 1),
     rotation: CGFloat = 0,
     cycle: Cycle = Cycle(max: 1),
-    transaction: Transaction = Transaction(animation: .easeInOut(duration: 0.15))
+    transaction: Transaction = Transaction(animation: .easeInOut(duration: 0.15)),
+    width: CGFloat? = nil
   ) {
     self.url = url
     self.cornerRadius = cornerRadius
@@ -86,8 +86,19 @@ public struct AmbientWebImage: View {
     self.offset = offset
     self.scale = scale
     self.cycle = cycle
-    self.rotation = rotation
     self.transaction = transaction
+    
+    var transformers: [ImageProcessing] = []
+    
+    if rotation != 0 {
+      transformers.append(RotationImageProcessor(degrees: rotation))
+    }
+    
+    if let width {
+      transformers.append(.resize(width: width))
+    }
+    
+    self.transformers = transformers
   }
   
   public var body: some View {
@@ -95,7 +106,7 @@ public struct AmbientWebImage: View {
       LazyImage(
         request: ImageRequest(
           url: url[cycle.current],
-          processors: rotation != 0 ? [RotationImageProcessor(degrees: rotation)] : []
+          processors: transformers
         )
       ) { state in
         state.image?
@@ -110,7 +121,7 @@ public struct AmbientWebImage: View {
       LazyImage(
         request: ImageRequest(
           url: url[cycle.current],
-          processors: rotation != 0 ? [RotationImageProcessor(degrees: rotation)] : []
+          processors: transformers
         ),
         transaction: transaction
       ) { state in
