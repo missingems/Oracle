@@ -89,7 +89,12 @@ public struct AmbientWebImage: View {
   
   public var body: some View {
     ZStack {
-      LazyImage(request: ImageRequest(url: url[cycle.current], processors: [RotationImageProcessor(degrees: rotation)])) { state in
+      LazyImage(
+        request: ImageRequest(
+          url: url[cycle.current],
+          processors: [RotationImageProcessor(degrees: rotation)]
+        )
+      ) { state in
         state.image?.resizable().aspectRatio(contentMode: .fit).scaledToFit()
       }
       .blur(radius: blurRadius, opaque: false)
@@ -97,13 +102,20 @@ public struct AmbientWebImage: View {
       .scaleEffect(scale)
       .offset(x: offset.x, y: offset.y)
       
-      LazyImage(request: ImageRequest(url: url[cycle.current], processors: [RotationImageProcessor(degrees: rotation)])) { state in
+      LazyImage(
+        request: ImageRequest(
+          url: url[cycle.current],
+          processors: [
+            RotationImageProcessor(degrees: rotation),
+            .roundedCorners(radius: 9, unit: .points)
+          ]
+        )
+      ) { state in
         state.image?.resizable().aspectRatio(contentMode: .fit).scaledToFit()
       }
-      .clipShape(.rect(cornerRadii: .init(topLeading: cornerRadius, bottomLeading: cornerRadius, bottomTrailing: cornerRadius, topTrailing: cornerRadius)))
-      .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(Color(.separator), lineWidth: 1 / Main.nativeScale).opacity(0.618))
     }
   }
 }
+
 
 
