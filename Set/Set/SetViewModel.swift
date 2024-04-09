@@ -18,7 +18,7 @@ struct SetViewModel {
   }
   
   var isInteractivable: Bool {
-    store.sets.isEmpty
+    store.sets.isEmpty == false
   }
   
   var displayingSets: [MTGSet] {

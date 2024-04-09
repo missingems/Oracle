@@ -367,7 +367,7 @@ extension CardView {
                     "$\(usd)",
                     insets: EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5)
                   )
-                } else if let usdFoil = card.getPrice(for: .usd) {
+                } else if let usdFoil = card.getPrice(for: .usdFoil) {
                   PillText(
                     "$\(usdFoil)",
                     insets: EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5)

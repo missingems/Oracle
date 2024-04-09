@@ -1,7 +1,7 @@
 import Nuke
 import NukeUI
-import SDWebImageSwiftUI
 import SwiftUI
+import Shimmer
 
 struct RotationImageProcessor: ImageProcessing {
   func process(_ image: Nuke.PlatformImage) -> Nuke.PlatformImage? {
@@ -122,7 +122,11 @@ public struct AmbientWebImage: View {
         )
       ) { state in
         if state.isLoading {
-          RoundedRectangle(cornerRadius: cornerRadius).fill(Color(.systemFill))
+          RoundedRectangle(cornerRadius: cornerRadius).fill(Color(.systemFill)).shimmering(
+            gradient: Gradient(
+              colors: [.black.opacity(0.8), .black.opacity(1), .black.opacity(0.8)]
+            )
+          )
         } else if let image = state.image {
           image.resizable().aspectRatio(contentMode: .fit)
         }
