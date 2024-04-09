@@ -28,6 +28,8 @@ extension CardView {
     VStack(alignment: .leading, spacing: 13) {
       if store.card.layout == .split {
         multiFaceContentView(leftFace: store.card.cardFaces?.first, rightFace: store.card.cardFaces?.last)
+      } else if store.card.layout == .adventure {
+        multiFaceContentView(leftFace: store.card.cardFaces?.last, rightFace: store.card.cardFaces?.first)
       } else {
         nameAndManaCostRow(name: store.configuration?.name, manaCost: store.configuration?.manaCost)
           .padding(.top, 13.0)
@@ -65,7 +67,7 @@ extension CardView {
   @ViewBuilder
   func nameAndManaCostRow(name: String?, manaCost: [String]?) -> some View {
     if let name {
-      HStack(alignment: .center) {
+      HStack(alignment: .top) {
         Text(name)
           .font(.headline)
           .multilineTextAlignment(.leading)
@@ -77,6 +79,7 @@ extension CardView {
           size: CGSize(width: 17, height: 17),
           spacing: 2.0
         )
+        .offset(CGSize(width: 0, height: 1))
       }
       .padding(.horizontal, 16.0)
     } else {
