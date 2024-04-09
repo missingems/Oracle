@@ -43,6 +43,24 @@ extension CardView {
       }
       
       informationRow
+      
+      if store.card.isFlippable {
+        makeDivider()
+        
+        Button {
+          withAnimation(.bouncy) {
+            _ = store.send(.transformTapped)
+          }
+        } label: {
+          HStack {
+            Label("Transform", systemImage: "rectangle.portrait.rotate").font(.headline).frame(maxWidth: .infinity).foregroundStyle(Color("ReversedAccent"))
+          }
+        }
+        
+        .buttonStyle(BorderedProminentButtonStyle())
+        .padding(.horizontal, 16.0)
+      }
+      
       legalityRow
       marketPriceRow
       printsRow
@@ -69,9 +87,11 @@ extension CardView {
         
         if store.card.isFlippable {
           Button {
-            store.send(.transformTapped)
+            withAnimation(.bouncy) {
+              _ = store.send(.transformTapped)
+            }
           } label: {
-            Image(systemName: "arrow.left.and.right.righttriangle.left.righttriangle.right.fill")
+            Image(systemName: "rectangle.portrait.rotate").fontWeight(.semibold)
           }
           .frame(
             width: 44.0,

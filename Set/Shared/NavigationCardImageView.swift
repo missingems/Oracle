@@ -39,7 +39,7 @@ struct NavigationCardImageView<Content: View>: View {
         Button {
           cycle.next()
         } label: {
-          Image(systemName: "arrow.left.and.right.righttriangle.left.righttriangle.right.fill")
+          Image(systemName: "rectangle.portrait.rotate").fontWeight(.semibold)
         }
         .frame(
           width: 44.0,
