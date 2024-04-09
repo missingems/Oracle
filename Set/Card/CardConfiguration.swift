@@ -19,8 +19,10 @@ extension CardFeature {
     let usdPrice: String?
     let usdFoilPrice: String?
     let tixPrice: String?
+    let isLandscape: Bool
     
     init(card: Card, selectedFace: CardFaceDisplayable?) {
+      self.isLandscape = card.isLandscape
       oracleId = card.oracleId
       imageURL = selectedFace?.imageURL
       
