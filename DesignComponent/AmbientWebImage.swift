@@ -68,6 +68,7 @@ public struct AmbientWebImage: View {
   private var cycle: Cycle
   private var selectedURL: URL?
   private let rotation: CGFloat
+  private let transaction: Transaction
   
   public init(
     url: [URL?] = [],
@@ -76,7 +77,8 @@ public struct AmbientWebImage: View {
     offset: CGPoint = CGPoint(x: 0, y: 3),
     scale: CGSize = CGSize(width: 1, height: 1),
     rotation: CGFloat = 0,
-    cycle: Cycle = Cycle(max: 1)
+    cycle: Cycle = Cycle(max: 1),
+    transaction: Transaction = Transaction(animation: .easeInOut(duration: 0.15))
   ) {
     self.url = url
     self.cornerRadius = cornerRadius
@@ -85,6 +87,7 @@ public struct AmbientWebImage: View {
     self.scale = scale
     self.cycle = cycle
     self.rotation = rotation
+    self.transaction = transaction
   }
   
   public var body: some View {
@@ -107,7 +110,7 @@ public struct AmbientWebImage: View {
           url: url[cycle.current],
           processors: rotation != 0 ? [RotationImageProcessor(degrees: rotation)] : []
         ),
-        transaction: Transaction(animation: .easeInOut(duration: 0.15))
+        transaction: transaction
       ) { state in
         if state.isLoading {
           RoundedRectangle(cornerRadius: cornerRadius).fill(Color.quaternarySystemFill)

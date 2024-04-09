@@ -53,7 +53,8 @@ extension CardView {
         blurRadius: 44.0,
         offset: CGPoint(x: 0, y: 10),
         scale: CGSize(width: 1.1, height: 1.1),
-        rotation: store.card.layout == .split ? 90 : 0
+        rotation: store.card.layout == .split ? 90 : 0,
+        transaction: Transaction(animation: nil)
       )
       .padding(EdgeInsets(top: 13, leading: 55, bottom: 21, trailing: 55))
       
