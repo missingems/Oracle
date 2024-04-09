@@ -132,6 +132,11 @@ public struct AmbientWebImage: View {
           )
         )
       )
+      .overlay(
+        RoundedRectangle(cornerRadius: cornerRadius)
+          .stroke(Color(.separator), lineWidth: 1 / Main.nativeScale)
+          .opacity(0.618)
+      )
     }
   }
 }
