@@ -109,8 +109,6 @@ extension CardView {
         .offset(CGSize(width: 0, height: 1))
       }
       .padding(.horizontal, 16.0)
-    } else {
-      EmptyView()
     }
   }
   
@@ -126,8 +124,6 @@ extension CardView {
         .multilineTextAlignment(.leading)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16.0)
-    } else {
-      EmptyView()
     }
   }
   
@@ -142,8 +138,6 @@ extension CardView {
         .multilineTextAlignment(.leading)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16.0)
-    } else {
-      EmptyView()
     }
   }
   
@@ -161,8 +155,6 @@ extension CardView {
         .foregroundStyle(Color.secondary)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16.0)
-    } else {
-      EmptyView()
     }
   }
   
@@ -174,7 +166,7 @@ extension CardView {
       Text(store.legalityLabel).font(.headline)
       Text(store.displayReleasedDate).font(.caption).foregroundStyle(.secondary)
       
-      HStack(spacing: 8.0) {
+      HStack(spacing: 5.0) {
         VStack(spacing: 3.0) {
           ForEach(store.allLegalities.prefix(5).indices, id: \.self) { index in
             legalityRow(index: index, startingIndex: 0)
@@ -231,7 +223,7 @@ extension CardView {
         .padding(.horizontal, 16.0)
       
       ScrollView(.horizontal, showsIndicators: false) {
-        LazyHStack {
+        LazyHStack(spacing: 5.0) {
           if let power = store.configuration?.power, let toughness = store.configuration?.toughness {
             Widget.powerToughness(power: power, toughness: toughness).view
           }
@@ -281,8 +273,6 @@ extension CardView {
           .imageScale(.small)
       }
       .padding(.horizontal, 16.0)
-    } else {
-      EmptyView()
     }
   }
   
