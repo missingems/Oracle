@@ -71,13 +71,25 @@ extension CardView {
     .background { Color(.secondarySystemBackground) }
   }
   
-  @ViewBuilder
   private func header(width: CGFloat) -> some View {
     let horizontalPadding: CGFloat = (store.configuration?.isLandscape == true ? 16 : 55) * 2
     let imageWidth = width - horizontalPadding
     let imageHeight = (store.configuration?.isLandscape == true) ? (imageWidth / 1.3928).rounded() : (imageWidth * 1.3928).rounded()
+    let rotation: CGFloat
     
-    ZStack(alignment: .bottom) {
+    if store.card.layout == .split {
+      rotation = 90
+    } else if store.card.layout == .flip {
+      if store.configuration?.selectedFaceIndex == 0 {
+        rotation = 0
+      } else {
+        rotation = 180
+      }
+    } else {
+      rotation = 0
+    }
+    
+    return ZStack(alignment: .bottom) {
       ZStack {
         AmbientWebImage(
           url: [store.configuration?.imageURL],
@@ -85,7 +97,7 @@ extension CardView {
           blurRadius: 44.0,
           offset: CGPoint(x: 0, y: 10),
           scale: CGSize(width: 1.1, height: 1.1),
-          rotation: store.card.layout == .split ? 90 : 0
+          rotation: rotation
         )
         
         if store.card.isFlippable {

@@ -132,7 +132,9 @@ extension Card {
 
 extension Card {
   var imageURLs: [URL] {
-    if isFlippable {
+    if isRotatable {
+      return [getImageURL(type: .normal)].compactMap { $0 }
+    } else if isFlippable {
       return cardFaces?.compactMap { $0.imageURL } ?? []
     } else if let url = getImageURL(type: .normal) {
       return [url]
