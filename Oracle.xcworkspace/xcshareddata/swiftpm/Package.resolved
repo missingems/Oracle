@@ -1,5 +1,5 @@
 {
-  "originHash" : "dcab6c9e806a1f6f72998c7d48e61c8178bfcd3b03d02dfbe1fbb0152d94d551",
+  "originHash" : "af6d7594fff370a39064884ed3862923e8da120f9f5b81d94d065e8a97242e9e",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -11,12 +11,12 @@
       }
     },
     {
-      "identity" : "kingfisher",
+      "identity" : "nuke",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/onevcat/Kingfisher",
+      "location" : "https://github.com/kean/Nuke",
       "state" : {
-        "branch" : "master",
-        "revision" : "298cb26fb70b1ebdcae237cdda802caf7942dc50"
+        "revision" : "4625c73ea00a9fb4b4f3e28d95d0021a44af7e59",
+        "version" : "12.5.0"
       }
     },
     {

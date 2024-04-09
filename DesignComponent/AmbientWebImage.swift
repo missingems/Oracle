@@ -1,7 +1,42 @@
+import Nuke
 import NukeUI
 import SDWebImageSwiftUI
 import SwiftUI
-import Kingfisher
+
+struct RotationImageProcessor: ImageProcessing {
+  func process(_ image: Nuke.PlatformImage) -> Nuke.PlatformImage? {
+    return rotate(image: image, degrees: degrees)
+  }
+  
+  var identifier = UUID().uuidString
+  private let degrees: CGFloat
+  
+  public init(degrees: CGFloat) {
+    self.degrees = degrees
+  }
+  
+  private func rotate(image: UIImage, degrees: CGFloat) -> UIImage? {
+    guard image.cgImage != nil else { return nil }
+    
+    let radians = degrees * CGFloat.pi / 180
+    let rotatedSize = CGRect(origin: .zero, size: image.size)
+      .applying(CGAffineTransform(rotationAngle: radians))
+      .integral.size
+    
+    UIGraphicsBeginImageContextWithOptions(rotatedSize, false, image.scale)
+    guard let context = UIGraphicsGetCurrentContext() else { return nil }
+    
+    context.translateBy(x: rotatedSize.width / 2, y: rotatedSize.height / 2)
+    context.rotate(by: radians)
+    
+    image.draw(in: CGRect(x: -image.size.width / 2, y: -image.size.height / 2, width: image.size.width, height: image.size.height))
+    
+    let rotatedImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return rotatedImage
+  }
+}
 
 public struct Cycle {
   let max: Int
@@ -54,24 +89,23 @@ public struct AmbientWebImage: View {
   
   public var body: some View {
     ZStack {
-      KFImage(url[cycle.current])
-        .setProcessor(RotationImageProcessor(degrees: rotation))
-        .resizable()
-        .blur(radius: blurRadius, opaque: false)
-        .scaledToFit()
-        .aspectRatio(contentMode: .fit)
-        .opacity(0.38)
-        .scaleEffect(scale)
-        .offset(x: offset.x, y: offset.y)
+      LazyImage(request: ImageRequest(url: url[cycle.current], processors: [RotationImageProcessor(degrees: rotation)])) { state in
+        state.image?.resizable().aspectRatio(contentMode: .fit).scaledToFit()
+      }
+      .blur(radius: blurRadius, opaque: false)
+      .scaledToFit()
+      .opacity(0.38)
+      .scaleEffect(scale)
+      .offset(x: offset.x, y: offset.y)
       
-      KFImage(url[cycle.current])
-        .setProcessor(RotationImageProcessor(degrees: rotation))
-        .resizable()
-        .scaledToFit()
-        .aspectRatio(contentMode: .fit)
-        .clipShape(.rect(cornerRadii: .init(topLeading: cornerRadius, bottomLeading: cornerRadius, bottomTrailing: cornerRadius, topTrailing: cornerRadius)))
-        .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(Color(.separator), lineWidth: 1 / Main.nativeScale).opacity(0.618))
+      LazyImage(request: ImageRequest(url: url[cycle.current], processors: [RotationImageProcessor(degrees: rotation)])) { state in
+        state.image?.resizable().aspectRatio(contentMode: .fit).scaledToFit()
+      }
+      
+      .clipShape(.rect(cornerRadii: .init(topLeading: cornerRadius, bottomLeading: cornerRadius, bottomTrailing: cornerRadius, topTrailing: cornerRadius)))
+      .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(Color(.separator), lineWidth: 1 / Main.nativeScale).opacity(0.618))
     }
   }
 }
+
 
