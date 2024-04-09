@@ -55,11 +55,16 @@ extension CardView {
         blurRadius: 44.0,
         offset: CGPoint(x: 0, y: 10),
         scale: CGSize(width: 1.1, height: 1.1),
-        rotation: store.card.layout == .split ? 90 : 0,
-        transaction: Transaction(animation: nil), 
-        width: 300
+        rotation: store.card.layout == .split ? 90 : 0
       )
-      .padding(EdgeInsets(top: 13, leading: 55, bottom: 21, trailing: 55))
+      .padding(
+        EdgeInsets(
+          top: 13,
+          leading: store.configuration?.isLandscape == true ? 16 : 55,
+          bottom: 21,
+          trailing: store.configuration?.isLandscape == true ? 16 : 55
+        )
+      )
       
       Divider()
     }
