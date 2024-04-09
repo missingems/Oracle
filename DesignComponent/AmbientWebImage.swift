@@ -93,7 +93,6 @@ public struct AmbientWebImage: View {
         state.image?.resizable().aspectRatio(contentMode: .fit).scaledToFit()
       }
       .blur(radius: blurRadius, opaque: false)
-      .scaledToFit()
       .opacity(0.38)
       .scaleEffect(scale)
       .offset(x: offset.x, y: offset.y)
@@ -101,7 +100,6 @@ public struct AmbientWebImage: View {
       LazyImage(request: ImageRequest(url: url[cycle.current], processors: [RotationImageProcessor(degrees: rotation)])) { state in
         state.image?.resizable().aspectRatio(contentMode: .fit).scaledToFit()
       }
-      
       .clipShape(.rect(cornerRadii: .init(topLeading: cornerRadius, bottomLeading: cornerRadius, bottomTrailing: cornerRadius, topTrailing: cornerRadius)))
       .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(Color(.separator), lineWidth: 1 / Main.nativeScale).opacity(0.618))
     }
