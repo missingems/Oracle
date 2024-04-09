@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 import ScryfallKit
 
@@ -125,6 +126,18 @@ extension Card {
       return (title: "CardMarket", url: URL(string: value))
     } else {
       return nil
+    }
+  }
+}
+
+extension Card {
+  var imageURLs: [URL] {
+    if isFlippable {
+      return cardFaces?.compactMap { $0.imageURL } ?? []
+    } else if let url = getImageURL(type: .normal) {
+      return [url]
+    } else {
+      return []
     }
   }
 }
