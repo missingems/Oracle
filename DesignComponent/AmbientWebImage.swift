@@ -66,7 +66,6 @@ public struct AmbientWebImage: View {
   private let offset: CGPoint
   private let scale: CGSize
   private var cycle: Cycle
-  private let transaction: Transaction
   private let transformers: [ImageProcessing]
   
   public init(
@@ -77,7 +76,6 @@ public struct AmbientWebImage: View {
     scale: CGSize = CGSize(width: 1, height: 1),
     rotation: CGFloat = 0,
     cycle: Cycle = Cycle(max: 1),
-    transaction: Transaction = Transaction(animation: .easeInOut(duration: 0.15)),
     width: CGFloat? = nil
   ) {
     self.url = url
@@ -86,7 +84,6 @@ public struct AmbientWebImage: View {
     self.offset = offset
     self.scale = scale
     self.cycle = cycle
-    self.transaction = transaction
     
     var transformers: [ImageProcessing] = []
     
@@ -109,9 +106,9 @@ public struct AmbientWebImage: View {
           processors: transformers
         )
       ) { state in
-        state.image?
-          .resizable()
-          .aspectRatio(contentMode: .fit)
+        if let image = state.image {
+          image.resizable().aspectRatio(contentMode: .fit)
+        }
       }
       .blur(radius: blurRadius, opaque: false)
       .opacity(0.38)
@@ -122,15 +119,12 @@ public struct AmbientWebImage: View {
         request: ImageRequest(
           url: url[cycle.current],
           processors: transformers
-        ),
-        transaction: transaction
+        )
       ) { state in
         if state.isLoading {
-          RoundedRectangle(cornerRadius: cornerRadius).fill(Color.quaternarySystemFill)
-        } else {
-          state.image?
-            .resizable()
-            .aspectRatio(contentMode: .fit)
+          RoundedRectangle(cornerRadius: cornerRadius).fill(Color(.systemFill))
+        } else if let image = state.image {
+          image.resizable().aspectRatio(contentMode: .fit)
         }
       }
       .clipShape(

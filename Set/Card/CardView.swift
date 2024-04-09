@@ -6,16 +6,20 @@ struct CardView: View {
   let store: StoreOf<CardFeature>
   
   var body: some View {
-    ScrollView {
-      VStack(alignment: .leading, spacing: 0) {
-        header
-        content
-        Spacer(minLength: 13.0)
-        footerView
+    GeometryReader { proxy in
+      if proxy.size.width > 0 {
+        ScrollView {
+          VStack(alignment: .leading, spacing: 0) {
+            header(width: proxy.size.width)
+            content
+            Spacer(minLength: 13.0)
+            footerView
+          }
+          .padding(.bottom, 13.0)
+        }
+        .background { Color(.secondarySystemBackground).ignoresSafeArea() }
       }
-      .padding(.bottom, 13.0)
     }
-    .background { Color(.secondarySystemBackground).ignoresSafeArea() }
     .onAppear {
       store.send(.viewAppeared)
     }
@@ -47,19 +51,41 @@ extension CardView {
   }
   
   @ViewBuilder
-  private var header: some View {
+  private func header(width: CGFloat) -> some View {
+    let horizontalPadding: CGFloat = (store.configuration?.isLandscape == true ? 16 : 55) * 2
+    let imageWidth = width - horizontalPadding
+    let imageHeight = (imageWidth * 1.3928).rounded()
+    
     ZStack(alignment: .bottom) {
-      AmbientWebImage(
-        url: [store.configuration?.imageURL],
-        cornerRadius: 15.0,
-        blurRadius: 44.0,
-        offset: CGPoint(x: 0, y: 10),
-        scale: CGSize(width: 1.1, height: 1.1),
-        rotation: store.card.layout == .split ? 90 : 0,
-        transaction: Transaction(animation: nil), 
-        width: 300
-      )
-      .padding(EdgeInsets(top: 13, leading: 55, bottom: 21, trailing: 55))
+      ZStack {
+        AmbientWebImage(
+          url: [store.configuration?.imageURL],
+          cornerRadius: 15.0,
+          blurRadius: 44.0,
+          offset: CGPoint(x: 0, y: 10),
+          scale: CGSize(width: 1.1, height: 1.1),
+          rotation: store.card.layout == .split ? 90 : 0
+        )
+        
+        if store.card.isFlippable {
+          Button {
+            store.send(.transformTapped)
+          } label: {
+            Image(systemName: "arrow.left.and.right.righttriangle.left.righttriangle.right.fill")
+          }
+          .frame(
+            width: 44.0,
+            height: 44.0,
+            alignment: .center
+          )
+          .background(.thinMaterial)
+          .clipShape(Circle())
+          .overlay(Circle().stroke(Color(.separator), lineWidth: 1 / Main.nativeScale).opacity(0.618))
+          .offset(x: imageWidth / 2 - 27, y: -44)
+        }
+      }
+      .frame(width: imageWidth, height: imageHeight, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+      .padding(EdgeInsets(top: 13, leading: 0, bottom: 21, trailing: 0))
       
       Divider()
     }

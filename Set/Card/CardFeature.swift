@@ -102,6 +102,7 @@ struct CardFeature {
     case viewAppeared
     case showPrints([Card])
     case updateConfiguration(ContentConfiguration)
+    case transformTapped
   }
   
   var body: some ReducerOf<Self> {
@@ -146,6 +147,10 @@ struct CardFeature {
         
       case let .showPrints(cards):
         state.prints = cards
+        return .none
+        
+      case .transformTapped:
+        state.configuration = state.configuration?.toggled()
         return .none
       }
     }

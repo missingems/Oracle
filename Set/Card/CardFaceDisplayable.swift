@@ -21,7 +21,7 @@ protocol CardFaceDisplayable {
 
 extension CardFaceDisplayable {
   var tokenisedManaCost: [String] {
-    if let manaCost = cost {
+    if let manaCost = cost?.replacingOccurrences(of: "/", with: ":").replacingOccurrences(of: "∞", with: "INFINITY") {
       let regex = try? NSRegularExpression(pattern: "\\{[^}]+\\}", options: [])
       
       let matches = regex?.matches(

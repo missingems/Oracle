@@ -19,8 +19,13 @@ extension CardFeature {
     let usdPrice: String?
     let usdFoilPrice: String?
     let tixPrice: String?
+    let isLandscape: Bool
+    private let card: Card
+    private var selectedFaceIndex: Int?
     
-    init(card: Card, selectedFace: CardFaceDisplayable?) {
+    init(card: Card, selectedFace: CardFaceDisplayable?, selectedFaceIndex: Int? = 0) {
+      self.card = card
+      self.isLandscape = card.isLandscape
       oracleId = card.oracleId
       imageURL = selectedFace?.imageURL
       
@@ -47,29 +52,20 @@ extension CardFeature {
         self.colorIdentity = colorIdentity
       }
       
-      if let manaCost = selectedFace?.cost {
-        let regex = try? NSRegularExpression(pattern: "\\{[^}]+\\}", options: [])
-        
-        let matches = regex?.matches(
-          in: manaCost,
-          options: [],
-          range: NSRange(location: 0, length: manaCost.utf16.count)
-        )
-        
-        self.manaCost = matches?.compactMap { value in
-          if let range = Range(value.range, in: manaCost) {
-            return String(manaCost[range])
-          } else {
-            return nil
-          }
-        } ?? []
-      } else {
-        self.manaCost = []
-      }
+      manaCost = card.tokenisedManaCost
       usdPrice = card.getPrice(for: .usd)
       usdFoilPrice = card.getPrice(for: .usdFoil)
       tixPrice = card.getPrice(for: .tix)
       cmc = selectedFace?.cmc
+      self.selectedFaceIndex = selectedFaceIndex
+    }
+    
+    func toggled() -> Self {
+      if selectedFaceIndex == 0 {
+        return ContentConfiguration(card: self.card, selectedFace: card.cardFaces?.last, selectedFaceIndex: 1)
+      } else {
+        return ContentConfiguration(card: self.card, selectedFace: card.cardFaces?.first, selectedFaceIndex: 0)
+      }
     }
   }
 }
