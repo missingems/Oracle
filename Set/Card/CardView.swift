@@ -54,7 +54,7 @@ extension CardView {
   private func header(width: CGFloat) -> some View {
     let horizontalPadding: CGFloat = (store.configuration?.isLandscape == true ? 16 : 55) * 2
     let imageWidth = width - horizontalPadding
-    let imageHeight = (imageWidth * 1.3928).rounded()
+    let imageHeight = (store.configuration?.isLandscape == true) ? (imageWidth / 1.3928).rounded() : (imageWidth * 1.3928).rounded()
     
     ZStack(alignment: .bottom) {
       ZStack {
