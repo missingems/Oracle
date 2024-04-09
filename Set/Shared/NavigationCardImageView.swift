@@ -50,7 +50,6 @@ struct NavigationCardImageView<Content: View>: View {
         .clipShape(Circle())
         .overlay(Circle().stroke(Color(.separator), lineWidth: 1 / Main.nativeScale).opacity(0.618))
         .offset(x: width / 2 - 27, y: -44)
-        .defersSystemGestures(on: .vertical)
       }
     }
   }
