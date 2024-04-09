@@ -35,7 +35,3 @@ extension QueryResultView {
     }
   }
 }
-
-extension QueryResultView {
-  
-}
