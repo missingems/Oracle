@@ -106,12 +106,13 @@ public struct AmbientWebImage: View {
       LazyImage(
         request: ImageRequest(
           url: url[cycle.current],
-          processors: transformers
+          processors: transformers,
+          options: .disableMemoryCache
         )
       ) { state in
-        state.image?
-          .resizable()
-          .aspectRatio(contentMode: .fit)
+        if let image = state.image {
+          image.resizable().aspectRatio(contentMode: .fit)
+        }
       }
       .blur(radius: blurRadius, opaque: false)
       .opacity(0.38)
@@ -121,16 +122,15 @@ public struct AmbientWebImage: View {
       LazyImage(
         request: ImageRequest(
           url: url[cycle.current],
-          processors: transformers
+          processors: transformers,
+          options: .disableMemoryCache
         ),
         transaction: transaction
       ) { state in
         if state.isLoading {
           RoundedRectangle(cornerRadius: cornerRadius).fill(Color.quaternarySystemFill)
-        } else {
-          state.image?
-            .resizable()
-            .aspectRatio(contentMode: .fit)
+        } else if let image = state.image {
+          image.resizable().aspectRatio(contentMode: .fit)
         }
       }
       .clipShape(

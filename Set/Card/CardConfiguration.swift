@@ -47,25 +47,7 @@ extension CardFeature {
         self.colorIdentity = colorIdentity
       }
       
-      if let manaCost = selectedFace?.cost {
-        let regex = try? NSRegularExpression(pattern: "\\{[^}]+\\}", options: [])
-        
-        let matches = regex?.matches(
-          in: manaCost,
-          options: [],
-          range: NSRange(location: 0, length: manaCost.utf16.count)
-        )
-        
-        self.manaCost = matches?.compactMap { value in
-          if let range = Range(value.range, in: manaCost) {
-            return String(manaCost[range])
-          } else {
-            return nil
-          }
-        } ?? []
-      } else {
-        self.manaCost = []
-      }
+      manaCost = card.tokenisedManaCost
       usdPrice = card.getPrice(for: .usd)
       usdFoilPrice = card.getPrice(for: .usdFoil)
       tixPrice = card.getPrice(for: .tix)
