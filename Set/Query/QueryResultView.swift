@@ -23,6 +23,7 @@ struct QueryResultView: View {
               NavigationCardImageView(
                 imageURLs: imageURLs,
                 linkState: store.state.pathState(at: index),
+                shouldFlipOnTransform: store.state.displayingCards[index].isRotatable,
                 shouldShowTransformButton: store.state.shouldShowTransformButton(at: index),
                 width: (proxy.size.width - 24.0) / 2
               ) {

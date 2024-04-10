@@ -44,7 +44,7 @@ extension CardView {
       
       informationRow
       
-      if store.card.isFlippable {
+      if let transformLabel = store.transformLabel {
         makeDivider()
         
         Button {
@@ -53,7 +53,7 @@ extension CardView {
           }
         } label: {
           HStack {
-            Label("Transform", systemImage: "rectangle.portrait.rotate")
+            Label(transformLabel, systemImage: "rectangle.portrait.rotate")
               .font(.headline)
               .frame(maxWidth: .infinity)
               .foregroundStyle(Color("ReversedAccent"))
@@ -72,7 +72,7 @@ extension CardView {
   }
   
   private func header(width: CGFloat) -> some View {
-    let horizontalPadding: CGFloat = (store.configuration?.isLandscape == true ? 16 : 55) * 2
+    let horizontalPadding: CGFloat = (store.configuration?.isLandscape == true ? 34 : 72) * 2
     let imageWidth = width - horizontalPadding
     let imageHeight = (store.configuration?.isLandscape == true) ? (imageWidth / 1.3928).rounded() : (imageWidth * 1.3928).rounded()
     let rotation: CGFloat
@@ -93,11 +93,12 @@ extension CardView {
       ZStack {
         AmbientWebImage(
           url: [store.configuration?.imageURL],
-          cornerRadius: 15.0,
+          cornerRadius: 13,
           blurRadius: 44.0,
           offset: CGPoint(x: 0, y: 10),
           scale: CGSize(width: 1.1, height: 1.1),
-          rotation: rotation
+          rotation: rotation,
+          width: imageWidth
         )
         
         if store.card.isFlippable {
@@ -254,7 +255,7 @@ extension CardView {
     makeDivider()
     
     VStack(alignment: .leading) {
-      Text("Information")
+      Text(String(localized: "Information"))
         .font(.headline)
         .padding(.horizontal, 16.0)
       
@@ -316,8 +317,8 @@ extension CardView {
     makeDivider()
     
     VStack(alignment: .leading) {
-      Text("Market Prices").font(.headline)
-      Text("Data from Scryfall").font(.caption).foregroundStyle(.secondary)
+      Text(String(localized: "Market Prices")).font(.headline)
+      Text(String(localized: "Data from Scryfall")).font(.caption).foregroundStyle(.secondary)
       
       HStack(alignment: .center, spacing: 5.0) {
         let usdPrice = store.configuration?.usdPrice
@@ -374,8 +375,8 @@ extension CardView {
     makeDivider()
     
     VStack(alignment: .leading) {
-      Text("Prints").font(.headline).padding(.horizontal, 16.0)
-      Text("\(store.prints.count) Results").font(.caption).foregroundStyle(.secondary).padding(.horizontal, 16.0)
+      Text(String(localized: "Prints")).font(.headline).padding(.horizontal, 16.0)
+      Text(String(localized: "\(store.prints.count) Results")).font(.caption).foregroundStyle(.secondary).padding(.horizontal, 16.0)
       
       ScrollView(.horizontal, showsIndicators: false) {
         LazyHStack {
@@ -383,6 +384,7 @@ extension CardView {
             NavigationCardImageView(
               imageURLs: card.imageURLs,
               linkState: Feature.Path.State.showCard(CardFeature.State(card: card, cardSetImageURL: store.cardSetImageURL)),
+              shouldFlipOnTransform: card.isRotatable,
               shouldShowTransformButton: card.isFlippable,
               width: 144
             ) {

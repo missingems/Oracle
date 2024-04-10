@@ -69,6 +69,18 @@ struct CardFeature {
       String(localized: "Release Date: \(card.releasedAt)")
     }
     
+    var transformLabel: String? {
+      if card.isRotatable {
+        return String(localized: "Flip")
+      }
+      
+      if card.isFlippable {
+        return String(localized: "Transform")
+      }
+      
+      return nil
+    }
+    
     let cardSetImageURL: URL?
     
     var selectedFace: any CardFaceDisplayable {

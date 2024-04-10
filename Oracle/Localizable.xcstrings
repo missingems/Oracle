@@ -1,108 +1,14 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%lld Cards" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld Cards"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "カード%i枚"
-          }
-        }
-      }
-    },
-    "Banned" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "禁止"
-          }
-        }
-      }
-    },
     "Collection" : {
 
     },
     "Game" : {
 
     },
-    "Illustrated by" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "作画"
-          }
-        }
-      }
-    },
-    "Legal" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "合法"
-          }
-        }
-      }
-    },
-    "Legality" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "合法性"
-          }
-        }
-      }
-    },
-    "Loyalty: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "忠誠: %@"
-          }
-        }
-      }
-    },
-    "Not Legal" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "違法"
-          }
-        }
-      }
-    },
     "Profile" : {
 
-    },
-    "Restricted" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "制限"
-          }
-        }
-      }
     },
     "Search" : {
 
@@ -120,23 +26,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "セット"
-          }
-        }
-      }
-    },
-    "SetsTableViewControllerSearchBarPlaceholder" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Search for Magic cards..."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "マジックカード検索"
           }
         }
       }
