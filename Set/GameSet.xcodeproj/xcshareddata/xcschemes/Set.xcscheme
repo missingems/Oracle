@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BF660C832BAFEE180025218A"
-               BuildableName = "Set.framework"
-               BlueprintName = "Set"
-               ReferencedContainer = "container:Set.xcodeproj">
+               BuildableName = "GameSet.framework"
+               BlueprintName = "GameSet"
+               ReferencedContainer = "container:GameSet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -37,7 +37,7 @@
                BlueprintIdentifier = "BF660C8B2BAFEE180025218A"
                BuildableName = "SetTests.xctest"
                BlueprintName = "SetTests"
-               ReferencedContainer = "container:Set.xcodeproj">
+               ReferencedContainer = "container:GameSet.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BF660C832BAFEE180025218A"
-            BuildableName = "Set.framework"
-            BlueprintName = "Set"
-            ReferencedContainer = "container:Set.xcodeproj">
+            BuildableName = "GameSet.framework"
+            BlueprintName = "GameSet"
+            ReferencedContainer = "container:GameSet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

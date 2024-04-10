@@ -8,6 +8,6 @@
       location = "container:Oracle.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Set/Set.xcodeproj">
+      location = "group:/Users/jun/Documents/Github/Oracle/Set/GameSet.xcodeproj">
    </FileRef>
 </Workspace>
