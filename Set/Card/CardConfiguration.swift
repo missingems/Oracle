@@ -21,13 +21,13 @@ extension CardFeature {
     let tixPrice: String?
     let isLandscape: Bool
     private let card: Card
-    private var selectedFaceIndex: Int?
+    private(set) var selectedFaceIndex: Int?
     
     init(card: Card, selectedFace: CardFaceDisplayable?, selectedFaceIndex: Int? = 0) {
       self.card = card
       self.isLandscape = card.isLandscape
       oracleId = card.oracleId
-      imageURL = selectedFace?.imageURL
+      imageURL = selectedFace?.imageURL ?? card.getImageURL(type: .normal)
       
       if card.isPhyrexian {
         name = selectedFace?.name
@@ -52,11 +52,11 @@ extension CardFeature {
         self.colorIdentity = colorIdentity
       }
       
-      manaCost = card.tokenisedManaCost
+      manaCost = selectedFace?.tokenisedManaCost ?? []
       usdPrice = card.getPrice(for: .usd)
       usdFoilPrice = card.getPrice(for: .usdFoil)
       tixPrice = card.getPrice(for: .tix)
-      cmc = selectedFace?.cmc
+      cmc = card.cmc
       self.selectedFaceIndex = selectedFaceIndex
     }
     

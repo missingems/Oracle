@@ -20,6 +20,8 @@
 		BFADDB122BBFC7EF00F0C052 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFADDB112BBFC7EF00F0C052 /* WidgetView.swift */; };
 		BFE1AB412BBFDAEF00633035 /* ManaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE1AB402BBFDAEF00633035 /* ManaView.swift */; };
 		BFEBA8A32BC4B802007CC97A /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = BFEBA8A22BC4B802007CC97A /* NukeUI */; };
+		BFF064E52BC5548D00A2EC3F /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = BFF064E42BC5548D00A2EC3F /* Shimmer */; };
+		BFF064E72BC578CD00A2EC3F /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF064E62BC578CD00A2EC3F /* WrappingHStack.swift */; };
 		BFF33CAB2BBD9C8400DFB1D1 /* SelectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF33CAA2BBD9C8400DFB1D1 /* SelectionRow.swift */; };
 		BFF33CAD2BBD9F7A00DFB1D1 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF33CAC2BBD9F7A00DFB1D1 /* SectionView.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,7 @@
 		BF897D302BB8430F00279F66 /* TokenizedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizedTextView.swift; sourceTree = "<group>"; };
 		BFADDB112BBFC7EF00F0C052 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		BFE1AB402BBFDAEF00633035 /* ManaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaView.swift; sourceTree = "<group>"; };
+		BFF064E62BC578CD00A2EC3F /* WrappingHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappingHStack.swift; sourceTree = "<group>"; };
 		BFF33CAA2BBD9C8400DFB1D1 /* SelectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionRow.swift; sourceTree = "<group>"; };
 		BFF33CAC2BBD9F7A00DFB1D1 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFF064E52BC5548D00A2EC3F /* Shimmer in Frameworks */,
 				BF660D282BB030120025218A /* SDWebImageSVGNativeCoder in Frameworks */,
 				BF660D1C2BB029220025218A /* SDWebImageSwiftUI in Frameworks */,
 				BFEBA8A32BC4B802007CC97A /* NukeUI in Frameworks */,
@@ -75,6 +79,7 @@
 		BF660CDE2BB016820025218A = {
 			isa = PBXGroup;
 			children = (
+				BFF064E62BC578CD00A2EC3F /* WrappingHStack.swift */,
 				BFE1AB402BBFDAEF00633035 /* ManaView.swift */,
 				BFADDB102BBFC74100F0C052 /* WidgetView */,
 				BFF33CAC2BBD9F7A00DFB1D1 /* SectionView.swift */,
@@ -138,6 +143,7 @@
 				BF660D1B2BB029220025218A /* SDWebImageSwiftUI */,
 				BF660D272BB030120025218A /* SDWebImageSVGNativeCoder */,
 				BFEBA8A22BC4B802007CC97A /* NukeUI */,
+				BFF064E42BC5548D00A2EC3F /* Shimmer */,
 			);
 			productName = DesignComponent;
 			productReference = BF660CE82BB016820025218A /* DesignComponent.framework */;
@@ -193,6 +199,7 @@
 				BF660D1A2BB029220025218A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				BF660D262BB030120025218A /* XCRemoteSwiftPackageReference "SDWebImageSVGNativeCoder" */,
 				BFEBA8A12BC4B802007CC97A /* XCRemoteSwiftPackageReference "Nuke" */,
+				BFF064E32BC5548D00A2EC3F /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = BF660CE92BB016820025218A /* Products */;
 			projectDirPath = "";
@@ -235,6 +242,7 @@
 				BFF33CAB2BBD9C8400DFB1D1 /* SelectionRow.swift in Sources */,
 				BF660D012BB016A60025218A /* PillText.swift in Sources */,
 				BF897D312BB8430F00279F66 /* TokenizedTextView.swift in Sources */,
+				BFF064E72BC578CD00A2EC3F /* WrappingHStack.swift in Sources */,
 				BF48F1772BB03C5800F874BF /* Color.swift in Sources */,
 				BF897D2F2BB83ADE00279F66 /* AmbientWebImage.swift in Sources */,
 			);
@@ -566,6 +574,14 @@
 				minimumVersion = 12.5.0;
 			};
 		};
+		BFF064E32BC5548D00A2EC3F /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -583,6 +599,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BFEBA8A12BC4B802007CC97A /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = NukeUI;
+		};
+		BFF064E42BC5548D00A2EC3F /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFF064E32BC5548D00A2EC3F /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,7 +1,7 @@
 import Nuke
 import NukeUI
-import SDWebImageSwiftUI
 import SwiftUI
+import Shimmer
 
 struct RotationImageProcessor: ImageProcessing {
   func process(_ image: Nuke.PlatformImage) -> Nuke.PlatformImage? {
@@ -99,49 +99,55 @@ public struct AmbientWebImage: View {
   }
   
   public var body: some View {
-    ZStack {
-      LazyImage(
-        request: ImageRequest(
-          url: url[cycle.current],
-          processors: transformers
-        )
-      ) { state in
-        if let image = state.image {
-          image.resizable().aspectRatio(contentMode: .fit)
+    if url.isEmpty == false {
+      ZStack {
+        LazyImage(
+          request: ImageRequest(
+            url: url[cycle.current],
+            processors: transformers
+          )
+        ) { state in
+          if let image = state.image {
+            image.resizable().aspectRatio(contentMode: .fit)
+          }
         }
-      }
-      .blur(radius: blurRadius, opaque: false)
-      .opacity(0.38)
-      .scaleEffect(scale)
-      .offset(x: offset.x, y: offset.y)
-      
-      LazyImage(
-        request: ImageRequest(
-          url: url[cycle.current],
-          processors: transformers
-        )
-      ) { state in
-        if state.isLoading {
-          RoundedRectangle(cornerRadius: cornerRadius).fill(Color(.systemFill))
-        } else if let image = state.image {
-          image.resizable().aspectRatio(contentMode: .fit)
+        .blur(radius: blurRadius, opaque: false)
+        .opacity(0.38)
+        .scaleEffect(scale)
+        .offset(x: offset.x, y: offset.y)
+        
+        LazyImage(
+          request: ImageRequest(
+            url: url[cycle.current],
+            processors: transformers
+          )
+        ) { state in
+          if state.isLoading {
+            RoundedRectangle(cornerRadius: cornerRadius).fill(Color(.systemFill)).shimmering(
+              gradient: Gradient(
+                colors: [.black.opacity(0.8), .black.opacity(1), .black.opacity(0.8)]
+              )
+            )
+          } else if let image = state.image {
+            image.resizable().aspectRatio(contentMode: .fit)
+          }
         }
-      }
-      .clipShape(
-        .rect(
-          cornerRadii: .init(
-            topLeading: cornerRadius,
-            bottomLeading: cornerRadius,
-            bottomTrailing: cornerRadius,
-            topTrailing: cornerRadius
+        .clipShape(
+          .rect(
+            cornerRadii: .init(
+              topLeading: cornerRadius,
+              bottomLeading: cornerRadius,
+              bottomTrailing: cornerRadius,
+              topTrailing: cornerRadius
+            )
           )
         )
-      )
-      .overlay(
-        RoundedRectangle(cornerRadius: cornerRadius)
-          .stroke(Color(.separator), lineWidth: 1 / Main.nativeScale)
-          .opacity(0.618)
-      )
+        .overlay(
+          RoundedRectangle(cornerRadius: cornerRadius)
+            .stroke(Color(.separator), lineWidth: 1 / Main.nativeScale)
+            .opacity(0.618)
+        )
+      }
     }
   }
 }

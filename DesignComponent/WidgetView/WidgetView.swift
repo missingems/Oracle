@@ -4,7 +4,7 @@ public enum Widget {
   case powerToughness(power: String, toughness: String)
   case loyalty(counters: String)
   case manaValue(String)
-  case collectorNumber(rarity: String, String)
+  case collectorNumber(String)
   case colorIdentity([String])
   case setCode(String, iconURL: URL?)
   
@@ -20,8 +20,8 @@ public enum Widget {
     case let .colorIdentity(manaIdentity):
       manaIdentityView(manaIdentity)
       
-    case let .collectorNumber(rarity, number):
-      collectionNumberView(rarity: rarity, number: number)
+    case let .collectorNumber(number):
+      collectionNumberView(number: number)
       
     case let .loyalty(counters):
       loyaltyWidgetView(counters)
@@ -102,10 +102,10 @@ private extension Widget {
   }
   
   @ViewBuilder
-  private func collectionNumberView(rarity: String, number: String) -> some View {
+  private func collectionNumberView(number: String) -> some View {
     VStack(alignment: .center) {
       content {
-        Text("\(rarity) #\(number)".uppercased()).font(.body).fontDesign(.serif)
+        Text("#\(number)".uppercased()).font(.body).fontDesign(.serif)
       }
       
       Text(String(localized: "Collector\nNumber"))

@@ -43,6 +43,27 @@ extension CardView {
       }
       
       informationRow
+      
+      if let transformLabel = store.transformLabel {
+        makeDivider()
+        
+        Button {
+          withAnimation(.bouncy) {
+            _ = store.send(.transformTapped)
+          }
+        } label: {
+          HStack {
+            Label(transformLabel, systemImage: "rectangle.portrait.rotate")
+              .font(.headline)
+              .frame(maxWidth: .infinity)
+              .foregroundStyle(Color("ReversedAccent"))
+          }
+        }
+        
+        .buttonStyle(BorderedProminentButtonStyle())
+        .padding(.horizontal, 16.0)
+      }
+      
       legalityRow
       marketPriceRow
       printsRow
@@ -50,28 +71,43 @@ extension CardView {
     .background { Color(.secondarySystemBackground) }
   }
   
-  @ViewBuilder
   private func header(width: CGFloat) -> some View {
-    let horizontalPadding: CGFloat = (store.configuration?.isLandscape == true ? 16 : 55) * 2
+    let horizontalPadding: CGFloat = (store.configuration?.isLandscape == true ? 34 : 72) * 2
     let imageWidth = width - horizontalPadding
-    let imageHeight = (imageWidth * 1.3928).rounded()
+    let imageHeight = (store.configuration?.isLandscape == true) ? (imageWidth / 1.3928).rounded() : (imageWidth * 1.3928).rounded()
+    let rotation: CGFloat
     
-    ZStack(alignment: .bottom) {
+    if store.card.layout == .split {
+      rotation = 90
+    } else if store.card.layout == .flip {
+      if store.configuration?.selectedFaceIndex == 0 {
+        rotation = 0
+      } else {
+        rotation = 180
+      }
+    } else {
+      rotation = 0
+    }
+    
+    return ZStack(alignment: .bottom) {
       ZStack {
         AmbientWebImage(
           url: [store.configuration?.imageURL],
-          cornerRadius: 15.0,
+          cornerRadius: 13,
           blurRadius: 44.0,
           offset: CGPoint(x: 0, y: 10),
           scale: CGSize(width: 1.1, height: 1.1),
-          rotation: store.card.layout == .split ? 90 : 0
+          rotation: rotation,
+          width: imageWidth
         )
         
         if store.card.isFlippable {
           Button {
-            store.send(.transformTapped)
+            withAnimation(.bouncy) {
+              _ = store.send(.transformTapped)
+            }
           } label: {
-            Image(systemName: "arrow.left.and.right.righttriangle.left.righttriangle.right.fill")
+            Image(systemName: "rectangle.portrait.rotate").fontWeight(.semibold)
           }
           .frame(
             width: 44.0,
@@ -98,6 +134,7 @@ extension CardView {
         Text(name)
           .font(.headline)
           .multilineTextAlignment(.leading)
+          .frame(maxWidth: .infinity, alignment: .leading)
         
         Spacer()
         
@@ -109,8 +146,6 @@ extension CardView {
         .offset(CGSize(width: 0, height: 1))
       }
       .padding(.horizontal, 16.0)
-    } else {
-      EmptyView()
     }
   }
   
@@ -126,8 +161,6 @@ extension CardView {
         .multilineTextAlignment(.leading)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16.0)
-    } else {
-      EmptyView()
     }
   }
   
@@ -142,8 +175,6 @@ extension CardView {
         .multilineTextAlignment(.leading)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16.0)
-    } else {
-      EmptyView()
     }
   }
   
@@ -161,8 +192,6 @@ extension CardView {
         .foregroundStyle(Color.secondary)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16.0)
-    } else {
-      EmptyView()
     }
   }
   
@@ -174,7 +203,7 @@ extension CardView {
       Text(store.legalityLabel).font(.headline)
       Text(store.displayReleasedDate).font(.caption).foregroundStyle(.secondary)
       
-      HStack(spacing: 8.0) {
+      HStack(spacing: 5.0) {
         VStack(spacing: 3.0) {
           ForEach(store.allLegalities.prefix(5).indices, id: \.self) { index in
             legalityRow(index: index, startingIndex: 0)
@@ -226,12 +255,12 @@ extension CardView {
     makeDivider()
     
     VStack(alignment: .leading) {
-      Text("Information")
+      Text(String(localized: "Information"))
         .font(.headline)
         .padding(.horizontal, 16.0)
       
       ScrollView(.horizontal, showsIndicators: false) {
-        LazyHStack {
+        LazyHStack(spacing: 5.0) {
           if let power = store.configuration?.power, let toughness = store.configuration?.toughness {
             Widget.powerToughness(power: power, toughness: toughness).view
           }
@@ -247,8 +276,7 @@ extension CardView {
           }
           
           Widget.setCode(store.card.set, iconURL: store.cardSetImageURL).view
-          
-          Widget.collectorNumber(rarity: "\(store.card.rarity.rawValue.prefix(1))", store.card.collectorNumber).view
+          Widget.collectorNumber(store.card.collectorNumber).view
         }
         .padding(.horizontal, 16.0)
       }
@@ -281,8 +309,6 @@ extension CardView {
           .imageScale(.small)
       }
       .padding(.horizontal, 16.0)
-    } else {
-      EmptyView()
     }
   }
   
@@ -291,8 +317,8 @@ extension CardView {
     makeDivider()
     
     VStack(alignment: .leading) {
-      Text("Market Prices").font(.headline)
-      Text("Data from Scryfall").font(.caption).foregroundStyle(.secondary)
+      Text(String(localized: "Market Prices")).font(.headline)
+      Text(String(localized: "Data from Scryfall")).font(.caption).foregroundStyle(.secondary)
       
       HStack(alignment: .center, spacing: 5.0) {
         let usdPrice = store.configuration?.usdPrice
@@ -349,8 +375,8 @@ extension CardView {
     makeDivider()
     
     VStack(alignment: .leading) {
-      Text("Prints").font(.headline).padding(.horizontal, 16.0)
-      Text("\(store.prints.count) Results").font(.caption).foregroundStyle(.secondary).padding(.horizontal, 16.0)
+      Text(String(localized: "Prints")).font(.headline).padding(.horizontal, 16.0)
+      Text(String(localized: "\(store.prints.count) Results")).font(.caption).foregroundStyle(.secondary).padding(.horizontal, 16.0)
       
       ScrollView(.horizontal, showsIndicators: false) {
         LazyHStack {
@@ -358,6 +384,7 @@ extension CardView {
             NavigationCardImageView(
               imageURLs: card.imageURLs,
               linkState: Feature.Path.State.showCard(CardFeature.State(card: card, cardSetImageURL: store.cardSetImageURL)),
+              shouldFlipOnTransform: card.isRotatable,
               shouldShowTransformButton: card.isFlippable,
               width: 144
             ) {
@@ -367,14 +394,14 @@ extension CardView {
                     "$\(usd)",
                     insets: EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5)
                   )
-                } else if let usdFoil = card.getPrice(for: .usd) {
+                } else if let usdFoil = card.getPrice(for: .usdFoil) {
                   PillText(
                     "$\(usdFoil)",
                     insets: EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5)
                   )
                 } else {
                   PillText(
-                    "\(card.rarity.rawValue.prefix(1))#\(card.collectorNumber)".uppercased(),
+                    "#\(card.collectorNumber)".uppercased(),
                     insets: EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5),
                     background: Color.clear
                   )

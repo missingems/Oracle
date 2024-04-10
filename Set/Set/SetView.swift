@@ -1,5 +1,6 @@
 import ScryfallKit
 import SwiftUI
+import Shimmer
 
 struct SetView: View {
   var viewModel: SetViewModel
@@ -13,11 +14,12 @@ struct SetView: View {
               SetListRow(viewModel: viewModel.makeSetListRowViewModel(for: index))
                 .redacted(reason: viewModel.redactionReason)
             }
-            .disabled(viewModel.isInteractivable)
+            .disabled(viewModel.isInteractivable == false)
           }
         }
       }
       .navigationTitle(viewModel.title)
+      
     } destination: { store in
       switch store.state {
       case .showQuery:
@@ -31,6 +33,12 @@ struct SetView: View {
         }
       }
     }
+    .shimmering(
+      active: viewModel.isInteractivable == false,
+      gradient: Gradient(
+        colors: [.black.opacity(0.8), .black.opacity(1), .black.opacity(0.8)]
+      )
+    )
     .tabItem {
       Label(viewModel.title, systemImage: viewModel.tabItemImageName)
     }

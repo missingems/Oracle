@@ -1,0 +1,81 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+
+    },
+    "%lld Cards" : {
+
+    },
+    "%lld Results" : {
+
+    },
+    "$%@" : {
+
+    },
+    "Artist" : {
+
+    },
+    "Banned" : {
+
+    },
+    "Data from Scryfall" : {
+
+    },
+    "Flip" : {
+
+    },
+    "Hello" : {
+
+    },
+    "Information" : {
+
+    },
+    "Legal" : {
+
+    },
+    "Legality" : {
+
+    },
+    "Market Prices" : {
+
+    },
+    "Not Legal" : {
+
+    },
+    "Prints" : {
+
+    },
+    "Related" : {
+
+    },
+    "Release Date: %@" : {
+
+    },
+    "Restricted" : {
+
+    },
+    "Rulings" : {
+
+    },
+    "Sets" : {
+
+    },
+    "Tix" : {
+
+    },
+    "Transform" : {
+
+    },
+    "USD" : {
+
+    },
+    "USD - Foil" : {
+
+    },
+    "View" : {
+
+    }
+  },
+  "version" : "1.0"
+}
