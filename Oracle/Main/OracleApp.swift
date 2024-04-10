@@ -1,11 +1,9 @@
 import SwiftUI
-import `Set`
+import GameSet
 import DesignComponent
 
 @main
 struct OracleApp: App {
-  typealias GameSet = `Set`
-  
   init() {
     DesignComponent.Main.setupSVGCoder()
   }

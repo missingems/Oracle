@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		BF0133162BAD8BA7006AFAF1 /* OracleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */; };
+		BF016B9F2BC64AFB00305850 /* GameSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF016B9E2BC64AFB00305850 /* GameSet.framework */; };
+		BF016BA02BC64AFB00305850 /* GameSet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF016B9E2BC64AFB00305850 /* GameSet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF56E66F2B846E450018B620 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BF56E66E2B846E450018B620 /* Localizable.xcstrings */; };
-		BF660CA32BAFEF710025218A /* Set.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF660CA22BAFEF710025218A /* Set.framework */; };
-		BF660CA42BAFEF710025218A /* Set.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF660CA22BAFEF710025218A /* Set.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF660D2A2BB0305C0025218A /* DesignComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF660D292BB0305C0025218A /* DesignComponent.framework */; };
 		BF660D2B2BB0305C0025218A /* DesignComponent.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF660D292BB0305C0025218A /* DesignComponent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BFFFBF612B7C6A290004156B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFFBF602B7C6A290004156B /* Assets.xcassets */; };
@@ -24,7 +24,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				BF660D2B2BB0305C0025218A /* DesignComponent.framework in Embed Frameworks */,
-				BF660CA42BAFEF710025218A /* Set.framework in Embed Frameworks */,
+				BF016BA02BC64AFB00305850 /* GameSet.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -33,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		BF0133152BAD8BA7006AFAF1 /* OracleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleApp.swift; sourceTree = "<group>"; };
+		BF016B9E2BC64AFB00305850 /* GameSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GameSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF56E66E2B846E450018B620 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		BF660CA22BAFEF710025218A /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF660D292BB0305C0025218A /* DesignComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,8 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF660CA32BAFEF710025218A /* Set.framework in Frameworks */,
 				BF660D2A2BB0305C0025218A /* DesignComponent.framework in Frameworks */,
+				BF016B9F2BC64AFB00305850 /* GameSet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +82,7 @@
 		BFCD54D22BA81B7100A0C439 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF016B9E2BC64AFB00305850 /* GameSet.framework */,
 				BF660D292BB0305C0025218A /* DesignComponent.framework */,
 				BF660CA22BAFEF710025218A /* Set.framework */,
 			);
